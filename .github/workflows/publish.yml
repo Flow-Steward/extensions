@@ -1,0 +1,46 @@
+name: Publish releases and index
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "extensions/**"
+      - "categories.json"
+      - "verified_publishers.json"
+      - "scripts/build_index.py"
+  workflow_dispatch:
+
+permissions:
+  # Create one GitHub Release per new version and commit its record + index.json.
+  contents: write
+
+concurrency:
+  group: publish-index
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Release new versions and build index.json
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/build_index.py --publish
+      - name: Commit release records and index.json when they changed
+        run: |
+          git add releases index.json
+          if git diff --cached --quiet; then
+            echo "Nothing new to publish."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Publish extension releases"
+          git push

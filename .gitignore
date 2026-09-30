@@ -1,0 +1,6 @@
+__pycache__/
+.pytest_cache/
+.fs-python/
+.mypy_cache/
+.ruff_cache/
+dev-wheels/
