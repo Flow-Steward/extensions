@@ -4,44 +4,68 @@ Extensions for [Flow Steward](https://github.com/vasily-piksis/agentic-team).
 Flow Steward reads [`index.json`](index.json) and lists these extensions under
 **Extensions → Marketplace**, where an administrator installs them in one click.
 
-`index.json` and everything under `releases/` are generated. Never edit them by
-hand: a GitHub Action builds them after every merge.
+Every extension lives in **its author's own GitHub repository**. This catalog
+only holds a link to it, and publishes the author's releases automatically.
+`index.json` and everything under `releases/` are generated; never edit them.
 
 ## Share an extension
 
-1. Build and check the extension in Flow Steward as usual:
-   `flow-steward extensions validate <extension_id> --root extensions`.
+1. Keep the extension in its own public GitHub repository with `extension.yaml`
+   at the repository root. Check it with
+   `flow-steward extensions validate <extension_id>`.
 2. In `extension.yaml`, make sure it has:
    - a readable `display_name` and a `description` of at least 40 characters;
    - `listing.category`, one of [`categories.json`](categories.json);
    - optionally `listing.summary` (the card line; otherwise the first sentence of
      the description), `listing.tags` and `listing.setup_summary`.
-3. Add the extension's source folder as `extensions/<folder>/`, where `<folder>` is
-   the `extension_id` with dots and dashes replaced by `_`
-   (`acme.crm-sync` → `extensions/acme_crm_sync/`).
-4. Open a pull request. Reviewers read your source, and the **Validate submission**
-   check tells you what to fix.
+3. Publish a release: tag `v<version>` (the same version as `extension.yaml`)
+   with the asset `<extension_id>-<version>.zip`, whose files sit under one top
+   folder named after the id with `.` and `-` replaced by `_`
+   (`acme.crm-sync` → `acme_crm_sync/`). Copy
+   [`templates/release-extension.yml`](templates/release-extension.yml) into your
+   repository's `.github/workflows/` and it does this for every tag you push.
+4. Open a pull request here adding one file, `extensions/<extension_id>.yaml`:
 
-After the merge, the publish job zips the folder, attaches the ZIP to a GitHub
-Release named `<extension_id>-v<version>`, and lists it in the catalog.
+   ```yaml
+   repository: https://github.com/<owner>/<repo>
+   ```
 
-### What the check refuses
+   Open it from the repository owner's account, or as a public member of the
+   owning organization. The **Validate submission** check downloads your latest
+   release and tells you what to fix.
 
-- a folder without `extension.yaml`, or one whose name does not match the id;
-- a version that is not semantic (`1.0.0`), or not higher than the last release;
-- files changed in a released version without raising `version`;
-- a category that is not in the list;
-- a value under a key such as `password`, `api_key` or `secret`, a private key,
-  `.env` or key files;
-- native per-platform payloads (`bin/`) — not supported by this catalog yet;
+After the merge your latest release is listed within the hour.
+
+### New versions
+
+Push a new tag in your repository. The catalog checks every listed repository
+every hour and publishes each new release that passes the same checks — no pull
+request needed. A release that fails is reported in the catalog's Actions log and
+the previous version stays listed.
+
+### What the checks refuse
+
+- an entry that is not exactly `repository: https://github.com/<owner>/<repo>`,
+  or a repository already listed under another id;
+- a submitter who does not own the repository;
+- the `flowsteward.` namespace, which is reserved for github.com/Flow-Steward
+  (see [`verified_publishers.json`](verified_publishers.json));
+- a release whose `extension.yaml` names another id or version than the entry and
+  the tag, or whose `extension-descriptor.yaml` disagrees with it;
+- files outside the one top folder, symbolic links, native payloads (`bin/`),
+  `.env` and key files, a value under a key such as `password` or `api_key`;
 - an archive over 50 MB (150 MB unpacked), Flow Steward's own install ceiling;
-- a pull request that edits `releases/` or `index.json`.
+- a pull request that edits `releases/` or `index.json`, or moves a listed
+  extension to another repository (a maintainer does that).
 
-### Updating a published extension
+## Integrity
 
-Change the folder and raise `version` in `extension.yaml`. Every released version
-keeps its GitHub Release, so anyone who installed it can still see what they run.
-Deleting a folder keeps the extension listed as **deprecated**.
+When a release is first published, its asset's URL, size and SHA-256 are recorded
+in `releases/<extension_id>/<version>.json` and never change. Flow Steward
+verifies that digest, and that the archive's own `extension.yaml` names the
+release, before it installs anything. Every hour the catalog downloads the listed
+asset again: if its bytes changed, that release is withdrawn and the previous one
+is listed instead. Removing an entry keeps the extension listed as **deprecated**.
 
 ## What the catalog shows, and where it comes from
 
@@ -53,9 +77,9 @@ Deleting a folder keeps the extension listed as **deprecated**.
 | Permissions | `required_scopes` |
 | Setup | `listing.setup_summary` |
 | Tags | `listing.tags` (kept for the future marketplace, not shown yet) |
-| Documentation link | the folder at the commit the release was built from |
-| Download URL, size, SHA-256 | the GitHub Release asset, recorded once in `releases/` |
-| Verified | the publisher (first part of the id) is in [`verified_publishers.json`](verified_publishers.json) |
+| Documentation link | the repository at the release tag |
+| Download URL, size, SHA-256 | the release asset, recorded once in `releases/` |
+| Verified | the id's namespace is mapped to the repository owner in `verified_publishers.json` |
 
 The catalog sets no `compatible_flow_steward` range: a manifest's
 `runtime.compatibility.platform_min` is the extension host contract version, not
@@ -66,14 +90,16 @@ still enforces `platform_min` itself.
 
 ```bash
 pip install -r requirements.txt
-python -m pytest -q scripts                        # builder tests
-python scripts/build_index.py --check --base origin/main
-python scripts/build_index.py                      # rebuild index.json from releases/
+python -m pytest -q scripts                                   # builder tests
+python scripts/build_index.py --check --base origin/main --submitter <login>
+python scripts/build_index.py --publish                       # what the hourly job runs
 ```
 
-The **Publish releases and index** workflow needs `contents: write` for the
-built-in `GITHUB_TOKEN` (Settings → Actions → General → Workflow permissions). If
-`main` is protected, allow GitHub Actions to push to it.
+The pull request check runs the base branch's copy of `scripts/build_index.py`, so
+a submission cannot change the check that judges it. The **Publish new releases**
+workflow needs `contents: write` for the built-in `GITHUB_TOKEN`
+(Settings → Actions → General → Workflow permissions). If `main` is protected,
+allow GitHub Actions to push to it.
 
 Point Flow Steward at the catalog with
 

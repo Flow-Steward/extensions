@@ -1,6 +1,10 @@
-name: Publish releases and index
+name: Publish new releases
 
 on:
+  # Authors publish by making a GitHub Release in their own repository; the
+  # catalog picks it up on the next run.
+  schedule:
+    - cron: "17 * * * *"
   push:
     branches: [main]
     paths:
@@ -11,7 +15,6 @@ on:
   workflow_dispatch:
 
 permissions:
-  # Create one GitHub Release per new version and commit its record + index.json.
   contents: write
 
 concurrency:
@@ -23,15 +26,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
-      - name: Release new versions and build index.json
+      - name: Record new releases and build index.json
         env:
-          GH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: python scripts/build_index.py --publish
       - name: Commit release records and index.json when they changed
         run: |

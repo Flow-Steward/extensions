@@ -13,8 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # The base branch and full history are needed to compare a folder with
-          # the commit its released version was built from.
+          # The base branch is needed to compare an edited entry with the listed one.
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
@@ -22,5 +21,13 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Test the index builder
         run: python -m pytest -q scripts
-      - name: Check the submitted extensions
-        run: python scripts/build_index.py --check --base "origin/${{ github.base_ref }}"
+      - name: Check the submitted extensions with the base branch's checker
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          FS_CATALOG_ROOT: ${{ github.workspace }}
+        run: |
+          # The pull request's own copy of the checker is not trusted to judge it.
+          git show "origin/${{ github.base_ref }}:scripts/build_index.py" > "$RUNNER_TEMP/build_index.py"
+          python "$RUNNER_TEMP/build_index.py" --check \
+            --base "origin/${{ github.base_ref }}" \
+            --submitter "${{ github.event.pull_request.user.login }}"
