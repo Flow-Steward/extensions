@@ -1,6 +1,6 @@
 # Flow Steward extension catalog
 
-Extensions for [Flow Steward](https://github.com/vasily-piksis/agentic-team).
+Extensions for [Flow Steward](https://github.com/Flow-Steward/flow-steward-app).
 Flow Steward reads [`index.json`](index.json) and lists these extensions under
 **Extensions → Marketplace**, where an administrator installs them in one click.
 
