@@ -1,0 +1,52 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-singlestore",
+  "version": "1.0.0",
+  "repository": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox",
+  "tag": "v1.0.0",
+  "published_at": "2026-10-01T13:29:17Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-singlestore",
+    "version": "1.0.0",
+    "name": "SingleStore (Google MCP Toolbox)",
+    "summary": "Query SingleStore from workflows through Google MCP Toolbox.",
+    "description": "Connect workspace datasets to Google MCP Toolbox database prebuilts through the Flow Steward extension runtime.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "database",
+      "dataset",
+      "google-mcp-toolbox",
+      "postgres",
+      "singlestore"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/tree/v1.0.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-singlestore-1.0.0-linux-amd64.zip",
+    "release_zip_bytes": 9491564,
+    "release_zip_sha256": "200e37b2befbbcfb29abd4cb5efeb26f58400c06321530f7f4338c59a5ad0212",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-singlestore-1.0.0-linux-amd64.zip",
+        "release_zip_bytes": 9491564,
+        "release_zip_sha256": "200e37b2befbbcfb29abd4cb5efeb26f58400c06321530f7f4338c59a5ad0212"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-singlestore-1.0.0-linux-arm64.zip",
+        "release_zip_bytes": 8591312,
+        "release_zip_sha256": "1da76f6b8a6a09efc80c2466250d0a691ff73d0fc9d19bff77f73ea7d2f77ff3"
+      }
+    }
+  }
+}

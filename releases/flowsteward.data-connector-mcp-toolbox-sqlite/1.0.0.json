@@ -1,0 +1,52 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-sqlite",
+  "version": "1.0.0",
+  "repository": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox",
+  "tag": "v1.0.0",
+  "published_at": "2026-10-01T13:29:21Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-sqlite",
+    "version": "1.0.0",
+    "name": "SQLite (Google MCP Toolbox)",
+    "summary": "Query a SQLite database file from workflows through Google MCP Toolbox.",
+    "description": "Connect workspace datasets to Google MCP Toolbox database prebuilts through the Flow Steward extension runtime.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "database",
+      "dataset",
+      "google-mcp-toolbox",
+      "postgres",
+      "sqlite"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/tree/v1.0.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-sqlite-1.0.0-linux-amd64.zip",
+    "release_zip_bytes": 10970962,
+    "release_zip_sha256": "81c93246ef55664ab158c0fc7ce02d40684d3e8f88dde020b16522d09671824c",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-sqlite-1.0.0-linux-amd64.zip",
+        "release_zip_bytes": 10970962,
+        "release_zip_sha256": "81c93246ef55664ab158c0fc7ce02d40684d3e8f88dde020b16522d09671824c"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-sqlite-1.0.0-linux-arm64.zip",
+        "release_zip_bytes": 9995623,
+        "release_zip_sha256": "6bcffd8a440ddcfa01f3869713d424623b07ee029cb5cce239911eb91238c542"
+      }
+    }
+  }
+}

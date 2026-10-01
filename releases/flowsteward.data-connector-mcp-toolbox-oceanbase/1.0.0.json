@@ -1,0 +1,52 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-oceanbase",
+  "version": "1.0.0",
+  "repository": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox",
+  "tag": "v1.0.0",
+  "published_at": "2026-10-01T13:29:14Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-oceanbase",
+    "version": "1.0.0",
+    "name": "OceanBase (Google MCP Toolbox)",
+    "summary": "Query OceanBase from workflows through Google MCP Toolbox.",
+    "description": "Connect workspace datasets to Google MCP Toolbox database prebuilts through the Flow Steward extension runtime.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "database",
+      "dataset",
+      "google-mcp-toolbox",
+      "oceanbase",
+      "postgres"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/tree/v1.0.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-oceanbase-1.0.0-linux-amd64.zip",
+    "release_zip_bytes": 9490241,
+    "release_zip_sha256": "6ee9adab535c8784b65b6b922df07f683cb134a12dc91b83b5dfdd9fbf22947b",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-oceanbase-1.0.0-linux-amd64.zip",
+        "release_zip_bytes": 9490241,
+        "release_zip_sha256": "6ee9adab535c8784b65b6b922df07f683cb134a12dc91b83b5dfdd9fbf22947b"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-oceanbase-1.0.0-linux-arm64.zip",
+        "release_zip_bytes": 8589080,
+        "release_zip_sha256": "acda3e916e3948bdae27a969bd1614fa1dff0fd3c45992c4711588db2bf75be5"
+      }
+    }
+  }
+}

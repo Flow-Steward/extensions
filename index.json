@@ -1,8 +1,55 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-10-01.9a6e4c9e",
-  "published_at": "2026-10-01T12:12:49Z",
+  "catalog_revision": "2026-10-01.d4e99537",
+  "published_at": "2026-10-01T13:29:21Z",
   "items": [
+    {
+      "extension_id": "flowsteward.data-connector-mcp-toolbox-clickhouse",
+      "version": "1.0.0",
+      "name": "ClickHouse (Google MCP Toolbox)",
+      "summary": "Query ClickHouse from workflows through Google MCP Toolbox.",
+      "description": "Connect workspace datasets to Google MCP Toolbox database prebuilts through the Flow Steward extension runtime.",
+      "categories": [
+        "data"
+      ],
+      "capabilities": [
+        "tool",
+        "dataset_connector",
+        "action",
+        "query"
+      ],
+      "permissions_summary": [
+        "extension:invoke"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "clickhouse",
+        "database",
+        "dataset",
+        "google-mcp-toolbox",
+        "postgres"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/tree/v1.0.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-clickhouse-1.0.0-linux-amd64.zip",
+      "release_zip_bytes": 11442247,
+      "release_zip_sha256": "c571d74bf0c87ec4d66cf955ec48d06f639763bd8f9c8016269e2517cd30fb66",
+      "release_targets": {
+        "linux-amd64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-clickhouse-1.0.0-linux-amd64.zip",
+          "release_zip_bytes": 11442247,
+          "release_zip_sha256": "c571d74bf0c87ec4d66cf955ec48d06f639763bd8f9c8016269e2517cd30fb66"
+        },
+        "linux-arm64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-clickhouse-1.0.0-linux-arm64.zip",
+          "release_zip_bytes": 10361522,
+          "release_zip_sha256": "b72756c6fbd27d910dbaad91f96f27c422356fd21e8bb634fb6a8312f1bcc3a5"
+        }
+      },
+      "added_at": "2026-10-01T13:29:10Z",
+      "updated_at": "2026-10-01T13:29:10Z"
+    },
     {
       "extension_id": "com.discogs.api",
       "version": "0.1.9",
@@ -35,7 +82,9 @@
       "repository_url": "https://github.com/Flow-Steward/ext-discogs/tree/v0.1.9",
       "release_zip_url": "https://github.com/Flow-Steward/ext-discogs/releases/download/v0.1.9/com.discogs.api-0.1.9.zip",
       "release_zip_bytes": 48729,
-      "release_zip_sha256": "f71060b8d4729fd7667e28e3a9e4d54a6512ad683f7325bf3eb47bad1e278d93"
+      "release_zip_sha256": "f71060b8d4729fd7667e28e3a9e4d54a6512ad683f7325bf3eb47bad1e278d93",
+      "added_at": "2026-10-01T12:12:32Z",
+      "updated_at": "2026-10-01T12:12:32Z"
     },
     {
       "extension_id": "flowsteward.docling",
@@ -66,7 +115,9 @@
       "repository_url": "https://github.com/Flow-Steward/ext-document-docling/tree/v0.1.0",
       "release_zip_url": "https://github.com/Flow-Steward/ext-document-docling/releases/download/v0.1.0/flowsteward.docling-0.1.0.zip",
       "release_zip_bytes": 19357,
-      "release_zip_sha256": "8996f27e77936d385cf8ed7e6fd0a6706af2a614c13d3fee9fef3fdbe8758184"
+      "release_zip_sha256": "8996f27e77936d385cf8ed7e6fd0a6706af2a614c13d3fee9fef3fdbe8758184",
+      "added_at": "2026-10-01T12:12:39Z",
+      "updated_at": "2026-10-01T12:12:39Z"
     },
     {
       "extension_id": "flowsteward.example-showcase",
@@ -99,7 +150,9 @@
       "repository_url": "https://github.com/Flow-Steward/ext-example-showcase/tree/v1.0.1",
       "release_zip_url": "https://github.com/Flow-Steward/ext-example-showcase/releases/download/v1.0.1/flowsteward.example-showcase-1.0.1.zip",
       "release_zip_bytes": 83736,
-      "release_zip_sha256": "afd7c62751cab55da283193846ed7763da60d0622a096ef181c932cb431ca77c"
+      "release_zip_sha256": "afd7c62751cab55da283193846ed7763da60d0622a096ef181c932cb431ca77c",
+      "added_at": "2026-10-01T12:12:39Z",
+      "updated_at": "2026-10-01T12:12:39Z"
     },
     {
       "extension_id": "flowsteward.file-transfer",
@@ -142,7 +195,9 @@
           "release_zip_bytes": 6379237,
           "release_zip_sha256": "3105b93e840e852380ea6f2835951c48bf78b3bf8b622e8937cbed855d5d953e"
         }
-      }
+      },
+      "added_at": "2026-10-01T12:12:41Z",
+      "updated_at": "2026-10-01T12:12:41Z"
     },
     {
       "extension_id": "flowsteward.imap-mailbox",
@@ -172,7 +227,9 @@
       "repository_url": "https://github.com/Flow-Steward/ext-email-imap/tree/v0.1.0",
       "release_zip_url": "https://github.com/Flow-Steward/ext-email-imap/releases/download/v0.1.0/flowsteward.imap-mailbox-0.1.0.zip",
       "release_zip_bytes": 85821,
-      "release_zip_sha256": "280c5e25b0d5f3c7968cf4f0632bfa788b8caba6cf57ce40ae06df32a33aa683"
+      "release_zip_sha256": "280c5e25b0d5f3c7968cf4f0632bfa788b8caba6cf57ce40ae06df32a33aa683",
+      "added_at": "2026-10-01T12:12:42Z",
+      "updated_at": "2026-10-01T12:12:42Z"
     },
     {
       "extension_id": "flowsteward.google-workspace",
@@ -207,7 +264,9 @@
       "repository_url": "https://github.com/Flow-Steward/ext-google-workspace/tree/v0.2.0",
       "release_zip_url": "https://github.com/Flow-Steward/ext-google-workspace/releases/download/v0.2.0/flowsteward.google-workspace-0.2.0.zip",
       "release_zip_bytes": 141746,
-      "release_zip_sha256": "64658d809888e42637bf2448a0704a54f054a3772b78cbe2af16313110d78481"
+      "release_zip_sha256": "64658d809888e42637bf2448a0704a54f054a3772b78cbe2af16313110d78481",
+      "added_at": "2026-10-01T12:12:41Z",
+      "updated_at": "2026-10-01T12:12:41Z"
     },
     {
       "extension_id": "com.image.processing",
@@ -251,7 +310,153 @@
           "release_zip_bytes": 47617409,
           "release_zip_sha256": "b00670fa4762662f012e3a1c9ee3361dfe1bb99bb7106774ea71f999ba393154"
         }
-      }
+      },
+      "added_at": "2026-10-01T12:12:35Z",
+      "updated_at": "2026-10-01T12:12:35Z"
+    },
+    {
+      "extension_id": "flowsteward.data-connector-mcp-toolbox-mssql",
+      "version": "1.0.0",
+      "name": "Microsoft SQL Server (Google MCP Toolbox)",
+      "summary": "Query Microsoft SQL Server and Cloud SQL for SQL Server from workflows through Google MCP Toolbox.",
+      "description": "Connect workspace datasets to Google MCP Toolbox database prebuilts through the Flow Steward extension runtime.",
+      "categories": [
+        "data"
+      ],
+      "capabilities": [
+        "tool",
+        "dataset_connector",
+        "action",
+        "query"
+      ],
+      "permissions_summary": [
+        "extension:invoke"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "cloud-sql-mssql",
+        "database",
+        "dataset",
+        "google-mcp-toolbox",
+        "mssql",
+        "postgres"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/tree/v1.0.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-mssql-1.0.0-linux-amd64.zip",
+      "release_zip_bytes": 10460942,
+      "release_zip_sha256": "b1cc734e1ffb667ac106393beba8a5f867d57d126e764b5c177ece5ec8a2548c",
+      "release_targets": {
+        "linux-amd64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-mssql-1.0.0-linux-amd64.zip",
+          "release_zip_bytes": 10460942,
+          "release_zip_sha256": "b1cc734e1ffb667ac106393beba8a5f867d57d126e764b5c177ece5ec8a2548c"
+        },
+        "linux-arm64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-mssql-1.0.0-linux-arm64.zip",
+          "release_zip_bytes": 9495174,
+          "release_zip_sha256": "789858a672fe2dda3d87678dcb15b33ce4aef74fd6e50c3ec5a4ef57e2e968af"
+        }
+      },
+      "added_at": "2026-10-01T13:29:12Z",
+      "updated_at": "2026-10-01T13:29:12Z"
+    },
+    {
+      "extension_id": "flowsteward.data-connector-mcp-toolbox-mysql",
+      "version": "1.0.0",
+      "name": "MySQL and MariaDB (Google MCP Toolbox)",
+      "summary": "Query MySQL, MariaDB and Cloud SQL for MySQL from workflows through Google MCP Toolbox.",
+      "description": "Connect workspace datasets to Google MCP Toolbox database prebuilts through the Flow Steward extension runtime.",
+      "categories": [
+        "data"
+      ],
+      "capabilities": [
+        "tool",
+        "dataset_connector",
+        "action",
+        "query"
+      ],
+      "permissions_summary": [
+        "extension:invoke"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "cloud-sql-mysql",
+        "database",
+        "dataset",
+        "google-mcp-toolbox",
+        "mariadb",
+        "mysql",
+        "postgres"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/tree/v1.0.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-mysql-1.0.0-linux-amd64.zip",
+      "release_zip_bytes": 10042054,
+      "release_zip_sha256": "ffe7bed58b622c0d3dcf3361f1e747fd26687afee4a322299a43e0aba16dec06",
+      "release_targets": {
+        "linux-amd64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-mysql-1.0.0-linux-amd64.zip",
+          "release_zip_bytes": 10042054,
+          "release_zip_sha256": "ffe7bed58b622c0d3dcf3361f1e747fd26687afee4a322299a43e0aba16dec06"
+        },
+        "linux-arm64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-mysql-1.0.0-linux-arm64.zip",
+          "release_zip_bytes": 9098377,
+          "release_zip_sha256": "e3d56b8e3ef241964741a29189b4a239b6d53d71b9556fe017b6ad8c7c045b7f"
+        }
+      },
+      "added_at": "2026-10-01T13:29:13Z",
+      "updated_at": "2026-10-01T13:29:13Z"
+    },
+    {
+      "extension_id": "flowsteward.data-connector-mcp-toolbox-oceanbase",
+      "version": "1.0.0",
+      "name": "OceanBase (Google MCP Toolbox)",
+      "summary": "Query OceanBase from workflows through Google MCP Toolbox.",
+      "description": "Connect workspace datasets to Google MCP Toolbox database prebuilts through the Flow Steward extension runtime.",
+      "categories": [
+        "data"
+      ],
+      "capabilities": [
+        "tool",
+        "dataset_connector",
+        "action",
+        "query"
+      ],
+      "permissions_summary": [
+        "extension:invoke"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "database",
+        "dataset",
+        "google-mcp-toolbox",
+        "oceanbase",
+        "postgres"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/tree/v1.0.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-oceanbase-1.0.0-linux-amd64.zip",
+      "release_zip_bytes": 9490241,
+      "release_zip_sha256": "6ee9adab535c8784b65b6b922df07f683cb134a12dc91b83b5dfdd9fbf22947b",
+      "release_targets": {
+        "linux-amd64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-oceanbase-1.0.0-linux-amd64.zip",
+          "release_zip_bytes": 9490241,
+          "release_zip_sha256": "6ee9adab535c8784b65b6b922df07f683cb134a12dc91b83b5dfdd9fbf22947b"
+        },
+        "linux-arm64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-oceanbase-1.0.0-linux-arm64.zip",
+          "release_zip_bytes": 8589080,
+          "release_zip_sha256": "acda3e916e3948bdae27a969bd1614fa1dff0fd3c45992c4711588db2bf75be5"
+        }
+      },
+      "added_at": "2026-10-01T13:29:14Z",
+      "updated_at": "2026-10-01T13:29:14Z"
     },
     {
       "extension_id": "flowsteward.openrouter",
@@ -279,7 +484,9 @@
       "repository_url": "https://github.com/Flow-Steward/ext-llm-openrouter/tree/v1.0.0",
       "release_zip_url": "https://github.com/Flow-Steward/ext-llm-openrouter/releases/download/v1.0.0/flowsteward.openrouter-1.0.0.zip",
       "release_zip_bytes": 19254,
-      "release_zip_sha256": "b52d334c9cc843dbcffd22d64afdba4942323654682ab0666b51835c9d423f0c"
+      "release_zip_sha256": "b52d334c9cc843dbcffd22d64afdba4942323654682ab0666b51835c9d423f0c",
+      "added_at": "2026-10-01T12:12:43Z",
+      "updated_at": "2026-10-01T12:12:43Z"
     },
     {
       "extension_id": "flowsteward.outgoing-email",
@@ -310,7 +517,58 @@
       "repository_url": "https://github.com/Flow-Steward/ext-email-smtp/tree/v0.1.2",
       "release_zip_url": "https://github.com/Flow-Steward/ext-email-smtp/releases/download/v0.1.2/flowsteward.outgoing-email-0.1.2.zip",
       "release_zip_bytes": 32789,
-      "release_zip_sha256": "089a08524b4c5fdfaa1f1646f8e7c65a09143c5ef49569eb3a5b115bfe4cd898"
+      "release_zip_sha256": "089a08524b4c5fdfaa1f1646f8e7c65a09143c5ef49569eb3a5b115bfe4cd898",
+      "added_at": "2026-10-01T12:12:44Z",
+      "updated_at": "2026-10-01T12:12:44Z"
+    },
+    {
+      "extension_id": "flowsteward.data-connector-mcp-toolbox-postgres",
+      "version": "1.0.0",
+      "name": "PostgreSQL (Google MCP Toolbox)",
+      "summary": "Query PostgreSQL, AlloyDB and Cloud SQL for PostgreSQL from workflows through Google MCP Toolbox.",
+      "description": "Connect workspace datasets to Google MCP Toolbox database prebuilts through the Flow Steward extension runtime.",
+      "categories": [
+        "data"
+      ],
+      "capabilities": [
+        "tool",
+        "dataset_connector",
+        "action",
+        "query"
+      ],
+      "permissions_summary": [
+        "extension:invoke"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "alloydb-omni",
+        "alloydb-postgres",
+        "cloud-sql-postgres",
+        "database",
+        "dataset",
+        "google-mcp-toolbox",
+        "postgres"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/tree/v1.0.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-postgres-1.0.0-linux-amd64.zip",
+      "release_zip_bytes": 11416040,
+      "release_zip_sha256": "4c75f092a106eeb358abd366803682240d5251b3e4a01483ad2018ac968e62fb",
+      "release_targets": {
+        "linux-amd64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-postgres-1.0.0-linux-amd64.zip",
+          "release_zip_bytes": 11416040,
+          "release_zip_sha256": "4c75f092a106eeb358abd366803682240d5251b3e4a01483ad2018ac968e62fb"
+        },
+        "linux-arm64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-postgres-1.0.0-linux-arm64.zip",
+          "release_zip_bytes": 10340684,
+          "release_zip_sha256": "8982bd914dc1a12f2b5aa4a99e5fcf9117c00c939c5b8085f66632317d04597d"
+        }
+      },
+      "added_at": "2026-10-01T13:29:15Z",
+      "updated_at": "2026-10-01T13:29:15Z"
     },
     {
       "extension_id": "flowsteward.ollama-remote",
@@ -338,7 +596,9 @@
       "repository_url": "https://github.com/Flow-Steward/ext-llm-ollama/tree/v1.0.0",
       "release_zip_url": "https://github.com/Flow-Steward/ext-llm-ollama/releases/download/v1.0.0/flowsteward.ollama-remote-1.0.0.zip",
       "release_zip_bytes": 16654,
-      "release_zip_sha256": "b4216f7e5092fc9301eb99e89187a3fa9f15a9f966fd7f293ebbb70a541f5d98"
+      "release_zip_sha256": "b4216f7e5092fc9301eb99e89187a3fa9f15a9f966fd7f293ebbb70a541f5d98",
+      "added_at": "2026-10-01T12:12:43Z",
+      "updated_at": "2026-10-01T12:12:43Z"
     },
     {
       "extension_id": "flowsteward.shopify",
@@ -374,7 +634,198 @@
       "repository_url": "https://github.com/Flow-Steward/ext-ecommerce-shopify/tree/v0.3.0",
       "release_zip_url": "https://github.com/Flow-Steward/ext-ecommerce-shopify/releases/download/v0.3.0/flowsteward.shopify-0.3.0.zip",
       "release_zip_bytes": 224607,
-      "release_zip_sha256": "c44333f1c70fa281fec54d12df1416fb99f5aa380d06b795f9cc019fc7dc4494"
+      "release_zip_sha256": "c44333f1c70fa281fec54d12df1416fb99f5aa380d06b795f9cc019fc7dc4494",
+      "added_at": "2026-10-01T12:12:45Z",
+      "updated_at": "2026-10-01T12:12:45Z"
+    },
+    {
+      "extension_id": "flowsteward.data-connector-mcp-toolbox-singlestore",
+      "version": "1.0.0",
+      "name": "SingleStore (Google MCP Toolbox)",
+      "summary": "Query SingleStore from workflows through Google MCP Toolbox.",
+      "description": "Connect workspace datasets to Google MCP Toolbox database prebuilts through the Flow Steward extension runtime.",
+      "categories": [
+        "data"
+      ],
+      "capabilities": [
+        "tool",
+        "dataset_connector",
+        "action",
+        "query"
+      ],
+      "permissions_summary": [
+        "extension:invoke"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "database",
+        "dataset",
+        "google-mcp-toolbox",
+        "postgres",
+        "singlestore"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/tree/v1.0.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-singlestore-1.0.0-linux-amd64.zip",
+      "release_zip_bytes": 9491564,
+      "release_zip_sha256": "200e37b2befbbcfb29abd4cb5efeb26f58400c06321530f7f4338c59a5ad0212",
+      "release_targets": {
+        "linux-amd64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-singlestore-1.0.0-linux-amd64.zip",
+          "release_zip_bytes": 9491564,
+          "release_zip_sha256": "200e37b2befbbcfb29abd4cb5efeb26f58400c06321530f7f4338c59a5ad0212"
+        },
+        "linux-arm64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-singlestore-1.0.0-linux-arm64.zip",
+          "release_zip_bytes": 8591312,
+          "release_zip_sha256": "1da76f6b8a6a09efc80c2466250d0a691ff73d0fc9d19bff77f73ea7d2f77ff3"
+        }
+      },
+      "added_at": "2026-10-01T13:29:17Z",
+      "updated_at": "2026-10-01T13:29:17Z"
+    },
+    {
+      "extension_id": "flowsteward.data-connector-mcp-toolbox-snowflake",
+      "version": "1.0.0",
+      "name": "Snowflake (Google MCP Toolbox)",
+      "summary": "Query Snowflake from workflows through Google MCP Toolbox.",
+      "description": "Connect workspace datasets to Google MCP Toolbox database prebuilts through the Flow Steward extension runtime.",
+      "categories": [
+        "data"
+      ],
+      "capabilities": [
+        "tool",
+        "dataset_connector",
+        "action",
+        "query"
+      ],
+      "permissions_summary": [
+        "extension:invoke"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "database",
+        "dataset",
+        "google-mcp-toolbox",
+        "postgres",
+        "snowflake"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/tree/v1.0.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-snowflake-1.0.0-linux-amd64.zip",
+      "release_zip_bytes": 13989430,
+      "release_zip_sha256": "dc2112de2e49de82b4c2775a8a66915efe162fa9639dd19333815ea08184928b",
+      "release_targets": {
+        "linux-amd64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-snowflake-1.0.0-linux-amd64.zip",
+          "release_zip_bytes": 13989430,
+          "release_zip_sha256": "dc2112de2e49de82b4c2775a8a66915efe162fa9639dd19333815ea08184928b"
+        },
+        "linux-arm64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-snowflake-1.0.0-linux-arm64.zip",
+          "release_zip_bytes": 12669169,
+          "release_zip_sha256": "2751f0aeb4bee2c52a98c8ca084ce3526dd8eb28e29ec3f265ba9355cb3e4da5"
+        }
+      },
+      "added_at": "2026-10-01T13:29:18Z",
+      "updated_at": "2026-10-01T13:29:18Z"
+    },
+    {
+      "extension_id": "flowsteward.data-connector-mcp-toolbox-spanner",
+      "version": "1.0.0",
+      "name": "Spanner (Google MCP Toolbox)",
+      "summary": "Query Google Cloud Spanner with GoogleSQL or the PostgreSQL dialect from workflows through Google MCP Toolbox.",
+      "description": "Connect workspace datasets to Google MCP Toolbox database prebuilts through the Flow Steward extension runtime.",
+      "categories": [
+        "data"
+      ],
+      "capabilities": [
+        "tool",
+        "dataset_connector",
+        "action",
+        "query"
+      ],
+      "permissions_summary": [
+        "extension:invoke"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "database",
+        "dataset",
+        "google-mcp-toolbox",
+        "postgres",
+        "spanner",
+        "spanner-postgres"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/tree/v1.0.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-spanner-1.0.0-linux-amd64.zip",
+      "release_zip_bytes": 13076797,
+      "release_zip_sha256": "f2ae7520fd4b9afe12a9f61da850585b2ec02122baa58eef2304e8ee3acdf176",
+      "release_targets": {
+        "linux-amd64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-spanner-1.0.0-linux-amd64.zip",
+          "release_zip_bytes": 13076797,
+          "release_zip_sha256": "f2ae7520fd4b9afe12a9f61da850585b2ec02122baa58eef2304e8ee3acdf176"
+        },
+        "linux-arm64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-spanner-1.0.0-linux-arm64.zip",
+          "release_zip_bytes": 11810485,
+          "release_zip_sha256": "9e42a44f6bb34479d24a7572efcff85526b91785453d91c9bde23da52436e07b"
+        }
+      },
+      "added_at": "2026-10-01T13:29:20Z",
+      "updated_at": "2026-10-01T13:29:20Z"
+    },
+    {
+      "extension_id": "flowsteward.data-connector-mcp-toolbox-sqlite",
+      "version": "1.0.0",
+      "name": "SQLite (Google MCP Toolbox)",
+      "summary": "Query a SQLite database file from workflows through Google MCP Toolbox.",
+      "description": "Connect workspace datasets to Google MCP Toolbox database prebuilts through the Flow Steward extension runtime.",
+      "categories": [
+        "data"
+      ],
+      "capabilities": [
+        "tool",
+        "dataset_connector",
+        "action",
+        "query"
+      ],
+      "permissions_summary": [
+        "extension:invoke"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "database",
+        "dataset",
+        "google-mcp-toolbox",
+        "postgres",
+        "sqlite"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/tree/v1.0.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-sqlite-1.0.0-linux-amd64.zip",
+      "release_zip_bytes": 10970962,
+      "release_zip_sha256": "81c93246ef55664ab158c0fc7ce02d40684d3e8f88dde020b16522d09671824c",
+      "release_targets": {
+        "linux-amd64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-sqlite-1.0.0-linux-amd64.zip",
+          "release_zip_bytes": 10970962,
+          "release_zip_sha256": "81c93246ef55664ab158c0fc7ce02d40684d3e8f88dde020b16522d09671824c"
+        },
+        "linux-arm64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-sqlite-1.0.0-linux-arm64.zip",
+          "release_zip_bytes": 9995623,
+          "release_zip_sha256": "6bcffd8a440ddcfa01f3869713d424623b07ee029cb5cce239911eb91238c542"
+        }
+      },
+      "added_at": "2026-10-01T13:29:21Z",
+      "updated_at": "2026-10-01T13:29:21Z"
     },
     {
       "extension_id": "flowsteward.telegram",
@@ -407,7 +858,9 @@
       "repository_url": "https://github.com/Flow-Steward/ext-messaging-telegram/tree/v1.0.0",
       "release_zip_url": "https://github.com/Flow-Steward/ext-messaging-telegram/releases/download/v1.0.0/flowsteward.telegram-1.0.0.zip",
       "release_zip_bytes": 103439,
-      "release_zip_sha256": "41d810d37cbe675c493510e2de1da967c0f445c9b9bb9ce40833e2712e1d2d61"
+      "release_zip_sha256": "41d810d37cbe675c493510e2de1da967c0f445c9b9bb9ce40833e2712e1d2d61",
+      "added_at": "2026-10-01T12:12:46Z",
+      "updated_at": "2026-10-01T12:12:46Z"
     },
     {
       "extension_id": "flowsteward.wordpress-woocommerce",
@@ -440,7 +893,31 @@
       "repository_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/tree/v1.0.0",
       "release_zip_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/releases/download/v1.0.0/flowsteward.wordpress-woocommerce-1.0.0.zip",
       "release_zip_bytes": 285858,
-      "release_zip_sha256": "c3bdac75ed4c30fc0aba6f06dee25fa1ea42f1c52f34745ddfab376a5bf092c6"
+      "release_zip_sha256": "c3bdac75ed4c30fc0aba6f06dee25fa1ea42f1c52f34745ddfab376a5bf092c6",
+      "added_at": "2026-10-01T12:12:49Z",
+      "updated_at": "2026-10-01T12:12:49Z"
     }
-  ]
+  ],
+  "category_labels": {
+    "ai": "AI",
+    "cms": "CMS",
+    "crm": "CRM",
+    "data": "Data",
+    "developer-tools": "Developer tools",
+    "documents": "Documents",
+    "ecommerce": "E-commerce",
+    "email": "Email",
+    "finance": "Finance",
+    "hr": "HR",
+    "inventory": "Inventory",
+    "it": "IT",
+    "marketing": "Marketing",
+    "media": "Media",
+    "messaging": "Messaging",
+    "operations": "Operations",
+    "other": "Other",
+    "productivity": "Productivity",
+    "sales": "Sales",
+    "support": "Support"
+  }
 }

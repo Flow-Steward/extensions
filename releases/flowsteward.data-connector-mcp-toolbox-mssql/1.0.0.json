@@ -1,0 +1,53 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-mssql",
+  "version": "1.0.0",
+  "repository": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox",
+  "tag": "v1.0.0",
+  "published_at": "2026-10-01T13:29:12Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-mssql",
+    "version": "1.0.0",
+    "name": "Microsoft SQL Server (Google MCP Toolbox)",
+    "summary": "Query Microsoft SQL Server and Cloud SQL for SQL Server from workflows through Google MCP Toolbox.",
+    "description": "Connect workspace datasets to Google MCP Toolbox database prebuilts through the Flow Steward extension runtime.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "cloud-sql-mssql",
+      "database",
+      "dataset",
+      "google-mcp-toolbox",
+      "mssql",
+      "postgres"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/tree/v1.0.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-mssql-1.0.0-linux-amd64.zip",
+    "release_zip_bytes": 10460942,
+    "release_zip_sha256": "b1cc734e1ffb667ac106393beba8a5f867d57d126e764b5c177ece5ec8a2548c",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-mssql-1.0.0-linux-amd64.zip",
+        "release_zip_bytes": 10460942,
+        "release_zip_sha256": "b1cc734e1ffb667ac106393beba8a5f867d57d126e764b5c177ece5ec8a2548c"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.0.0/flowsteward.data-connector-mcp-toolbox-mssql-1.0.0-linux-arm64.zip",
+        "release_zip_bytes": 9495174,
+        "release_zip_sha256": "789858a672fe2dda3d87678dcb15b33ce4aef74fd6e50c3ec5a4ef57e2e968af"
+      }
+    }
+  }
+}
