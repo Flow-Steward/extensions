@@ -25,8 +25,8 @@ jobs:
         run: |
           pip install pytest==8.3.5 PyYAML==6.0.3
           if ls dev-wheels/flowsteward_extension_sdk-*.whl >/dev/null 2>&1; then pip install dev-wheels/flowsteward_extension_sdk-*.whl; fi
-          # The extension's own runtime dependencies (python_requirements), and what
-          # the SDK needs: written by new_extension_repo.py, kept by the author.
+          # The extension's own runtime dependencies (python_requirements):
+          # written by new_extension_repo.py, kept by the author.
           if [ -f .github/requirements-test.txt ]; then pip install -r .github/requirements-test.txt; fi
       - name: Extension tests
         run: |

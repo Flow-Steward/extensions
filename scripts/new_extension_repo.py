@@ -40,13 +40,8 @@ def _tracked(source: Path) -> list[str]:
     ]
 
 
-#: The extension SDK imports cryptography lazily but does not declare it yet; the
-#: Flow Steward runtime provides this version.
-_SDK_TEST_REQUIREMENTS = ("cryptography==50.0.0",)
-
-
 def _write_test_requirements(target: Path) -> None:
-    """.github/requirements-test.txt: the manifest's python_requirements, and what the SDK needs.
+    """.github/requirements-test.txt: the manifest's python_requirements.
 
     Under .github/ with the rest of the repository tooling, so it is never part of
     the extension package (and package layout tests do not see it).
@@ -59,9 +54,6 @@ def _write_test_requirements(target: Path) -> None:
         for row in manifest.get("python_requirements") or []
         if isinstance(row, dict) and row.get("name") and row.get("version")
     ]
-    if any((target / "dev-wheels").glob("flowsteward_extension_sdk-*.whl")):
-        names = {pin.split("==", 1)[0].lower() for pin in pins}
-        pins += [pin for pin in _SDK_TEST_REQUIREMENTS if pin.split("==", 1)[0] not in names]
     if pins:
         (target / ".github").mkdir(exist_ok=True)
         (target / ".github" / "requirements-test.txt").write_text(
