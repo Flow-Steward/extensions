@@ -36,6 +36,23 @@ only holds a link to it, and publishes the author's releases automatically.
 
 After the merge your latest release is listed within the hour.
 
+### An extension with a native executable
+
+The installer accepts one architecture per archive, so attach one per runtime
+target instead of a single archive: `<extension_id>-<version>-linux-amd64.zip`
+and `<extension_id>-<version>-linux-arm64.zip`, each built with
+`flow-steward extensions bundle --runtime-target <target>` (only that target's
+`bin/<target>/` and its `.fs-package.yaml`). `linux-amd64` is required. Flow
+Steward installs the archive for the architecture it runs on.
+
+### Several extensions from one repository
+
+A repository may publish a family of extensions built from one codebase — one
+per database, say. Each has its own entry file and id, and each release tag
+carries every member's archives. See
+[ext-data-connector-mcp-toolbox](https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox)
+for a worked example.
+
 ### New versions
 
 Push a new tag in your repository. The catalog checks every listed repository
@@ -45,15 +62,19 @@ the previous version stays listed.
 
 ### What the checks refuse
 
-- an entry that is not exactly `repository: https://github.com/<owner>/<repo>`,
-  or a repository already listed under another id;
+- an entry that is not exactly `repository: https://github.com/<owner>/<repo>`;
 - a submitter who does not own the repository;
 - the `flowsteward.` namespace, which is reserved for github.com/Flow-Steward
-  (see [`verified_publishers.json`](verified_publishers.json));
+  (see [`verified_publishers.json`](verified_publishers.json)). The catalog is
+  where that is enforced: Flow Steward itself installs any id, from here or as an
+  uploaded archive, as WordPress installs any plugin;
 - a release whose `extension.yaml` names another id or version than the entry and
   the tag, or whose `extension-descriptor.yaml` disagrees with it;
-- files outside the one top folder, symbolic links, native payloads (`bin/`),
-  `.env` and key files, a value under a key such as `password` or `api_key`;
+- files outside the one top folder, symbolic links, `.env` and key files, a value
+  under a key such as `password` or `api_key`;
+- a native executable in a single archive, or a per-target archive that carries
+  another target's `bin/`, a binary whose SHA-256 or ELF architecture differs from
+  its `.fs-package.yaml`, or one without the executable bit;
 - an archive over 50 MB (150 MB unpacked), Flow Steward's own install ceiling;
 - a pull request that edits `releases/` or `index.json`, or moves a listed
   extension to another repository (a maintainer does that).
