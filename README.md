@@ -15,7 +15,9 @@ only holds a link to it, and publishes the author's releases automatically.
    `flow-steward extensions validate <extension_id>`.
 2. In `extension.yaml`, make sure it has:
    - a readable `display_name` and a `description` of at least 40 characters;
-   - `listing.category`, one of [`categories.json`](categories.json);
+   - `listing.category`, one of the ids in [`categories.json`](categories.json). The same list,
+     with the names Flow Steward shows, is used by the
+     [workflow catalog](https://github.com/Flow-Steward/workflows), which keeps a copy of this file;
    - optionally `listing.summary` (the card line; otherwise the first sentence of
      the description), `listing.tags` and `listing.setup_summary`.
 3. Publish a release: tag `v<version>` (the same version as `extension.yaml`)

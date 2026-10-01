@@ -95,7 +95,7 @@ def _run(repo: Path, *command: str) -> str:
 
 @pytest.fixture
 def repo(tmp_path: Path, monkeypatch) -> Path:
-    (tmp_path / "categories.json").write_text(json.dumps(CATEGORIES))
+    (tmp_path / "categories.json").write_text(json.dumps({key: key.title() for key in CATEGORIES}))
     (tmp_path / "verified_publishers.json").write_text(json.dumps({"flowsteward": "Flow-Steward"}))
     (tmp_path / "extensions").mkdir()
     _run(tmp_path, "git", "init", "-q", "-b", "main")
@@ -256,6 +256,34 @@ def test_later_releases_are_published_automatically(repo):
 
     assert report.recorded == ["releases/acme.mailbox/1.1.0.json"]
     assert builder.build_index()["items"][0]["version"] == "1.1.0"
+
+
+def test_an_extension_records_when_it_entered_the_catalog_and_when_this_release_did(repo, monkeypatch):
+    github = FakeGitHub()
+    github.release(SLUG, "1.0.0", _zip(_manifest()))
+    _entry(repo)
+    monkeypatch.setattr(builder, "_now", lambda: "2026-09-01T08:00:00Z")
+    builder.publish(github=github)
+    github.release(SLUG, "1.1.0", _zip(_manifest(version="1.1.0")))
+    monkeypatch.setattr(builder, "_now", lambda: "2026-09-20T09:30:00Z")
+    builder.publish(github=github)
+
+    [item] = builder.build_index()["items"]
+
+    assert item["version"] == "1.1.0"
+    assert item["added_at"] == "2026-09-01T08:00:00Z"
+    assert item["updated_at"] == "2026-09-20T09:30:00Z"
+
+
+def test_the_index_names_every_category(repo):
+    assert builder.build_index()["category_labels"] == {"data": "Data", "messaging": "Messaging", "other": "Other"}
+
+
+def test_a_category_list_without_names_is_refused(repo):
+    (repo / "categories.json").write_text(json.dumps(CATEGORIES))
+
+    with pytest.raises(builder.CatalogError, match="map each category id"):
+        builder.build_index()
 
 
 def test_a_broken_release_is_reported_and_the_previous_one_stays_listed(repo):

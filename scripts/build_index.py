@@ -741,6 +741,9 @@ def build_index() -> dict[str, Any]:
         item = dict(listed["item"])
         if extension_id not in present:
             item["publication_status"] = "deprecated"
+        # When the extension first entered the catalog, and when this release did.
+        item["added_at"] = min(str(record.get("published_at") or "") for record in versions.values())
+        item["updated_at"] = str(listed.get("published_at") or "")
         items.append(item)
         newest = max(newest, listed["published_at"])
     if len(items) > MAX_ITEMS:
@@ -753,7 +756,18 @@ def build_index() -> dict[str, Any]:
         "catalog_revision": f"{published[:10]}.{digest}",
         "published_at": published,
         "items": items,
+        "category_labels": category_labels(),
     }
+
+
+def category_labels() -> dict[str, str]:
+    """categories.json: category id -> the name to show; the workflow catalog keeps a copy."""
+    raw = _json_file(CATEGORIES_FILE, {})
+    if not isinstance(raw, dict) or not all(
+        isinstance(key, str) and isinstance(value, str) and value.strip() for key, value in raw.items()
+    ):
+        raise CatalogError("categories.json must map each category id to the name to show")
+    return {key: value.strip() for key, value in raw.items()}
 
 
 def render(index: dict[str, Any]) -> str:
