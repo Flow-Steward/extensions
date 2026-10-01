@@ -63,7 +63,14 @@ class FakeGitHub:
         name = f"{extension_id}-{version}.zip"
         url = f"https://github.com/{slug}/releases/download/v{version}/{name}"
         self.assets[url] = data
-        self.releases_by_repo.setdefault(slug, []).insert(
+        releases = self.releases_by_repo.setdefault(slug, [])
+        same_tag = next((r for r in releases if r["tag_name"] == f"v{version}"), None)
+        if same_tag is not None:
+            # A tag is unique on GitHub: a family release is one release with
+            # every variant's assets.
+            same_tag["assets"].append({"name": name, "browser_download_url": url})
+            return url
+        releases.insert(
             0, {"tag_name": f"v{version}", "assets": [{"name": name, "browser_download_url": url}], **flags}
         )
         return url
@@ -136,12 +143,21 @@ def test_an_entry_that_is_not_a_repository_link_says_why(name, text, message):
         builder.parse_entry(name, text)
 
 
-def test_one_repository_cannot_back_two_entries(repo):
-    _entry(repo, "acme.mailbox")
-    _entry(repo, "acme.inbox")
+def test_one_repository_can_publish_a_family_of_extensions(repo):
+    """Variants built from one codebase share a repository, each with its own id."""
+    github = FakeGitHub()
+    for name in ("postgres", "mysql"):
+        extension_id = f"acme.db-{name}"
+        github.release(
+            SLUG, "1.0.0", _zip(_manifest(extension_id=extension_id), top=f"acme_db_{name}"),
+            extension_id=extension_id,
+        )
+        _entry(repo, extension_id)
 
-    with pytest.raises(builder.CatalogError, match="already listed"):
-        builder.load_entries()
+    report = builder.publish(github=github)
+
+    assert sorted(report.recorded) == ["releases/acme.db-mysql/1.0.0.json", "releases/acme.db-postgres/1.0.0.json"]
+    assert {item["extension_id"] for item in builder.build_index()["items"]} == {"acme.db-mysql", "acme.db-postgres"}
 
 
 # --- one release archive -----------------------------------------------------------------

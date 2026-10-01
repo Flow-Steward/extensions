@@ -285,14 +285,9 @@ def load_entries() -> dict[str, Entry]:
         except CatalogError as exc:
             problems.append(str(exc))
             continue
+        # One repository may publish several extensions (a family of variants
+        # built from one codebase); each still has its own entry, id and assets.
         entries[entry.extension_id] = entry
-    repositories: dict[str, str] = {}
-    for entry in entries.values():
-        other = repositories.setdefault(entry.slug.lower(), entry.extension_id)
-        if other != entry.extension_id:
-            problems.append(
-                f"{ENTRIES_DIR}/{entry.extension_id}.yaml: {entry.repository} is already listed as {other}"
-            )
     if problems:
         raise CatalogError("\n".join(problems))
     return entries
