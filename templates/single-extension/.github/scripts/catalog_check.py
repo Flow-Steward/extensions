@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Check packaged archives with the extension catalog's own checker.
 
-    python3 scripts/catalog_check.py dist/*.zip
+    python3 .github/scripts/catalog_check.py dist/*.zip
 
 Fetches scripts/build_index.py from github.com/Flow-Steward/extensions and runs
 its inspect_archive on every archive, so a release the catalog would refuse

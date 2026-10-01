@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 """Package this repository as a Flow Steward extension archive.
 
-    python3 scripts/package_extension.py      ->  dist/<extension_id>-<version>.zip
+    python3 .github/scripts/package_extension.py   ->  dist/<extension_id>-<version>.zip
 
 The archive is what ``flow-steward extensions bundle`` produces: every tracked
 file under one top folder named after the id (``.`` and ``-`` become ``_``),
-without the repository's own tooling (.github/, scripts/package_extension.py,
-scripts/catalog_check.py) and without development caches.
+without the repository's own tooling (.github/) and without development caches.
 """
 
 from __future__ import annotations
@@ -17,13 +16,13 @@ import sys
 import zipfile
 from pathlib import Path, PurePosixPath
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 # The product bundler leaves these out (core/application/tooling/extensions/bundle_extension.py).
 EXCLUDED_DIRECTORIES = {
     ".fs-python", ".hypothesis", ".mypy_cache", ".pytest_cache", ".ruff_cache", "__pycache__", "dev-wheels",
 }
 EXCLUDED_FILES = {".fs-extension-install.yaml", ".fs-package.yaml"}
-REPOSITORY_TOOLING = {".github", "dist", "scripts/package_extension.py", "scripts/catalog_check.py"}
+REPOSITORY_TOOLING = {".github", "dist"}
 MAX_ZIP_BYTES = 50 * 1024 * 1024
 MAX_UNPACKED_BYTES = 150 * 1024 * 1024
 

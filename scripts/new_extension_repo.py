@@ -40,6 +40,37 @@ def _tracked(source: Path) -> list[str]:
     ]
 
 
+#: The extension SDK imports cryptography lazily but does not declare it yet; the
+#: Flow Steward runtime provides this version.
+_SDK_TEST_REQUIREMENTS = ("cryptography==50.0.0",)
+
+
+def _write_test_requirements(target: Path) -> None:
+    """.github/requirements-test.txt: the manifest's python_requirements, and what the SDK needs.
+
+    Under .github/ with the rest of the repository tooling, so it is never part of
+    the extension package (and package layout tests do not see it).
+    """
+    import yaml
+
+    manifest = yaml.safe_load((target / "extension.yaml").read_text(encoding="utf-8")) or {}
+    pins = [
+        f"{row['name']}=={row['version']}"
+        for row in manifest.get("python_requirements") or []
+        if isinstance(row, dict) and row.get("name") and row.get("version")
+    ]
+    if any((target / "dev-wheels").glob("flowsteward_extension_sdk-*.whl")):
+        names = {pin.split("==", 1)[0].lower() for pin in pins}
+        pins += [pin for pin in _SDK_TEST_REQUIREMENTS if pin.split("==", 1)[0] not in names]
+    if pins:
+        (target / ".github").mkdir(exist_ok=True)
+        (target / ".github" / "requirements-test.txt").write_text(
+            "# Installed by CI for the tests; the runtime installs python_requirements itself.\n"
+            + "\n".join(pins) + "\n",
+            encoding="utf-8",
+        )
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("source", type=Path)
@@ -55,7 +86,11 @@ def main(argv: list[str] | None = None) -> int:
 
     copied = skipped = 0
     for relative in _tracked(args.source):
-        if set(PurePosixPath(relative).parts) & _SKIPPED:
+        path = PurePosixPath(relative)
+        # The extension SDK wheel stays for the tests: the host provides the SDK at
+        # runtime, and it is not on PyPI yet. Other dev wheels come from PyPI.
+        keep_sdk = path.parts[0] == "dev-wheels" and path.name.startswith("flowsteward_extension_sdk-")
+        if set(path.parts) & _SKIPPED and not keep_sdk:
             skipped += 1
             continue
         destination = args.target / relative
@@ -71,6 +106,7 @@ def main(argv: list[str] | None = None) -> int:
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(template_file, destination)
 
+    _write_test_requirements(args.target)
     manifest = args.target / "extension.yaml"
     text = manifest.read_text(encoding="utf-8")
     text = re.sub(r"(^\s*support_url:\s*).*$", rf"\g<1>{args.repository}/issues", text, flags=re.M)
