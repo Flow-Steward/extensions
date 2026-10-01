@@ -178,7 +178,7 @@ def test_every_field_is_derived_from_the_manifest_in_the_release():
         (_zip(_manifest(), extra={"config.yaml": "api_key: sk-live-123\n"}), "must not carry secrets"),
         (_zip(_manifest(), extra={".env": "TOKEN=1\n"}), "key and environment files"),
         (_zip(_manifest(), extra={"k.txt": "-----BEGIN RSA PRIVATE KEY-----\n"}), "private key"),
-        (_zip(_manifest(), extra={"bin/linux-amd64/tool": "x"}), "native per-platform payloads"),
+        (_zip(_manifest(), extra={"bin/linux-amd64/tool": "x"}), "one archive per runtime target"),
         (
             _zip(
                 _manifest(),
@@ -397,3 +397,129 @@ def test_a_pull_request_may_not_write_generated_files(repo):
 
     [problem] = builder.check_pull_request(base="base", submitter="acme", github=FakeGitHub())
     assert "written by the publish job" in problem
+
+
+# --- native extensions: one archive per runtime target --------------------------------------
+
+_MACHINE = {"linux-amd64": 62, "linux-arm64": 183}
+
+
+def _elf(target: str, payload: bytes = b"toolbox") -> bytes:
+    header = b"\x7fELF\x02\x01" + b"\0" * 12 + _MACHINE[target].to_bytes(2, "little")
+    return header + payload
+
+
+def _native_zip(target: str, *, binary: bytes | None = None, metadata: dict | None = None,
+                mode: int = 0o755, extra: dict[str, bytes] | None = None) -> bytes:
+    """What `flow-steward extensions bundle --runtime-target <target>` produces."""
+    binary = _elf(target) if binary is None else binary
+    files = {
+        "extension.yaml": yaml.safe_dump(_manifest(), sort_keys=False).encode(),
+        "main.py": b"print('ok')\n",
+        f"bin/{target}/toolbox": binary,
+        ".fs-package.yaml": yaml.safe_dump(
+            metadata
+            if metadata is not None
+            else {
+                "native_executable": {
+                    "path": f"bin/{target}/toolbox",
+                    "sha256": hashlib.sha256(binary).hexdigest(),
+                },
+                "runtime_target": target,
+            }
+        ).encode(),
+        **(extra or {}),
+    }
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w") as archive:
+        for name, blob in files.items():
+            info = zipfile.ZipInfo(f"acme_mailbox/{name}")
+            info.external_attr = ((mode if name.startswith("bin/") else 0o644) | 0o100000) << 16
+            archive.writestr(info, blob)
+    return buffer.getvalue()
+
+
+def _inspect_native(data: bytes, target: str = "linux-amd64") -> dict:
+    entry = builder.parse_entry("acme.mailbox", f"repository: {REPO}\n")
+    return builder.inspect_archive(
+        data, entry=entry, version="1.0.0", categories=set(CATEGORIES), publishers={}, target=target
+    )
+
+
+def _native_release(github: FakeGitHub, targets=("linux-amd64", "linux-arm64")) -> dict[str, str]:
+    urls = {}
+    release = {"tag_name": "v1.0.0", "assets": []}
+    for target in targets:
+        name = f"acme.mailbox-1.0.0-{target}.zip"
+        url = f"https://github.com/{SLUG}/releases/download/v1.0.0/{name}"
+        github.assets[url] = _native_zip(target)
+        release["assets"].append({"name": name, "browser_download_url": url})
+        urls[target] = url
+    github.releases_by_repo.setdefault(SLUG, []).insert(0, release)
+    return urls
+
+
+def test_a_bundled_per_target_archive_passes():
+    assert _inspect_native(_native_zip("linux-arm64"), "linux-arm64")["version"] == "1.0.0"
+
+
+@pytest.mark.parametrize(
+    ("data", "message"),
+    [
+        (_native_zip("linux-amd64", metadata={}), "runtime_target"),
+        (_native_zip("linux-amd64", binary=_elf("linux-arm64")), "is not a linux-amd64 ELF64"),
+        (
+            _native_zip("linux-amd64", metadata={
+                "runtime_target": "linux-amd64",
+                "native_executable": {"path": "bin/linux-amd64/toolbox", "sha256": "0" * 64},
+            }),
+            "SHA-256 differs",
+        ),
+        (_native_zip("linux-amd64", mode=0o644), "must be executable"),
+        (_native_zip("linux-amd64", extra={"bin/linux-arm64/toolbox": _elf("linux-arm64")}), "may only carry bin/linux-amd64/"),
+        (_native_zip("linux-amd64", extra={"tools/helper": _elf("linux-amd64", b"x")}), "exactly one native executable"),
+    ],
+)
+def test_a_per_target_archive_the_installer_would_refuse_says_why(data, message):
+    with pytest.raises(builder.CatalogError, match=message):
+        _inspect_native(data)
+
+
+def test_a_per_target_release_lists_every_target_and_defaults_to_amd64(repo):
+    github = FakeGitHub()
+    urls = _native_release(github)
+    _entry(repo)
+
+    assert builder.publish(github=github).recorded == ["releases/acme.mailbox/1.0.0.json"]
+    [item] = builder.build_index()["items"]
+
+    assert item["release_zip_url"] == urls["linux-amd64"]
+    assert set(item["release_targets"]) == {"linux-amd64", "linux-arm64"}
+    for target, url in urls.items():
+        artifact = item["release_targets"][target]
+        assert artifact["release_zip_url"] == url
+        assert artifact["release_zip_sha256"] == hashlib.sha256(github.assets[url]).hexdigest()
+
+
+def test_a_per_target_release_without_amd64_is_refused(repo):
+    github = FakeGitHub()
+    _native_release(github, targets=("linux-arm64",))
+    _entry(repo)
+
+    report = builder.publish(github=github)
+
+    assert report.recorded == []
+    assert any("must include acme.mailbox-1.0.0-linux-amd64.zip" in p for p in report.problems)
+
+
+def test_a_swapped_target_archive_withdraws_the_release(repo):
+    github = FakeGitHub()
+    urls = _native_release(github)
+    _entry(repo)
+    builder.publish(github=github)
+    github.assets[urls["linux-arm64"]] = _native_zip("linux-arm64", binary=_elf("linux-arm64", b"evil"))
+
+    report = builder.publish(github=github)
+
+    assert report.withdrawn == ["releases/acme.mailbox/1.0.0.json"]
+    assert builder.build_index()["items"] == []

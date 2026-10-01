@@ -99,6 +99,12 @@ _SECRET_FILE_NAMES = re.compile(r"^(\.env(\..*)?|id_rsa|id_ed25519|.*\.pem|.*\.k
 _STRUCTURED_SUFFIXES = {".yaml", ".yml", ".json"}
 _SYMLINK_MODE = 0o120000
 
+# Runtime targets Flow Steward installs native packages for, with the ELF
+# e_machine value of each (core/infrastructure/extension_runtime/native_package.py).
+RUNTIME_TARGETS = {"linux-amd64": 62, "linux-arm64": 183}
+DEFAULT_TARGET = "linux-amd64"
+PACKAGE_METADATA = ".fs-package.yaml"
+
 
 class CatalogError(Exception):
     """Something cannot be published; the message lists every problem found."""
@@ -318,8 +324,13 @@ def can_submit(entry: Entry, submitter: str, github: GitHub) -> bool:
 # ---------------------------------------------------------------------------
 
 
-def _archive_files(archive: zipfile.ZipFile, top: str, problems: list[str]) -> dict[str, zipfile.ZipInfo]:
-    """Files under the one top folder, minus ignored directories; problems are appended."""
+def _archive_files(
+    archive: zipfile.ZipFile, top: str, problems: list[str], *, target: str = ""
+) -> dict[str, zipfile.ZipInfo]:
+    """Files under the one top folder, minus ignored directories; problems are appended.
+
+    ``bin/`` is accepted only in a per-target archive, and only for its own target.
+    """
     files: dict[str, zipfile.ZipInfo] = {}
     total = 0
     for info in archive.infolist():
@@ -338,8 +349,13 @@ def _archive_files(archive: zipfile.ZipFile, top: str, problems: list[str]) -> d
         total += info.file_size
         if (info.external_attr >> 16) & 0o170000 == _SYMLINK_MODE:
             problems.append(f"{relative}: symbolic links cannot be published")
-        elif relative.parts[0] == "bin":
-            problems.append(f"{relative}: native per-platform payloads (bin/) are not accepted by this catalog yet")
+        elif relative.parts[0] == "bin" and not target:
+            problems.append(
+                f"{relative}: a native executable needs one archive per runtime target "
+                f"({', '.join(asset_name('<id>', '<version>', t) for t in RUNTIME_TARGETS)})"
+            )
+        elif relative.parts[0] == "bin" and relative.parts[1:2] != (target,):
+            problems.append(f"{relative}: the {target} archive may only carry bin/{target}/")
         elif _SECRET_FILE_NAMES.match(relative.name):
             problems.append(f"{relative}: key and environment files must not be published")
         else:
@@ -382,6 +398,44 @@ def _descriptor_problems(contents: dict[str, bytes], *, extension_id: str, versi
     return problems
 
 
+def _elf_machine(blob: bytes) -> int | None:
+    if len(blob) < 20 or blob[:4] != b"\x7fELF" or blob[4] != 2:
+        return None
+    return int.from_bytes(blob[18:20], "little" if blob[5] == 1 else "big")
+
+
+def _native_problems(
+    files: dict[str, zipfile.ZipInfo], contents: dict[str, bytes], *, target: str
+) -> list[str]:
+    """What Flow Steward's native package check would refuse in a per-target archive."""
+    if PACKAGE_METADATA not in contents:
+        return [f"{PACKAGE_METADATA} is missing; build with `flow-steward extensions bundle --runtime-target {target}`"]
+    try:
+        metadata = yaml.safe_load(contents[PACKAGE_METADATA].decode("utf-8")) or {}
+    except (yaml.YAMLError, UnicodeDecodeError):
+        metadata = None
+    if not isinstance(metadata, dict):
+        return [f"{PACKAGE_METADATA} must be a YAML mapping"]
+    problems: list[str] = []
+    if _text(metadata.get("runtime_target")) != target:
+        problems.append(f"{PACKAGE_METADATA} declares runtime_target '{metadata.get('runtime_target')}', not {target}")
+    native = metadata.get("native_executable") if isinstance(metadata.get("native_executable"), dict) else {}
+    path = _text(native.get("path"))
+    if PurePosixPath(path).parts[:2] != ("bin", target) or path not in contents:
+        return problems + [f"{PACKAGE_METADATA}: native_executable.path must name a file in bin/{target}/"]
+    executables = [name for name, blob in contents.items() if _elf_machine(blob[:20]) is not None]
+    if executables != [path]:
+        problems.append(f"exactly one native executable may ship, the declared {path} (found {executables})")
+    blob = contents[path]
+    if hashlib.sha256(blob).hexdigest() != _text(native.get("sha256")).lower():
+        problems.append(f"{path}: SHA-256 differs from {PACKAGE_METADATA}")
+    if _elf_machine(blob) != RUNTIME_TARGETS[target]:
+        problems.append(f"{path}: is not a {target} ELF64 executable")
+    if not (files[path].external_attr >> 16) & 0o111:
+        problems.append(f"{path}: must be executable (mode +x in the archive)")
+    return problems
+
+
 def inspect_archive(
     data: bytes,
     *,
@@ -389,9 +443,10 @@ def inspect_archive(
     version: str,
     categories: set[str],
     publishers: dict[str, str],
+    target: str = "",
 ) -> dict[str, Any]:
     """Check one release ZIP and derive its catalog fields; raises with every problem."""
-    where = f"{entry.extension_id} {version}"
+    where = f"{entry.extension_id} {version}" + (f" ({target})" if target else "")
     if len(data) > MAX_ZIP_BYTES:
         raise CatalogError(f"{where}: the archive is {len(data)} bytes; the ceiling is {MAX_ZIP_BYTES}")
     try:
@@ -401,14 +456,19 @@ def inspect_archive(
     top = folder_name(entry.extension_id)
     problems: list[str] = []
     with archive:
-        files = _archive_files(archive, top, problems)
+        files = _archive_files(archive, top, problems, target=target)
         if MANIFEST not in files:
             problems.append(f"add {MANIFEST} at the root of the '{top}/' folder")
             raise CatalogError("\n".join(f"{where}: {problem}" for problem in problems))
         if files[MANIFEST].file_size > MAX_MANIFEST_BYTES:
             raise CatalogError(f"{where}: {MANIFEST} is larger than {MAX_MANIFEST_BYTES} bytes")
         contents = {name: archive.read(info) for name, info in files.items()}
-    problems.extend(_content_problems(contents))
+    # A native executable is not text; scanning it for secrets is noise.
+    problems.extend(
+        _content_problems({n: b for n, b in contents.items() if not n.startswith("bin/")})
+    )
+    if target:
+        problems.extend(_native_problems(files, contents, target=target))
 
     try:
         manifest = yaml.safe_load(contents[MANIFEST].decode("utf-8"))
@@ -466,8 +526,9 @@ def inspect_archive(
 # ---------------------------------------------------------------------------
 
 
-def asset_name(extension_id: str, version: str) -> str:
-    return f"{extension_id}-{version}.zip"
+def asset_name(extension_id: str, version: str, target: str = "") -> str:
+    """The product bundler's file name: ``<id>-<version>[-<target>].zip``."""
+    return f"{extension_id}-{version}-{target}.zip" if target else f"{extension_id}-{version}.zip"
 
 
 def release_candidates(releases: list[dict[str, Any]]) -> list[tuple[str, dict[str, Any]]]:
@@ -491,25 +552,40 @@ def fetch_release(
     categories: set[str],
     publishers: dict[str, str],
 ) -> dict[str, Any]:
-    """Download, check and describe one release; returns its record."""
-    wanted = asset_name(entry.extension_id, version)
-    asset = next((a for a in release.get("assets") or [] if a.get("name") == wanted), None)
-    if asset is None:
-        raise CatalogError(
-            f"{entry.extension_id} {version}: attach {wanted} to the release {release.get('tag_name')}"
-        )
-    url = _text(asset.get("browser_download_url"))
-    data = github.download(url, max_bytes=MAX_ZIP_BYTES)
-    item = inspect_archive(data, entry=entry, version=version, categories=categories, publishers=publishers)
+    """Download, check and describe one release; returns its record.
+
+    A release carries either one portable archive or one archive per runtime
+    target. Per-target releases must include linux-amd64: the top-level
+    ``release_zip_*`` fields name it for products that predate ``release_targets``.
+    """
+    assets = {_text(a.get("name")): a for a in release.get("assets") or []}
     tag = _text(release.get("tag_name"))
-    item.update(
-        {
-            "repository_url": f"{entry.repository}/tree/{tag}",
+    portable = asset_name(entry.extension_id, version)
+    targeted = {t: asset_name(entry.extension_id, version, t) for t in RUNTIME_TARGETS}
+    present = [t for t, name in targeted.items() if name in assets]
+    if portable in assets and present:
+        raise CatalogError(f"{entry.extension_id} {version}: attach {portable} or per-target archives, not both")
+    if not present and portable not in assets:
+        raise CatalogError(f"{entry.extension_id} {version}: attach {portable} to the release {tag}")
+    if present and DEFAULT_TARGET not in present:
+        raise CatalogError(f"{entry.extension_id} {version}: per-target releases must include {targeted[DEFAULT_TARGET]}")
+
+    artifacts: dict[str, dict[str, Any]] = {}
+    item: dict[str, Any] = {}
+    for target in present or [""]:
+        url = _text(assets[targeted[target] if target else portable].get("browser_download_url"))
+        data = github.download(url, max_bytes=MAX_ZIP_BYTES)
+        item = inspect_archive(
+            data, entry=entry, version=version, categories=categories, publishers=publishers, target=target
+        )
+        artifacts[target] = {
             "release_zip_url": url,
             "release_zip_bytes": len(data),
             "release_zip_sha256": hashlib.sha256(data).hexdigest(),
         }
-    )
+    item.update({"repository_url": f"{entry.repository}/tree/{tag}", **artifacts[DEFAULT_TARGET if present else ""]})
+    if present:
+        item["release_targets"] = {t: artifacts[t] for t in sorted(artifacts)}
     return {
         "extension_id": entry.extension_id,
         "version": version,
@@ -559,14 +635,20 @@ def _recheck(entry: Entry, versions: dict[str, dict[str, Any]], github: GitHub, 
     listed = listed_record(versions)
     if listed is None or listed.get("repository") != entry.repository:
         return
-    try:
-        served = github.download(listed["item"]["release_zip_url"], max_bytes=MAX_ZIP_BYTES)
-    except (CatalogError, OSError) as exc:
-        report.problems.append(f"{entry.extension_id} {listed['version']}: could not re-check ({exc})")
-        return
-    if hashlib.sha256(served).hexdigest() != listed["item"]["release_zip_sha256"]:
-        listed["withdrawn"] = f"the release asset changed after it was recorded ({_now()})"
-        report.withdrawn.append(write_record(listed))
+    item = listed["item"]
+    artifacts = list((item.get("release_targets") or {}).values()) or [item]
+    for artifact in artifacts:
+        try:
+            served = github.download(artifact["release_zip_url"], max_bytes=MAX_ZIP_BYTES)
+        except (CatalogError, OSError) as exc:
+            report.problems.append(f"{entry.extension_id} {listed['version']}: could not re-check ({exc})")
+            return
+        if hashlib.sha256(served).hexdigest() != artifact["release_zip_sha256"]:
+            listed["withdrawn"] = (
+                f"{artifact['release_zip_url']} changed after it was recorded ({_now()})"
+            )
+            report.withdrawn.append(write_record(listed))
+            return
 
 
 def publish(*, github: GitHub) -> PublishReport:
