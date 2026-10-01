@@ -45,6 +45,12 @@ and `<extension_id>-<version>-linux-arm64.zip`, each built with
 `bin/<target>/` and its `.fs-package.yaml`). `linux-amd64` is required. Flow
 Steward installs the archive for the architecture it runs on.
 
+An extension whose Python wheels are built per architecture (numpy, onnxruntime,
+cryptography...) is packaged the same way, without a binary: each archive keeps
+only the wheels that install on its target, and `.fs-package.yaml` names the
+target alone. `templates/single-extension` does this automatically when `wheels/`
+holds architecture-specific wheels.
+
 ### Several extensions from one repository
 
 A repository may publish a family of extensions built from one codebase — one

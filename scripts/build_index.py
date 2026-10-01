@@ -399,6 +399,22 @@ def _elf_machine(blob: bytes) -> int | None:
     return int.from_bytes(blob[18:20], "little" if blob[5] == 1 else "big")
 
 
+_WHEEL_ARCHITECTURE = {"linux-amd64": "x86_64", "linux-arm64": "aarch64"}
+
+
+def wheel_supports_target(name: str, target: str) -> bool:
+    """Flow Steward's rule (native_package.wheel_supports_runtime_target): pure, or Linux for this arch."""
+    filename = PurePosixPath(name).name
+    if not filename.endswith(".whl"):
+        return True
+    platforms = filename[: -len(".whl")].rsplit("-", 1)[-1].split(".")
+    arch = _WHEEL_ARCHITECTURE[target]
+    return any(
+        platform == "any" or (platform.startswith(("manylinux", "musllinux", "linux")) and platform.endswith(f"_{arch}"))
+        for platform in platforms
+    )
+
+
 def _native_problems(
     files: dict[str, zipfile.ZipInfo], contents: dict[str, bytes], *, target: str
 ) -> list[str]:
@@ -414,11 +430,22 @@ def _native_problems(
     problems: list[str] = []
     if _text(metadata.get("runtime_target")) != target:
         problems.append(f"{PACKAGE_METADATA} declares runtime_target '{metadata.get('runtime_target')}', not {target}")
+    foreign = sorted(
+        name for name in contents
+        if PurePosixPath(name).parts[0] == "wheels" and not wheel_supports_target(name, target)
+    )
+    if foreign:
+        problems.append(f"the {target} archive carries wheels for another platform: {foreign}")
+    executables = [name for name, blob in contents.items() if _elf_machine(blob[:20]) is not None]
+    if "native_executable" not in metadata:
+        # Built per architecture for its Python wheels; it may then ship no binary.
+        if executables:
+            problems.append(f"{PACKAGE_METADATA} declares no native_executable but the archive carries {executables}")
+        return problems
     native = metadata.get("native_executable") if isinstance(metadata.get("native_executable"), dict) else {}
     path = _text(native.get("path"))
     if PurePosixPath(path).parts[:2] != ("bin", target) or path not in contents:
         return problems + [f"{PACKAGE_METADATA}: native_executable.path must name a file in bin/{target}/"]
-    executables = [name for name, blob in contents.items() if _elf_machine(blob[:20]) is not None]
     if executables != [path]:
         problems.append(f"exactly one native executable may ship, the declared {path} (found {executables})")
     blob = contents[path]

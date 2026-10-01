@@ -539,3 +539,40 @@ def test_a_swapped_target_archive_withdraws_the_release(repo):
 
     assert report.withdrawn == ["releases/acme.mailbox/1.0.0.json"]
     assert builder.build_index()["items"] == []
+
+
+# --- per-architecture archives without a native executable (Python wheels) -----------------
+
+_ARM_WHEEL = "numpy-2.4.2-cp312-cp312-manylinux_2_28_aarch64.whl"
+_X86_WHEEL = "numpy-2.4.2-cp312-cp312-manylinux_2_28_x86_64.whl"
+
+
+def _wheel_zip(target: str, wheels: list[str], *, binary: bytes | None = None) -> bytes:
+    files = {
+        "extension.yaml": yaml.safe_dump(_manifest(), sort_keys=False).encode(),
+        ".fs-package.yaml": yaml.safe_dump({"runtime_target": target}).encode(),
+        **{f"wheels/{name}": b"wheel" for name in wheels},
+    }
+    if binary is not None:
+        files[f"bin/{target}/helper"] = binary
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w") as archive:
+        for name, blob in files.items():
+            archive.writestr(f"acme_mailbox/{name}", blob)
+    return buffer.getvalue()
+
+
+def test_a_wheel_only_target_archive_passes():
+    data = _wheel_zip("linux-arm64", [_ARM_WHEEL, "packaging-26.3-py3-none-any.whl"])
+    assert _inspect_native(data, "linux-arm64")["version"] == "1.0.0"
+
+
+def test_a_target_archive_with_another_platforms_wheels_is_refused():
+    with pytest.raises(builder.CatalogError, match="wheels for another platform"):
+        _inspect_native(_wheel_zip("linux-arm64", [_ARM_WHEEL, _X86_WHEEL]), "linux-arm64")
+
+
+def test_a_target_archive_declaring_no_executable_may_not_carry_one():
+    data = _wheel_zip("linux-arm64", [_ARM_WHEEL], binary=_elf("linux-arm64"))
+    with pytest.raises(builder.CatalogError, match="declares no native_executable"):
+        _inspect_native(data, "linux-arm64")
