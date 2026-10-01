@@ -1,0 +1,35 @@
+{
+  "extension_id": "flowsteward.openrouter",
+  "version": "1.0.0",
+  "repository": "https://github.com/Flow-Steward/ext-llm-openrouter",
+  "tag": "v1.0.0",
+  "published_at": "2026-10-01T12:12:43Z",
+  "item": {
+    "extension_id": "flowsteward.openrouter",
+    "version": "1.0.0",
+    "name": "OpenRouter LLM Provider",
+    "summary": "Reference remote HTTPS LLM provider runtime for OpenRouter model catalog integration.",
+    "description": "Remote HTTPS LLM provider runtime exposing OpenRouter-hosted models through the Flow Steward model catalog.",
+    "categories": [
+      "ai"
+    ],
+    "capabilities": [
+      "tool",
+      "llm_provider"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "llm",
+      "openrouter"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-llm-openrouter/tree/v1.0.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-llm-openrouter/releases/download/v1.0.0/flowsteward.openrouter-1.0.0.zip",
+    "release_zip_bytes": 19254,
+    "release_zip_sha256": "b52d334c9cc843dbcffd22d64afdba4942323654682ab0666b51835c9d423f0c"
+  }
+}

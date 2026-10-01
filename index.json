@@ -1,6 +1,446 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "1970-01-01.4f53cda1",
-  "published_at": "1970-01-01T00:00:00Z",
-  "items": []
+  "catalog_revision": "2026-10-01.9a6e4c9e",
+  "published_at": "2026-10-01T12:12:49Z",
+  "items": [
+    {
+      "extension_id": "com.discogs.api",
+      "version": "0.1.9",
+      "name": "Discogs API",
+      "summary": "Search the Discogs music database and marketplace, and manage a collection or wantlist with guarded actions.",
+      "description": "Search Discogs, inspect music database records, query marketplace data, and use guarded authenticated collection or wantlist actions.",
+      "categories": [
+        "media"
+      ],
+      "capabilities": [
+        "tool",
+        "action",
+        "query"
+      ],
+      "permissions_summary": [
+        "extension:invoke",
+        "read:projects"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "discogs",
+        "music",
+        "records",
+        "marketplace",
+        "collection",
+        "wantlist"
+      ],
+      "publication_status": "published",
+      "verification_status": "unverified",
+      "repository_url": "https://github.com/Flow-Steward/ext-discogs/tree/v0.1.9",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-discogs/releases/download/v0.1.9/com.discogs.api-0.1.9.zip",
+      "release_zip_bytes": 48729,
+      "release_zip_sha256": "f71060b8d4729fd7667e28e3a9e4d54a6512ad683f7325bf3eb47bad1e278d93"
+    },
+    {
+      "extension_id": "flowsteward.docling",
+      "version": "0.1.0",
+      "name": "Docling Document Extraction",
+      "summary": "Convert workflow document artifacts to Markdown and Docling JSON.",
+      "description": "Generic document conversion through an external Docling REST service.",
+      "categories": [
+        "data"
+      ],
+      "capabilities": [
+        "tool",
+        "action"
+      ],
+      "permissions_summary": [
+        "artifact:read",
+        "artifact:write",
+        "extension:invoke"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "docling",
+        "document-extraction",
+        "markdown"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-document-docling/tree/v0.1.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-document-docling/releases/download/v0.1.0/flowsteward.docling-0.1.0.zip",
+      "release_zip_bytes": 19357,
+      "release_zip_sha256": "8996f27e77936d385cf8ed7e6fd0a6706af2a614c13d3fee9fef3fdbe8758184"
+    },
+    {
+      "extension_id": "flowsteward.example-showcase",
+      "version": "1.0.1",
+      "name": "Example Showcase Extension",
+      "summary": "Demonstrates the canonical Flow Steward extension structure, UI, actions, queries, workflow triggers, and artifact bundle.",
+      "description": "Reference extension bundle that demonstrates Flow Steward extension structure, UI, actions, queries, workflow triggers, external API/OAuth integration patterns, and demo workflow artifacts.",
+      "categories": [
+        "developer-tools"
+      ],
+      "capabilities": [
+        "tool",
+        "action",
+        "query",
+        "workflow_trigger",
+        "artifact_bundle"
+      ],
+      "permissions_summary": [
+        "extension:invoke",
+        "read:projects"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "example",
+        "showcase",
+        "extension-development"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-example-showcase/tree/v1.0.1",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-example-showcase/releases/download/v1.0.1/flowsteward.example-showcase-1.0.1.zip",
+      "release_zip_bytes": 83736,
+      "release_zip_sha256": "afd7c62751cab55da283193846ed7763da60d0622a096ef181c932cb431ca77c"
+    },
+    {
+      "extension_id": "flowsteward.file-transfer",
+      "version": "0.1.6",
+      "name": "File Transfer",
+      "summary": "Move files over FTP, FTPS, and SFTP using Flow Steward artifact grants.",
+      "description": "Streams opaque files over FTP, explicit FTPS, and SFTP using Flow Steward artifact grants.",
+      "categories": [
+        "data"
+      ],
+      "capabilities": [
+        "tool",
+        "action"
+      ],
+      "permissions_summary": [
+        "artifact:read",
+        "extension:invoke"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "file-transfer",
+        "ftp",
+        "ftps",
+        "sftp"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/tree/v0.1.6",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.1.6/flowsteward.file-transfer-0.1.6-linux-amd64.zip",
+      "release_zip_bytes": 6998426,
+      "release_zip_sha256": "825b07076e1c8b817c1b9de92704e32604806b6028c65d0c9bf000dcc08f2275",
+      "release_targets": {
+        "linux-amd64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.1.6/flowsteward.file-transfer-0.1.6-linux-amd64.zip",
+          "release_zip_bytes": 6998426,
+          "release_zip_sha256": "825b07076e1c8b817c1b9de92704e32604806b6028c65d0c9bf000dcc08f2275"
+        },
+        "linux-arm64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.1.6/flowsteward.file-transfer-0.1.6-linux-arm64.zip",
+          "release_zip_bytes": 6379237,
+          "release_zip_sha256": "3105b93e840e852380ea6f2835951c48bf78b3bf8b622e8937cbed855d5d953e"
+        }
+      }
+    },
+    {
+      "extension_id": "flowsteward.imap-mailbox",
+      "version": "0.1.0",
+      "name": "Generic IMAP Mailbox",
+      "summary": "Connect generic IMAP mailboxes to workflows without provider-specific OAuth.",
+      "description": "Read and explicitly post-process project-scoped generic IMAP mailboxes.",
+      "categories": [
+        "messaging"
+      ],
+      "capabilities": [
+        "tool",
+        "action"
+      ],
+      "permissions_summary": [
+        "artifact:write",
+        "extension:invoke"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "imap",
+        "email",
+        "mailbox"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-email-imap/tree/v0.1.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-email-imap/releases/download/v0.1.0/flowsteward.imap-mailbox-0.1.0.zip",
+      "release_zip_bytes": 85821,
+      "release_zip_sha256": "280c5e25b0d5f3c7968cf4f0632bfa788b8caba6cf57ce40ae06df32a33aa683"
+    },
+    {
+      "extension_id": "flowsteward.google-workspace",
+      "version": "0.2.0",
+      "name": "Google Workspace",
+      "summary": "Connect multiple Google accounts explicitly to Gmail, Drive, and Sheets workflows.",
+      "description": "Project-scoped Gmail, Drive, and Sheets access using project-scoped Google OAuth application credentials.",
+      "categories": [
+        "productivity"
+      ],
+      "capabilities": [
+        "tool",
+        "action"
+      ],
+      "permissions_summary": [
+        "artifact:read",
+        "artifact:write",
+        "extension:invoke"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "google",
+        "gmail",
+        "drive",
+        "sheets",
+        "email",
+        "files",
+        "spreadsheets"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-google-workspace/tree/v0.2.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-google-workspace/releases/download/v0.2.0/flowsteward.google-workspace-0.2.0.zip",
+      "release_zip_bytes": 141746,
+      "release_zip_sha256": "64658d809888e42637bf2448a0704a54f054a3772b78cbe2af16313110d78481"
+    },
+    {
+      "extension_id": "com.image.processing",
+      "version": "0.1.0",
+      "name": "Image Processing",
+      "summary": "Resize image artifacts proportionally and remove backgrounds locally.",
+      "description": "Local, CPU-only image resizing and background removal for workflows.",
+      "categories": [
+        "media"
+      ],
+      "capabilities": [
+        "tool",
+        "action"
+      ],
+      "permissions_summary": [
+        "artifact:read",
+        "artifact:write",
+        "extension:invoke"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "images",
+        "resize",
+        "background-removal",
+        "local"
+      ],
+      "publication_status": "published",
+      "verification_status": "unverified",
+      "repository_url": "https://github.com/Flow-Steward/ext-image-processing/tree/v0.1.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.1.0/com.image.processing-0.1.0-linux-amd64.zip",
+      "release_zip_bytes": 51519090,
+      "release_zip_sha256": "99e781770176abd4858e0fb6246a712dee0ac989b525d66b5f5f6e3f228c1274",
+      "release_targets": {
+        "linux-amd64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.1.0/com.image.processing-0.1.0-linux-amd64.zip",
+          "release_zip_bytes": 51519090,
+          "release_zip_sha256": "99e781770176abd4858e0fb6246a712dee0ac989b525d66b5f5f6e3f228c1274"
+        },
+        "linux-arm64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.1.0/com.image.processing-0.1.0-linux-arm64.zip",
+          "release_zip_bytes": 47617409,
+          "release_zip_sha256": "b00670fa4762662f012e3a1c9ee3361dfe1bb99bb7106774ea71f999ba393154"
+        }
+      }
+    },
+    {
+      "extension_id": "flowsteward.openrouter",
+      "version": "1.0.0",
+      "name": "OpenRouter LLM Provider",
+      "summary": "Reference remote HTTPS LLM provider runtime for OpenRouter model catalog integration.",
+      "description": "Remote HTTPS LLM provider runtime exposing OpenRouter-hosted models through the Flow Steward model catalog.",
+      "categories": [
+        "ai"
+      ],
+      "capabilities": [
+        "tool",
+        "llm_provider"
+      ],
+      "permissions_summary": [
+        "extension:invoke"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "llm",
+        "openrouter"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-llm-openrouter/tree/v1.0.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-llm-openrouter/releases/download/v1.0.0/flowsteward.openrouter-1.0.0.zip",
+      "release_zip_bytes": 19254,
+      "release_zip_sha256": "b52d334c9cc843dbcffd22d64afdba4942323654682ab0666b51835c9d423f0c"
+    },
+    {
+      "extension_id": "flowsteward.outgoing-email",
+      "version": "0.1.2",
+      "name": "Outgoing Email",
+      "summary": "Send email from workflow steps and project notifications through a custom SMTP connection.",
+      "description": "Send transactional emails from workflows and notifications through your SMTP server.",
+      "categories": [
+        "messaging"
+      ],
+      "capabilities": [
+        "notify",
+        "action"
+      ],
+      "permissions_summary": [
+        "artifact:read",
+        "extension:invoke",
+        "notify:dispatch"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "email",
+        "smtp",
+        "notifications"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-email-smtp/tree/v0.1.2",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-email-smtp/releases/download/v0.1.2/flowsteward.outgoing-email-0.1.2.zip",
+      "release_zip_bytes": 32789,
+      "release_zip_sha256": "089a08524b4c5fdfaa1f1646f8e7c65a09143c5ef49569eb3a5b115bfe4cd898"
+    },
+    {
+      "extension_id": "flowsteward.ollama-remote",
+      "version": "1.0.0",
+      "name": "Remote Ollama LLM Provider",
+      "summary": "Reference remote HTTPS LLM provider runtime for Ollama model catalog integration.",
+      "description": "Remote HTTPS LLM provider runtime fronting a remote Ollama endpoint.",
+      "categories": [
+        "ai"
+      ],
+      "capabilities": [
+        "tool",
+        "llm_provider"
+      ],
+      "permissions_summary": [
+        "extension:invoke"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "llm",
+        "ollama"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-llm-ollama/tree/v1.0.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-llm-ollama/releases/download/v1.0.0/flowsteward.ollama-remote-1.0.0.zip",
+      "release_zip_bytes": 16654,
+      "release_zip_sha256": "b4216f7e5092fc9301eb99e89187a3fa9f15a9f966fd7f293ebbb70a541f5d98"
+    },
+    {
+      "extension_id": "flowsteward.shopify",
+      "version": "0.3.0",
+      "name": "Shopify",
+      "summary": "Read Shopify inventory, products and orders, set absolute stock quantities, and make bounded catalog and fulfillment changes.",
+      "description": "A closed subset of the Shopify Admin GraphQL API 2026-07 for inventory, catalog and order automation, typed and scoped to project-owned Shopify stores.",
+      "categories": [
+        "ecommerce"
+      ],
+      "capabilities": [
+        "tool",
+        "action"
+      ],
+      "permissions_summary": [
+        "artifact:read",
+        "artifact:write",
+        "extension:invoke"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "shopify",
+        "inventory",
+        "stock",
+        "products",
+        "orders",
+        "fulfillment",
+        "graphql",
+        "ecommerce"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-ecommerce-shopify/tree/v0.3.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-ecommerce-shopify/releases/download/v0.3.0/flowsteward.shopify-0.3.0.zip",
+      "release_zip_bytes": 224607,
+      "release_zip_sha256": "c44333f1c70fa281fec54d12df1416fb99f5aa380d06b795f9cc019fc7dc4494"
+    },
+    {
+      "extension_id": "flowsteward.telegram",
+      "version": "1.0.0",
+      "name": "Telegram Notifications",
+      "summary": "Send notifications and approval interactions through Telegram chats.",
+      "description": "Sends Flow Steward notifications to Telegram chats via the Bot API. Canonical reference integration for notification providers.",
+      "categories": [
+        "messaging"
+      ],
+      "capabilities": [
+        "notify",
+        "action",
+        "ingress_event"
+      ],
+      "permissions_summary": [
+        "event:subscribe",
+        "extension:invoke",
+        "notify:dispatch",
+        "read:events"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "telegram",
+        "notifications",
+        "chatops"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-messaging-telegram/tree/v1.0.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-messaging-telegram/releases/download/v1.0.0/flowsteward.telegram-1.0.0.zip",
+      "release_zip_bytes": 103439,
+      "release_zip_sha256": "41d810d37cbe675c493510e2de1da967c0f445c9b9bb9ce40833e2712e1d2d61"
+    },
+    {
+      "extension_id": "flowsteward.wordpress-woocommerce",
+      "version": "1.0.0",
+      "name": "WordPress & WooCommerce",
+      "summary": "Read and safely write standard WordPress and WooCommerce data over the official REST APIs.",
+      "description": "A curated, automation-safe subset of the WordPress Core and WooCommerce REST APIs, typed and scoped to one project-scoped WordPress site.",
+      "categories": [
+        "cms"
+      ],
+      "capabilities": [
+        "tool",
+        "action"
+      ],
+      "permissions_summary": [
+        "artifact:read",
+        "artifact:write",
+        "extension:invoke"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "wordpress",
+        "woocommerce",
+        "rest",
+        "cms",
+        "ecommerce"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/tree/v1.0.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/releases/download/v1.0.0/flowsteward.wordpress-woocommerce-1.0.0.zip",
+      "release_zip_bytes": 285858,
+      "release_zip_sha256": "c3bdac75ed4c30fc0aba6f06dee25fa1ea42f1c52f34745ddfab376a5bf092c6"
+    }
+  ]
 }

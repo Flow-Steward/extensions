@@ -1,0 +1,40 @@
+{
+  "extension_id": "flowsteward.telegram",
+  "version": "1.0.0",
+  "repository": "https://github.com/Flow-Steward/ext-messaging-telegram",
+  "tag": "v1.0.0",
+  "published_at": "2026-10-01T12:12:46Z",
+  "item": {
+    "extension_id": "flowsteward.telegram",
+    "version": "1.0.0",
+    "name": "Telegram Notifications",
+    "summary": "Send notifications and approval interactions through Telegram chats.",
+    "description": "Sends Flow Steward notifications to Telegram chats via the Bot API. Canonical reference integration for notification providers.",
+    "categories": [
+      "messaging"
+    ],
+    "capabilities": [
+      "notify",
+      "action",
+      "ingress_event"
+    ],
+    "permissions_summary": [
+      "event:subscribe",
+      "extension:invoke",
+      "notify:dispatch",
+      "read:events"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "telegram",
+      "notifications",
+      "chatops"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-messaging-telegram/tree/v1.0.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-messaging-telegram/releases/download/v1.0.0/flowsteward.telegram-1.0.0.zip",
+    "release_zip_bytes": 103439,
+    "release_zip_sha256": "41d810d37cbe675c493510e2de1da967c0f445c9b9bb9ce40833e2712e1d2d61"
+  }
+}

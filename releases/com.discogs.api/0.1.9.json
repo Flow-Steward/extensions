@@ -1,0 +1,41 @@
+{
+  "extension_id": "com.discogs.api",
+  "version": "0.1.9",
+  "repository": "https://github.com/Flow-Steward/ext-discogs",
+  "tag": "v0.1.9",
+  "published_at": "2026-10-01T12:12:32Z",
+  "item": {
+    "extension_id": "com.discogs.api",
+    "version": "0.1.9",
+    "name": "Discogs API",
+    "summary": "Search the Discogs music database and marketplace, and manage a collection or wantlist with guarded actions.",
+    "description": "Search Discogs, inspect music database records, query marketplace data, and use guarded authenticated collection or wantlist actions.",
+    "categories": [
+      "media"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke",
+      "read:projects"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "discogs",
+      "music",
+      "records",
+      "marketplace",
+      "collection",
+      "wantlist"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-discogs/tree/v0.1.9",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-discogs/releases/download/v0.1.9/com.discogs.api-0.1.9.zip",
+    "release_zip_bytes": 48729,
+    "release_zip_sha256": "f71060b8d4729fd7667e28e3a9e4d54a6512ad683f7325bf3eb47bad1e278d93"
+  }
+}

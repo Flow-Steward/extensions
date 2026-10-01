@@ -1,0 +1,43 @@
+{
+  "extension_id": "flowsteward.shopify",
+  "version": "0.3.0",
+  "repository": "https://github.com/Flow-Steward/ext-ecommerce-shopify",
+  "tag": "v0.3.0",
+  "published_at": "2026-10-01T12:12:45Z",
+  "item": {
+    "extension_id": "flowsteward.shopify",
+    "version": "0.3.0",
+    "name": "Shopify",
+    "summary": "Read Shopify inventory, products and orders, set absolute stock quantities, and make bounded catalog and fulfillment changes.",
+    "description": "A closed subset of the Shopify Admin GraphQL API 2026-07 for inventory, catalog and order automation, typed and scoped to project-owned Shopify stores.",
+    "categories": [
+      "ecommerce"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "shopify",
+      "inventory",
+      "stock",
+      "products",
+      "orders",
+      "fulfillment",
+      "graphql",
+      "ecommerce"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-ecommerce-shopify/tree/v0.3.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-ecommerce-shopify/releases/download/v0.3.0/flowsteward.shopify-0.3.0.zip",
+    "release_zip_bytes": 224607,
+    "release_zip_sha256": "c44333f1c70fa281fec54d12df1416fb99f5aa380d06b795f9cc019fc7dc4494"
+  }
+}

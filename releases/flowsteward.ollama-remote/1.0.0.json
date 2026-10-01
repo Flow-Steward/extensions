@@ -1,0 +1,35 @@
+{
+  "extension_id": "flowsteward.ollama-remote",
+  "version": "1.0.0",
+  "repository": "https://github.com/Flow-Steward/ext-llm-ollama",
+  "tag": "v1.0.0",
+  "published_at": "2026-10-01T12:12:43Z",
+  "item": {
+    "extension_id": "flowsteward.ollama-remote",
+    "version": "1.0.0",
+    "name": "Remote Ollama LLM Provider",
+    "summary": "Reference remote HTTPS LLM provider runtime for Ollama model catalog integration.",
+    "description": "Remote HTTPS LLM provider runtime fronting a remote Ollama endpoint.",
+    "categories": [
+      "ai"
+    ],
+    "capabilities": [
+      "tool",
+      "llm_provider"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "llm",
+      "ollama"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-llm-ollama/tree/v1.0.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-llm-ollama/releases/download/v1.0.0/flowsteward.ollama-remote-1.0.0.zip",
+    "release_zip_bytes": 16654,
+    "release_zip_sha256": "b4216f7e5092fc9301eb99e89187a3fa9f15a9f966fd7f293ebbb70a541f5d98"
+  }
+}

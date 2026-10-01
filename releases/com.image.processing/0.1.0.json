@@ -1,0 +1,51 @@
+{
+  "extension_id": "com.image.processing",
+  "version": "0.1.0",
+  "repository": "https://github.com/Flow-Steward/ext-image-processing",
+  "tag": "v0.1.0",
+  "published_at": "2026-10-01T12:12:35Z",
+  "item": {
+    "extension_id": "com.image.processing",
+    "version": "0.1.0",
+    "name": "Image Processing",
+    "summary": "Resize image artifacts proportionally and remove backgrounds locally.",
+    "description": "Local, CPU-only image resizing and background removal for workflows.",
+    "categories": [
+      "media"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "images",
+      "resize",
+      "background-removal",
+      "local"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-image-processing/tree/v0.1.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.1.0/com.image.processing-0.1.0-linux-amd64.zip",
+    "release_zip_bytes": 51519090,
+    "release_zip_sha256": "99e781770176abd4858e0fb6246a712dee0ac989b525d66b5f5f6e3f228c1274",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.1.0/com.image.processing-0.1.0-linux-amd64.zip",
+        "release_zip_bytes": 51519090,
+        "release_zip_sha256": "99e781770176abd4858e0fb6246a712dee0ac989b525d66b5f5f6e3f228c1274"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.1.0/com.image.processing-0.1.0-linux-arm64.zip",
+        "release_zip_bytes": 47617409,
+        "release_zip_sha256": "b00670fa4762662f012e3a1c9ee3361dfe1bb99bb7106774ea71f999ba393154"
+      }
+    }
+  }
+}
