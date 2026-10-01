@@ -53,6 +53,21 @@ carries every member's archives. See
 [ext-data-connector-mcp-toolbox](https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox)
 for a worked example.
 
+### Moving an existing extension into its own repository
+
+```bash
+python3 scripts/new_extension_repo.py <extension folder> ../ext-<kind>-<name> \
+    --repository https://github.com/<owner>/ext-<kind>-<name>
+```
+
+copies the extension's tracked files, adds the CI and release workflows from
+[`templates/single-extension/`](templates/single-extension) (tests on every push,
+the archive checked with this catalog's own checker, a GitHub Release per tag)
+and points the manifest's support and website links at the new repository.
+Name repositories `ext-<kind>-<implementation>`, for example `ext-llm-openrouter`
+or `ext-data-connector-mcp-toolbox`, and tag them with the topic
+`flow-steward-extension`.
+
 ### New versions
 
 Push a new tag in your repository. The catalog checks every listed repository
