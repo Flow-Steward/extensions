@@ -1,0 +1,35 @@
+{
+  "extension_id": "flowsteward.openrouter",
+  "version": "1.1.0",
+  "repository": "https://github.com/Flow-Steward/ext-llm-openrouter",
+  "tag": "v1.1.0",
+  "published_at": "2026-10-03T06:29:15Z",
+  "item": {
+    "extension_id": "flowsteward.openrouter",
+    "version": "1.1.0",
+    "name": "OpenRouter LLM Provider",
+    "summary": "Connect OpenRouter with an API key, load its model list, and add models to the Flow Steward model catalog.",
+    "description": "Use OpenRouter-hosted models in Flow Steward agents with your OpenRouter API key.",
+    "categories": [
+      "ai"
+    ],
+    "capabilities": [
+      "tool",
+      "llm_provider"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "llm",
+      "openrouter"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-llm-openrouter/tree/v1.1.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-llm-openrouter/releases/download/v1.1.0/flowsteward.openrouter-1.1.0.zip",
+    "release_zip_bytes": 29938,
+    "release_zip_sha256": "a314351478acca30abe1565848a7cd417cc2e2ae7860faa89dfbe50e5260cbae"
+  }
+}
