@@ -1,0 +1,35 @@
+{
+  "extension_id": "flowsteward.ollama-remote",
+  "version": "1.1.2",
+  "repository": "https://github.com/Flow-Steward/ext-llm-ollama",
+  "tag": "v1.1.2",
+  "published_at": "2026-10-04T15:20:35Z",
+  "item": {
+    "extension_id": "flowsteward.ollama-remote",
+    "version": "1.1.2",
+    "name": "Ollama LLM Provider",
+    "summary": "Connect Ollama with an API key, load its model list, and add models to the Flow Steward model catalog.",
+    "description": "Use models from Ollama's hosted API, or from your own Ollama server, in Flow Steward agents.",
+    "categories": [
+      "ai"
+    ],
+    "capabilities": [
+      "tool",
+      "llm_provider"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "llm",
+      "ollama"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-llm-ollama/tree/v1.1.2",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-llm-ollama/releases/download/v1.1.2/flowsteward.ollama-remote-1.1.2.zip",
+    "release_zip_bytes": 35655,
+    "release_zip_sha256": "7d022e88345e57f3f5634b77f437b05dc724007f0e7ccba4da795445126db47b"
+  }
+}

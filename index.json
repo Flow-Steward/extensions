@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-10-03.6fb193e0",
-  "published_at": "2026-10-03T17:14:38Z",
+  "catalog_revision": "2026-10-04.247bbb05",
+  "published_at": "2026-10-04T15:20:36Z",
   "items": [
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-clickhouse",
@@ -460,7 +460,7 @@
     },
     {
       "extension_id": "flowsteward.ollama-remote",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "name": "Ollama LLM Provider",
       "summary": "Connect Ollama with an API key, load its model list, and add models to the Flow Steward model catalog.",
       "description": "Use models from Ollama's hosted API, or from your own Ollama server, in Flow Steward agents.",
@@ -481,16 +481,16 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-llm-ollama/tree/v1.1.1",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-llm-ollama/releases/download/v1.1.1/flowsteward.ollama-remote-1.1.1.zip",
-      "release_zip_bytes": 33276,
-      "release_zip_sha256": "d5341b47d27074f4b7ffebb9e1baf4cbfff05f92ea8ada53d9ad60b2618dfb3d",
+      "repository_url": "https://github.com/Flow-Steward/ext-llm-ollama/tree/v1.1.2",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-llm-ollama/releases/download/v1.1.2/flowsteward.ollama-remote-1.1.2.zip",
+      "release_zip_bytes": 35655,
+      "release_zip_sha256": "7d022e88345e57f3f5634b77f437b05dc724007f0e7ccba4da795445126db47b",
       "added_at": "2026-10-01T12:12:43Z",
-      "updated_at": "2026-10-03T17:14:38Z"
+      "updated_at": "2026-10-04T15:20:35Z"
     },
     {
       "extension_id": "flowsteward.openrouter",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "name": "OpenRouter LLM Provider",
       "summary": "Connect OpenRouter with an API key, load its model list, and add models to the Flow Steward model catalog.",
       "description": "Use OpenRouter-hosted models in Flow Steward agents with your OpenRouter API key.",
@@ -511,12 +511,12 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-llm-openrouter/tree/v1.1.0",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-llm-openrouter/releases/download/v1.1.0/flowsteward.openrouter-1.1.0.zip",
-      "release_zip_bytes": 29938,
-      "release_zip_sha256": "a314351478acca30abe1565848a7cd417cc2e2ae7860faa89dfbe50e5260cbae",
+      "repository_url": "https://github.com/Flow-Steward/ext-llm-openrouter/tree/v1.1.1",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-llm-openrouter/releases/download/v1.1.1/flowsteward.openrouter-1.1.1.zip",
+      "release_zip_bytes": 31535,
+      "release_zip_sha256": "745c7a72e52d6a0d4250c75db2420ff2a1796e84f622ed45ab505de08cdb4f79",
       "added_at": "2026-10-01T12:12:43Z",
-      "updated_at": "2026-10-03T06:29:15Z"
+      "updated_at": "2026-10-04T15:20:36Z"
     },
     {
       "extension_id": "flowsteward.outgoing-email",
