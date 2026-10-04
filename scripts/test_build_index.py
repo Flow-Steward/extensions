@@ -220,6 +220,22 @@ def test_names_of_secret_fields_are_not_leaks():
     assert _inspect(_zip(_manifest(), extra={"schemas/secrets.schema.yaml": schema}))
 
 
+def test_help_text_for_secret_fields_is_not_a_leak():
+    # Extension host contract 1.3.0: hints shown under each provider setting.
+    help_text = (
+        "runtime:\n  llm:\n    provider_secret_help:\n"
+        "      api_key: Copy the whole key from the provider's settings page.\n"
+        "    connection_config_help:\n      upstream_base_url: The server address only.\n"
+    )
+    assert _inspect(_zip(_manifest(), extra={"hints.yaml": help_text}))
+
+
+def test_a_real_secret_next_to_help_text_is_still_a_leak():
+    leaked = "provider_secret_help:\n  api_key: Copy the key.\napi_key: sk-live-123\n"
+    with pytest.raises(builder.CatalogError, match="must not carry secrets"):
+        _inspect(_zip(_manifest(), extra={"config.yaml": leaked}))
+
+
 def test_caches_in_an_archive_are_ignored():
     assert _inspect(_zip(_manifest(), extra={"__pycache__/main.pyc": "x"}))
 

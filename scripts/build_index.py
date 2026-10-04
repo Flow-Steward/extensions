@@ -228,9 +228,10 @@ def _secret_values(node: Any, path: str = "") -> list[str]:
     if isinstance(node, dict):
         for key, value in node.items():
             here = f"{path}.{key}" if path else str(key)
-            if str(key).endswith("_names"):
+            if str(key).endswith(("_names", "_help")):
                 # `secret_names: {access_token: access_token}` names where a secret is
-                # stored; the values are field names, not secrets.
+                # stored; `provider_secret_help: {api_key: "Copy the whole key..."}` is
+                # the hint shown under that field. Neither value is a secret.
                 continue
             if _SECRET_KEYS.search(str(key)) and isinstance(value, str) and value.strip():
                 if not value.strip().startswith(("${", "secret:", "{{")):
