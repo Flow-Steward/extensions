@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-10-04.247bbb05",
-  "published_at": "2026-10-04T15:20:36Z",
+  "catalog_revision": "2026-10-05.81376978",
+  "published_at": "2026-10-05T18:23:40Z",
   "items": [
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-clickhouse",
@@ -602,10 +602,10 @@
     },
     {
       "extension_id": "flowsteward.shopify",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "name": "Shopify",
-      "summary": "Read Shopify inventory, products and orders, set absolute stock quantities, and make bounded catalog and fulfillment changes.",
-      "description": "A closed subset of the Shopify Admin GraphQL API 2026-07 for inventory, catalog and order automation, typed and scoped to project-owned Shopify stores.",
+      "summary": "Create products with SKU, price, stock and images in one step; manage inventory, catalog and orders; find products with missing or small images.",
+      "description": "Shopify Admin GraphQL API 2026-07 for inventory, catalog and order automation, typed and scoped to project-owned Shopify stores. Every endpoint it uses is covered in full, and what is not reachable is listed with the reason.",
       "categories": [
         "ecommerce"
       ],
@@ -631,12 +631,12 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-ecommerce-shopify/tree/v0.3.0",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-ecommerce-shopify/releases/download/v0.3.0/flowsteward.shopify-0.3.0.zip",
-      "release_zip_bytes": 224607,
-      "release_zip_sha256": "c44333f1c70fa281fec54d12df1416fb99f5aa380d06b795f9cc019fc7dc4494",
+      "repository_url": "https://github.com/Flow-Steward/ext-ecommerce-shopify/tree/v0.4.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-ecommerce-shopify/releases/download/v0.4.0/flowsteward.shopify-0.4.0.zip",
+      "release_zip_bytes": 320177,
+      "release_zip_sha256": "5b007c4a127c3808afaf4babaec9840b73e20d7d7d42d91507ef50e3a5814e40",
       "added_at": "2026-10-01T12:12:45Z",
-      "updated_at": "2026-10-01T12:12:45Z"
+      "updated_at": "2026-10-05T18:23:40Z"
     },
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-singlestore",
