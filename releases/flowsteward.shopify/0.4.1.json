@@ -1,0 +1,43 @@
+{
+  "extension_id": "flowsteward.shopify",
+  "version": "0.4.1",
+  "repository": "https://github.com/Flow-Steward/ext-ecommerce-shopify",
+  "tag": "v0.4.1",
+  "published_at": "2026-10-06T20:16:13Z",
+  "item": {
+    "extension_id": "flowsteward.shopify",
+    "version": "0.4.1",
+    "name": "Shopify",
+    "summary": "Create products with SKU, price, stock and images in one step; manage inventory, catalog and orders; find products with missing or small images.",
+    "description": "Shopify Admin GraphQL API 2026-07 for inventory, catalog and order automation, typed and scoped to project-owned Shopify stores. Every endpoint it uses is covered in full, and what is not reachable is listed with the reason.",
+    "categories": [
+      "ecommerce"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "shopify",
+      "inventory",
+      "stock",
+      "products",
+      "orders",
+      "fulfillment",
+      "graphql",
+      "ecommerce"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-ecommerce-shopify/tree/v0.4.1",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-ecommerce-shopify/releases/download/v0.4.1/flowsteward.shopify-0.4.1.zip",
+    "release_zip_bytes": 321032,
+    "release_zip_sha256": "21af57ec94e78c453057351e9728e4b9aa68eb90bbd3f7fb93fa75d03b8b9ee3"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-10-05.81376978",
-  "published_at": "2026-10-05T18:23:40Z",
+  "catalog_revision": "2026-10-06.77e292fa",
+  "published_at": "2026-10-06T20:16:19Z",
   "items": [
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-clickhouse",
@@ -88,7 +88,7 @@
     },
     {
       "extension_id": "flowsteward.docling",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "name": "Docling Document Extraction",
       "summary": "Convert workflow document artifacts to Markdown and Docling JSON.",
       "description": "Generic document conversion through an external Docling REST service.",
@@ -112,12 +112,12 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-document-docling/tree/v0.1.0",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-document-docling/releases/download/v0.1.0/flowsteward.docling-0.1.0.zip",
-      "release_zip_bytes": 19357,
-      "release_zip_sha256": "8996f27e77936d385cf8ed7e6fd0a6706af2a614c13d3fee9fef3fdbe8758184",
+      "repository_url": "https://github.com/Flow-Steward/ext-document-docling/tree/v0.1.1",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-document-docling/releases/download/v0.1.1/flowsteward.docling-0.1.1.zip",
+      "release_zip_bytes": 19827,
+      "release_zip_sha256": "11ef1966aa1bdd273cbe1d98456e66ca1404cbc9d7f9dec12ff8c6f9b70eee2b",
       "added_at": "2026-10-01T12:12:39Z",
-      "updated_at": "2026-10-01T12:12:39Z"
+      "updated_at": "2026-10-06T20:16:03Z"
     },
     {
       "extension_id": "flowsteward.example-showcase",
@@ -156,7 +156,7 @@
     },
     {
       "extension_id": "flowsteward.file-transfer",
-      "version": "0.1.6",
+      "version": "0.1.7",
       "name": "File Transfer",
       "summary": "Move files over FTP, FTPS, and SFTP using Flow Steward artifact grants.",
       "description": "Streams opaque files over FTP, explicit FTPS, and SFTP using Flow Steward artifact grants.",
@@ -180,28 +180,28 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/tree/v0.1.6",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.1.6/flowsteward.file-transfer-0.1.6-linux-amd64.zip",
-      "release_zip_bytes": 6998426,
-      "release_zip_sha256": "825b07076e1c8b817c1b9de92704e32604806b6028c65d0c9bf000dcc08f2275",
+      "repository_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/tree/v0.1.7",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.1.7/flowsteward.file-transfer-0.1.7-linux-amd64.zip",
+      "release_zip_bytes": 6999611,
+      "release_zip_sha256": "b3f9f725736cf895b5226a1bf84305b3c492179f4bdecc67b0fc83062a616662",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.1.6/flowsteward.file-transfer-0.1.6-linux-amd64.zip",
-          "release_zip_bytes": 6998426,
-          "release_zip_sha256": "825b07076e1c8b817c1b9de92704e32604806b6028c65d0c9bf000dcc08f2275"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.1.7/flowsteward.file-transfer-0.1.7-linux-amd64.zip",
+          "release_zip_bytes": 6999611,
+          "release_zip_sha256": "b3f9f725736cf895b5226a1bf84305b3c492179f4bdecc67b0fc83062a616662"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.1.6/flowsteward.file-transfer-0.1.6-linux-arm64.zip",
-          "release_zip_bytes": 6379237,
-          "release_zip_sha256": "3105b93e840e852380ea6f2835951c48bf78b3bf8b622e8937cbed855d5d953e"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.1.7/flowsteward.file-transfer-0.1.7-linux-arm64.zip",
+          "release_zip_bytes": 6380422,
+          "release_zip_sha256": "beb4890dae65b92dd2d9f74e6a3d706715ab58988fd5a0c693e0f23684bd76fb"
         }
       },
       "added_at": "2026-10-01T12:12:41Z",
-      "updated_at": "2026-10-01T12:12:41Z"
+      "updated_at": "2026-10-06T20:16:06Z"
     },
     {
       "extension_id": "flowsteward.imap-mailbox",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "name": "Generic IMAP Mailbox",
       "summary": "Connect generic IMAP mailboxes to workflows without provider-specific OAuth.",
       "description": "Read and explicitly post-process project-scoped generic IMAP mailboxes.",
@@ -224,16 +224,16 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-email-imap/tree/v0.1.0",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-email-imap/releases/download/v0.1.0/flowsteward.imap-mailbox-0.1.0.zip",
-      "release_zip_bytes": 85821,
-      "release_zip_sha256": "280c5e25b0d5f3c7968cf4f0632bfa788b8caba6cf57ce40ae06df32a33aa683",
+      "repository_url": "https://github.com/Flow-Steward/ext-email-imap/tree/v0.1.1",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-email-imap/releases/download/v0.1.1/flowsteward.imap-mailbox-0.1.1.zip",
+      "release_zip_bytes": 86392,
+      "release_zip_sha256": "b7d934eed3785c7caf3a287189ddcaf6a33e14eef9d9365bd05e04aa207b476d",
       "added_at": "2026-10-01T12:12:42Z",
-      "updated_at": "2026-10-01T12:12:42Z"
+      "updated_at": "2026-10-06T20:16:09Z"
     },
     {
       "extension_id": "flowsteward.google-workspace",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "name": "Google Workspace",
       "summary": "Connect multiple Google accounts explicitly to Gmail, Drive, and Sheets workflows.",
       "description": "Project-scoped Gmail, Drive, and Sheets access using project-scoped Google OAuth application credentials.",
@@ -261,12 +261,12 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-google-workspace/tree/v0.2.0",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-google-workspace/releases/download/v0.2.0/flowsteward.google-workspace-0.2.0.zip",
-      "release_zip_bytes": 141746,
-      "release_zip_sha256": "64658d809888e42637bf2448a0704a54f054a3772b78cbe2af16313110d78481",
+      "repository_url": "https://github.com/Flow-Steward/ext-google-workspace/tree/v0.2.1",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-google-workspace/releases/download/v0.2.1/flowsteward.google-workspace-0.2.1.zip",
+      "release_zip_bytes": 143695,
+      "release_zip_sha256": "7004518d992db4eeaec34d556ae9e64fd5770376621c4931c3a03e00192833f1",
       "added_at": "2026-10-01T12:12:41Z",
-      "updated_at": "2026-10-01T12:12:41Z"
+      "updated_at": "2026-10-06T20:16:07Z"
     },
     {
       "extension_id": "com.image.processing",
@@ -520,7 +520,7 @@
     },
     {
       "extension_id": "flowsteward.outgoing-email",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "name": "Outgoing Email",
       "summary": "Send email from workflow steps and project notifications through a custom SMTP connection.",
       "description": "Send transactional emails from workflows and notifications through your SMTP server.",
@@ -544,12 +544,12 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-email-smtp/tree/v0.1.2",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-email-smtp/releases/download/v0.1.2/flowsteward.outgoing-email-0.1.2.zip",
-      "release_zip_bytes": 32789,
-      "release_zip_sha256": "089a08524b4c5fdfaa1f1646f8e7c65a09143c5ef49569eb3a5b115bfe4cd898",
+      "repository_url": "https://github.com/Flow-Steward/ext-email-smtp/tree/v0.1.3",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-email-smtp/releases/download/v0.1.3/flowsteward.outgoing-email-0.1.3.zip",
+      "release_zip_bytes": 33407,
+      "release_zip_sha256": "78cea3bf685ad93569abee76cd3d30d041cdd8bbd886c529c24b79235adca6ed",
       "added_at": "2026-10-01T12:12:44Z",
-      "updated_at": "2026-10-01T12:12:44Z"
+      "updated_at": "2026-10-06T20:16:12Z"
     },
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-postgres",
@@ -602,7 +602,7 @@
     },
     {
       "extension_id": "flowsteward.shopify",
-      "version": "0.4.0",
+      "version": "0.4.1",
       "name": "Shopify",
       "summary": "Create products with SKU, price, stock and images in one step; manage inventory, catalog and orders; find products with missing or small images.",
       "description": "Shopify Admin GraphQL API 2026-07 for inventory, catalog and order automation, typed and scoped to project-owned Shopify stores. Every endpoint it uses is covered in full, and what is not reachable is listed with the reason.",
@@ -631,12 +631,12 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-ecommerce-shopify/tree/v0.4.0",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-ecommerce-shopify/releases/download/v0.4.0/flowsteward.shopify-0.4.0.zip",
-      "release_zip_bytes": 320177,
-      "release_zip_sha256": "5b007c4a127c3808afaf4babaec9840b73e20d7d7d42d91507ef50e3a5814e40",
+      "repository_url": "https://github.com/Flow-Steward/ext-ecommerce-shopify/tree/v0.4.1",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-ecommerce-shopify/releases/download/v0.4.1/flowsteward.shopify-0.4.1.zip",
+      "release_zip_bytes": 321032,
+      "release_zip_sha256": "21af57ec94e78c453057351e9728e4b9aa68eb90bbd3f7fb93fa75d03b8b9ee3",
       "added_at": "2026-10-01T12:12:45Z",
-      "updated_at": "2026-10-05T18:23:40Z"
+      "updated_at": "2026-10-06T20:16:13Z"
     },
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-singlestore",
@@ -864,7 +864,7 @@
     },
     {
       "extension_id": "flowsteward.wordpress-woocommerce",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "name": "WordPress & WooCommerce",
       "summary": "Read and safely write standard WordPress and WooCommerce data over the official REST APIs.",
       "description": "A curated, automation-safe subset of the WordPress Core and WooCommerce REST APIs, typed and scoped to one project-scoped WordPress site.",
@@ -890,12 +890,12 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/tree/v1.0.0",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/releases/download/v1.0.0/flowsteward.wordpress-woocommerce-1.0.0.zip",
-      "release_zip_bytes": 285858,
-      "release_zip_sha256": "c3bdac75ed4c30fc0aba6f06dee25fa1ea42f1c52f34745ddfab376a5bf092c6",
+      "repository_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/tree/v1.1.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/releases/download/v1.1.0/flowsteward.wordpress-woocommerce-1.1.0.zip",
+      "release_zip_bytes": 286573,
+      "release_zip_sha256": "d3ed8415d2b457f0aa22de57219e0c5c499bf67061b031a5e5434331b318e7fb",
       "added_at": "2026-10-01T12:12:49Z",
-      "updated_at": "2026-10-01T12:12:49Z"
+      "updated_at": "2026-10-06T20:16:19Z"
     }
   ],
   "category_labels": {

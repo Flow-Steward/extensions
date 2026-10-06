@@ -1,0 +1,50 @@
+{
+  "extension_id": "flowsteward.file-transfer",
+  "version": "0.1.7",
+  "repository": "https://github.com/Flow-Steward/ext-file-transfer-sftp",
+  "tag": "v0.1.7",
+  "published_at": "2026-10-06T20:16:06Z",
+  "item": {
+    "extension_id": "flowsteward.file-transfer",
+    "version": "0.1.7",
+    "name": "File Transfer",
+    "summary": "Move files over FTP, FTPS, and SFTP using Flow Steward artifact grants.",
+    "description": "Streams opaque files over FTP, explicit FTPS, and SFTP using Flow Steward artifact grants.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "file-transfer",
+      "ftp",
+      "ftps",
+      "sftp"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/tree/v0.1.7",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.1.7/flowsteward.file-transfer-0.1.7-linux-amd64.zip",
+    "release_zip_bytes": 6999611,
+    "release_zip_sha256": "b3f9f725736cf895b5226a1bf84305b3c492179f4bdecc67b0fc83062a616662",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.1.7/flowsteward.file-transfer-0.1.7-linux-amd64.zip",
+        "release_zip_bytes": 6999611,
+        "release_zip_sha256": "b3f9f725736cf895b5226a1bf84305b3c492179f4bdecc67b0fc83062a616662"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.1.7/flowsteward.file-transfer-0.1.7-linux-arm64.zip",
+        "release_zip_bytes": 6380422,
+        "release_zip_sha256": "beb4890dae65b92dd2d9f74e6a3d706715ab58988fd5a0c693e0f23684bd76fb"
+      }
+    }
+  }
+}

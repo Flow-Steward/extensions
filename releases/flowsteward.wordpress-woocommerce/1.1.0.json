@@ -1,0 +1,40 @@
+{
+  "extension_id": "flowsteward.wordpress-woocommerce",
+  "version": "1.1.0",
+  "repository": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce",
+  "tag": "v1.1.0",
+  "published_at": "2026-10-06T20:16:19Z",
+  "item": {
+    "extension_id": "flowsteward.wordpress-woocommerce",
+    "version": "1.1.0",
+    "name": "WordPress & WooCommerce",
+    "summary": "Read and safely write standard WordPress and WooCommerce data over the official REST APIs.",
+    "description": "A curated, automation-safe subset of the WordPress Core and WooCommerce REST APIs, typed and scoped to one project-scoped WordPress site.",
+    "categories": [
+      "cms"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "wordpress",
+      "woocommerce",
+      "rest",
+      "cms",
+      "ecommerce"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/tree/v1.1.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/releases/download/v1.1.0/flowsteward.wordpress-woocommerce-1.1.0.zip",
+    "release_zip_bytes": 286573,
+    "release_zip_sha256": "d3ed8415d2b457f0aa22de57219e0c5c499bf67061b031a5e5434331b318e7fb"
+  }
+}
