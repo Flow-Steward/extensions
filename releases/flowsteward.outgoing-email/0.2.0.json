@@ -1,0 +1,38 @@
+{
+  "extension_id": "flowsteward.outgoing-email",
+  "version": "0.2.0",
+  "repository": "https://github.com/Flow-Steward/ext-email-smtp",
+  "tag": "v0.2.0",
+  "published_at": "2026-10-09T20:07:26Z",
+  "item": {
+    "extension_id": "flowsteward.outgoing-email",
+    "version": "0.2.0",
+    "name": "Outgoing Email",
+    "summary": "Send email from workflow steps and project notifications through a custom SMTP connection.",
+    "description": "Send transactional emails from workflows and notifications through your SMTP server.",
+    "categories": [
+      "messaging"
+    ],
+    "capabilities": [
+      "notify",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "extension:invoke",
+      "notify:dispatch"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "email",
+      "smtp",
+      "notifications"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-email-smtp/tree/v0.2.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-email-smtp/releases/download/v0.2.0/flowsteward.outgoing-email-0.2.0.zip",
+    "release_zip_bytes": 36830,
+    "release_zip_sha256": "6759c2730ca4d2080c210cf6c97a65354f1092aa283d702fd5b2b72e2e3f64ea"
+  }
+}

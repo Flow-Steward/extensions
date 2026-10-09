@@ -1,0 +1,40 @@
+{
+  "extension_id": "flowsteward.example-showcase",
+  "version": "1.0.3",
+  "repository": "https://github.com/Flow-Steward/ext-example-showcase",
+  "tag": "v1.0.3",
+  "published_at": "2026-10-09T20:07:22Z",
+  "item": {
+    "extension_id": "flowsteward.example-showcase",
+    "version": "1.0.3",
+    "name": "Example Showcase Extension",
+    "summary": "Demonstrates the canonical Flow Steward extension structure, UI, actions, queries, workflow triggers, and artifact bundle.",
+    "description": "Reference extension bundle that demonstrates Flow Steward extension structure, UI, actions, queries, workflow triggers, external API/OAuth integration patterns, and demo workflow artifacts.",
+    "categories": [
+      "developer-tools"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "query",
+      "workflow_trigger",
+      "artifact_bundle"
+    ],
+    "permissions_summary": [
+      "extension:invoke",
+      "read:projects"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "example",
+      "showcase",
+      "extension-development"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-example-showcase/tree/v1.0.3",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-example-showcase/releases/download/v1.0.3/flowsteward.example-showcase-1.0.3.zip",
+    "release_zip_bytes": 91013,
+    "release_zip_sha256": "5398392e7a612f21ca55372e95a268f476f3e066de446de1d1d979435c37d249"
+  }
+}

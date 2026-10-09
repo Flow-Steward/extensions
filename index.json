@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-10-06.77e292fa",
-  "published_at": "2026-10-06T20:16:19Z",
+  "catalog_revision": "2026-10-09.e87cb945",
+  "published_at": "2026-10-09T20:07:28Z",
   "items": [
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-clickhouse",
@@ -121,7 +121,7 @@
     },
     {
       "extension_id": "flowsteward.example-showcase",
-      "version": "1.0.1",
+      "version": "1.0.3",
       "name": "Example Showcase Extension",
       "summary": "Demonstrates the canonical Flow Steward extension structure, UI, actions, queries, workflow triggers, and artifact bundle.",
       "description": "Reference extension bundle that demonstrates Flow Steward extension structure, UI, actions, queries, workflow triggers, external API/OAuth integration patterns, and demo workflow artifacts.",
@@ -147,12 +147,12 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-example-showcase/tree/v1.0.1",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-example-showcase/releases/download/v1.0.1/flowsteward.example-showcase-1.0.1.zip",
-      "release_zip_bytes": 83736,
-      "release_zip_sha256": "afd7c62751cab55da283193846ed7763da60d0622a096ef181c932cb431ca77c",
+      "repository_url": "https://github.com/Flow-Steward/ext-example-showcase/tree/v1.0.3",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-example-showcase/releases/download/v1.0.3/flowsteward.example-showcase-1.0.3.zip",
+      "release_zip_bytes": 91013,
+      "release_zip_sha256": "5398392e7a612f21ca55372e95a268f476f3e066de446de1d1d979435c37d249",
       "added_at": "2026-10-01T12:12:39Z",
-      "updated_at": "2026-10-01T12:12:39Z"
+      "updated_at": "2026-10-09T20:07:22Z"
     },
     {
       "extension_id": "flowsteward.file-transfer",
@@ -520,7 +520,7 @@
     },
     {
       "extension_id": "flowsteward.outgoing-email",
-      "version": "0.1.3",
+      "version": "0.2.0",
       "name": "Outgoing Email",
       "summary": "Send email from workflow steps and project notifications through a custom SMTP connection.",
       "description": "Send transactional emails from workflows and notifications through your SMTP server.",
@@ -544,12 +544,12 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-email-smtp/tree/v0.1.3",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-email-smtp/releases/download/v0.1.3/flowsteward.outgoing-email-0.1.3.zip",
-      "release_zip_bytes": 33407,
-      "release_zip_sha256": "78cea3bf685ad93569abee76cd3d30d041cdd8bbd886c529c24b79235adca6ed",
+      "repository_url": "https://github.com/Flow-Steward/ext-email-smtp/tree/v0.2.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-email-smtp/releases/download/v0.2.0/flowsteward.outgoing-email-0.2.0.zip",
+      "release_zip_bytes": 36830,
+      "release_zip_sha256": "6759c2730ca4d2080c210cf6c97a65354f1092aa283d702fd5b2b72e2e3f64ea",
       "added_at": "2026-10-01T12:12:44Z",
-      "updated_at": "2026-10-06T20:16:12Z"
+      "updated_at": "2026-10-09T20:07:26Z"
     },
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-postgres",
@@ -829,7 +829,7 @@
     },
     {
       "extension_id": "flowsteward.telegram",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "name": "Telegram Notifications",
       "summary": "Send notifications and approval interactions through Telegram chats.",
       "description": "Sends Flow Steward notifications to Telegram chats via the Bot API. Canonical reference integration for notification providers.",
@@ -855,12 +855,12 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-messaging-telegram/tree/v1.0.1",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-messaging-telegram/releases/download/v1.0.1/flowsteward.telegram-1.0.1.zip",
-      "release_zip_bytes": 103658,
-      "release_zip_sha256": "91783c10e00237bba1c46e0a13fd8dd26a4831312a3c34e3028749ba92356557",
+      "repository_url": "https://github.com/Flow-Steward/ext-messaging-telegram/tree/v1.1.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-messaging-telegram/releases/download/v1.1.0/flowsteward.telegram-1.1.0.zip",
+      "release_zip_bytes": 119810,
+      "release_zip_sha256": "a027179347cf9fa6ec59882d25ad22a1a5322e4e4753f300641c85d6471c18cd",
       "added_at": "2026-10-01T12:12:46Z",
-      "updated_at": "2026-10-01T21:48:17Z"
+      "updated_at": "2026-10-09T20:07:28Z"
     },
     {
       "extension_id": "flowsteward.wordpress-woocommerce",
