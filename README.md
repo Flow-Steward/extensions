@@ -20,13 +20,24 @@ only holds a link to it, and publishes the author's releases automatically.
      [workflow catalog](https://github.com/Flow-Steward/workflows), which keeps a copy of this file;
    - optionally `listing.summary` (the card line; otherwise the first sentence of
      the description), `listing.tags` and `listing.setup_summary`.
-3. Publish a release: tag `v<version>` (the same version as `extension.yaml`)
+   - `runtime.contract_version: extension_host_v2` (build on
+     `flowsteward-extension-sdk` 0.4.0 or later).
+3. Put your logo in the bundle: a file named `icon.png` next to
+   `extension.yaml`. There is no manifest field; the file name is the contract,
+   so replacing that one file is all it takes. Rules (the same as the MCP
+   catalog's icons): PNG only (no SVG), square, 32–512 px (128×128
+   recommended), at most 100 KB. `flow-steward extensions create` writes a
+   neutral "package" logo you can replace; a release without a valid `icon.png`
+   is refused here and by Flow Steward's installer. The catalog keeps its own
+   copy of each release's icon (`releases/<extension_id>/<version>.png`), so the
+   index links an image that cannot change.
+4. Publish a release: tag `v<version>` (the same version as `extension.yaml`)
    with the asset `<extension_id>-<version>.zip`, whose files sit under one top
    folder named after the id with `.` and `-` replaced by `_`
    (`acme.crm-sync` → `acme_crm_sync/`). Copy
    [`templates/release-extension.yml`](templates/release-extension.yml) into your
    repository's `.github/workflows/` and it does this for every tag you push.
-4. Open a pull request here adding one file, `extensions/<extension_id>.yaml`:
+5. Open a pull request here adding one file, `extensions/<extension_id>.yaml`:
 
    ```yaml
    repository: https://github.com/<owner>/<repo>
@@ -98,6 +109,8 @@ the previous version stays listed.
   Steward 1.0 runs (build it on `flowsteward-extension-sdk` 0.4.0 or later). A
   release recorded before this check is kept in `releases/` as history but is no
   longer listed; the extension is listed again from its next v2 release;
+- a release without `icon.png` next to `extension.yaml`, or with one that is not a
+  square PNG of 32–512 px and at most 100 KB;
 - files outside the one top folder, symbolic links, `.env` and key files, a value
   under a key such as `password` or `api_key`;
 - a native executable in a single archive, or a per-target archive that carries
@@ -128,6 +141,7 @@ is listed instead. Removing an entry keeps the extension listed as **deprecated*
 | Tags | `listing.tags` (kept for the future marketplace, not shown yet) |
 | Documentation link | the repository at the release tag |
 | Download URL, size, SHA-256 | the release asset, recorded once in `releases/` |
+| Logo (`icon`: URL, SHA-256, bytes, `image/png`, `WxH`) | the release's `icon.png`, copied once to `releases/<extension_id>/<version>.png` and linked at the catalog commit that added it |
 | Verified | the id's namespace is mapped to the repository owner in `verified_publishers.json` |
 
 The catalog sets no `compatible_flow_steward` range: a manifest's

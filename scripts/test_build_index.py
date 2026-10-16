@@ -5,8 +5,10 @@ from __future__ import annotations
 import hashlib
 import io
 import json
+import struct
 import subprocess
 import zipfile
+import zlib
 from pathlib import Path
 
 import pytest
@@ -40,11 +42,29 @@ def _manifest(**overrides) -> dict:
     return manifest
 
 
-def _zip(manifest: dict | None = None, *, top: str = "acme_mailbox", extra: dict[str, str] | None = None) -> bytes:
+def _png(width: int = 128, height: int = 128) -> bytes:
+    """A PNG signature and IHDR chunk: all the catalog reads of an icon."""
+    ihdr = struct.pack(">IIBBBBB", width, height, 8, 6, 0, 0, 0)
+    chunk = b"IHDR" + ihdr
+    return b"\x89PNG\r\n\x1a\n" + struct.pack(">I", len(ihdr)) + chunk + struct.pack(">I", zlib.crc32(chunk))
+
+
+ICON = _png()
+
+
+def _zip(
+    manifest: dict | None = None,
+    *,
+    top: str = "acme_mailbox",
+    extra: dict[str, str] | None = None,
+    icon: bytes | None = ICON,
+) -> bytes:
     buffer = io.BytesIO()
     with zipfile.ZipFile(buffer, "w") as archive:
         if manifest is not None:
             archive.writestr(f"{top}/extension.yaml", yaml.safe_dump(manifest, sort_keys=False))
+        if icon is not None:
+            archive.writestr(f"{top}/icon.png", icon)
         archive.writestr(f"{top}/main.py", "print('ok')\n")
         for name, content in (extra or {}).items():
             archive.writestr(f"{top}/{name}", content)
@@ -103,6 +123,7 @@ def repo(tmp_path: Path, monkeypatch) -> Path:
     _run(tmp_path, "git", "config", "user.email", "t@example.test")
     _run(tmp_path, "git", "config", "user.name", "t")
     monkeypatch.setattr(builder, "ROOT", tmp_path)
+    monkeypatch.setenv("GITHUB_REPOSITORY", "Flow-Steward/extensions")
     _commit(tmp_path, "setup")
     return tmp_path
 
@@ -197,6 +218,11 @@ def test_every_field_is_derived_from_the_manifest_in_the_release():
         (_zip(_manifest(), extra={"k.txt": "-----BEGIN RSA PRIVATE KEY-----\n"}), "private key"),
         (_zip(_manifest(), extra={"bin/linux-amd64/tool": "x"}), "one archive per runtime target"),
         (_zip(_manifest(runtime={})), "declare runtime.contract_version: extension_host_v2"),
+        (_zip(_manifest(), icon=None), "add icon.png"),
+        (_zip(_manifest(), icon=b"<svg/>"), "icon.png is not a PNG"),
+        (_zip(_manifest(), icon=_png(128, 64)), "is 128x64"),
+        (_zip(_manifest(), icon=_png(16, 16)), "is 16x16"),
+        (_zip(_manifest(), icon=_png() + b"\0" * 102400), "larger than 102400 bytes"),
         (
             _zip(_manifest(runtime={"contract_version": "extension_host_v1"})),
             "(got 'extension_host_v1')",
@@ -482,6 +508,7 @@ def _native_zip(target: str, *, binary: bytes | None = None, metadata: dict | No
     files = {
         "extension.yaml": yaml.safe_dump(_manifest(), sort_keys=False).encode(),
         "main.py": b"print('ok')\n",
+        "icon.png": ICON,
         f"bin/{target}/toolbox": binary,
         ".fs-package.yaml": yaml.safe_dump(
             metadata
@@ -601,6 +628,7 @@ def _wheel_zip(target: str, wheels: list[str], *, binary: bytes | None = None) -
     files = {
         "extension.yaml": yaml.safe_dump(_manifest(), sort_keys=False).encode(),
         ".fs-package.yaml": yaml.safe_dump({"runtime_target": target}).encode(),
+        "icon.png": ICON,
         **{f"wheels/{name}": b"wheel" for name in wheels},
     }
     if binary is not None:
@@ -676,3 +704,47 @@ def test_a_release_for_another_host_contract_is_not_recorded(repo):
     assert any("extension_host_v1" in problem for problem in report.problems)
     [item] = builder.build_index()["items"]
     assert item["version"] == "1.0.0"
+
+
+# --- the logo --------------------------------------------------------------------------------
+
+
+def test_the_release_icon_is_kept_by_the_catalog_and_pinned_to_its_commit(repo):
+    github = FakeGitHub()
+    github.release(SLUG, "1.0.0", _zip(_manifest()))
+    _entry(repo)
+
+    builder.publish(github=github)
+    _commit(repo, "Record extension releases")
+
+    stored = repo / "releases" / "acme.mailbox" / "1.0.0.png"
+    assert stored.read_bytes() == ICON
+    commit = _run(repo, "git", "log", "-1", "--format=%H", "--", "releases/acme.mailbox/1.0.0.png")
+    [item] = builder.build_index()["items"]
+    assert item["icon"] == {
+        "url": f"https://raw.githubusercontent.com/Flow-Steward/extensions/{commit}/releases/acme.mailbox/1.0.0.png",
+        "sha256": hashlib.sha256(ICON).hexdigest(),
+        "bytes": len(ICON),
+        "mime_type": "image/png",
+        "size": "128x128",
+    }
+    record = json.loads((repo / "releases" / "acme.mailbox" / "1.0.0.json").read_text())
+    assert "_icon_bytes" not in record
+
+
+def test_a_release_without_an_icon_is_not_recorded(repo):
+    github = FakeGitHub()
+    github.release(SLUG, "1.0.0", _zip(_manifest(), icon=None))
+    _entry(repo)
+
+    report = builder.publish(github=github)
+
+    assert report.recorded == []
+    assert any("add icon.png" in problem for problem in report.problems)
+    assert builder.build_index()["items"] == []
+
+
+def test_records_only_writes_no_index(repo, monkeypatch):
+    monkeypatch.setattr(builder, "GitHubApi", FakeGitHub)
+    assert builder.main(["--publish", "--records-only"]) == 0
+    assert not (repo / "index.json").exists()

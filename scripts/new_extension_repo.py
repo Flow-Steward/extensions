@@ -6,8 +6,9 @@
 
 Copies the extension's tracked files (without dev-wheels), adds the CI and
 release workflows and packaging scripts from templates/single-extension/,
-points the manifest's support and website links at the new repository, and
-makes the first commit. Push it, tag ``v<version>``, then add
+adds the default logo `icon.png` when the extension has none, points the
+manifest's support and website links at the new repository, and makes the
+first commit. Push it, tag ``v<version>``, then add
 ``extensions/<extension_id>.yaml`` here.
 """
 
@@ -22,6 +23,8 @@ from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parent.parent
 TEMPLATE = ROOT / "templates" / "single-extension"
+# The neutral "package" logo Flow Steward's own scaffold writes; replace it with yours.
+DEFAULT_ICON = ROOT / "templates" / "default-icon.png"
 _REPOSITORY = re.compile(r"^https://github\.com/[A-Za-z0-9-]+/[A-Za-z0-9._-]+$")
 _SKIPPED = {"dev-wheels", "__pycache__", ".pytest_cache", ".fs-python", "bin"}
 
@@ -98,6 +101,10 @@ def main(argv: list[str] | None = None) -> int:
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(template_file, destination)
 
+    if not (args.target / "icon.png").is_file():
+        shutil.copy2(DEFAULT_ICON, args.target / "icon.png")
+        print("note: icon.png is the default package logo; replace it with your own "
+              "(PNG, square, 32-512 px, at most 100 KB)")
     _write_test_requirements(args.target)
     manifest = args.target / "extension.yaml"
     text = manifest.read_text(encoding="utf-8")

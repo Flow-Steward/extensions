@@ -30,18 +30,27 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
-      - name: Record new releases and build index.json
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Record new releases and their icons
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: python scripts/build_index.py --publish
-      - name: Commit release records and index.json when they changed
+        run: python scripts/build_index.py --publish --records-only
+      - name: Commit the release records first
+        # The index pins each icon URL to the commit that added it, so the
+        # records and icons are committed before the index is built.
         run: |
-          git add releases index.json
-          if git diff --cached --quiet; then
+          git add releases
+          git diff --cached --quiet || git commit -m "Record extension releases"
+      - name: Build index.json
+        run: python scripts/build_index.py
+      - name: Commit index.json and push when anything changed
+        run: |
+          git add index.json
+          git diff --cached --quiet || git commit -m "Publish extension releases"
+          if git diff --quiet origin/main HEAD; then
             echo "Nothing new to publish."
             exit 0
           fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Publish extension releases"
           git push

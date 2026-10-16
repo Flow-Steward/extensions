@@ -36,6 +36,7 @@ import io
 import json
 import os
 import re
+import struct
 import subprocess
 import sys
 import urllib.error
@@ -58,6 +59,11 @@ VERIFIED_PUBLISHERS_FILE = "verified_publishers.json"
 INDEX_FILE = "index.json"
 MANIFEST = "extension.yaml"
 DESCRIPTOR = "extension-descriptor.yaml"
+# The logo Flow Steward shows: icon.png next to extension.yaml in the bundle (the file
+# name is the contract). The same rules as the MCP catalog's icons.
+ICON_FILE = "icon.png"
+MAX_ICON_BYTES = 100 * 1024
+MIN_ICON_PX, MAX_ICON_PX = 32, 512
 
 SCHEMA_VERSION = "extension_catalog/v1"
 # The one host contract Flow Steward 1.0 runs. A release built for another contract
@@ -253,6 +259,63 @@ def _json_file(name: str, default: Any) -> Any:
 
 def _git(*args: str) -> str:
     return subprocess.run(["git", *args], cwd=ROOT, check=True, capture_output=True, text=True).stdout.strip()
+
+
+def _last_commit(path: str) -> str:
+    """The commit that last changed *path*; HEAD while it is not committed yet.
+
+    The publish job commits release records before it builds the index, so a
+    listed icon is always pinned to the commit that added it.
+    """
+    try:
+        sha = _git("log", "-1", "--format=%H", "--", path)
+    except subprocess.CalledProcessError:  # a repository without commits yet
+        sha = ""
+    if sha:
+        return sha
+    try:
+        return _git("rev-parse", "HEAD")
+    except subprocess.CalledProcessError:
+        return "main"
+
+
+def _repository() -> str:
+    """owner/name of this catalog for raw URLs: GITHUB_REPOSITORY in Actions, else the origin remote."""
+    env = os.environ.get("GITHUB_REPOSITORY", "").strip()
+    if env:
+        return env
+    try:
+        url = _git("remote", "get-url", "origin")
+    except subprocess.CalledProcessError as exc:
+        raise CatalogError("cannot derive owner/name without an origin remote; set GITHUB_REPOSITORY") from exc
+    match = re.search(r"github\.com[:/]([^/]+/[^/]+?)(?:\.git)?$", url)
+    if not match:
+        raise CatalogError(f"cannot derive owner/name from remote '{url}'; set GITHUB_REPOSITORY")
+    return match.group(1)
+
+
+def png_size(data: bytes) -> tuple[int, int]:
+    """Width and height of a PNG, read from its IHDR chunk."""
+    if len(data) < 24 or data[:8] != b"\x89PNG\r\n\x1a\n" or data[12:16] != b"IHDR":
+        raise ValueError("not a PNG file")
+    width, height = struct.unpack(">II", data[16:24])
+    return width, height
+
+
+def icon_problems(data: bytes | None) -> tuple[list[str], str]:
+    """Why a bundle's icon.png cannot be shown, and its ``WxH`` when it can."""
+    if data is None:
+        return [f"add {ICON_FILE} (the extension's logo) next to {MANIFEST}"], ""
+    try:
+        width, height = png_size(data)
+    except ValueError:
+        return [f"{ICON_FILE} is not a PNG"], ""
+    problems: list[str] = []
+    if len(data) > MAX_ICON_BYTES:
+        problems.append(f"{ICON_FILE} is larger than {MAX_ICON_BYTES} bytes")
+    if width != height or not MIN_ICON_PX <= width <= MAX_ICON_PX:
+        problems.append(f"{ICON_FILE} must be square, {MIN_ICON_PX}–{MAX_ICON_PX} px (is {width}x{height})")
+    return problems, f"{width}x{height}"
 
 
 # ---------------------------------------------------------------------------
@@ -530,6 +593,7 @@ def inspect_archive(
     if category not in categories:
         problems.append(f"set listing.category to one of: {', '.join(sorted(categories))} (got '{category}')")
     problems.extend(_descriptor_problems(contents, extension_id=entry.extension_id, version=version))
+    problems.extend(icon_problems(contents.get(ICON_FILE))[0])
     if problems:
         raise CatalogError("\n".join(f"{where}: {problem}" for problem in problems))
 
@@ -605,12 +669,15 @@ def fetch_release(
 
     artifacts: dict[str, dict[str, Any]] = {}
     item: dict[str, Any] = {}
+    icon = b""
     for target in present or [""]:
         url = _text(assets[targeted[target] if target else portable].get("browser_download_url"))
         data = github.download(url, max_bytes=MAX_ZIP_BYTES)
         item = inspect_archive(
             data, entry=entry, version=version, categories=categories, publishers=publishers, target=target
         )
+        if not icon or target == DEFAULT_TARGET:
+            icon = bundle_icon(data, entry.extension_id)
         artifacts[target] = {
             "release_zip_url": url,
             "release_zip_bytes": len(data),
@@ -625,8 +692,16 @@ def fetch_release(
         "repository": entry.repository,
         "tag": tag,
         "host_contract": HOST_CONTRACT,
+        "icon": {
+            "path": icon_path(entry.extension_id, version),
+            "sha256": hashlib.sha256(icon).hexdigest(),
+            "bytes": len(icon),
+            "mime_type": "image/png",
+            "size": icon_problems(icon)[1],
+        },
         "published_at": _now(),
         "item": item,
+        "_icon_bytes": icon,
     }
 
 
@@ -634,9 +709,24 @@ def record_path(extension_id: str, version: str) -> Path:
     return ROOT / RELEASES_DIR / extension_id / f"{version}.json"
 
 
+def icon_path(extension_id: str, version: str) -> str:
+    """Where the catalog keeps a release's icon.png, relative to the catalog root."""
+    return f"{RELEASES_DIR}/{extension_id}/{version}.png"
+
+
+def bundle_icon(data: bytes, extension_id: str) -> bytes:
+    """The icon.png of a release ZIP that inspect_archive already accepted."""
+    with zipfile.ZipFile(io.BytesIO(data)) as archive:
+        return archive.read(f"{folder_name(extension_id)}/{ICON_FILE}")
+
+
 def write_record(record: dict[str, Any]) -> str:
+    """Write a release record, and the icon a freshly fetched record carries."""
+    icon = record.pop("_icon_bytes", None)
     path = record_path(record["extension_id"], record["version"])
     path.parent.mkdir(parents=True, exist_ok=True)
+    if icon is not None:
+        (ROOT / icon_path(record["extension_id"], record["version"])).write_bytes(icon)
     path.write_text(json.dumps(record, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return path.relative_to(ROOT).as_posix()
 
@@ -743,6 +833,21 @@ def publish(*, github: GitHub) -> PublishReport:
 # ---------------------------------------------------------------------------
 
 
+def _index_icon(record: dict[str, Any]) -> dict[str, Any]:
+    """The index's icon object: the catalog's copy, pinned to the commit that added it."""
+    icon = record.get("icon")
+    if not isinstance(icon, dict) or not _text(icon.get("path")):
+        raise CatalogError(f"{record['extension_id']} {record['version']}: the release record has no icon")
+    path = _text(icon["path"])
+    return {
+        "url": f"https://raw.githubusercontent.com/{_repository()}/{_last_commit(path)}/{path}",
+        "sha256": icon["sha256"],
+        "bytes": icon["bytes"],
+        "mime_type": icon["mime_type"],
+        "size": icon["size"],
+    }
+
+
 def build_index() -> dict[str, Any]:
     """The newest recorded, not withdrawn release of each extension.
 
@@ -759,6 +864,7 @@ def build_index() -> dict[str, Any]:
         if listed is None:
             continue
         item = dict(listed["item"])
+        item["icon"] = _index_icon(listed)
         if extension_id not in present:
             item["publication_status"] = "deprecated"
         # When the extension first entered the catalog, and when this release did.
@@ -871,6 +977,12 @@ def main(argv: list[str] | None = None) -> int:
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--check", action="store_true", help="validate a pull request")
     mode.add_argument("--publish", action="store_true", help="record new releases, then write the index")
+    parser.add_argument(
+        "--records-only",
+        action="store_true",
+        help="with --publish: record new releases and icons but do not write the index "
+        "(the publish job commits them first, so the index pins each icon to its commit)",
+    )
     parser.add_argument("--base", help="git ref the pull request targets")
     parser.add_argument("--submitter", help="GitHub login that opened the pull request")
     args = parser.parse_args(argv)
@@ -892,6 +1004,8 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"Withdrew {path}")
             for problem in report.problems:
                 print(f"::warning::{problem}")
+            if args.records_only:
+                return 0
         text = render(build_index())
     except CatalogError as exc:
         print(f"Catalog check failed:\n{exc}", file=sys.stderr)
