@@ -1,0 +1,52 @@
+{
+  "extension_id": "flowsteward.file-transfer",
+  "version": "0.2.1",
+  "repository": "https://github.com/Flow-Steward/ext-file-transfer-sftp",
+  "tag": "v0.2.1",
+  "published_at": "2026-10-16T09:45:14Z",
+  "item": {
+    "extension_id": "flowsteward.file-transfer",
+    "version": "0.2.1",
+    "name": "File Transfer",
+    "summary": "Move files over FTP, FTPS, SFTP, S3-compatible storage and Dropbox using Flow Steward artifact grants.",
+    "description": "Streams opaque files over FTP, explicit FTPS, SFTP, S3-compatible storage and Dropbox using Flow Steward artifact grants.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "file-transfer",
+      "ftp",
+      "ftps",
+      "sftp",
+      "s3",
+      "dropbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/tree/v0.2.1",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.2.1/flowsteward.file-transfer-0.2.1-linux-amd64.zip",
+    "release_zip_bytes": 26566950,
+    "release_zip_sha256": "4b7e09a87c73b97796345b0f80c875e83a5739805c81262b923a6c16e36d4230",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.2.1/flowsteward.file-transfer-0.2.1-linux-amd64.zip",
+        "release_zip_bytes": 26566950,
+        "release_zip_sha256": "4b7e09a87c73b97796345b0f80c875e83a5739805c81262b923a6c16e36d4230"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.2.1/flowsteward.file-transfer-0.2.1-linux-arm64.zip",
+        "release_zip_bytes": 25956856,
+        "release_zip_sha256": "78eb2a39d773879481c076a12677afa7a1ec3bd5ab9659279891f7c373e5432d"
+      }
+    }
+  }
+}
