@@ -93,6 +93,11 @@ the previous version stays listed.
   uploaded archive, as WordPress installs any plugin;
 - a release whose `extension.yaml` names another id or version than the entry and
   the tag, or whose `extension-descriptor.yaml` disagrees with it;
+- a release whose `extension.yaml` does not declare
+  `runtime.contract_version: extension_host_v2`, the one host contract Flow
+  Steward 1.0 runs (build it on `flowsteward-extension-sdk` 0.4.0 or later). A
+  release recorded before this check is kept in `releases/` as history but is no
+  longer listed; the extension is listed again from its next v2 release;
 - files outside the one top folder, symbolic links, `.env` and key files, a value
   under a key such as `password` or `api_key`;
 - a native executable in a single archive, or a per-target archive that carries

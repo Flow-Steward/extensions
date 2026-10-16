@@ -60,6 +60,9 @@ MANIFEST = "extension.yaml"
 DESCRIPTOR = "extension-descriptor.yaml"
 
 SCHEMA_VERSION = "extension_catalog/v1"
+# The one host contract Flow Steward 1.0 runs. A release built for another contract
+# is not recorded, and a record without it (an older release) is never listed.
+HOST_CONTRACT = "extension_host_v2"
 
 # Flow Steward's own ceilings (core/infrastructure/static_catalog/settings.py and
 # core/application/tooling/extensions/bundle_extension.py).
@@ -511,6 +514,13 @@ def inspect_archive(
         problems.append(f"{MANIFEST} declares extension_id '{declared_id}', not '{entry.extension_id}'")
     if declared_version != version:
         problems.append(f"{MANIFEST} declares version '{declared_version}' but the release tag is v{version}")
+    runtime = manifest.get("runtime") if isinstance(manifest.get("runtime"), dict) else {}
+    declared_contract = _text(runtime.get("contract_version"))
+    if declared_contract != HOST_CONTRACT:
+        problems.append(
+            f"declare runtime.contract_version: {HOST_CONTRACT} in {MANIFEST} and build on "
+            f"flowsteward-extension-sdk 0.4.0 or later (got '{declared_contract or 'nothing'}')"
+        )
     if not name or name == entry.extension_id:
         problems.append("display_name must be a readable title, not the extension id")
     if len(description) < MIN_DESCRIPTION_CHARS:
@@ -614,6 +624,7 @@ def fetch_release(
         "version": version,
         "repository": entry.repository,
         "tag": tag,
+        "host_contract": HOST_CONTRACT,
         "published_at": _now(),
         "item": item,
     }
@@ -641,8 +652,16 @@ def load_records() -> dict[str, dict[str, dict[str, Any]]]:
 
 
 def listed_record(versions: dict[str, dict[str, Any]]) -> dict[str, Any] | None:
-    """The newest recorded release that was not withdrawn."""
-    live = [version for version, record in versions.items() if not record.get("withdrawn")]
+    """The newest recorded release that was not withdrawn and runs on this host contract.
+
+    A record from before the contract was recorded is an older host contract: it
+    stays in releases/ as history but is never listed again.
+    """
+    live = [
+        version
+        for version, record in versions.items()
+        if not record.get("withdrawn") and record.get("host_contract") == HOST_CONTRACT
+    ]
     return versions[max(live, key=_semver_key)] if live else None
 
 

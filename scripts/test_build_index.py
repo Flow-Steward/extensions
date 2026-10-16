@@ -34,6 +34,7 @@ def _manifest(**overrides) -> dict:
         },
         "features": ["tool", "action"],
         "required_scopes": ["extension:invoke", "artifact:write"],
+        "runtime": {"contract_version": "extension_host_v2"},
     }
     manifest.update(overrides)
     return manifest
@@ -195,6 +196,11 @@ def test_every_field_is_derived_from_the_manifest_in_the_release():
         (_zip(_manifest(), extra={".env": "TOKEN=1\n"}), "key and environment files"),
         (_zip(_manifest(), extra={"k.txt": "-----BEGIN RSA PRIVATE KEY-----\n"}), "private key"),
         (_zip(_manifest(), extra={"bin/linux-amd64/tool": "x"}), "one archive per runtime target"),
+        (_zip(_manifest(runtime={})), "declare runtime.contract_version: extension_host_v2"),
+        (
+            _zip(_manifest(runtime={"contract_version": "extension_host_v1"})),
+            "(got 'extension_host_v1')",
+        ),
         (
             _zip(
                 _manifest(),
@@ -620,3 +626,53 @@ def test_a_target_archive_declaring_no_executable_may_not_carry_one():
     data = _wheel_zip("linux-arm64", [_ARM_WHEEL], binary=_elf("linux-arm64"))
     with pytest.raises(builder.CatalogError, match="declares no native_executable"):
         _inspect_native(data, "linux-arm64")
+
+
+# --- the host contract ---------------------------------------------------------------------
+
+
+def test_a_release_records_the_host_contract_it_was_built_for(repo):
+    github = FakeGitHub()
+    github.release(SLUG, "1.0.0", _zip(_manifest()))
+    _entry(repo)
+
+    builder.publish(github=github)
+
+    record = json.loads((repo / "releases" / "acme.mailbox" / "1.0.0.json").read_text())
+    assert record["host_contract"] == "extension_host_v2"
+
+
+def test_a_record_from_an_older_host_contract_is_never_listed(repo):
+    github = FakeGitHub()
+    github.release(SLUG, "1.0.0", _zip(_manifest()))
+    _entry(repo)
+    builder.publish(github=github)
+    path = repo / "releases" / "acme.mailbox" / "1.0.0.json"
+    older = json.loads(path.read_text())
+    del older["host_contract"]
+    path.write_text(json.dumps(older))
+
+    assert builder.build_index()["items"] == []
+
+    github.release(SLUG, "1.1.0", _zip(_manifest(version="1.1.0")))
+    builder.publish(github=github)
+
+    [item] = builder.build_index()["items"]
+    assert item["version"] == "1.1.0"
+
+
+def test_a_release_for_another_host_contract_is_not_recorded(repo):
+    github = FakeGitHub()
+    github.release(SLUG, "1.0.0", _zip(_manifest()))
+    _entry(repo)
+    builder.publish(github=github)
+    github.release(
+        SLUG, "1.1.0", _zip(_manifest(version="1.1.0", runtime={"contract_version": "extension_host_v1"}))
+    )
+
+    report = builder.publish(github=github)
+
+    assert report.recorded == []
+    assert any("extension_host_v1" in problem for problem in report.problems)
+    [item] = builder.build_index()["items"]
+    assert item["version"] == "1.0.0"
