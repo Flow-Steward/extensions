@@ -748,3 +748,22 @@ def test_records_only_writes_no_index(repo, monkeypatch):
     monkeypatch.setattr(builder, "GitHubApi", FakeGitHub)
     assert builder.main(["--publish", "--records-only"]) == 0
     assert not (repo / "index.json").exists()
+
+
+@pytest.mark.parametrize(
+    ("icon", "rule"),
+    [
+        (None, "add icon.png (the extension's logo) next to extension.yaml"),
+        (b"GIF89a not a png", "icon.png is not a PNG"),
+        (_png(128, 64), "icon.png must be square, 32–512 px (is 128x64)"),
+        (_png(16, 16), "icon.png must be square, 32–512 px (is 16x16)"),
+        (_png(1024, 1024), "icon.png must be square, 32–512 px (is 1024x1024)"),
+        (_png() + b"\0" * 102400, "icon.png is larger than 102400 bytes"),
+    ],
+    ids=["missing", "not-png", "not-square", "too-small", "too-large", "over-100kb"],
+)
+def test_an_invalid_logo_is_refused_with_the_extension_and_the_rule(icon, rule):
+    with pytest.raises(builder.CatalogError) as raised:
+        _inspect(_zip(_manifest(), icon=icon))
+
+    assert f"acme.mailbox 1.0.0: {rule}" in str(raised.value)

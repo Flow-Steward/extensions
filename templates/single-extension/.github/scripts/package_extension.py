@@ -17,6 +17,7 @@ only the wheels that install on it and a .fs-package.yaml naming the target.
 from __future__ import annotations
 
 import re
+import struct
 import subprocess
 import sys
 import zipfile
@@ -32,6 +33,11 @@ REPOSITORY_TOOLING = {".github", "dist"}
 TARGETS = {"linux-amd64": "x86_64", "linux-arm64": "aarch64"}
 MAX_ZIP_BYTES = 50 * 1024 * 1024
 MAX_UNPACKED_BYTES = 150 * 1024 * 1024
+# The logo Flow Steward shows: icon.png next to extension.yaml (the catalog's and the
+# installer's rule; replace the file with your own logo).
+ICON_FILE = "icon.png"
+MAX_ICON_BYTES = 100 * 1024
+MIN_ICON_PX, MAX_ICON_PX = 32, 512
 
 
 def manifest_field(name: str) -> str:
@@ -55,6 +61,20 @@ def shipped_files() -> list[str]:
             sys.exit("bin/ needs one archive per runtime target; see the catalog README")
         files.append(name)
     return files
+
+
+def icon_problem(data: bytes | None) -> str:
+    """Why icon.png cannot be the extension's logo, or "" when it can."""
+    if data is None:
+        return f"add {ICON_FILE} (the extension's logo) next to extension.yaml and commit it"
+    if len(data) < 24 or data[:8] != b"\x89PNG\r\n\x1a\n" or data[12:16] != b"IHDR":
+        return f"{ICON_FILE} is not a PNG"
+    width, height = struct.unpack(">II", data[16:24])
+    if width != height or not MIN_ICON_PX <= width <= MAX_ICON_PX:
+        return f"{ICON_FILE} must be square, {MIN_ICON_PX}-{MAX_ICON_PX} px (is {width}x{height})"
+    if len(data) > MAX_ICON_BYTES:
+        return f"{ICON_FILE} is larger than {MAX_ICON_BYTES} bytes"
+    return ""
 
 
 def _wheel_platforms(name: str) -> list[str]:
@@ -90,6 +110,9 @@ def main() -> int:
     folder = extension_id.replace(".", "_").replace("-", "_")
     (ROOT / "dist").mkdir(exist_ok=True)
     files = shipped_files()
+    problem = icon_problem((ROOT / ICON_FILE).read_bytes() if ICON_FILE in files else None)
+    if problem:
+        sys.exit(f"{extension_id} {version}: {problem}")
     wheels = [name for name in files if PurePosixPath(name).parts[0] == "wheels" and name.endswith(".whl")]
     per_target = any("any" not in _wheel_platforms(PurePosixPath(name).name) for name in wheels)
     if not per_target:
