@@ -1,0 +1,60 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-oceanbase",
+  "version": "1.1.0",
+  "repository": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox",
+  "tag": "v1.1.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.data-connector-mcp-toolbox-oceanbase/1.1.0.png",
+    "sha256": "52902252a982db4bda8cc5fa023e2d3d16b98ac74a9290eb5e9b0a4f304812de",
+    "bytes": 5019,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-10-17T06:03:05Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-oceanbase",
+    "version": "1.1.0",
+    "name": "OceanBase (Google MCP Toolbox)",
+    "summary": "Query OceanBase from workflows through Google MCP Toolbox.",
+    "description": "Connect workspace datasets to Google MCP Toolbox database prebuilts through the Flow Steward extension runtime.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "database",
+      "dataset",
+      "google-mcp-toolbox",
+      "oceanbase",
+      "postgres"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/tree/v1.1.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.1.0/flowsteward.data-connector-mcp-toolbox-oceanbase-1.1.0-linux-amd64.zip",
+    "release_zip_bytes": 9498522,
+    "release_zip_sha256": "3ee6c345e3d00a2c7667ed7b6844ef0da2eadf7fc099deadc94279b3526ee40b",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.1.0/flowsteward.data-connector-mcp-toolbox-oceanbase-1.1.0-linux-amd64.zip",
+        "release_zip_bytes": 9498522,
+        "release_zip_sha256": "3ee6c345e3d00a2c7667ed7b6844ef0da2eadf7fc099deadc94279b3526ee40b"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.1.0/flowsteward.data-connector-mcp-toolbox-oceanbase-1.1.0-linux-arm64.zip",
+        "release_zip_bytes": 8597361,
+        "release_zip_sha256": "d7ce018cacf23a20bafbc5c0670375b1a83755856468a79a90473869714f7d80"
+      }
+    }
+  }
+}

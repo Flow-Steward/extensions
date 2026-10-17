@@ -1,0 +1,60 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-sqlite",
+  "version": "1.1.0",
+  "repository": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox",
+  "tag": "v1.1.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.data-connector-mcp-toolbox-sqlite/1.1.0.png",
+    "sha256": "52902252a982db4bda8cc5fa023e2d3d16b98ac74a9290eb5e9b0a4f304812de",
+    "bytes": 5019,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-10-17T06:03:16Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-sqlite",
+    "version": "1.1.0",
+    "name": "SQLite (Google MCP Toolbox)",
+    "summary": "Query a SQLite database file from workflows through Google MCP Toolbox.",
+    "description": "Connect workspace datasets to Google MCP Toolbox database prebuilts through the Flow Steward extension runtime.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "database",
+      "dataset",
+      "google-mcp-toolbox",
+      "postgres",
+      "sqlite"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/tree/v1.1.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.1.0/flowsteward.data-connector-mcp-toolbox-sqlite-1.1.0-linux-amd64.zip",
+    "release_zip_bytes": 10979237,
+    "release_zip_sha256": "b96d2108b21babda70fd8141da1545b91f8c346d3c3d51a86cf2cece8789afe0",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.1.0/flowsteward.data-connector-mcp-toolbox-sqlite-1.1.0-linux-amd64.zip",
+        "release_zip_bytes": 10979237,
+        "release_zip_sha256": "b96d2108b21babda70fd8141da1545b91f8c346d3c3d51a86cf2cece8789afe0"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.1.0/flowsteward.data-connector-mcp-toolbox-sqlite-1.1.0-linux-arm64.zip",
+        "release_zip_bytes": 10003898,
+        "release_zip_sha256": "337042a16baa3ccbfdba714df3915fdc670f62a1f97aef066feae016b8b01b8c"
+      }
+    }
+  }
+}
