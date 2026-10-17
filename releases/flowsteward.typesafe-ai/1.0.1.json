@@ -34,5 +34,13 @@
     "release_zip_url": "https://github.com/Flow-Steward/ext-typesafe-ai/releases/download/v1.0.1/flowsteward.typesafe-ai-1.0.1.zip",
     "release_zip_bytes": 19783,
     "release_zip_sha256": "6de8fc8916749a0682b6ebb6975189555f0a2af3e21d9a0de8ca21f96bc13dcc"
+  },
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.typesafe-ai/1.0.1.png",
+    "sha256": "f3aa3c7b2856a53c358d0dfc2acae8e3fe1e53954a12ebb6639a1fe07eac7e2a",
+    "bytes": 2657,
+    "mime_type": "image/png",
+    "size": "128x128"
   }
 }
