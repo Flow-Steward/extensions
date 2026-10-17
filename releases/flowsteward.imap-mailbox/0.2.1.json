@@ -1,0 +1,45 @@
+{
+  "extension_id": "flowsteward.imap-mailbox",
+  "version": "0.2.1",
+  "repository": "https://github.com/Flow-Steward/ext-email-imap",
+  "tag": "v0.2.1",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.imap-mailbox/0.2.1.png",
+    "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
+    "bytes": 4915,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-10-17T07:56:00Z",
+  "item": {
+    "extension_id": "flowsteward.imap-mailbox",
+    "version": "0.2.1",
+    "name": "Generic IMAP Mailbox",
+    "summary": "Connect generic IMAP mailboxes to workflows without provider-specific OAuth.",
+    "description": "Read and explicitly post-process project-scoped generic IMAP mailboxes.",
+    "categories": [
+      "messaging"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "imap",
+      "email",
+      "mailbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-email-imap/tree/v0.2.1",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-email-imap/releases/download/v0.2.1/flowsteward.imap-mailbox-0.2.1.zip",
+    "release_zip_bytes": 94687,
+    "release_zip_sha256": "772e3cb33600fe2e3b1e4042dc7e86b573a11fbb4d3e1a003bdcd2214145f452"
+  }
+}
