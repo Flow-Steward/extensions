@@ -10,7 +10,7 @@ on:
     - cron: "17 * * * *"
   # An extension's Release workflow can announce a new release right away
   # (POST /repos/Flow-Steward/extensions/dispatches, event_type extension-released;
-  # needs a token with Actions write on this repository, stored in that repo).
+  # needs a token with Contents write on this repository, stored in that repo).
   repository_dispatch:
     types: [extension-released]
   push:

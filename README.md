@@ -94,6 +94,29 @@ every five minutes and publishes each new release that passes the same checks â€
 request needed. A release that fails is reported in the catalog's Actions log and
 the previous version stays listed.
 
+### Immediate delivery from Flow Steward maintained repositories
+
+The catalog also accepts `repository_dispatch` with event type
+`extension-released`. Maintained extension release workflows may send it after
+all release assets have been published. The catalog still scans its registered
+repositories and validates their assets; the event payload cannot add or alter
+catalog entries.
+
+The sender uses the Actions secret `CATALOG_DISPATCH_TOKEN`: a fine-grained token
+scoped only to `Flow-Steward/extensions`, with **Contents: write** on that target
+repository. Its ordinary `GITHUB_TOKEN` reads the source release only and cannot
+replace this cross-repository credential. An organization secret can make the
+token available to selected maintained extension repositories. Never place its
+value in a workflow, release archive, log or patch.
+
+A failed notification must be visible and must leave the published release and
+its assets intact. In the maintained workflows, use **Run workflow** on the
+source repository's default branch and supply the existing `release_tag` to
+retry notification only; the tag check, CI and release-creation jobs are skipped.
+Do not retag, delete or rebuild a release just to retry catalog delivery.
+Polling remains the fallback, including for public authors who do not have a
+catalog dispatch credential; GitHub can delay scheduled runs.
+
 ### What the checks refuse
 
 - an entry that is not exactly `repository: https://github.com/<owner>/<repo>`;
