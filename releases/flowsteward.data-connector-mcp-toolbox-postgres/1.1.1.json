@@ -1,0 +1,62 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-postgres",
+  "version": "1.1.1",
+  "repository": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox",
+  "tag": "v1.1.1",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.data-connector-mcp-toolbox-postgres/1.1.1.png",
+    "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
+    "bytes": 4915,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-10-17T08:11:12Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-postgres",
+    "version": "1.1.1",
+    "name": "PostgreSQL (Google MCP Toolbox)",
+    "summary": "Query PostgreSQL, AlloyDB and Cloud SQL for PostgreSQL from workflows through Google MCP Toolbox.",
+    "description": "Connect workspace datasets to Google MCP Toolbox database prebuilts through the Flow Steward extension runtime.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "alloydb-omni",
+      "alloydb-postgres",
+      "cloud-sql-postgres",
+      "database",
+      "dataset",
+      "google-mcp-toolbox",
+      "postgres"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/tree/v1.1.1",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.1.1/flowsteward.data-connector-mcp-toolbox-postgres-1.1.1-linux-amd64.zip",
+    "release_zip_bytes": 11424317,
+    "release_zip_sha256": "ee10915e72ab17385aa15a1a018665ee4c7debc033b5f9f334b9533a40232167",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.1.1/flowsteward.data-connector-mcp-toolbox-postgres-1.1.1-linux-amd64.zip",
+        "release_zip_bytes": 11424317,
+        "release_zip_sha256": "ee10915e72ab17385aa15a1a018665ee4c7debc033b5f9f334b9533a40232167"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.1.1/flowsteward.data-connector-mcp-toolbox-postgres-1.1.1-linux-arm64.zip",
+        "release_zip_bytes": 10348961,
+        "release_zip_sha256": "f851a800dc454fbb62e6d19e11860181ef9ba901072a17767d49b29efeea9524"
+      }
+    }
+  }
+}

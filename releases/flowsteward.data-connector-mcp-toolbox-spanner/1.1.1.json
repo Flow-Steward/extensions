@@ -1,0 +1,61 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-spanner",
+  "version": "1.1.1",
+  "repository": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox",
+  "tag": "v1.1.1",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.data-connector-mcp-toolbox-spanner/1.1.1.png",
+    "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
+    "bytes": 4915,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-10-17T08:11:22Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-spanner",
+    "version": "1.1.1",
+    "name": "Spanner (Google MCP Toolbox)",
+    "summary": "Query Google Cloud Spanner with GoogleSQL or the PostgreSQL dialect from workflows through Google MCP Toolbox.",
+    "description": "Connect workspace datasets to Google MCP Toolbox database prebuilts through the Flow Steward extension runtime.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "database",
+      "dataset",
+      "google-mcp-toolbox",
+      "postgres",
+      "spanner",
+      "spanner-postgres"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/tree/v1.1.1",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.1.1/flowsteward.data-connector-mcp-toolbox-spanner-1.1.1-linux-amd64.zip",
+    "release_zip_bytes": 13085072,
+    "release_zip_sha256": "e24c6252fc01dfeac0d45056279d1a049a64559eefd987c70f7c108ee7b6b251",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.1.1/flowsteward.data-connector-mcp-toolbox-spanner-1.1.1-linux-amd64.zip",
+        "release_zip_bytes": 13085072,
+        "release_zip_sha256": "e24c6252fc01dfeac0d45056279d1a049a64559eefd987c70f7c108ee7b6b251"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.1.1/flowsteward.data-connector-mcp-toolbox-spanner-1.1.1-linux-arm64.zip",
+        "release_zip_bytes": 11818760,
+        "release_zip_sha256": "f04a0cadff5c70f9e9f9dc5a6df874a4572a0aa06ac95a4399f673f083bf74ea"
+      }
+    }
+  }
+}
