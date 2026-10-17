@@ -1,0 +1,46 @@
+{
+  "extension_id": "flowsteward.typesafe-ai",
+  "version": "1.0.2",
+  "repository": "https://github.com/Flow-Steward/ext-typesafe-ai",
+  "tag": "v1.0.2",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.typesafe-ai/1.0.2.png",
+    "sha256": "f3aa3c7b2856a53c358d0dfc2acae8e3fe1e53954a12ebb6639a1fe07eac7e2a",
+    "bytes": 2657,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-10-17T07:34:22Z",
+  "item": {
+    "extension_id": "flowsteward.typesafe-ai",
+    "version": "1.0.2",
+    "name": "TypeSafe AI (JEV)",
+    "summary": "Fast structured decisions through JEV with reusable project connections.",
+    "description": "Evaluate text or structured state with TypeSafe JEV using Choice, Score and Noul questions and project-scoped connections.",
+    "categories": [
+      "ai"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Create a TypeSafe project connection and API key. The release also includes an optional workflow example to import separately.",
+    "tags": [
+      "typesafe",
+      "jev",
+      "classification",
+      "routing",
+      "scoring"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-typesafe-ai/tree/v1.0.2",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-typesafe-ai/releases/download/v1.0.2/flowsteward.typesafe-ai-1.0.2.zip",
+    "release_zip_bytes": 20647,
+    "release_zip_sha256": "f45795034e1d9d224e43853d07f2d4c1a58d88b53121e926a89c958c6cb0a93f"
+  }
+}
