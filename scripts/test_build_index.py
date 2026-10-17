@@ -767,3 +767,25 @@ def test_an_invalid_logo_is_refused_with_the_extension_and_the_rule(icon, rule):
         _inspect(_zip(_manifest(), icon=icon))
 
     assert f"acme.mailbox 1.0.0: {rule}" in str(raised.value)
+
+
+def test_the_frequent_run_records_new_releases_without_downloading_listed_ones(repo):
+    github = FakeGitHub()
+    github.release(SLUG, "1.0.0", _zip(_manifest()))
+    _entry(repo)
+    builder.publish(github=github)
+    listed_url = builder.build_index()["items"][0]["release_zip_url"]
+    github.release(SLUG, "1.1.0", _zip(_manifest(version="1.1.0")))
+    downloaded: list[str] = []
+    original = github.download
+
+    def tracking_download(url: str, *, max_bytes: int) -> bytes:
+        downloaded.append(url)
+        return original(url, max_bytes=max_bytes)
+
+    github.download = tracking_download  # type: ignore[method-assign]
+
+    report = builder.publish(github=github, recheck=False)
+
+    assert report.recorded == ["releases/acme.mailbox/1.1.0.json"]
+    assert listed_url not in downloaded

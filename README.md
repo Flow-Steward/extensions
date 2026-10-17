@@ -47,7 +47,7 @@ only holds a link to it, and publishes the author's releases automatically.
    owning organization. The **Validate submission** check downloads your latest
    release and tells you what to fix.
 
-After the merge your latest release is listed within the hour.
+After the merge your latest release is listed within minutes.
 
 ### An extension with a native executable
 
@@ -90,7 +90,7 @@ or `ext-data-connector-mcp-toolbox`, and tag them with the topic
 ### New versions
 
 Push a new tag in your repository. The catalog checks every listed repository
-every hour and publishes each new release that passes the same checks — no pull
+every five minutes and publishes each new release that passes the same checks — no pull
 request needed. A release that fails is reported in the catalog's Actions log and
 the previous version stays listed.
 
@@ -125,8 +125,8 @@ the previous version stays listed.
 When a release is first published, its asset's URL, size and SHA-256 are recorded
 in `releases/<extension_id>/<version>.json` and never change. Flow Steward
 verifies that digest, and that the archive's own `extension.yaml` names the
-release, before it installs anything. Every hour the catalog downloads the listed
-asset again: if its bytes changed, that release is withdrawn and the previous one
+release, before it installs anything. Every hour (the five-minute runs only record new releases) the catalog downloads
+the listed asset again: if its bytes changed, that release is withdrawn and the previous one
 is listed instead. Removing an entry keeps the extension listed as **deprecated**.
 
 ## What the catalog shows, and where it comes from

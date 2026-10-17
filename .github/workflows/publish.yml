@@ -4,7 +4,15 @@ on:
   # Authors publish by making a GitHub Release in their own repository; the
   # catalog picks it up on the next run.
   schedule:
+    # New releases appear in the index within minutes; the hourly run also
+    # downloads every listed asset again and withdraws one whose bytes changed.
+    - cron: "*/5 * * * *"
     - cron: "17 * * * *"
+  # An extension's Release workflow can announce a new release right away
+  # (POST /repos/Flow-Steward/extensions/dispatches, event_type extension-released;
+  # needs a token with Actions write on this repository, stored in that repo).
+  repository_dispatch:
+    types: [extension-released]
   push:
     branches: [main]
     paths:
@@ -36,7 +44,9 @@ jobs:
       - name: Record new releases and their icons
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: python scripts/build_index.py --publish --records-only
+          # Only the hourly run re-downloads listed assets.
+          SKIP_RECHECK: ${{ github.event_name == 'schedule' && github.event.schedule != '17 * * * *' }}
+        run: python scripts/build_index.py --publish --records-only ${{ env.SKIP_RECHECK == 'true' && '--skip-recheck' || '' }}
       - name: Commit the release records first
         # The index pins each icon URL to the commit that added it, so the
         # records and icons are committed before the index is built.

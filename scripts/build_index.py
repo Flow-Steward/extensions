@@ -783,8 +783,11 @@ def _recheck(entry: Entry, versions: dict[str, dict[str, Any]], github: GitHub, 
             return
 
 
-def publish(*, github: GitHub) -> PublishReport:
+def publish(*, github: GitHub, recheck: bool = True) -> PublishReport:
     """Record every entry's new releases, and withdraw listed assets whose bytes changed.
+
+    ``recheck=False`` only records new releases: the frequent run stays cheap, and the
+    hourly run downloads every listed asset again.
 
     One author's broken release never blocks another's: problems are collected
     and reported, and that release is simply not recorded.
@@ -801,7 +804,8 @@ def publish(*, github: GitHub) -> PublishReport:
             report.problems.append(f"{entry.extension_id}: {reserved}")
             continue
         known = records.get(entry.extension_id, {})
-        _recheck(entry, known, github, report)
+        if recheck:
+            _recheck(entry, known, github, report)
         try:
             candidates = release_candidates(github.releases(entry.slug))
         except (CatalogError, OSError) as exc:
@@ -978,6 +982,11 @@ def main(argv: list[str] | None = None) -> int:
     mode.add_argument("--check", action="store_true", help="validate a pull request")
     mode.add_argument("--publish", action="store_true", help="record new releases, then write the index")
     parser.add_argument(
+        "--skip-recheck",
+        action="store_true",
+        help="with --publish: record new releases without downloading the listed ones again",
+    )
+    parser.add_argument(
         "--records-only",
         action="store_true",
         help="with --publish: record new releases and icons but do not write the index "
@@ -997,7 +1006,7 @@ def main(argv: list[str] | None = None) -> int:
             print("Catalog OK.")
             return 0
         if args.publish:
-            report = publish(github=github)
+            report = publish(github=github, recheck=not args.skip_recheck)
             for path in report.recorded:
                 print(f"Recorded {path}")
             for path in report.withdrawn:
