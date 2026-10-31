@@ -1,0 +1,50 @@
+{
+  "extension_id": "flowsteward.whatsapp",
+  "version": "0.1.0",
+  "repository": "https://github.com/Flow-Steward/ext-messaging-whatsapp",
+  "tag": "v0.1.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.whatsapp/0.1.0.png",
+    "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
+    "bytes": 4915,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-10-31T17:50:01Z",
+  "item": {
+    "extension_id": "flowsteward.whatsapp",
+    "version": "0.1.0",
+    "name": "WhatsApp",
+    "summary": "Send WhatsApp messages and start workflows from incoming WhatsApp messages.",
+    "description": "Sends WhatsApp messages, templates, reactions and files through the WhatsApp Business Cloud API and starts workflows from incoming messages and delivery statuses.",
+    "categories": [
+      "messaging"
+    ],
+    "capabilities": [
+      "notify",
+      "action",
+      "ingress_event"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "event:subscribe",
+      "extension:invoke",
+      "notify:dispatch",
+      "read:events"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "whatsapp",
+      "notifications",
+      "messaging"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-messaging-whatsapp/tree/v0.1.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-messaging-whatsapp/releases/download/v0.1.0/flowsteward.whatsapp-0.1.0.zip",
+    "release_zip_bytes": 109854,
+    "release_zip_sha256": "1a3be9a357cdb0afed6f9e2ba8f13f034fdeef0306cc95e17d822a7f5a0e7ee4"
+  }
+}
