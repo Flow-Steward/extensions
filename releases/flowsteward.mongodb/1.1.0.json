@@ -1,0 +1,56 @@
+{
+  "extension_id": "flowsteward.mongodb",
+  "version": "1.1.0",
+  "repository": "https://github.com/Flow-Steward/ext-data-mongodb",
+  "tag": "v1.1.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.mongodb/1.1.0.png",
+    "sha256": "362be04d8a9d58c651bf3a10c02776ccf01b5240aecd179170f34beee41b40c6",
+    "bytes": 24736,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-02T18:42:13Z",
+  "item": {
+    "extension_id": "flowsteward.mongodb",
+    "version": "1.1.0",
+    "name": "MongoDB",
+    "summary": "Document CRUD and read-only aggregation.",
+    "description": "MongoDB Dataset JSON reads, collection discovery, and guarded workflow CRUD through minimal native Toolbox.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "dataset_connector"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "mongodb",
+      "toolbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-mongodb/tree/v1.1.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-mongodb/releases/download/v1.1.0/flowsteward.mongodb-1.1.0-linux-amd64.zip",
+    "release_zip_bytes": 10674908,
+    "release_zip_sha256": "4b20ce9eafedc21bfae27f2ff247b63540d1f6ecb23039995910eb016f7f661d",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-mongodb/releases/download/v1.1.0/flowsteward.mongodb-1.1.0-linux-amd64.zip",
+        "release_zip_bytes": 10674908,
+        "release_zip_sha256": "4b20ce9eafedc21bfae27f2ff247b63540d1f6ecb23039995910eb016f7f661d"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-mongodb/releases/download/v1.1.0/flowsteward.mongodb-1.1.0-linux-arm64.zip",
+        "release_zip_bytes": 9652988,
+        "release_zip_sha256": "a163dcf6950d51423e548ec5ff574a871d8a91dfa3f414c0900ec36e0391fc24"
+      }
+    }
+  }
+}
