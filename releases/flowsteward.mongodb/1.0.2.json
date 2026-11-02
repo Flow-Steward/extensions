@@ -1,0 +1,55 @@
+{
+  "extension_id": "flowsteward.mongodb",
+  "version": "1.0.2",
+  "repository": "https://github.com/Flow-Steward/ext-data-mongodb",
+  "tag": "v1.0.2",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.mongodb/1.0.2.png",
+    "sha256": "362be04d8a9d58c651bf3a10c02776ccf01b5240aecd179170f34beee41b40c6",
+    "bytes": 24736,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-02T12:40:12Z",
+  "item": {
+    "extension_id": "flowsteward.mongodb",
+    "version": "1.0.2",
+    "name": "MongoDB",
+    "summary": "Document CRUD and read-only aggregation.",
+    "description": "MongoDB document reads, writes and read-only aggregation through a minimal Google MCP Toolbox build.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "mongodb",
+      "toolbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-mongodb/tree/v1.0.2",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-mongodb/releases/download/v1.0.2/flowsteward.mongodb-1.0.2-linux-amd64.zip",
+    "release_zip_bytes": 10657849,
+    "release_zip_sha256": "acfc3ab8d44d23679521d88e93c808d3fa6222cf300f7bbcc271f7d541e61b1b",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-mongodb/releases/download/v1.0.2/flowsteward.mongodb-1.0.2-linux-amd64.zip",
+        "release_zip_bytes": 10657849,
+        "release_zip_sha256": "acfc3ab8d44d23679521d88e93c808d3fa6222cf300f7bbcc271f7d541e61b1b"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-mongodb/releases/download/v1.0.2/flowsteward.mongodb-1.0.2-linux-arm64.zip",
+        "release_zip_bytes": 9635289,
+        "release_zip_sha256": "71b260d77bd0e71d1c08e9dba5c71c1362e74ab436fc03188f8027e821c7cbcb"
+      }
+    }
+  }
+}

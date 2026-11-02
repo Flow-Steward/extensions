@@ -1,0 +1,55 @@
+{
+  "extension_id": "flowsteward.valkey",
+  "version": "1.0.1",
+  "repository": "https://github.com/Flow-Steward/ext-data-valkey",
+  "tag": "v1.0.1",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.valkey/1.0.1.png",
+    "sha256": "c880ad4a19f3941882808347663b5be75de67ccb088d186cd773a6508b24ff12",
+    "bytes": 15138,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-02T12:40:47Z",
+  "item": {
+    "extension_id": "flowsteward.valkey",
+    "version": "1.0.1",
+    "name": "Valkey",
+    "summary": "Workflow state, deduplication and bounded queues.",
+    "description": "Read and write project-scoped keys, hashes, counters and lists through Google MCP Toolbox.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "valkey",
+      "toolbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-valkey/tree/v1.0.1",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-valkey/releases/download/v1.0.1/flowsteward.valkey-1.0.1-linux-amd64.zip",
+    "release_zip_bytes": 10746474,
+    "release_zip_sha256": "bf0206224cae6a87df35a2d23f23d4e291aa103f26f5c14787a39d8d762ba15a",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-valkey/releases/download/v1.0.1/flowsteward.valkey-1.0.1-linux-amd64.zip",
+        "release_zip_bytes": 10746474,
+        "release_zip_sha256": "bf0206224cae6a87df35a2d23f23d4e291aa103f26f5c14787a39d8d762ba15a"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-valkey/releases/download/v1.0.1/flowsteward.valkey-1.0.1-linux-arm64.zip",
+        "release_zip_bytes": 9597970,
+        "release_zip_sha256": "4335dd23e683865b15a04b76eac88ca6b8da008fefe9d929c1e0767a240394ff"
+      }
+    }
+  }
+}

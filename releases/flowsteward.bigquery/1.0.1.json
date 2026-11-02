@@ -1,0 +1,55 @@
+{
+  "extension_id": "flowsteward.bigquery",
+  "version": "1.0.1",
+  "repository": "https://github.com/Flow-Steward/ext-data-bigquery",
+  "tag": "v1.0.1",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.bigquery/1.0.1.png",
+    "sha256": "f02f30a4af46c40aa2bee5c5822480d898d332944c92078504c323db0b74ff9b",
+    "bytes": 10716,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-02T12:39:22Z",
+  "item": {
+    "extension_id": "flowsteward.bigquery",
+    "version": "1.0.1",
+    "name": "BigQuery",
+    "summary": "Read rows (SELECT); insert, update, delete and merge data.",
+    "description": "Read BigQuery rows with SELECT and write data with parameterized INSERT, UPDATE, DELETE and MERGE workflow actions.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "bigquery",
+      "toolbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-bigquery/tree/v1.0.1",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.0.1/flowsteward.bigquery-1.0.1-linux-amd64.zip",
+    "release_zip_bytes": 11576013,
+    "release_zip_sha256": "63ae2ba3a420fa22cb950bb2f80e46d96686162ff3d252588b4e569d8a11df7b",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.0.1/flowsteward.bigquery-1.0.1-linux-amd64.zip",
+        "release_zip_bytes": 11576013,
+        "release_zip_sha256": "63ae2ba3a420fa22cb950bb2f80e46d96686162ff3d252588b4e569d8a11df7b"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.0.1/flowsteward.bigquery-1.0.1-linux-arm64.zip",
+        "release_zip_bytes": 10472447,
+        "release_zip_sha256": "dd1d0b444f4370e455450bba0e042f53888810cd5d0ce686c6d000d0f243e112"
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "extension_id": "flowsteward.redis",
+  "version": "1.0.1",
+  "repository": "https://github.com/Flow-Steward/ext-data-redis",
+  "tag": "v1.0.1",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.redis/1.0.1.png",
+    "sha256": "300f2097a8ea1b2ce630e891cb69ff1550ead9cfa99d76c7f76eef9b89c7e88b",
+    "bytes": 9278,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-02T12:40:34Z",
+  "item": {
+    "extension_id": "flowsteward.redis",
+    "version": "1.0.1",
+    "name": "Redis",
+    "summary": "Workflow state, deduplication and bounded queues.",
+    "description": "Read and write project-scoped keys, hashes, counters and lists through Google MCP Toolbox.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "redis",
+      "toolbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-redis/tree/v1.0.1",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-redis/releases/download/v1.0.1/flowsteward.redis-1.0.1-linux-amd64.zip",
+    "release_zip_bytes": 10741202,
+    "release_zip_sha256": "0aa85742dac4ae3889b19359c5c997bb9b2f24ed318af925a7dd29e71864a223",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-redis/releases/download/v1.0.1/flowsteward.redis-1.0.1-linux-amd64.zip",
+        "release_zip_bytes": 10741202,
+        "release_zip_sha256": "0aa85742dac4ae3889b19359c5c997bb9b2f24ed318af925a7dd29e71864a223"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-redis/releases/download/v1.0.1/flowsteward.redis-1.0.1-linux-arm64.zip",
+        "release_zip_bytes": 9592698,
+        "release_zip_sha256": "ce4dd2f9eea51dc61a55e7116fc5b1f1fc7997325031d7ed2b3f9132c085e768"
+      }
+    }
+  }
+}

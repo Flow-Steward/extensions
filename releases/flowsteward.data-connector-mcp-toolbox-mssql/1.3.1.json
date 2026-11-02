@@ -1,0 +1,59 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-mssql",
+  "version": "1.3.1",
+  "repository": "https://github.com/Flow-Steward/ext-data-mssql",
+  "tag": "v1.3.1",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.data-connector-mcp-toolbox-mssql/1.3.1.png",
+    "sha256": "d2fcf18791449447c7ebe17cd5b0c55fed059aa84040ede1fe9d8c7ba4359f56",
+    "bytes": 46991,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-02T12:39:31Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-mssql",
+    "version": "1.3.1",
+    "name": "Microsoft SQL Server",
+    "summary": "Microsoft SQL Server dataset reads and parameterized workflow INSERT, UPDATE and DELETE.",
+    "description": "Connect Microsoft SQL Server datasets, inspect schemas, preview saved queries, and run bounded workflow writes.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "mssql",
+      "database",
+      "sql",
+      "dataset"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-mssql/tree/v1.3.1",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-mssql/releases/download/v1.3.1/flowsteward.data-connector-mcp-toolbox-mssql-1.3.1-linux-amd64.zip",
+    "release_zip_bytes": 10461829,
+    "release_zip_sha256": "04419de35754ba0557df091ec1aee8900da960e51ee6357999879a10ffdd79c4",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-mssql/releases/download/v1.3.1/flowsteward.data-connector-mcp-toolbox-mssql-1.3.1-linux-amd64.zip",
+        "release_zip_bytes": 10461829,
+        "release_zip_sha256": "04419de35754ba0557df091ec1aee8900da960e51ee6357999879a10ffdd79c4"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-mssql/releases/download/v1.3.1/flowsteward.data-connector-mcp-toolbox-mssql-1.3.1-linux-arm64.zip",
+        "release_zip_bytes": 9512923,
+        "release_zip_sha256": "2f562846909d139efa14f1ddeac7975b8d53a4291b6b8a5aa0f7a46e265a7239"
+      }
+    }
+  }
+}

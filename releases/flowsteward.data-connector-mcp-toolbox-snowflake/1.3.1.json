@@ -1,0 +1,58 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-snowflake",
+  "version": "1.3.1",
+  "repository": "https://github.com/Flow-Steward/ext-data-snowflake",
+  "tag": "v1.3.1",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.data-connector-mcp-toolbox-snowflake/1.3.1.png",
+    "sha256": "c3cfa52f6724430ba7566accf6859a92653e9821f75c1e73bd191d458c36f94a",
+    "bytes": 15826,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-02T12:39:54Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-snowflake",
+    "version": "1.3.1",
+    "name": "Snowflake",
+    "summary": "Snowflake dataset reads and workflow writes.",
+    "description": "Connect project-scoped Snowflake databases for saved queries, schema introspection and parameterized workflow writes.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "database",
+      "dataset",
+      "snowflake"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-snowflake/tree/v1.3.1",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-snowflake/releases/download/v1.3.1/flowsteward.data-connector-mcp-toolbox-snowflake-1.3.1-linux-amd64.zip",
+    "release_zip_bytes": 13934723,
+    "release_zip_sha256": "c41593c1ec86dad27f940eba135f4f2dee0c4208cbf0aba81e93c17529cec849",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-snowflake/releases/download/v1.3.1/flowsteward.data-connector-mcp-toolbox-snowflake-1.3.1-linux-amd64.zip",
+        "release_zip_bytes": 13934723,
+        "release_zip_sha256": "c41593c1ec86dad27f940eba135f4f2dee0c4208cbf0aba81e93c17529cec849"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-snowflake/releases/download/v1.3.1/flowsteward.data-connector-mcp-toolbox-snowflake-1.3.1-linux-arm64.zip",
+        "release_zip_bytes": 12640638,
+        "release_zip_sha256": "2de1dc12db5aa0995673688519694145880bb9bfbe8fee8cea9db1b6f13ad3ba"
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-postgres",
+  "version": "1.4.0",
+  "repository": "https://github.com/Flow-Steward/ext-data-postgres",
+  "tag": "v1.4.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.data-connector-mcp-toolbox-postgres/1.4.0.png",
+    "sha256": "dae95368aeef68d4efe1080c1fb83010ced4d51b78b8a1f9d7603ca8cfffd973",
+    "bytes": 24055,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-02T12:39:45Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-postgres",
+    "version": "1.4.0",
+    "name": "PostgreSQL",
+    "summary": "PostgreSQL dataset reads, parameterized SQL writes, and pgvector collections, document chunks and similarity search.",
+    "description": "Connect PostgreSQL datasets, inspect schemas, run saved read queries and workflow INSERT/UPDATE/DELETE, and store or search dense vectors using the same project connection.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "postgres",
+      "database",
+      "sql",
+      "dataset",
+      "pgvector",
+      "vector"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-postgres/tree/v1.4.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-postgres/releases/download/v1.4.0/flowsteward.data-connector-mcp-toolbox-postgres-1.4.0-linux-amd64.zip",
+    "release_zip_bytes": 11431801,
+    "release_zip_sha256": "91e83372f59432e84d91250b7f5c46f2adf59dc260d1f52a817c9b1c15c2458f",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-postgres/releases/download/v1.4.0/flowsteward.data-connector-mcp-toolbox-postgres-1.4.0-linux-amd64.zip",
+        "release_zip_bytes": 11431801,
+        "release_zip_sha256": "91e83372f59432e84d91250b7f5c46f2adf59dc260d1f52a817c9b1c15c2458f"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-postgres/releases/download/v1.4.0/flowsteward.data-connector-mcp-toolbox-postgres-1.4.0-linux-arm64.zip",
+        "release_zip_bytes": 10376880,
+        "release_zip_sha256": "ca43fbc223cc3fb436dec0fe0c5fc1918b18d9ce640072ebb4cbc8b4da13fdc0"
+      }
+    }
+  }
+}

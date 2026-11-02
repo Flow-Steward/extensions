@@ -78,14 +78,14 @@ those extensions move to their individual repositories, so existing installation
 can receive upgrades. The old shared repository remains historical provenance;
 no active maintained database registration points to it.
 
-SQLite uses the new `flowsteward.sqlite` extension in `ext-data-sqlite`. It provides
-workflow operations with a persistent, fixed root scoped to the account and
-project. The legacy `flowsteward.data-connector-mcp-toolbox-sqlite` registration is
-retired: its release records and icons remain immutable and its catalog history
-is marked deprecated. Existing legacy installations do not upgrade across ids;
-install `flowsteward.sqlite` and configure its workflow connection when migrating.
-The legacy dataset interface does not provide the account/project context needed
-for scoped writable SQLite storage.
+SQLite uses a single `flowsteward.sqlite` extension in `ext-data-sqlite`, with
+workflow reads and writes in persistent account/project storage. The unused
+pre-release read-only SQLite entry was removed entirely from the catalog.
+
+The PostgreSQL package includes SQL operations and optional pgvector collection,
+document, chunk and similarity-search operations. Enable pgvector on the database
+server before using vector operations; no second Flow Steward extension is needed.
+The separate pre-release pgvector catalog entry is replaced by PostgreSQL.
 
 ### Several extensions from an author's repository
 
