@@ -83,9 +83,9 @@ those extensions move to their individual repositories, so existing installation
 can receive upgrades. The old shared repository remains historical provenance;
 no active maintained database registration points to it.
 
-SQLite uses a single `flowsteward.sqlite` extension in `ext-data-sqlite`, with
-workflow reads and writes in persistent account/project storage. The unused
-pre-release read-only SQLite entry was removed entirely from the catalog.
+SQLite is withdrawn from the catalog: its registration, release records and
+icons have been removed, so no active or deprecated SQLite card is listed.
+Reintroducing it requires a separately approved, working Dataset integration.
 
 The PostgreSQL package includes SQL operations and optional pgvector collection,
 document, chunk and similarity-search operations. Enable pgvector on the database
