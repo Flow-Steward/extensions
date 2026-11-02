@@ -1,0 +1,55 @@
+{
+  "extension_id": "flowsteward.bigquery",
+  "version": "1.0.0",
+  "repository": "https://github.com/Flow-Steward/ext-data-bigquery",
+  "tag": "v1.0.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.bigquery/1.0.0.png",
+    "sha256": "e680c58ff02fd2365d381cfa2ca980594a332b328f9a3ec3ae6baa287615390b",
+    "bytes": 723,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-02T08:20:14Z",
+  "item": {
+    "extension_id": "flowsteward.bigquery",
+    "version": "1.0.0",
+    "name": "BigQuery",
+    "summary": "Parameterized SELECT and explicit DML workflow actions.",
+    "description": "Bounded GoogleSQL queries and explicit DML writes through pinned Google MCP Toolbox.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "bigquery",
+      "toolbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-bigquery/tree/v1.0.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.0.0/flowsteward.bigquery-1.0.0-linux-amd64.zip",
+    "release_zip_bytes": 11565529,
+    "release_zip_sha256": "6167b4e862adc70bd2147bacf7c3dc92d3fee6f0d07dace4a1c3247a2137a310",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.0.0/flowsteward.bigquery-1.0.0-linux-amd64.zip",
+        "release_zip_bytes": 11565529,
+        "release_zip_sha256": "6167b4e862adc70bd2147bacf7c3dc92d3fee6f0d07dace4a1c3247a2137a310"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.0.0/flowsteward.bigquery-1.0.0-linux-arm64.zip",
+        "release_zip_bytes": 10461963,
+        "release_zip_sha256": "ec2f85d2cd3441707771a6168c0340604f6da28827fd98b8e3d2974b5ac43d5e"
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "extension_id": "flowsteward.airtable",
+  "version": "1.0.0",
+  "repository": "https://github.com/Flow-Steward/ext-data-airtable",
+  "tag": "v1.0.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.airtable/1.0.0.png",
+    "sha256": "d702f178f7edba7e6ce94d71307eaf78dc5313b71dd2a2df35459523b3184e82",
+    "bytes": 604,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-02T08:20:09Z",
+  "item": {
+    "extension_id": "flowsteward.airtable",
+    "version": "1.0.0",
+    "name": "Airtable",
+    "summary": "Table record CRUD for workflows.",
+    "description": "Airtable bounded table record REST reads and writes.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "airtable",
+      "database",
+      "rest"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-airtable/tree/v1.0.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-airtable/releases/download/v1.0.0/flowsteward.airtable-1.0.0-linux-amd64.zip",
+    "release_zip_bytes": 26719,
+    "release_zip_sha256": "7d8bad12de48438546dfc5162b963b022e8532bc32c3d376540957306b6da95e",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-airtable/releases/download/v1.0.0/flowsteward.airtable-1.0.0-linux-amd64.zip",
+        "release_zip_bytes": 26719,
+        "release_zip_sha256": "7d8bad12de48438546dfc5162b963b022e8532bc32c3d376540957306b6da95e"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-airtable/releases/download/v1.0.0/flowsteward.airtable-1.0.0-linux-arm64.zip",
+        "release_zip_bytes": 26719,
+        "release_zip_sha256": "00662c79c025b9d4820b01f8570745e9b96759b08e4d552416dbdfebd57d48d9"
+      }
+    }
+  }
+}

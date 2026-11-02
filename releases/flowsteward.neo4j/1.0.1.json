@@ -1,0 +1,57 @@
+{
+  "extension_id": "flowsteward.neo4j",
+  "version": "1.0.1",
+  "repository": "https://github.com/Flow-Steward/ext-graph-neo4j",
+  "tag": "v1.0.1",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.neo4j/1.0.1.png",
+    "sha256": "d702f178f7edba7e6ce94d71307eaf78dc5313b71dd2a2df35459523b3184e82",
+    "bytes": 604,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-02T08:21:16Z",
+  "item": {
+    "extension_id": "flowsteward.neo4j",
+    "version": "1.0.1",
+    "name": "Neo4j",
+    "summary": "Graph CRUD and native vector search.",
+    "description": "Neo4j graph reads and writes, vector index lifecycle and nearest-neighbor search through a minimal Google MCP Toolbox build.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "neo4j",
+      "graph",
+      "vector",
+      "toolbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-graph-neo4j/tree/v1.0.1",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-graph-neo4j/releases/download/v1.0.1/flowsteward.neo4j-1.0.1-linux-amd64.zip",
+    "release_zip_bytes": 9509302,
+    "release_zip_sha256": "17a2c64c2dd16e36ff66890f7fe6169346c1868b0be96e8303cb0f1df6ff1b99",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-graph-neo4j/releases/download/v1.0.1/flowsteward.neo4j-1.0.1-linux-amd64.zip",
+        "release_zip_bytes": 9509302,
+        "release_zip_sha256": "17a2c64c2dd16e36ff66890f7fe6169346c1868b0be96e8303cb0f1df6ff1b99"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-graph-neo4j/releases/download/v1.0.1/flowsteward.neo4j-1.0.1-linux-arm64.zip",
+        "release_zip_bytes": 8602459,
+        "release_zip_sha256": "fc201a756423332ee698dc3d76fc9ee2e4b698bc3658d6f08b1c544fc0fdf325"
+      }
+    }
+  }
+}

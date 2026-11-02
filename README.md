@@ -64,13 +64,35 @@ only the wheels that install on its target, and `.fs-package.yaml` names the
 target alone. `templates/single-extension` does this automatically when `wheels/`
 holds architecture-specific wheels.
 
-### Several extensions from one repository
+### Flow Steward maintained database extensions
 
-A repository may publish a family of extensions built from one codebase — one
-per database, say. Each has its own entry file and id, and each release tag
-carries every member's archives. See
-[ext-data-connector-mcp-toolbox](https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox)
-for a worked example.
+Each maintained database has its own installable extension and public repository,
+with its own database name, connection settings and driver. For example, PostgreSQL,
+MySQL and Microsoft SQL Server live in `ext-data-postgres`, `ext-data-mysql` and
+`ext-data-mssql`. Install only the databases you use. Build tooling and upstream
+sources may be shared, while each architecture archive contains only its database's
+runtime payload and required notices.
+
+The existing `flowsteward.data-connector-mcp-toolbox-<database>` ids stay stable when
+those extensions move to their individual repositories, so existing installations
+can receive upgrades. The old shared repository remains historical provenance;
+no active maintained database registration points to it.
+
+SQLite uses the new `flowsteward.sqlite` extension in `ext-data-sqlite`. It provides
+workflow operations with a persistent, fixed root scoped to the account and
+project. The legacy `flowsteward.data-connector-mcp-toolbox-sqlite` registration is
+retired: its release records and icons remain immutable and its catalog history
+is marked deprecated. Existing legacy installations do not upgrade across ids;
+install `flowsteward.sqlite` and configure its workflow connection when migrating.
+The legacy dataset interface does not provide the account/project context needed
+for scoped writable SQLite storage.
+
+### Several extensions from an author's repository
+
+The catalog also supports an author publishing several extensions from one
+repository. Each extension has its own entry file and id, and each release tag
+carries every member's archives. This generic catalog capability does not change
+the one-database-per-extension layout of maintained database repositories.
 
 ### Moving an existing extension into its own repository
 
@@ -84,7 +106,7 @@ copies the extension's tracked files, adds the CI and release workflows from
 the archive checked with this catalog's own checker, a GitHub Release per tag)
 and points the manifest's support and website links at the new repository.
 Name repositories `ext-<kind>-<implementation>`, for example `ext-llm-openrouter`
-or `ext-data-connector-mcp-toolbox`, and tag them with the topic
+or `ext-data-postgres`, and tag them with the topic
 `flow-steward-extension`.
 
 ### New versions

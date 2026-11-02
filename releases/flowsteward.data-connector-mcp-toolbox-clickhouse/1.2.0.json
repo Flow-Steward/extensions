@@ -1,0 +1,59 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-clickhouse",
+  "version": "1.2.0",
+  "repository": "https://github.com/Flow-Steward/ext-data-clickhouse",
+  "tag": "v1.2.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.data-connector-mcp-toolbox-clickhouse/1.2.0.png",
+    "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
+    "bytes": 4915,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-02T08:20:18Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-clickhouse",
+    "version": "1.2.0",
+    "name": "ClickHouse (Google MCP Toolbox)",
+    "summary": "Read and write ClickHouse from workflows through Google MCP Toolbox.",
+    "description": "Connect workspace datasets to Google MCP Toolbox database prebuilts through the Flow Steward extension runtime.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "clickhouse",
+      "database",
+      "dataset",
+      "google-mcp-toolbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-clickhouse/tree/v1.2.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-clickhouse/releases/download/v1.2.0/flowsteward.data-connector-mcp-toolbox-clickhouse-1.2.0-linux-amd64.zip",
+    "release_zip_bytes": 11399423,
+    "release_zip_sha256": "0d80bb04a4efc6303ee8d936d8bafbbfeabd114f90881997c0fddacde5ef1bdd",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-clickhouse/releases/download/v1.2.0/flowsteward.data-connector-mcp-toolbox-clickhouse-1.2.0-linux-amd64.zip",
+        "release_zip_bytes": 11399423,
+        "release_zip_sha256": "0d80bb04a4efc6303ee8d936d8bafbbfeabd114f90881997c0fddacde5ef1bdd"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-clickhouse/releases/download/v1.2.0/flowsteward.data-connector-mcp-toolbox-clickhouse-1.2.0-linux-arm64.zip",
+        "release_zip_bytes": 10336529,
+        "release_zip_sha256": "f775a1b20ed7872a546f65e7eb6d7a2acc2f168754d5122d9a53122479fc6e41"
+      }
+    }
+  }
+}

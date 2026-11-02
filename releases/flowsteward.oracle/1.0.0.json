@@ -1,0 +1,56 @@
+{
+  "extension_id": "flowsteward.oracle",
+  "version": "1.0.0",
+  "repository": "https://github.com/Flow-Steward/ext-data-oracle",
+  "tag": "v1.0.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.oracle/1.0.0.png",
+    "sha256": "d702f178f7edba7e6ce94d71307eaf78dc5313b71dd2a2df35459523b3184e82",
+    "bytes": 604,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-02T08:21:21Z",
+  "item": {
+    "extension_id": "flowsteward.oracle",
+    "version": "1.0.0",
+    "name": "Oracle",
+    "summary": "Oracle SQL reads and opted-in DML.",
+    "description": "Bounded Oracle SELECT and opted-in DML with native bind parameters through Google MCP Toolbox.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "oracle",
+      "sql",
+      "toolbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-oracle/tree/v1.0.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.0.0/flowsteward.oracle-1.0.0-linux-amd64.zip",
+    "release_zip_bytes": 12265058,
+    "release_zip_sha256": "c954c1a8e0b468831de3a10adc16947824c03d9ee681fabad8445900aedcd37f",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.0.0/flowsteward.oracle-1.0.0-linux-amd64.zip",
+        "release_zip_bytes": 12265058,
+        "release_zip_sha256": "c954c1a8e0b468831de3a10adc16947824c03d9ee681fabad8445900aedcd37f"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.0.0/flowsteward.oracle-1.0.0-linux-arm64.zip",
+        "release_zip_bytes": 11288774,
+        "release_zip_sha256": "f72fddd775959d04839c54715d711779f019ccf82f278e04ff84ffafddd0b6bc"
+      }
+    }
+  }
+}

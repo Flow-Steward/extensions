@@ -1,0 +1,57 @@
+{
+  "extension_id": "flowsteward.pgvector",
+  "version": "1.0.0",
+  "repository": "https://github.com/Flow-Steward/ext-vector-pgvector",
+  "tag": "v1.0.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.pgvector/1.0.0.png",
+    "sha256": "d702f178f7edba7e6ce94d71307eaf78dc5313b71dd2a2df35459523b3184e82",
+    "bytes": 604,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-02T08:21:26Z",
+  "item": {
+    "extension_id": "flowsteward.pgvector",
+    "version": "1.0.0",
+    "name": "pgvector",
+    "summary": "Dense vector lifecycle, document chunks and bounded similarity search.",
+    "description": "Bounded dense-vector storage, document chunks and similarity search through PostgreSQL pgvector and a minimal Google MCP Toolbox build.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "postgres",
+      "pgvector",
+      "vector",
+      "toolbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-vector-pgvector/tree/v1.0.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-vector-pgvector/releases/download/v1.0.0/flowsteward.pgvector-1.0.0-linux-amd64.zip",
+    "release_zip_bytes": 10207700,
+    "release_zip_sha256": "59962c51419d38281393994556627cd8b8eaba76604ee9de4be372b18d373bfa",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-vector-pgvector/releases/download/v1.0.0/flowsteward.pgvector-1.0.0-linux-amd64.zip",
+        "release_zip_bytes": 10207700,
+        "release_zip_sha256": "59962c51419d38281393994556627cd8b8eaba76604ee9de4be372b18d373bfa"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-vector-pgvector/releases/download/v1.0.0/flowsteward.pgvector-1.0.0-linux-arm64.zip",
+        "release_zip_bytes": 9243530,
+        "release_zip_sha256": "376e8c98dba7fe8528ad0e82ed8a6c00e43793c2c1c587c39cc6425b481d4310"
+      }
+    }
+  }
+}
