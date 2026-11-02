@@ -1,0 +1,62 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-mysql",
+  "version": "1.2.0",
+  "repository": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox",
+  "tag": "v1.2.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.data-connector-mcp-toolbox-mysql/1.2.0.png",
+    "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
+    "bytes": 4915,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-02T08:23:54Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-mysql",
+    "version": "1.2.0",
+    "name": "MySQL and MariaDB (Google MCP Toolbox)",
+    "summary": "Query MySQL, MariaDB and Cloud SQL for MySQL from workflows through Google MCP Toolbox.",
+    "description": "Connect workspace datasets to Google MCP Toolbox database prebuilts through the Flow Steward extension runtime.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "cloud-sql-mysql",
+      "database",
+      "dataset",
+      "google-mcp-toolbox",
+      "mariadb",
+      "mysql",
+      "postgres"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/tree/v1.2.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.2.0/flowsteward.data-connector-mcp-toolbox-mysql-1.2.0-linux-amd64.zip",
+    "release_zip_bytes": 10064687,
+    "release_zip_sha256": "c7cd7bc9b1906617d8ee74cbf0c8cd8c0459ac282f16e6c8fb1c8a2fd8f081a2",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.2.0/flowsteward.data-connector-mcp-toolbox-mysql-1.2.0-linux-amd64.zip",
+        "release_zip_bytes": 10064687,
+        "release_zip_sha256": "c7cd7bc9b1906617d8ee74cbf0c8cd8c0459ac282f16e6c8fb1c8a2fd8f081a2"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-connector-mcp-toolbox/releases/download/v1.2.0/flowsteward.data-connector-mcp-toolbox-mysql-1.2.0-linux-arm64.zip",
+        "release_zip_bytes": 9121010,
+        "release_zip_sha256": "d9e61828b054800ddce28d1a107d5d6d5beb50f5565c5eb61abae53f63c0bca4"
+      }
+    }
+  }
+}
