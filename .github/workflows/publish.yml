@@ -18,6 +18,7 @@ on:
     paths:
       - "extensions/**"
       - "categories.json"
+      - "category_overrides.json"
       - "verified_publishers.json"
       - "scripts/build_index.py"
   workflow_dispatch:

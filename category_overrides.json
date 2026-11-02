@@ -1,0 +1,95 @@
+{
+  "flowsteward.docling": {
+    "repository_url": "https://github.com/Flow-Steward/ext-document-docling/tree/v0.3.0",
+    "categories": [
+      "documents",
+      "data"
+    ],
+    "reason": "Published operation converts document artifacts into Markdown and structured Docling JSON."
+  },
+  "flowsteward.imap-mailbox": {
+    "repository_url": "https://github.com/Flow-Steward/ext-email-imap/tree/v0.2.1",
+    "categories": [
+      "email",
+      "messaging"
+    ],
+    "reason": "Published operations read/search email and manage mailbox messages and attachments."
+  },
+  "flowsteward.google-workspace": {
+    "repository_url": "https://github.com/Flow-Steward/ext-google-workspace/tree/v0.3.1",
+    "categories": [
+      "productivity",
+      "email",
+      "documents",
+      "data"
+    ],
+    "reason": "Published operations expose Gmail, Drive files and Sheets cells/rows, with explicit project connections."
+  },
+  "com.image.processing": {
+    "repository_url": "https://github.com/Flow-Steward/ext-image-processing/tree/v0.2.1",
+    "categories": [
+      "media",
+      "ai"
+    ],
+    "reason": "Published background removal runs a bundled U2-NetP ONNX model. Resizing remains non-generative interpolation."
+  },
+  "flowsteward.neo4j": {
+    "repository_url": "https://github.com/Flow-Steward/ext-graph-neo4j/tree/v1.0.2",
+    "categories": [
+      "data",
+      "ai"
+    ],
+    "reason": "Published graph CRUD and native vector-index/search operations support graph and AI retrieval workflows."
+  },
+  "flowsteward.outgoing-email": {
+    "repository_url": "https://github.com/Flow-Steward/ext-email-smtp/tree/v0.3.1",
+    "categories": [
+      "email",
+      "messaging"
+    ],
+    "reason": "Published SMTP operations send workflow email and project notifications."
+  },
+  "flowsteward.pinecone": {
+    "repository_url": "https://github.com/Flow-Steward/ext-vector-pinecone/tree/v1.0.1",
+    "categories": [
+      "data",
+      "ai"
+    ],
+    "reason": "Published dense-vector lifecycle and document-evidence retrieval support AI retrieval workflows; no model provider contract."
+  },
+  "flowsteward.data-connector-mcp-toolbox-postgres": {
+    "repository_url": "https://github.com/Flow-Steward/ext-data-postgres/tree/v1.4.0",
+    "categories": [
+      "data",
+      "ai"
+    ],
+    "reason": "Published SQL operations and pgvector collections, documents/chunks and similarity search share the PostgreSQL connection."
+  },
+  "flowsteward.qdrant": {
+    "repository_url": "https://github.com/Flow-Steward/ext-vector-qdrant/tree/v1.0.1",
+    "categories": [
+      "data",
+      "ai"
+    ],
+    "reason": "Published vector/document lifecycle, similarity search and RAG workflows with citations; no model provider contract."
+  },
+  "flowsteward.shopify": {
+    "repository_url": "https://github.com/Flow-Steward/ext-ecommerce-shopify/tree/v0.5.1",
+    "categories": [
+      "ecommerce",
+      "inventory",
+      "sales"
+    ],
+    "reason": "Published operations manage product catalog, stock and orders/fulfillments. CMS pages, articles and blogs are not implemented."
+  },
+  "flowsteward.wordpress-woocommerce": {
+    "repository_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/tree/v1.2.1",
+    "categories": [
+      "cms",
+      "ecommerce",
+      "inventory",
+      "sales"
+    ],
+    "reason": "WordPress posts/pages/media and WooCommerce products, stock, customers and orders are implemented."
+  }
+}

@@ -55,6 +55,7 @@ ROOT = Path(os.environ.get("FS_CATALOG_ROOT") or Path(__file__).resolve().parent
 ENTRIES_DIR = "extensions"
 RELEASES_DIR = "releases"
 CATEGORIES_FILE = "categories.json"
+CATEGORY_OVERRIDES_FILE = "category_overrides.json"
 VERIFIED_PUBLISHERS_FILE = "verified_publishers.json"
 INDEX_FILE = "index.json"
 MANIFEST = "extension.yaml"
@@ -592,6 +593,9 @@ def inspect_archive(
         problems.append(f"listing.summary must be at most {MAX_SUMMARY_CHARS} characters")
     if category not in categories:
         problems.append(f"set listing.category to one of: {', '.join(sorted(categories))} (got '{category}')")
+    secondary = listing.get("categories", [category])
+    if not _valid_categories(secondary, categories):
+        problems.append("listing.categories must be a non-empty list of distinct known category ids")
     problems.extend(_descriptor_problems(contents, extension_id=entry.extension_id, version=version))
     problems.extend(icon_problems(contents.get(ICON_FILE))[0])
     if problems:
@@ -608,7 +612,7 @@ def inspect_archive(
         "name": name,
         "summary": summary,
         "description": description,
-        "categories": [category],
+        "categories": list(dict.fromkeys([category, *secondary])),
         "capabilities": _strings(manifest.get("features")),
         "permissions_summary": sorted(_strings(manifest.get("required_scopes"))),
         "setup_summary": _text(listing.get("setup_summary")),
@@ -859,6 +863,7 @@ def build_index() -> dict[str, Any]:
     existing installs still see where they came from.
     """
     records = load_records()
+    corrections = category_overrides()
     base = ROOT / ENTRIES_DIR
     present = {path.stem for path in base.glob("*.yaml")} if base.is_dir() else set()
     items: list[dict[str, Any]] = []
@@ -868,6 +873,9 @@ def build_index() -> dict[str, Any]:
         if listed is None:
             continue
         item = dict(listed["item"])
+        correction = corrections.get(extension_id)
+        if correction and correction["repository_url"] == item.get("repository_url"):
+            item["categories"] = list(correction["categories"])
         item["icon"] = _index_icon(listed)
         if extension_id not in present:
             item["publication_status"] = "deprecated"
@@ -898,6 +906,47 @@ def category_labels() -> dict[str, str]:
     ):
         raise CatalogError("categories.json must map each category id to the name to show")
     return {key: value.strip() for key, value in raw.items()}
+
+
+def _valid_categories(value: Any, known: set[str]) -> bool:
+    return (
+        isinstance(value, list)
+        and bool(value)
+        and all(isinstance(category, str) and category in known for category in value)
+        and len(set(value)) == len(value)
+    )
+
+
+def category_overrides() -> dict[str, Any]:
+    """Maintainer discovery corrections, pinned to one immutable source release.
+
+    Never alter release records, capabilities, permissions or artifact integrity.
+    Future releases derive their categories from their own manifests again.
+    """
+    raw = _json_file(CATEGORY_OVERRIDES_FILE, {})
+    known = set(category_labels())
+    if not isinstance(raw, dict):
+        raise CatalogError(f"{CATEGORY_OVERRIDES_FILE} must map extension ids to corrections")
+    for extension_id, correction in raw.items():
+        if (
+            not isinstance(extension_id, str)
+            or not _EXTENSION_ID.fullmatch(extension_id)
+            or not isinstance(correction, dict)
+            or set(correction) != {"repository_url", "categories", "reason"}
+            or not _valid_categories(correction.get("categories"), known)
+            or not isinstance(correction.get("reason"), str)
+            or not correction["reason"].strip()
+        ):
+            raise CatalogError(f"{CATEGORY_OVERRIDES_FILE}: invalid correction for {extension_id}")
+        url = correction.get("repository_url")
+        repository, _, version = url.rpartition("/tree/v") if isinstance(url, str) else ("", "", "")
+        if not _SEMVER.fullmatch(version):
+            raise CatalogError(f"{CATEGORY_OVERRIDES_FILE}: {extension_id} must name a source release tag")
+        try:
+            parse_entry(extension_id, f"repository: {repository}\n")
+        except CatalogError as exc:
+            raise CatalogError(f"{CATEGORY_OVERRIDES_FILE}: {extension_id}: {exc}") from exc
+    return raw
 
 
 def render(index: dict[str, Any]) -> str:

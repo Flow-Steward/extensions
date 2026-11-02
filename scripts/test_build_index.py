@@ -327,6 +327,67 @@ def test_the_index_names_every_category(repo):
     assert builder.build_index()["category_labels"] == {"data": "Data", "messaging": "Messaging", "other": "Other"}
 
 
+def test_a_release_is_discoverable_in_each_declared_category():
+    item = _inspect(_zip(_manifest(listing={"category": "messaging", "categories": ["data", "messaging"]})))
+    assert item["categories"] == ["messaging", "data"]
+
+
+@pytest.mark.parametrize("extra", ["data", [], ["unknown"], [42], ["data", "data"]])
+def test_invalid_secondary_categories_are_refused(extra):
+    with pytest.raises(builder.CatalogError, match="listing.categories"):
+        _inspect(_zip(_manifest(listing={"category": "messaging", "categories": extra})))
+
+
+def _category_correction(repo, **changes):
+    correction = {
+        "repository_url": f"{REPO}/tree/v1.0.0",
+        "categories": ["messaging", "data"],
+        "reason": "The published release implements both mailbox and document data operations.",
+    }
+    correction.update(changes)
+    (repo / "category_overrides.json").write_text(json.dumps({"acme.mailbox": correction}))
+
+
+def test_a_category_correction_changes_discovery_without_changing_release_contract(repo):
+    github = FakeGitHub()
+    github.release(SLUG, "1.0.0", _zip(_manifest()))
+    _entry(repo)
+    builder.publish(github=github)
+    record = repo / "releases/acme.mailbox/1.0.0.json"
+    original_bytes = record.read_bytes()
+    original_item = builder.build_index()["items"][0]
+    _category_correction(repo)
+
+    [corrected] = builder.build_index()["items"]
+
+    assert corrected["categories"] == ["messaging", "data"]
+    assert {k: v for k, v in corrected.items() if k != "categories"} == {
+        k: v for k, v in original_item.items() if k != "categories"
+    }
+    assert record.read_bytes() == original_bytes
+
+
+@pytest.mark.parametrize("source", [f"{REPO}/tree/v0.9.0", "https://github.com/another/repo/tree/v1.0.0"])
+def test_category_corrections_cannot_follow_another_release_or_repository(repo, source):
+    github = FakeGitHub()
+    github.release(SLUG, "1.0.0", _zip(_manifest()))
+    _entry(repo)
+    builder.publish(github=github)
+    _category_correction(repo, repository_url=source)
+    assert builder.build_index()["items"][0]["categories"] == ["messaging"]
+
+
+@pytest.mark.parametrize("changes", [
+    {"categories": ["unknown"]}, {"categories": []}, {"categories": "data"},
+    {"categories": ["data", "data"]}, {"reason": ""},
+    {"capabilities": ["llm_provider"]}, {"repository_url": "https://example.test/repo"},
+])
+def test_invalid_category_corrections_fail_closed(repo, changes):
+    _category_correction(repo, **changes)
+    with pytest.raises(builder.CatalogError, match="category_overrides.json"):
+        builder.build_index()
+
+
 def test_a_category_list_without_names_is_refused(repo):
     (repo / "categories.json").write_text(json.dumps(CATEGORIES))
 

@@ -18,6 +18,11 @@ only holds a link to it, and publishes the author's releases automatically.
    - `listing.category`, one of the ids in [`categories.json`](categories.json). The same list,
      with the names Flow Steward shows, is used by the
      [workflow catalog](https://github.com/Flow-Steward/workflows), which keeps a copy of this file;
+   - optionally `listing.categories`, a non-empty list of distinct ids from that
+     same list, for every additional function the extension actually implements.
+     The primary `listing.category` stays first. For example, WordPress with
+     WooCommerce belongs to both `cms` and `ecommerce`. Classify the extension's
+     implemented operations, rather than everything its upstream product can do;
    - optionally `listing.summary` (the card line; otherwise the first sentence of
      the description), `listing.tags` and `listing.setup_summary`.
    - `runtime.contract_version: extension_host_v2` (build on
@@ -179,7 +184,7 @@ is listed instead. Removing an entry keeps the extension listed as **deprecated*
 | Field | Source |
 | --- | --- |
 | Name, summary, description | `display_name`, `listing.summary`, `description` |
-| Category | `listing.category` |
+| Categories | `listing.category` plus optional `listing.categories`; reviewed release-specific corrections below |
 | Capabilities | `features` |
 | Permissions | `required_scopes` |
 | Setup | `listing.setup_summary` |
@@ -188,6 +193,27 @@ is listed instead. Removing an entry keeps the extension listed as **deprecated*
 | Download URL, size, SHA-256 | the release asset, recorded once in `releases/` |
 | Logo (`icon`: URL, SHA-256, bytes, `image/png`, `WxH`) | the release's `icon.png`, copied once to `releases/<extension_id>/<version>.png` and linked at the catalog commit that added it |
 | Verified | the id's namespace is mapped to the repository owner in `verified_publishers.json` |
+
+### Reviewing categorization
+
+Category filters describe function; capabilities describe host contracts. `ai`
+does not imply `llm_provider`: TypeSafe JEV, image inference and vector retrieval
+can belong to AI without registering models in Flow Steward. Keep capabilities
+equal to the release's `features`; do not infer `query`, `dataset_connector`,
+`notify` or `workflow_trigger` from a product name or a REST read operation.
+
+Maintainers may correct a published release's categories in
+[`category_overrides.json`](category_overrides.json), without rebuilding its
+unchanged runtime or editing immutable `releases/` records. Each correction has
+exactly `repository_url` (the source repository at `tree/v<version>`), `categories`
+and a factual `reason`. It applies only while that exact source release is listed.
+New releases use their own manifest again; authors should carry the reviewed
+categories into `listing.categories`. Unknown categories, duplicate ids and
+fields that could override capabilities or permissions fail the build.
+
+The normal generator applies corrections every time, including scheduled runs.
+[`docs/category-audit-2026-11-02.md`](docs/category-audit-2026-11-02.md) records the
+review of all 35 releases and the boundaries behind their classification.
 
 The catalog sets no `compatible_flow_steward` range: a manifest's
 `runtime.compatibility.platform_min` is the extension host contract version, not
