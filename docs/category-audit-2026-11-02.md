@@ -12,7 +12,7 @@ Scope: all 35 releases listed at catalog commit `554c51977e5deb96e78a70a6c1e2a29
 - Qdrant, Pinecone, Neo4j and PostgreSQL/pgvector are Data and AI because their published operations implement vector retrieval. They do not register a language model provider.
 - TypeSafe AI (JEV) already has AI. Choice/Score/Noul evaluation is an action integration, not the Flow Steward model-provider contract. Keep `tool, action`.
 - Only Ollama and OpenRouter among these 35 releases declare `llm_provider`, and both have the matching provider contract. Eight SQL connectors declare `dataset_connector` and have matching dataset contracts. A read/search operation alone does not make a dataset connector or a host resource query.
-- All 35 catalog capability lists equal their tagged manifest `features`; permission lists equal declared `required_scopes`. No capability, permission or artifact change is required. Administrative UI queries do not by themselves change an extension profile.
+- All 35 catalog capability lists equal their tagged manifest `features`; permission lists equal declared `required_scopes`. This verifies declaration parity only; it does not establish that every database read operation is integrated with Dataset or saved Data Query. Administrative UI queries do not by themselves change an extension profile.
 - Notification and ingress profiles remain on SMTP/Telegram/WhatsApp as declared. No database triggers added. Qdrant and Showcase retain `artifact_bundle`; an operation reading/writing an artifact does not imply shipping a bundle.
 - Existing tags and descriptions were inspected for the affected function boundaries and retained; categories are explicit, not inferred from tags. Discogs marketplace statistics and collection/wantlist operations remain Media, without claiming shop/order management.
 
@@ -63,3 +63,13 @@ Primary category is first. Source links point to the exact reviewed tag. Capabil
 `category_overrides.json` binds these corrections to exact repository/tag URLs. It is intentionally separate from immutable release records, capabilities and permissions. The normal generator applies it during every scheduled render. A different release or repository does not inherit an old correction. New releases should declare `listing.categories` themselves; the existing `listing.category` stays primary. New published functionality must be reviewed before updating a correction.
 
 Archives, per-architecture targets, hashes, sizes, permissions, source links, icons and all historical records stay unchanged. Only the generated category arrays and catalog revision need change.
+
+## SQL Dataset follow-up
+
+The functional follow-up distinguishes ordinary workflow reads from actual Dataset integration. The initial declaration check missed that Oracle, BigQuery and SQLite had workflow reads without Dataset support. This is not fixed by adding catalog flags alone.
+
+Oracle and BigQuery receive real Dataset registry declarations, connection/schema actions, validation, preview, saved query execution and output inference in Oracle 1.1.0 and BigQuery 1.1.1. Existing native workflow writes remain separate; Dataset operations are read-only. Their supported saved SQL grammar is intentionally conservative and documented in each repository. Source and both architecture archives are validated before catalog publication.
+
+SQLite's candidate is held: workflow Dataset execution has the required account/project scope, but Core's administrative connection/schema/saved-query calls omit that trusted scope. Its project-scoped file isolation must not be weakened to compensate. With Core changes explicitly excluded from this phase, SQLite remains on its existing release and is not falsely marked Dataset-capable. MongoDB and the other native non-SQL integrations likewise remain workflow operations pending a suitable Core contract.
+
+The archive checker now refuses an explicit Dataset Connector registry without its matching public `dataset_connector` feature. This catches the declaration mismatch before a new release enters the marketplace. It does not replace runtime integration tests.

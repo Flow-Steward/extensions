@@ -332,6 +332,32 @@ def test_a_release_is_discoverable_in_each_declared_category():
     assert item["categories"] == ["messaging", "data"]
 
 
+def test_a_declared_dataset_contract_cannot_hide_from_the_dataset_filter():
+    manifest = _manifest(
+        runtime={
+            "contract_version": "extension_host_v2",
+            "extension_contract_v2": {
+                "dataset_connectors": [{"connector_id": "mailbox"}]
+            },
+        }
+    )
+    with pytest.raises(builder.CatalogError, match="dataset_connector feature"):
+        _inspect(_zip(manifest))
+
+
+def test_a_dataset_contract_with_its_public_feature_can_be_discovered():
+    manifest = _manifest(
+        features=["tool", "action", "query", "dataset_connector"],
+        runtime={
+            "contract_version": "extension_host_v2",
+            "extension_contract_v2": {
+                "dataset_connectors": [{"connector_id": "mailbox"}]
+            },
+        },
+    )
+    assert "dataset_connector" in _inspect(_zip(manifest))["capabilities"]
+
+
 @pytest.mark.parametrize("extra", ["data", [], ["unknown"], [42], ["data", "data"]])
 def test_invalid_secondary_categories_are_refused(extra):
     with pytest.raises(builder.CatalogError, match="listing.categories"):

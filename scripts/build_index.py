@@ -585,6 +585,15 @@ def inspect_archive(
             f"declare runtime.contract_version: {HOST_CONTRACT} in {MANIFEST} and build on "
             f"flowsteward-extension-sdk 0.4.0 or later (got '{declared_contract or 'nothing'}')"
         )
+    extension_contract = runtime.get("extension_contract_v2")
+    if (
+        isinstance(extension_contract, dict)
+        and extension_contract.get("dataset_connectors")
+        and "dataset_connector" not in _strings(manifest.get("features"))
+    ):
+        problems.append(
+            "a declared dataset_connectors contract requires the dataset_connector feature"
+        )
     if not name or name == entry.extension_id:
         problems.append("display_name must be a readable title, not the extension id")
     if len(description) < MIN_DESCRIPTION_CHARS:

@@ -154,6 +154,9 @@ catalog dispatch credential; GitHub can delay scheduled runs.
   uploaded archive, as WordPress installs any plugin;
 - a release whose `extension.yaml` names another id or version than the entry and
   the tag, or whose `extension-descriptor.yaml` disagrees with it;
+- a release that declares a Dataset Connector registry but omits
+  `dataset_connector` from `features`, which would hide its working integration
+  from the marketplace capability filter;
 - a release whose `extension.yaml` does not declare
   `runtime.contract_version: extension_host_v2`, the one host contract Flow
   Steward 1.0 runs (build it on `flowsteward-extension-sdk` 0.4.0 or later). A
