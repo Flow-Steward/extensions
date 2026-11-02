@@ -1,0 +1,58 @@
+{
+  "extension_id": "flowsteward.oracle",
+  "version": "1.1.0",
+  "repository": "https://github.com/Flow-Steward/ext-data-oracle",
+  "tag": "v1.1.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.oracle/1.1.0.png",
+    "sha256": "c81ee41f29858815dde6d963472150118e95eaa07dd739852b00ae031c97cffd",
+    "bytes": 14754,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-02T14:38:04Z",
+  "item": {
+    "extension_id": "flowsteward.oracle",
+    "version": "1.1.0",
+    "name": "Oracle",
+    "summary": "Oracle SQL reads and opted-in DML.",
+    "description": "Bounded Oracle SELECT and opted-in DML with native bind parameters through Google MCP Toolbox.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "oracle",
+      "sql",
+      "toolbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-oracle/tree/v1.1.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.1.0/flowsteward.oracle-1.1.0-linux-amd64.zip",
+    "release_zip_bytes": 12290346,
+    "release_zip_sha256": "2e7e2422a01cb73d06b39fc34fbad8eddf97449668c7447b0c23d0d4aa1235d3",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.1.0/flowsteward.oracle-1.1.0-linux-amd64.zip",
+        "release_zip_bytes": 12290346,
+        "release_zip_sha256": "2e7e2422a01cb73d06b39fc34fbad8eddf97449668c7447b0c23d0d4aa1235d3"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.1.0/flowsteward.oracle-1.1.0-linux-arm64.zip",
+        "release_zip_bytes": 11314062,
+        "release_zip_sha256": "573724e5aa9d92ca5f46d8a27138fc74fb85f9b3c0efc3743f6d57b58cc1bcaa"
+      }
+    }
+  }
+}
