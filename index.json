@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-02.e34f0689",
-  "published_at": "2026-11-02T13:03:50Z",
+  "catalog_revision": "2026-11-02.403d16e5",
+  "published_at": "2026-11-02T14:38:09Z",
   "items": [
     {
       "extension_id": "flowsteward.airtable",
@@ -55,16 +55,18 @@
     },
     {
       "extension_id": "flowsteward.bigquery",
-      "version": "1.0.1",
+      "version": "1.1.1",
       "name": "BigQuery",
-      "summary": "Read rows (SELECT); insert, update, delete and merge data.",
-      "description": "Read BigQuery rows with SELECT and write data with parameterized INSERT, UPDATE, DELETE and MERGE workflow actions.",
+      "summary": "SQL datasets and saved queries; read, insert, update, delete and merge workflow data.",
+      "description": "Read BigQuery datasets with scoped saved SQL; preserve parameterized SELECT, INSERT, UPDATE, DELETE and MERGE workflow actions.",
       "categories": [
         "data"
       ],
       "capabilities": [
         "tool",
-        "action"
+        "action",
+        "query",
+        "dataset_connector"
       ],
       "permissions_summary": [
         "extension:invoke"
@@ -76,31 +78,31 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-bigquery/tree/v1.0.1",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.0.1/flowsteward.bigquery-1.0.1-linux-amd64.zip",
-      "release_zip_bytes": 11576013,
-      "release_zip_sha256": "63ae2ba3a420fa22cb950bb2f80e46d96686162ff3d252588b4e569d8a11df7b",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-bigquery/tree/v1.1.1",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.1/flowsteward.bigquery-1.1.1-linux-amd64.zip",
+      "release_zip_bytes": 11606331,
+      "release_zip_sha256": "fdfe26e39d45f6076928348fb0d1512e99d234a6663665e7ed7a775b09c75461",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.0.1/flowsteward.bigquery-1.0.1-linux-amd64.zip",
-          "release_zip_bytes": 11576013,
-          "release_zip_sha256": "63ae2ba3a420fa22cb950bb2f80e46d96686162ff3d252588b4e569d8a11df7b"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.1/flowsteward.bigquery-1.1.1-linux-amd64.zip",
+          "release_zip_bytes": 11606331,
+          "release_zip_sha256": "fdfe26e39d45f6076928348fb0d1512e99d234a6663665e7ed7a775b09c75461"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.0.1/flowsteward.bigquery-1.0.1-linux-arm64.zip",
-          "release_zip_bytes": 10472447,
-          "release_zip_sha256": "dd1d0b444f4370e455450bba0e042f53888810cd5d0ce686c6d000d0f243e112"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.1/flowsteward.bigquery-1.1.1-linux-arm64.zip",
+          "release_zip_bytes": 10502732,
+          "release_zip_sha256": "78c8d07f0f9feea91732ac020f4d1667b7421d8af4c5803b05271dd70ed25edf"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/68d5f5c324bb2c0542508a34c67f4481b22d8363/releases/flowsteward.bigquery/1.0.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/53c7397b2fa0616333be727d71044b3137d9e407/releases/flowsteward.bigquery/1.1.1.png",
         "sha256": "f02f30a4af46c40aa2bee5c5822480d898d332944c92078504c323db0b74ff9b",
         "bytes": 10716,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-11-02T08:20:14Z",
-      "updated_at": "2026-11-02T12:39:22Z"
+      "updated_at": "2026-11-02T14:38:09Z"
     },
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-clickhouse",
@@ -860,7 +862,7 @@
     },
     {
       "extension_id": "flowsteward.oracle",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "name": "Oracle",
       "summary": "Oracle SQL reads and opted-in DML.",
       "description": "Bounded Oracle SELECT and opted-in DML with native bind parameters through Google MCP Toolbox.",
@@ -869,7 +871,9 @@
       ],
       "capabilities": [
         "tool",
-        "action"
+        "dataset_connector",
+        "action",
+        "query"
       ],
       "permissions_summary": [
         "extension:invoke"
@@ -882,31 +886,31 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-oracle/tree/v1.0.1",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.0.1/flowsteward.oracle-1.0.1-linux-amd64.zip",
-      "release_zip_bytes": 12279418,
-      "release_zip_sha256": "c63b844a410bd39614d28b473154b2656dd33848fa54305acdc95d23a82b9c59",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-oracle/tree/v1.1.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.1.0/flowsteward.oracle-1.1.0-linux-amd64.zip",
+      "release_zip_bytes": 12290346,
+      "release_zip_sha256": "2e7e2422a01cb73d06b39fc34fbad8eddf97449668c7447b0c23d0d4aa1235d3",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.0.1/flowsteward.oracle-1.0.1-linux-amd64.zip",
-          "release_zip_bytes": 12279418,
-          "release_zip_sha256": "c63b844a410bd39614d28b473154b2656dd33848fa54305acdc95d23a82b9c59"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.1.0/flowsteward.oracle-1.1.0-linux-amd64.zip",
+          "release_zip_bytes": 12290346,
+          "release_zip_sha256": "2e7e2422a01cb73d06b39fc34fbad8eddf97449668c7447b0c23d0d4aa1235d3"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.0.1/flowsteward.oracle-1.0.1-linux-arm64.zip",
-          "release_zip_bytes": 11303134,
-          "release_zip_sha256": "80ed98523b059dc5965d3914948cf2343d63988e66ca30ba77277800b2418970"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.1.0/flowsteward.oracle-1.1.0-linux-arm64.zip",
+          "release_zip_bytes": 11314062,
+          "release_zip_sha256": "573724e5aa9d92ca5f46d8a27138fc74fb85f9b3c0efc3743f6d57b58cc1bcaa"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/68d5f5c324bb2c0542508a34c67f4481b22d8363/releases/flowsteward.oracle/1.0.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/53c7397b2fa0616333be727d71044b3137d9e407/releases/flowsteward.oracle/1.1.0.png",
         "sha256": "c81ee41f29858815dde6d963472150118e95eaa07dd739852b00ae031c97cffd",
         "bytes": 14754,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-11-02T08:21:21Z",
-      "updated_at": "2026-11-02T12:40:22Z"
+      "updated_at": "2026-11-02T14:38:04Z"
     },
     {
       "extension_id": "flowsteward.outgoing-email",
