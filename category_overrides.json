@@ -66,7 +66,7 @@
     "reason": "Published SQL operations and pgvector collections, documents/chunks and similarity search share the PostgreSQL connection."
   },
   "flowsteward.qdrant": {
-    "repository_url": "https://github.com/Flow-Steward/ext-vector-qdrant/tree/v1.0.1",
+    "repository_url": "https://github.com/Flow-Steward/ext-vector-qdrant/tree/v1.0.2",
     "categories": [
       "data",
       "ai"
@@ -91,5 +91,21 @@
       "sales"
     ],
     "reason": "WordPress posts/pages/media and WooCommerce products, stock, customers and orders are implemented."
+  },
+  "flowsteward.elasticsearch": {
+    "repository_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/tree/v1.0.1",
+    "categories": [
+      "data",
+      "ai"
+    ],
+    "reason": "Published document CRUD, dense-vector retrieval and supplied-embedding RAG workflows support data and AI retrieval; no model provider contract."
+  },
+  "flowsteward.solr": {
+    "repository_url": "https://github.com/Flow-Steward/ext-data-solr/tree/v1.0.0",
+    "categories": [
+      "data",
+      "ai"
+    ],
+    "reason": "Published document CRUD, DenseVectorField retrieval and supplied-embedding RAG workflows support data and AI retrieval; no model provider contract."
   }
 }

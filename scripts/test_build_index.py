@@ -358,6 +358,321 @@ def test_a_dataset_contract_with_its_public_feature_can_be_discovered():
     assert "dataset_connector" in _inspect(_zip(manifest))["capabilities"]
 
 
+@pytest.mark.parametrize("location", ["root", "runtime"])
+@pytest.mark.parametrize("public_feature", [False, True])
+def test_descriptor_dataset_contract_requires_its_public_feature(
+    location, public_feature
+):
+    contract = {"dataset_connectors": [{"connector_id": "mailbox"}]}
+    descriptor = {"extension_id": "acme.mailbox", "release_version": "1.0.0"}
+    if location == "runtime":
+        descriptor["runtime"] = {"extension_contract_v2": contract}
+    else:
+        descriptor["extension_contract_v2"] = contract
+    manifest = _manifest(
+        features=["tool", "dataset_connector"] if public_feature else ["tool"]
+    )
+    archive = _zip(
+        manifest, extra={"extension-descriptor.yaml": yaml.safe_dump(descriptor)}
+    )
+    if public_feature:
+        assert "dataset_connector" in _inspect(archive)["capabilities"]
+    else:
+        with pytest.raises(builder.CatalogError, match="dataset_connector feature"):
+            _inspect(archive)
+
+
+@pytest.mark.parametrize("descriptor", ["[broken", "- not-a-mapping", b"\xff"])
+def test_unreadable_dataset_descriptor_keeps_its_existing_diagnostic(descriptor):
+    with pytest.raises(
+        builder.CatalogError, match="extension-descriptor.yaml must be a YAML mapping"
+    ):
+        _inspect(_zip(_manifest(), extra={"extension-descriptor.yaml": descriptor}))
+
+
+def _dataset_archive(
+    capabilities,
+    *,
+    actions=None,
+    contract_source="descriptor",
+    extra=None,
+    runtime_kind=None,
+):
+    connector = {"connector_id": "mailbox", "capabilities": capabilities}
+    if runtime_kind is not None:
+        connector["runtime_kind"] = runtime_kind
+    contract = {"dataset_connectors": [connector]}
+    manifest = _manifest(features=["tool", "action", "dataset_connector"])
+    files = dict(extra or {})
+    if contract_source == "descriptor":
+        files["extension-descriptor.yaml"] = yaml.safe_dump(
+            {
+                "extension_id": "acme.mailbox",
+                "release_version": "1.0.0",
+                "runtime": {"extension_contract_v2": contract},
+            }
+        )
+    else:
+        manifest["runtime"]["extension_contract_v2"] = contract
+    if actions is not None:
+        manifest["action_manifest"] = "ui/actions.yaml"
+        files["ui/actions.yaml"] = yaml.safe_dump(actions)
+    return _zip(manifest, extra=files)
+
+
+@pytest.mark.parametrize("runtime_kind", [None, "local_extension", "remote_extension"])
+@pytest.mark.parametrize("contract_source", ["manifest", "descriptor"])
+@pytest.mark.parametrize(
+    ("capability", "action"),
+    [
+        ("test_connection", "test_connection"),
+        ("schema_introspection", "introspect_schema"),
+        ("validate_query", "validate_query"),
+        ("preview_query", "preview_query"),
+        ("execute_template", "execute_template"),
+        ("infer_output_schema", "infer_output_schema"),
+    ],
+)
+def test_native_dataset_capability_cannot_be_blocked_by_closed_action_allowlist(
+    contract_source, capability, action, runtime_kind
+):
+    archive = _dataset_archive(
+        {capability: True},
+        contract_source=contract_source,
+        runtime_kind=runtime_kind,
+        actions={"actions": [{"action_id": "mailbox_read", "workflow_visible": True}]},
+    )
+    with pytest.raises(builder.CatalogError, match=f"{capability}.*{action}"):
+        _inspect(archive)
+
+
+@pytest.mark.parametrize("id_field", ["action_id", "id"])
+@pytest.mark.parametrize("wrapper", [False, True])
+def test_hidden_native_action_aliases_satisfy_only_declared_dataset_capabilities(
+    id_field, wrapper
+):
+    rows = [
+        {"action_id": "mailbox_read", "workflow_visible": True},
+        {id_field: "introspect_schema", "workflow_visible": False},
+    ]
+    archive = _dataset_archive(
+        {"schema_introspection": True, "preview_query": False},
+        actions={"actions": rows} if wrapper else rows,
+    )
+    assert "dataset_connector" in _inspect(archive)["capabilities"]
+
+
+def test_all_declared_native_dataset_capabilities_accept_hidden_host_actions():
+    archive = _dataset_archive(
+        {
+            "test_connection": True,
+            "schema_introspection": True,
+            "validate_query": True,
+            "preview_query": True,
+            "execute_template": True,
+            "infer_output_schema": True,
+        },
+        actions={
+            "actions": [
+                {"id": "test_connection", "workflow_visible": False},
+                {"id": "introspect_schema", "workflow_visible": False},
+                {"id": "validate_query", "workflow_visible": False},
+                {"id": "preview_query", "workflow_visible": False},
+                {"id": "execute_template", "workflow_visible": False},
+                {"id": "infer_output_schema", "workflow_visible": False},
+            ]
+        },
+    )
+    assert "dataset_connector" in _inspect(archive)["capabilities"]
+
+
+@pytest.mark.parametrize("actions", [None, [], {"actions": []}])
+def test_native_dataset_capabilities_keep_cores_implicit_empty_action_allowlist(
+    actions,
+):
+    assert (
+        _inspect(_dataset_archive({"preview_query": True}, actions=actions))[
+            "extension_id"
+        ]
+        == "acme.mailbox"
+    )
+
+
+@pytest.mark.parametrize("enabled", [False, None, "true", 1])
+def test_only_explicit_true_dataset_capabilities_require_host_actions(enabled):
+    archive = _dataset_archive(
+        {"preview_query": enabled},
+        actions=[{"id": "mailbox_read", "workflow_visible": True}],
+    )
+    assert _inspect(archive)["extension_id"] == "acme.mailbox"
+
+
+def test_native_action_ref_is_resolved_relative_to_its_manifest():
+    archive = _dataset_archive(
+        {"preview_query": True},
+        actions={"actions": [{"ref": "native/preview.yaml"}]},
+        extra={
+            "ui/native/preview.yaml": "id: preview_query\nworkflow_visible: false\n"
+        },
+    )
+    assert _inspect(archive)["extension_id"] == "acme.mailbox"
+
+
+def test_action_id_takes_precedence_over_id_alias_for_dataset_allowlist():
+    archive = _dataset_archive(
+        {"preview_query": True},
+        actions=[
+            {
+                "action_id": "mailbox_read",
+                "id": "preview_query",
+                "workflow_visible": True,
+            }
+        ],
+    )
+    with pytest.raises(builder.CatalogError, match="preview_query"):
+        _inspect(archive)
+
+
+@pytest.mark.parametrize(
+    ("payload", "diagnostic"),
+    [
+        (None, "action_manifest.*ui/actions.yaml.*missing"),
+        ("[broken", "action_manifest.*ui/actions.yaml.*valid YAML"),
+        (b"\xff", "action_manifest.*ui/actions.yaml.*valid YAML"),
+    ],
+)
+def test_dataset_action_manifest_ref_failures_are_reported_truthfully(
+    payload, diagnostic
+):
+    manifest = _manifest(
+        features=["dataset_connector"],
+        action_manifest="ui/actions.yaml",
+        runtime={
+            "contract_version": "extension_host_v2",
+            "extension_contract_v2": {
+                "dataset_connectors": [
+                    {"connector_id": "mailbox", "capabilities": {"preview_query": True}}
+                ],
+            },
+        },
+    )
+    archive = _zip(
+        manifest, extra={} if payload is None else {"ui/actions.yaml": payload}
+    )
+    with pytest.raises(builder.CatalogError, match=diagnostic):
+        _inspect(archive)
+
+
+def test_generic_workflow_actions_do_not_claim_native_dataset_discovery():
+    manifest = _manifest(action_manifest="ui/actions.yaml")
+    archive = _zip(
+        manifest,
+        extra={
+            "ui/actions.yaml": "actions: [{id: mailbox_read, workflow_visible: true}]"
+        },
+    )
+    assert "dataset_connector" not in _inspect(archive)["capabilities"]
+
+
+@pytest.mark.parametrize(
+    "shape",
+    ["single", "dataset_connectors", "connectors", "items", "file", "ref", "snapshot"],
+)
+def test_dataset_capabilities_in_core_section_shapes_cannot_bypass_action_allowlist(
+    shape,
+):
+    connector = {"connector_id": "mailbox", "capabilities": {"preview_query": True}}
+    files = {"ui/actions.yaml": "actions: [{id: mailbox_read, workflow_visible: true}]"}
+    contract = {}
+    if shape == "single":
+        section = connector
+    elif shape in {"dataset_connectors", "connectors", "items"}:
+        section = {shape: [connector]}
+    elif shape == "snapshot":
+        section = "snapshot://native"
+        contract["snapshot_documents"] = {"native": {"connectors": [connector]}}
+    else:
+        section = (
+            "contracts/datasets.yaml"
+            if shape == "file"
+            else {"ref": "contracts/datasets.yaml"}
+        )
+        files["contracts/datasets.yaml"] = yaml.safe_dump({"connectors": [connector]})
+    contract["dataset_connectors"] = section
+    manifest = _manifest(
+        features=["dataset_connector"],
+        action_manifest="ui/actions.yaml",
+        runtime={
+            "contract_version": "extension_host_v2",
+            "extension_contract_v2": contract,
+        },
+    )
+    with pytest.raises(builder.CatalogError, match="preview_query"):
+        _inspect(_zip(manifest, extra=files))
+
+
+@pytest.mark.parametrize("shape", ["file", "ref", "snapshot"])
+def test_padded_dataset_references_accept_a_satisfied_native_action_allowlist(shape):
+    connector = {"connector_id": "mailbox", "capabilities": {"preview_query": True}}
+    files = {
+        "ui/actions.yaml": "actions: [{id: preview_query, workflow_visible: false}]"
+    }
+    contract = {}
+    if shape == "snapshot":
+        section = " \t snapshot://native \n "
+        contract["snapshot_documents"] = {"native": {"connectors": [connector]}}
+    else:
+        ref = " \t contracts/datasets.yaml \n "
+        section = ref if shape == "file" else {"ref": ref}
+        files["contracts/datasets.yaml"] = yaml.safe_dump({"connectors": [connector]})
+    contract["dataset_connectors"] = section
+    manifest = _manifest(
+        features=["dataset_connector"],
+        action_manifest="ui/actions.yaml",
+        runtime={
+            "contract_version": "extension_host_v2",
+            "extension_contract_v2": contract,
+        },
+    )
+    assert "dataset_connector" in _inspect(_zip(manifest, extra=files))["capabilities"]
+
+
+@pytest.mark.parametrize("ref", ["../outside.yaml", "/outside.yaml", "missing.yaml"])
+def test_dataset_action_refs_cannot_resolve_outside_the_archive_or_disappear(ref):
+    archive = _dataset_archive(
+        {"preview_query": True},
+        actions=[{"ref": ref}],
+    )
+    with pytest.raises(builder.CatalogError, match="action_manifest.*ref"):
+        _inspect(archive)
+
+
+@pytest.mark.parametrize("item_ref", [False, True])
+def test_dataset_action_refs_use_only_core_supported_yaml_files(item_ref):
+    manifest = _manifest(
+        features=["dataset_connector"],
+        action_manifest="ui/actions.yaml" if item_ref else "ui/actions.json",
+        runtime={
+            "contract_version": "extension_host_v2",
+            "extension_contract_v2": {
+                "dataset_connectors": [
+                    {"connector_id": "mailbox", "capabilities": {"preview_query": True}}
+                ],
+            },
+        },
+    )
+    files = {
+        "ui/actions.json": '{"actions": [{"id": "preview_query", "workflow_visible": false}]}'
+    }
+    if item_ref:
+        files = {
+            "ui/actions.yaml": "actions: [{ref: native.json}]",
+            "ui/native.json": '{"id": "preview_query", "workflow_visible": false}',
+        }
+    with pytest.raises(builder.CatalogError, match="action_manifest.*YAML"):
+        _inspect(_zip(manifest, extra=files))
+
+
 @pytest.mark.parametrize("extra", ["data", [], ["unknown"], [42], ["data", "data"]])
 def test_invalid_secondary_categories_are_refused(extra):
     with pytest.raises(builder.CatalogError, match="listing.categories"):

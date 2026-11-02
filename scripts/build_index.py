@@ -35,6 +35,7 @@ import hashlib
 import io
 import json
 import os
+import posixpath
 import re
 import struct
 import subprocess
@@ -461,6 +462,167 @@ def _descriptor_problems(contents: dict[str, bytes], *, extension_id: str, versi
     return problems
 
 
+_DATASET_HOST_ACTIONS = {
+    "test_connection": "test_connection",
+    "schema_introspection": "introspect_schema",
+    "validate_query": "validate_query",
+    "preview_query": "preview_query",
+    "execute_template": "execute_template",
+    "infer_output_schema": "infer_output_schema",
+}
+
+
+def _archive_contract_ref(
+    contents: dict[str, bytes],
+    ref: str,
+    *,
+    parent: str,
+    field: str,
+    problems: list[str],
+) -> tuple[Any, str]:
+    """Read one bundle-local ref, without filesystem or network access."""
+    path = posixpath.normpath(posixpath.join(posixpath.dirname(parent), ref))
+    if ref.startswith("/") or path == ".." or path.startswith("../"):
+        problems.append(f"{field}: ref '{ref}' escapes the archive")
+        return None, path
+    if path not in contents:
+        problems.append(f"{field}: ref '{ref}' is missing from the archive")
+        return None, path
+    if field == "action_manifest" and PurePosixPath(path).suffix.lower() not in {
+        ".yaml",
+        ".yml",
+    }:
+        problems.append(f"{field}: ref '{ref}' must use a YAML file (.yaml or .yml)")
+        return None, path
+    try:
+        return yaml.safe_load(contents[path].decode("utf-8")), path
+    except (yaml.YAMLError, UnicodeDecodeError):
+        problems.append(f"{field}: ref '{ref}' is not valid YAML")
+        return None, path
+
+
+def _dataset_contract_problems(
+    manifest: dict[str, Any], contents: dict[str, bytes]
+) -> list[str]:
+    """Keep native Dataset discovery and explicitly declared host actions usable."""
+    sources = [manifest]
+    if DESCRIPTOR in contents:
+        try:
+            descriptor = yaml.safe_load(contents[DESCRIPTOR].decode("utf-8"))
+        except (yaml.YAMLError, UnicodeDecodeError):
+            descriptor = None
+        if isinstance(descriptor, dict):
+            sources.append(descriptor)
+    contracts = []
+    for source in sources:
+        contract = source.get("extension_contract_v2")
+        if not isinstance(contract, dict):
+            runtime = source.get("runtime")
+            contract = (
+                runtime.get("extension_contract_v2")
+                if isinstance(runtime, dict)
+                else None
+            )
+        if isinstance(contract, dict) and contract.get("dataset_connectors"):
+            contracts.append(contract)
+    if not contracts:
+        return []
+    problems: list[str] = []
+    if "dataset_connector" not in _strings(manifest.get("features")):
+        problems.append(
+            "a declared dataset_connectors contract requires the dataset_connector feature"
+        )
+    action_ref = _text(manifest.get("action_manifest"))
+    if not action_ref:
+        # Core accepts an implicit empty action allowlist.
+        return problems
+    required: dict[str, str] = {}
+    for contract in contracts:
+        section = contract["dataset_connectors"]
+        ref = (
+            section.get("ref")
+            if isinstance(section, dict) and "ref" in section
+            else section
+        )
+        if isinstance(ref, str):
+            ref = ref.strip()
+            if ref.startswith("snapshot://"):
+                documents = contract.get("snapshot_documents")
+                key = ref[len("snapshot://") :].strip()
+                if not isinstance(documents, dict) or key not in documents:
+                    problems.append(
+                        f"dataset_connectors: snapshot ref '{ref}' is missing"
+                    )
+                    continue
+                section = documents[key]
+            else:
+                section, _ = _archive_contract_ref(
+                    contents,
+                    ref,
+                    parent=MANIFEST,
+                    field="dataset_connectors",
+                    problems=problems,
+                )
+        if isinstance(section, dict):
+            section = next(
+                (
+                    section[key]
+                    for key in ("dataset_connectors", "connectors", "items")
+                    if isinstance(section.get(key), list)
+                ),
+                [section],
+            )
+        for connector in section if isinstance(section, list) else []:
+            if not isinstance(connector, dict):
+                continue
+            runtime_kind = (
+                _text(connector.get("runtime_kind")).lower() or "local_extension"
+            )
+            if runtime_kind not in {"local_extension", "remote_extension"}:
+                continue
+            capabilities = connector.get("capabilities")
+            if isinstance(capabilities, dict):
+                required.update(
+                    {
+                        capability: action
+                        for capability, action in _DATASET_HOST_ACTIONS.items()
+                        if capabilities.get(capability) is True
+                    }
+                )
+    if not required:
+        return problems
+    before = len(problems)
+    data, action_path = _archive_contract_ref(
+        contents,
+        action_ref,
+        parent=MANIFEST,
+        field="action_manifest",
+        problems=problems,
+    )
+    rows = data.get("actions") if isinstance(data, dict) else data
+    action_ids: set[str] = set()
+    for row in rows if isinstance(rows, list) else []:
+        if isinstance(row, dict) and _text(row.get("ref")):
+            row, _ = _archive_contract_ref(
+                contents,
+                _text(row["ref"]),
+                parent=action_path,
+                field="action_manifest",
+                problems=problems,
+            )
+        if isinstance(row, dict):
+            action_id = _text(row.get("action_id") or row.get("id"))
+            if action_id:
+                action_ids.add(action_id)
+    if len(problems) == before and action_ids:
+        problems.extend(
+            f"dataset_connectors capability '{capability}' requires host action '{action}' in action_manifest"
+            for capability, action in required.items()
+            if action not in action_ids
+        )
+    return problems
+
+
 def _elf_machine(blob: bytes) -> int | None:
     if len(blob) < 20 or blob[:4] != b"\x7fELF" or blob[4] != 2:
         return None
@@ -585,15 +747,7 @@ def inspect_archive(
             f"declare runtime.contract_version: {HOST_CONTRACT} in {MANIFEST} and build on "
             f"flowsteward-extension-sdk 0.4.0 or later (got '{declared_contract or 'nothing'}')"
         )
-    extension_contract = runtime.get("extension_contract_v2")
-    if (
-        isinstance(extension_contract, dict)
-        and extension_contract.get("dataset_connectors")
-        and "dataset_connector" not in _strings(manifest.get("features"))
-    ):
-        problems.append(
-            "a declared dataset_connectors contract requires the dataset_connector feature"
-        )
+    problems.extend(_dataset_contract_problems(manifest, contents))
     if not name or name == entry.extension_id:
         problems.append("display_name must be a readable title, not the extension id")
     if len(description) < MIN_DESCRIPTION_CHARS:

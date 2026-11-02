@@ -1,0 +1,57 @@
+{
+  "extension_id": "flowsteward.qdrant",
+  "version": "1.0.2",
+  "repository": "https://github.com/Flow-Steward/ext-vector-qdrant",
+  "tag": "v1.0.2",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.qdrant/1.0.2.png",
+    "sha256": "fddad4488145a9defd4b56b955820a1cff3a2a033ad69988b5486b6c4048fa83",
+    "bytes": 11752,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-02T21:10:42Z",
+  "item": {
+    "extension_id": "flowsteward.qdrant",
+    "version": "1.0.2",
+    "name": "Qdrant Vector Store",
+    "summary": "Read and write vectors and build RAG workflows with source citations.",
+    "description": "Document indexing, dense vector retrieval and cited RAG workflows.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "artifact_bundle"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "qdrant",
+      "vector",
+      "rag"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-vector-qdrant/tree/v1.0.2",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-vector-qdrant/releases/download/v1.0.2/flowsteward.qdrant-1.0.2-linux-amd64.zip",
+    "release_zip_bytes": 55533,
+    "release_zip_sha256": "989572adaa99da2e0e606d5d85ae0896da68fa0c1fc5bb6e00ab77c09ad75123",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-vector-qdrant/releases/download/v1.0.2/flowsteward.qdrant-1.0.2-linux-amd64.zip",
+        "release_zip_bytes": 55533,
+        "release_zip_sha256": "989572adaa99da2e0e606d5d85ae0896da68fa0c1fc5bb6e00ab77c09ad75123"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-vector-qdrant/releases/download/v1.0.2/flowsteward.qdrant-1.0.2-linux-arm64.zip",
+        "release_zip_bytes": 55533,
+        "release_zip_sha256": "2bba86641d1365601166530d3ab548b05eb2fd2e582c97fdaa05ab39641bb034"
+      }
+    }
+  }
+}
