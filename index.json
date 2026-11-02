@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-02.08429b81",
-  "published_at": "2026-11-02T18:42:13Z",
+  "catalog_revision": "2026-11-02.0cacea20",
+  "published_at": "2026-11-02T22:48:08Z",
   "items": [
     {
       "extension_id": "flowsteward.airtable",
@@ -44,7 +44,7 @@
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.airtable/1.0.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/68d5f5c324bb2c0542508a34c67f4481b22d8363/releases/flowsteward.airtable/1.0.1.png",
         "sha256": "da6774e6ca4779fdfc0c28e04b25d822d935d38715a4965c26f6411a372ee29d",
         "bytes": 20041,
         "mime_type": "image/png",
@@ -54,8 +54,62 @@
       "updated_at": "2026-11-02T12:39:17Z"
     },
     {
+      "extension_id": "flowsteward.solr",
+      "version": "1.0.0",
+      "name": "Apache Solr",
+      "summary": "Direct document CRUD, bounded search and vectors.",
+      "description": "Direct Apache Solr document, vector and read-only Dataset operations.",
+      "categories": [
+        "data",
+        "ai"
+      ],
+      "capabilities": [
+        "tool",
+        "action",
+        "artifact_bundle",
+        "dataset_connector"
+      ],
+      "permissions_summary": [
+        "extension:invoke"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "solr",
+        "database",
+        "vector",
+        "rag"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-solr/tree/v1.0.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-solr/releases/download/v1.0.0/flowsteward.solr-1.0.0-linux-amd64.zip",
+      "release_zip_bytes": 77329,
+      "release_zip_sha256": "8e651931190f9b1d545ef899cfeb46581019cdc64f86ccd963cd5384091a74fe",
+      "release_targets": {
+        "linux-amd64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-solr/releases/download/v1.0.0/flowsteward.solr-1.0.0-linux-amd64.zip",
+          "release_zip_bytes": 77329,
+          "release_zip_sha256": "8e651931190f9b1d545ef899cfeb46581019cdc64f86ccd963cd5384091a74fe"
+        },
+        "linux-arm64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-solr/releases/download/v1.0.0/flowsteward.solr-1.0.0-linux-arm64.zip",
+          "release_zip_bytes": 77329,
+          "release_zip_sha256": "53f4e514cb3ef24c150eb19edc0efc7a0803766a682e74301adeed8e4f81cf5e"
+        }
+      },
+      "icon": {
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/b403082b79a07da31bf1b656c33768591a195e92/releases/flowsteward.solr/1.0.0.png",
+        "sha256": "af11dcfb903d2e01109392c279e00c2d73ee9a919e0d181ffe1d5d8aab798339",
+        "bytes": 9014,
+        "mime_type": "image/png",
+        "size": "128x128"
+      },
+      "added_at": "2026-11-02T22:48:08Z",
+      "updated_at": "2026-11-02T22:48:08Z"
+    },
+    {
       "extension_id": "flowsteward.bigquery",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "name": "BigQuery",
       "summary": "SQL datasets and saved queries; read, insert, update, delete and merge workflow data.",
       "description": "Read BigQuery datasets with scoped saved SQL; preserve parameterized SELECT, INSERT, UPDATE, DELETE and MERGE workflow actions.",
@@ -78,31 +132,31 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-bigquery/tree/v1.1.1",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.1/flowsteward.bigquery-1.1.1-linux-amd64.zip",
-      "release_zip_bytes": 11606331,
-      "release_zip_sha256": "fdfe26e39d45f6076928348fb0d1512e99d234a6663665e7ed7a775b09c75461",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-bigquery/tree/v1.1.2",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.2/flowsteward.bigquery-1.1.2-linux-amd64.zip",
+      "release_zip_bytes": 11609838,
+      "release_zip_sha256": "04ecbc13791f6737abc689c0b828e5f1b343d459309873e2364a20ffb94374a3",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.1/flowsteward.bigquery-1.1.1-linux-amd64.zip",
-          "release_zip_bytes": 11606331,
-          "release_zip_sha256": "fdfe26e39d45f6076928348fb0d1512e99d234a6663665e7ed7a775b09c75461"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.2/flowsteward.bigquery-1.1.2-linux-amd64.zip",
+          "release_zip_bytes": 11609838,
+          "release_zip_sha256": "04ecbc13791f6737abc689c0b828e5f1b343d459309873e2364a20ffb94374a3"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.1/flowsteward.bigquery-1.1.1-linux-arm64.zip",
-          "release_zip_bytes": 10502732,
-          "release_zip_sha256": "78c8d07f0f9feea91732ac020f4d1667b7421d8af4c5803b05271dd70ed25edf"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.2/flowsteward.bigquery-1.1.2-linux-arm64.zip",
+          "release_zip_bytes": 10506239,
+          "release_zip_sha256": "fe879e03577bd3d0d5ac981d43e86c0ad223c219107a0548c537a6effb2922ae"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.bigquery/1.1.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/b403082b79a07da31bf1b656c33768591a195e92/releases/flowsteward.bigquery/1.1.2.png",
         "sha256": "f02f30a4af46c40aa2bee5c5822480d898d332944c92078504c323db0b74ff9b",
         "bytes": 10716,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-11-02T08:20:14Z",
-      "updated_at": "2026-11-02T14:38:09Z"
+      "updated_at": "2026-11-02T22:48:08Z"
     },
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-clickhouse",
@@ -147,7 +201,7 @@
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.data-connector-mcp-toolbox-clickhouse/1.3.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/68d5f5c324bb2c0542508a34c67f4481b22d8363/releases/flowsteward.data-connector-mcp-toolbox-clickhouse/1.3.1.png",
         "sha256": "3f157e33b12ff2704ee2b5826a86669088844862b032265f2ea378474cb5133f",
         "bytes": 5221,
         "mime_type": "image/png",
@@ -190,7 +244,7 @@
       "release_zip_bytes": 56509,
       "release_zip_sha256": "4a728d893258e740b266ebe95d6564ee2950cf662afb8385cf169dfd70ebb987",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/com.discogs.api/0.2.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/7adf2e326922c416236ab5e1bf4dbad664bd0766/releases/com.discogs.api/0.2.1.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
@@ -231,7 +285,7 @@
       "release_zip_bytes": 27095,
       "release_zip_sha256": "3c3d7fd9ff5ea4bcc1d80695ac9b5873b4d2a96b682fb30e55360a3f4d5b47b4",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.docling/0.3.0.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/eee4878398a0b7073fe97a0c3306807573cdde52/releases/flowsteward.docling/0.3.0.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
@@ -239,6 +293,60 @@
       },
       "added_at": "2026-10-01T12:12:39Z",
       "updated_at": "2026-10-31T17:45:59Z"
+    },
+    {
+      "extension_id": "flowsteward.elasticsearch",
+      "version": "1.0.1",
+      "name": "Elasticsearch",
+      "summary": "Direct document CRUD, bounded search and vectors.",
+      "description": "Direct Elasticsearch document, vector and read-only Dataset operations.",
+      "categories": [
+        "data",
+        "ai"
+      ],
+      "capabilities": [
+        "tool",
+        "action",
+        "artifact_bundle",
+        "dataset_connector"
+      ],
+      "permissions_summary": [
+        "extension:invoke"
+      ],
+      "setup_summary": "",
+      "tags": [
+        "elasticsearch",
+        "database",
+        "vector",
+        "rag"
+      ],
+      "publication_status": "published",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/tree/v1.0.1",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/releases/download/v1.0.1/flowsteward.elasticsearch-1.0.1-linux-amd64.zip",
+      "release_zip_bytes": 67386,
+      "release_zip_sha256": "77721d298495d196914c070ee7c9afad845eb04ef235f66eb3ded390e636cbe3",
+      "release_targets": {
+        "linux-amd64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/releases/download/v1.0.1/flowsteward.elasticsearch-1.0.1-linux-amd64.zip",
+          "release_zip_bytes": 67386,
+          "release_zip_sha256": "77721d298495d196914c070ee7c9afad845eb04ef235f66eb3ded390e636cbe3"
+        },
+        "linux-arm64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/releases/download/v1.0.1/flowsteward.elasticsearch-1.0.1-linux-arm64.zip",
+          "release_zip_bytes": 67386,
+          "release_zip_sha256": "4773f1bdd021b372a43f2e70a397df17b8d83c6995b0847eceace69ecd828630"
+        }
+      },
+      "icon": {
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/b403082b79a07da31bf1b656c33768591a195e92/releases/flowsteward.elasticsearch/1.0.1.png",
+        "sha256": "6fbd68c14e2da2b52a59ebb5e6e6923f3dbae83d497b566ae8a19f7fb0bf88f1",
+        "bytes": 2771,
+        "mime_type": "image/png",
+        "size": "128x128"
+      },
+      "added_at": "2026-11-02T21:55:38Z",
+      "updated_at": "2026-11-02T21:55:38Z"
     },
     {
       "extension_id": "flowsteward.example-showcase",
@@ -273,7 +381,7 @@
       "release_zip_bytes": 113094,
       "release_zip_sha256": "241203a8e6417b6ec53f4575c57f530b309b775bff2b22ca87fa276e02b441d1",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.example-showcase/1.2.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/cced3f2c46c3be17bd79a0d2a7f361412e0ffee8/releases/flowsteward.example-showcase/1.2.1.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
@@ -327,7 +435,7 @@
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.file-transfer/0.3.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/7adf2e326922c416236ab5e1bf4dbad664bd0766/releases/flowsteward.file-transfer/0.3.1.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
@@ -377,7 +485,7 @@
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.firestore/1.0.2.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/68d5f5c324bb2c0542508a34c67f4481b22d8363/releases/flowsteward.firestore/1.0.2.png",
         "sha256": "c917315e332ba3744b7ada51cf1871aae2cb174d5e9e8940667410a29b51bf7c",
         "bytes": 24649,
         "mime_type": "image/png",
@@ -417,7 +525,7 @@
       "release_zip_bytes": 94687,
       "release_zip_sha256": "772e3cb33600fe2e3b1e4042dc7e86b573a11fbb4d3e1a003bdcd2214145f452",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.imap-mailbox/0.2.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/7adf2e326922c416236ab5e1bf4dbad664bd0766/releases/flowsteward.imap-mailbox/0.2.1.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
@@ -464,7 +572,7 @@
       "release_zip_bytes": 152969,
       "release_zip_sha256": "a8b354627be85303657ea18f37fb02e4b0f903bb87ce3e92c15cba457d0e4cce",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.google-workspace/0.3.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/7adf2e326922c416236ab5e1bf4dbad664bd0766/releases/flowsteward.google-workspace/0.3.1.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
@@ -518,7 +626,7 @@
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/com.image.processing/0.2.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/7adf2e326922c416236ab5e1bf4dbad664bd0766/releases/com.image.processing/0.2.1.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
@@ -571,7 +679,7 @@
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.data-connector-mcp-toolbox-mssql/1.3.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/68d5f5c324bb2c0542508a34c67f4481b22d8363/releases/flowsteward.data-connector-mcp-toolbox-mssql/1.3.1.png",
         "sha256": "d2fcf18791449447c7ebe17cd5b0c55fed059aa84040ede1fe9d8c7ba4359f56",
         "bytes": 46991,
         "mime_type": "image/png",
@@ -674,7 +782,7 @@
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.data-connector-mcp-toolbox-mysql/1.3.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/68d5f5c324bb2c0542508a34c67f4481b22d8363/releases/flowsteward.data-connector-mcp-toolbox-mysql/1.3.1.png",
         "sha256": "347f84e3740de7e655a3e4f47a9a7777f2c36b91bcc7dbc5d9fd67e6058bec8e",
         "bytes": 30560,
         "mime_type": "image/png",
@@ -726,7 +834,7 @@
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.neo4j/1.0.2.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/68d5f5c324bb2c0542508a34c67f4481b22d8363/releases/flowsteward.neo4j/1.0.2.png",
         "sha256": "18c2cc6399007423ed069d188603b7be7725f39d12efbcb48c9b8f648010f2e7",
         "bytes": 16668,
         "mime_type": "image/png",
@@ -778,7 +886,7 @@
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.data-connector-mcp-toolbox-oceanbase/1.3.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/68d5f5c324bb2c0542508a34c67f4481b22d8363/releases/flowsteward.data-connector-mcp-toolbox-oceanbase/1.3.1.png",
         "sha256": "d94b2c7d714eba554e792c3f7e31039800c3fc9bdc4ccf7091828546f97bddd8",
         "bytes": 9417,
         "mime_type": "image/png",
@@ -815,7 +923,7 @@
       "release_zip_bytes": 43158,
       "release_zip_sha256": "17b2d3e761647a92ac16e7e393b5a6b898beb133d5190b1a419975e4ebb99a96",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.ollama-remote/1.2.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/7adf2e326922c416236ab5e1bf4dbad664bd0766/releases/flowsteward.ollama-remote/1.2.1.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
@@ -852,7 +960,7 @@
       "release_zip_bytes": 39026,
       "release_zip_sha256": "75d0e0033de99526fe3ec6459906b06150f89f6d3764c8404c60d50ec0f6a79d",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.openrouter/1.2.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/7adf2e326922c416236ab5e1bf4dbad664bd0766/releases/flowsteward.openrouter/1.2.1.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
@@ -904,7 +1012,7 @@
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.oracle/1.1.0.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/53c7397b2fa0616333be727d71044b3137d9e407/releases/flowsteward.oracle/1.1.0.png",
         "sha256": "c81ee41f29858815dde6d963472150118e95eaa07dd739852b00ae031c97cffd",
         "bytes": 14754,
         "mime_type": "image/png",
@@ -945,7 +1053,7 @@
       "release_zip_bytes": 46958,
       "release_zip_sha256": "857c0b38da3f598cf4f2628b7b54ee9de9c8da03d80a5b57cba1f4d2a0375413",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.outgoing-email/0.3.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/7adf2e326922c416236ab5e1bf4dbad664bd0766/releases/flowsteward.outgoing-email/0.3.1.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
@@ -996,7 +1104,7 @@
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.pinecone/1.0.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/68d5f5c324bb2c0542508a34c67f4481b22d8363/releases/flowsteward.pinecone/1.0.1.png",
         "sha256": "d443067605f5198958074b96ba64ccf452c916eb7c324ec9c642077a68a1fbf4",
         "bytes": 13907,
         "mime_type": "image/png",
@@ -1052,7 +1160,7 @@
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.data-connector-mcp-toolbox-postgres/1.4.0.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/68d5f5c324bb2c0542508a34c67f4481b22d8363/releases/flowsteward.data-connector-mcp-toolbox-postgres/1.4.0.png",
         "sha256": "dae95368aeef68d4efe1080c1fb83010ced4d51b78b8a1f9d7603ca8cfffd973",
         "bytes": 24055,
         "mime_type": "image/png",
@@ -1063,7 +1171,7 @@
     },
     {
       "extension_id": "flowsteward.qdrant",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "name": "Qdrant Vector Store",
       "summary": "Read and write vectors and build RAG workflows with source citations.",
       "description": "Document indexing, dense vector retrieval and cited RAG workflows.",
@@ -1087,44 +1195,45 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-vector-qdrant/tree/v1.0.1",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-vector-qdrant/releases/download/v1.0.1/flowsteward.qdrant-1.0.1-linux-amd64.zip",
-      "release_zip_bytes": 54105,
-      "release_zip_sha256": "18dd18ee62c5f5313ca4421acefebacfd0e0b83a6d89c7975ae2005ae265ec2f",
+      "repository_url": "https://github.com/Flow-Steward/ext-vector-qdrant/tree/v1.0.2",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-vector-qdrant/releases/download/v1.0.2/flowsteward.qdrant-1.0.2-linux-amd64.zip",
+      "release_zip_bytes": 55533,
+      "release_zip_sha256": "989572adaa99da2e0e606d5d85ae0896da68fa0c1fc5bb6e00ab77c09ad75123",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-vector-qdrant/releases/download/v1.0.1/flowsteward.qdrant-1.0.1-linux-amd64.zip",
-          "release_zip_bytes": 54105,
-          "release_zip_sha256": "18dd18ee62c5f5313ca4421acefebacfd0e0b83a6d89c7975ae2005ae265ec2f"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-vector-qdrant/releases/download/v1.0.2/flowsteward.qdrant-1.0.2-linux-amd64.zip",
+          "release_zip_bytes": 55533,
+          "release_zip_sha256": "989572adaa99da2e0e606d5d85ae0896da68fa0c1fc5bb6e00ab77c09ad75123"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-vector-qdrant/releases/download/v1.0.1/flowsteward.qdrant-1.0.1-linux-arm64.zip",
-          "release_zip_bytes": 54105,
-          "release_zip_sha256": "f3d4edc243a3c7fd407b045826b9f7f6ebd7f0721b79fae87f2f9935615053ec"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-vector-qdrant/releases/download/v1.0.2/flowsteward.qdrant-1.0.2-linux-arm64.zip",
+          "release_zip_bytes": 55533,
+          "release_zip_sha256": "2bba86641d1365601166530d3ab548b05eb2fd2e582c97fdaa05ab39641bb034"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.qdrant/1.0.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/b403082b79a07da31bf1b656c33768591a195e92/releases/flowsteward.qdrant/1.0.2.png",
         "sha256": "fddad4488145a9defd4b56b955820a1cff3a2a033ad69988b5486b6c4048fa83",
         "bytes": 11752,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-11-02T08:21:31Z",
-      "updated_at": "2026-11-02T12:40:27Z"
+      "updated_at": "2026-11-02T21:10:42Z"
     },
     {
       "extension_id": "flowsteward.redis",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "name": "Redis",
       "summary": "Workflow state, deduplication and bounded queues.",
-      "description": "Read and write project-scoped keys, hashes, counters and lists through Google MCP Toolbox.",
+      "description": "Redis normal-key and JSON Datasets, with guarded workflows and compatible project state.",
       "categories": [
         "data"
       ],
       "capabilities": [
         "tool",
-        "action"
+        "action",
+        "dataset_connector"
       ],
       "permissions_summary": [
         "extension:invoke"
@@ -1136,31 +1245,31 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-redis/tree/v1.0.1",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-redis/releases/download/v1.0.1/flowsteward.redis-1.0.1-linux-amd64.zip",
-      "release_zip_bytes": 10741202,
-      "release_zip_sha256": "0aa85742dac4ae3889b19359c5c997bb9b2f24ed318af925a7dd29e71864a223",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-redis/tree/v1.1.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-redis/releases/download/v1.1.0/flowsteward.redis-1.1.0-linux-amd64.zip",
+      "release_zip_bytes": 10756529,
+      "release_zip_sha256": "6ee0d877622dee1955cb052c285af0080afa24075b59547ad8eb28ec17ba869e",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-redis/releases/download/v1.0.1/flowsteward.redis-1.0.1-linux-amd64.zip",
-          "release_zip_bytes": 10741202,
-          "release_zip_sha256": "0aa85742dac4ae3889b19359c5c997bb9b2f24ed318af925a7dd29e71864a223"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-redis/releases/download/v1.1.0/flowsteward.redis-1.1.0-linux-amd64.zip",
+          "release_zip_bytes": 10756529,
+          "release_zip_sha256": "6ee0d877622dee1955cb052c285af0080afa24075b59547ad8eb28ec17ba869e"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-redis/releases/download/v1.0.1/flowsteward.redis-1.0.1-linux-arm64.zip",
-          "release_zip_bytes": 9592698,
-          "release_zip_sha256": "ce4dd2f9eea51dc61a55e7116fc5b1f1fc7997325031d7ed2b3f9132c085e768"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-redis/releases/download/v1.1.0/flowsteward.redis-1.1.0-linux-arm64.zip",
+          "release_zip_bytes": 9608025,
+          "release_zip_sha256": "bdf143bd4f30d2a3acadfa4cb7605f489c50d11594904dd6feda9e43075be593"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.redis/1.0.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/b403082b79a07da31bf1b656c33768591a195e92/releases/flowsteward.redis/1.1.0.png",
         "sha256": "300f2097a8ea1b2ce630e891cb69ff1550ead9cfa99d76c7f76eef9b89c7e88b",
         "bytes": 9278,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-11-02T08:21:36Z",
-      "updated_at": "2026-11-02T12:40:34Z"
+      "updated_at": "2026-11-02T19:05:40Z"
     },
     {
       "extension_id": "flowsteward.shopify",
@@ -1200,7 +1309,7 @@
       "release_zip_bytes": 330179,
       "release_zip_sha256": "22691326d079aa298441f8f37b6322b4f6b9883928807002fc91ea2999d961d3",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.shopify/0.5.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/7adf2e326922c416236ab5e1bf4dbad664bd0766/releases/flowsteward.shopify/0.5.1.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
@@ -1252,7 +1361,7 @@
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.data-connector-mcp-toolbox-singlestore/1.3.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/68d5f5c324bb2c0542508a34c67f4481b22d8363/releases/flowsteward.data-connector-mcp-toolbox-singlestore/1.3.1.png",
         "sha256": "ab152769a3065d105d53926f059d1b4cac3bcbd106b3c13c7949c8db7e66533f",
         "bytes": 18811,
         "mime_type": "image/png",
@@ -1304,7 +1413,7 @@
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.data-connector-mcp-toolbox-snowflake/1.3.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/68d5f5c324bb2c0542508a34c67f4481b22d8363/releases/flowsteward.data-connector-mcp-toolbox-snowflake/1.3.1.png",
         "sha256": "c3cfa52f6724430ba7566accf6859a92653e9821f75c1e73bd191d458c36f94a",
         "bytes": 15826,
         "mime_type": "image/png",
@@ -1357,7 +1466,7 @@
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.data-connector-mcp-toolbox-spanner/1.3.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/68d5f5c324bb2c0542508a34c67f4481b22d8363/releases/flowsteward.data-connector-mcp-toolbox-spanner/1.3.1.png",
         "sha256": "d6e8d09b5befadab677fddc128029c766603131a55dc4f044f2720abcbb32e72",
         "bytes": 7181,
         "mime_type": "image/png",
@@ -1407,7 +1516,7 @@
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.supabase/1.0.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/68d5f5c324bb2c0542508a34c67f4481b22d8363/releases/flowsteward.supabase/1.0.1.png",
         "sha256": "41d05b5446677318bf89dd8332c9274308fb4968dd8a6fbc39674bbe03abfc4e",
         "bytes": 8595,
         "mime_type": "image/png",
@@ -1451,7 +1560,7 @@
       "release_zip_bytes": 166694,
       "release_zip_sha256": "8f74f1e716170de9c2ffe4b0eccdab55255d8b6b76b4ca10f397c83b4ef9826c",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.telegram/1.3.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/ffee4cf0680d0c35c10d1f898984269928b51844/releases/flowsteward.telegram/1.3.1.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
@@ -1491,7 +1600,7 @@
       "release_zip_bytes": 22921,
       "release_zip_sha256": "6b6a8bde8cba756c6e0d063e12a39d24dda56e92f60fd8cc9c576d126f0d2fba",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.typesafe-ai/1.0.3.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/7adf2e326922c416236ab5e1bf4dbad664bd0766/releases/flowsteward.typesafe-ai/1.0.3.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
@@ -1502,16 +1611,17 @@
     },
     {
       "extension_id": "flowsteward.valkey",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "name": "Valkey",
       "summary": "Workflow state, deduplication and bounded queues.",
-      "description": "Read and write project-scoped keys, hashes, counters and lists through Google MCP Toolbox.",
+      "description": "Valkey normal-key and JSON Datasets, with guarded workflows and compatible project state.",
       "categories": [
         "data"
       ],
       "capabilities": [
         "tool",
-        "action"
+        "action",
+        "dataset_connector"
       ],
       "permissions_summary": [
         "extension:invoke"
@@ -1523,31 +1633,31 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-valkey/tree/v1.0.1",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-valkey/releases/download/v1.0.1/flowsteward.valkey-1.0.1-linux-amd64.zip",
-      "release_zip_bytes": 10746474,
-      "release_zip_sha256": "bf0206224cae6a87df35a2d23f23d4e291aa103f26f5c14787a39d8d762ba15a",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-valkey/tree/v1.1.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-valkey/releases/download/v1.1.0/flowsteward.valkey-1.1.0-linux-amd64.zip",
+      "release_zip_bytes": 10761786,
+      "release_zip_sha256": "5d91aaffe8ab0bf508b45372d556ddd95ac1e0fee0c21a31889f89c22322244d",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-valkey/releases/download/v1.0.1/flowsteward.valkey-1.0.1-linux-amd64.zip",
-          "release_zip_bytes": 10746474,
-          "release_zip_sha256": "bf0206224cae6a87df35a2d23f23d4e291aa103f26f5c14787a39d8d762ba15a"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-valkey/releases/download/v1.1.0/flowsteward.valkey-1.1.0-linux-amd64.zip",
+          "release_zip_bytes": 10761786,
+          "release_zip_sha256": "5d91aaffe8ab0bf508b45372d556ddd95ac1e0fee0c21a31889f89c22322244d"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-valkey/releases/download/v1.0.1/flowsteward.valkey-1.0.1-linux-arm64.zip",
-          "release_zip_bytes": 9597970,
-          "release_zip_sha256": "4335dd23e683865b15a04b76eac88ca6b8da008fefe9d929c1e0767a240394ff"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-valkey/releases/download/v1.1.0/flowsteward.valkey-1.1.0-linux-arm64.zip",
+          "release_zip_bytes": 9613282,
+          "release_zip_sha256": "5a4522229bbbe792b193dafca6ba2e50cc41f03b2cc4f65f7ca0d8f73dc707c8"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.valkey/1.0.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/b403082b79a07da31bf1b656c33768591a195e92/releases/flowsteward.valkey/1.1.0.png",
         "sha256": "c880ad4a19f3941882808347663b5be75de67ccb088d186cd773a6508b24ff12",
         "bytes": 15138,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-11-02T08:21:48Z",
-      "updated_at": "2026-11-02T12:40:47Z"
+      "updated_at": "2026-11-02T19:05:45Z"
     },
     {
       "extension_id": "flowsteward.whatsapp",
@@ -1584,7 +1694,7 @@
       "release_zip_bytes": 109854,
       "release_zip_sha256": "1a3be9a357cdb0afed6f9e2ba8f13f034fdeef0306cc95e17d822a7f5a0e7ee4",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.whatsapp/0.1.0.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/0e6f1fa16df8a9f39cb84efd61e9db2bef6ab0e3/releases/flowsteward.whatsapp/0.1.0.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
@@ -1629,7 +1739,7 @@
       "release_zip_bytes": 296070,
       "release_zip_sha256": "5ee95f7a57fad0e7a26cd1e8e783f11b4a3da70498ab4d626df1b8daf4a88c74",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a71b02522feed6a78b24f52ade150a31f6e17a73/releases/flowsteward.wordpress-woocommerce/1.2.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/7adf2e326922c416236ab5e1bf4dbad664bd0766/releases/flowsteward.wordpress-woocommerce/1.2.1.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
