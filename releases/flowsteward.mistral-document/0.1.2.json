@@ -1,0 +1,58 @@
+{
+  "extension_id": "flowsteward.mistral-document",
+  "version": "0.1.2",
+  "repository": "https://github.com/Flow-Steward/ext-document-mistral",
+  "tag": "v0.1.2",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.mistral-document/0.1.2.png",
+    "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
+    "bytes": 4915,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-03T11:43:48Z",
+  "item": {
+    "extension_id": "flowsteward.mistral-document",
+    "version": "0.1.2",
+    "name": "Mistral Document AI",
+    "summary": "Extract text and structured data from PDF artifacts.",
+    "description": "Extract document text and structured data using Mistral Document AI.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "mistral",
+      "ocr",
+      "document-extraction"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-document-mistral/tree/v0.1.2",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-document-mistral/releases/download/v0.1.2/flowsteward.mistral-document-0.1.2-linux-amd64.zip",
+    "release_zip_bytes": 633714,
+    "release_zip_sha256": "badb2a9c8161b3e481bbe00cdae1b5de3f4fa57690bd7b9392f0c5a09131e14d",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-document-mistral/releases/download/v0.1.2/flowsteward.mistral-document-0.1.2-linux-amd64.zip",
+        "release_zip_bytes": 633714,
+        "release_zip_sha256": "badb2a9c8161b3e481bbe00cdae1b5de3f4fa57690bd7b9392f0c5a09131e14d"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-document-mistral/releases/download/v0.1.2/flowsteward.mistral-document-0.1.2-linux-arm64.zip",
+        "release_zip_bytes": 634982,
+        "release_zip_sha256": "401f1984cabf29232b5087e68e3ef73e1280d678fae3ccbde137320c11dd3723"
+      }
+    }
+  }
+}
