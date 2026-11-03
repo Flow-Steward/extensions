@@ -1,0 +1,50 @@
+{
+  "extension_id": "flowsteward.google-workspace",
+  "version": "0.3.3",
+  "repository": "https://github.com/Flow-Steward/ext-google-workspace",
+  "tag": "v0.3.3",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.google-workspace/0.3.3.png",
+    "sha256": "e4a550a2b736fa8d6a8549aa7196ab9fa450fb5b7a27b2f980534b44d5d84383",
+    "bytes": 28499,
+    "mime_type": "image/png",
+    "size": "512x512"
+  },
+  "published_at": "2026-11-03T13:32:47Z",
+  "item": {
+    "extension_id": "flowsteward.google-workspace",
+    "version": "0.3.3",
+    "name": "Google Workspace",
+    "summary": "Connect multiple Google accounts explicitly to Gmail, Drive, and Sheets workflows.",
+    "description": "Project-scoped Gmail, Drive, and Sheets access using project-scoped Google OAuth application credentials.",
+    "categories": [
+      "productivity"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "google",
+      "gmail",
+      "drive",
+      "sheets",
+      "email",
+      "files",
+      "spreadsheets"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-google-workspace/tree/v0.3.3",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-google-workspace/releases/download/v0.3.3/flowsteward.google-workspace-0.3.3.zip",
+    "release_zip_bytes": 175918,
+    "release_zip_sha256": "093888349e06ba95d696a1d46b144918ad73b9ac677fb5bf65549fe2be871862"
+  }
+}
