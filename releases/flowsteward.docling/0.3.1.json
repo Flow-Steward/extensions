@@ -1,0 +1,46 @@
+{
+  "extension_id": "flowsteward.docling",
+  "version": "0.3.1",
+  "repository": "https://github.com/Flow-Steward/ext-document-docling",
+  "tag": "v0.3.1",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.docling/0.3.1.png",
+    "sha256": "de40855bc3ace4a02933c32d5330c770a62deb199da34eb951877ac8a92c4807",
+    "bytes": 52642,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-03T13:25:16Z",
+  "item": {
+    "extension_id": "flowsteward.docling",
+    "version": "0.3.1",
+    "name": "Docling Document Extraction",
+    "summary": "Convert workflow document artifacts to Markdown and Docling JSON.",
+    "description": "Generic document conversion through an external Docling REST service.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "docling",
+      "document-extraction",
+      "markdown"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-document-docling/tree/v0.3.1",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-document-docling/releases/download/v0.3.1/flowsteward.docling-0.3.1.zip",
+    "release_zip_bytes": 74807,
+    "release_zip_sha256": "c4f77607fc7488254135a6d2e7b84ee158392c104641ef98709a7a2e816a3b42"
+  }
+}

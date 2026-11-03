@@ -1,0 +1,56 @@
+{
+  "extension_id": "flowsteward.pinecone",
+  "version": "1.0.2",
+  "repository": "https://github.com/Flow-Steward/ext-vector-pinecone",
+  "tag": "v1.0.2",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.pinecone/1.0.2.png",
+    "sha256": "2cf2cd8ee499e71ad3d2072daedd6403897d2b8afc017b214cd9605ac58ad78b",
+    "bytes": 8361,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-03T13:25:43Z",
+  "item": {
+    "extension_id": "flowsteward.pinecone",
+    "version": "1.0.2",
+    "name": "Pinecone Vector Database",
+    "summary": "Manage dense vectors and retrieve document evidence.",
+    "description": "Dense vector CRUD, scoped namespaces and document retrieval.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "pinecone",
+      "vector",
+      "rag"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-vector-pinecone/tree/v1.0.2",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-vector-pinecone/releases/download/v1.0.2/flowsteward.pinecone-1.0.2-linux-amd64.zip",
+    "release_zip_bytes": 43146,
+    "release_zip_sha256": "e0e3fa90e0470a4839591e5386b2b7971111d55d6dfef33bcc71d3a525bb5863",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-vector-pinecone/releases/download/v1.0.2/flowsteward.pinecone-1.0.2-linux-amd64.zip",
+        "release_zip_bytes": 43146,
+        "release_zip_sha256": "e0e3fa90e0470a4839591e5386b2b7971111d55d6dfef33bcc71d3a525bb5863"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-vector-pinecone/releases/download/v1.0.2/flowsteward.pinecone-1.0.2-linux-arm64.zip",
+        "release_zip_bytes": 43146,
+        "release_zip_sha256": "6db1ed5d7202c1e9730e1cfc968fde2ee5d9dbfa65397474f5bb0c48f742534f"
+      }
+    }
+  }
+}
