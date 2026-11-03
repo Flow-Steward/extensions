@@ -1,0 +1,43 @@
+{
+  "extension_id": "flowsteward.cohere-retrieval",
+  "version": "1.0.3",
+  "repository": "https://github.com/Flow-Steward/ext-ai-cohere-retrieval",
+  "tag": "v1.0.3",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.cohere-retrieval/1.0.3.png",
+    "sha256": "e24654a404b05e3c1c670035f9aae6bca55a22a8a604fbc402df016eef784dcc",
+    "bytes": 14762,
+    "mime_type": "image/png",
+    "size": "400x400"
+  },
+  "published_at": "2026-11-03T12:26:45Z",
+  "item": {
+    "extension_id": "flowsteward.cohere-retrieval",
+    "version": "1.0.3",
+    "name": "Cohere Retrieval",
+    "summary": "Rerank documents and embed texts using a project-scoped Cohere key.",
+    "description": "Rerank documents and generate text embeddings with Cohere.",
+    "categories": [
+      "ai"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "cohere",
+      "retrieval"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-ai-cohere-retrieval/tree/v1.0.3",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-ai-cohere-retrieval/releases/download/v1.0.3/flowsteward.cohere-retrieval-1.0.3.zip",
+    "release_zip_bytes": 34610,
+    "release_zip_sha256": "4137b1bab3913f200b429ddf2d6d2fb722f549022b4a5b1c7ccf4d32df70baf7"
+  }
+}

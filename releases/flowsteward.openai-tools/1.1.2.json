@@ -1,0 +1,47 @@
+{
+  "extension_id": "flowsteward.openai-tools",
+  "version": "1.1.2",
+  "repository": "https://github.com/Flow-Steward/ext-ai-openai-tools",
+  "tag": "v1.1.2",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.openai-tools/1.1.2.png",
+    "sha256": "9761c271afd3ed8e7e2c6b8095d96de9e73653b9748c7fa97e6e40d90da0658d",
+    "bytes": 12026,
+    "mime_type": "image/png",
+    "size": "512x512"
+  },
+  "published_at": "2026-11-03T12:27:11Z",
+  "item": {
+    "extension_id": "flowsteward.openai-tools",
+    "version": "1.1.2",
+    "name": "OpenAI Tools",
+    "summary": "Use OpenAI decisions, moderation, images, audio and embeddings in workflows.",
+    "description": "Decisions, moderation, images, audio and embeddings using a project OpenAI connection.",
+    "categories": [
+      "ai"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "openai",
+      "image",
+      "audio",
+      "moderation"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-ai-openai-tools/tree/v1.1.2",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-ai-openai-tools/releases/download/v1.1.2/flowsteward.openai-tools-1.1.2.zip",
+    "release_zip_bytes": 42344,
+    "release_zip_sha256": "e72e2324a62ee3b41d59ce67273ea4c8bf2dd009d9416db3ebaf61aad5a8833a"
+  }
+}

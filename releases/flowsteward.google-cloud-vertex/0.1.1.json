@@ -1,0 +1,56 @@
+{
+  "extension_id": "flowsteward.google-cloud-vertex",
+  "version": "0.1.1",
+  "repository": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex",
+  "tag": "v0.1.1",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.google-cloud-vertex/0.1.1.png",
+    "sha256": "5a07416695e22b326514c35761050d20323d6b66e8bf715d09b7cd54ad736fa2",
+    "bytes": 8741,
+    "mime_type": "image/png",
+    "size": "512x512"
+  },
+  "published_at": "2026-11-03T12:27:04Z",
+  "item": {
+    "extension_id": "flowsteward.google-cloud-vertex",
+    "version": "0.1.1",
+    "name": "Google Cloud Vertex Gemini",
+    "summary": "Connect an account-scoped Google Cloud project and discover Gemini models.",
+    "description": "Connect Gemini models hosted by Vertex AI to Flow Steward.",
+    "categories": [
+      "ai"
+    ],
+    "capabilities": [
+      "tool",
+      "llm_provider"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "llm",
+      "google-cloud",
+      "vertex-ai"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex/tree/v0.1.1",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex/releases/download/v0.1.1/flowsteward.google-cloud-vertex-0.1.1-linux-amd64.zip",
+    "release_zip_bytes": 6719036,
+    "release_zip_sha256": "944367cf955bd9baa627ba5cc46e40cd0a5b2e36413c816494c54e31ca4f3063",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex/releases/download/v0.1.1/flowsteward.google-cloud-vertex-0.1.1-linux-amd64.zip",
+        "release_zip_bytes": 6719036,
+        "release_zip_sha256": "944367cf955bd9baa627ba5cc46e40cd0a5b2e36413c816494c54e31ca4f3063"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex/releases/download/v0.1.1/flowsteward.google-cloud-vertex-0.1.1-linux-arm64.zip",
+        "release_zip_bytes": 6719964,
+        "release_zip_sha256": "9299c216a267f4ca23330ba5444ef986856a7231569db86963c9a4182e6dde18"
+      }
+    }
+  }
+}
