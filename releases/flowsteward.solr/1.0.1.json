@@ -1,0 +1,59 @@
+{
+  "extension_id": "flowsteward.solr",
+  "version": "1.0.1",
+  "repository": "https://github.com/Flow-Steward/ext-data-solr",
+  "tag": "v1.0.1",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.solr/1.0.1.png",
+    "sha256": "af11dcfb903d2e01109392c279e00c2d73ee9a919e0d181ffe1d5d8aab798339",
+    "bytes": 9014,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-04T08:58:39Z",
+  "item": {
+    "extension_id": "flowsteward.solr",
+    "version": "1.0.1",
+    "name": "Apache Solr",
+    "summary": "Direct document CRUD, bounded search and vectors.",
+    "description": "Direct Apache Solr document, vector and read-only Dataset operations.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "artifact_bundle",
+      "dataset_connector"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "solr",
+      "database",
+      "vector",
+      "rag"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-solr/tree/v1.0.1",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-solr/releases/download/v1.0.1/flowsteward.solr-1.0.1-linux-amd64.zip",
+    "release_zip_bytes": 77535,
+    "release_zip_sha256": "06bd519d2e4b258a5d9aa32b1dd193a7fa74973d8ade4baaf846f1610a04c957",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-solr/releases/download/v1.0.1/flowsteward.solr-1.0.1-linux-amd64.zip",
+        "release_zip_bytes": 77535,
+        "release_zip_sha256": "06bd519d2e4b258a5d9aa32b1dd193a7fa74973d8ade4baaf846f1610a04c957"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-solr/releases/download/v1.0.1/flowsteward.solr-1.0.1-linux-arm64.zip",
+        "release_zip_bytes": 77535,
+        "release_zip_sha256": "2618cfd786cc60afe875dc8f430111f1be023602ce2576e307e641c8716379b0"
+      }
+    }
+  }
+}

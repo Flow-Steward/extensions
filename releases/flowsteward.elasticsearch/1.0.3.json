@@ -1,0 +1,59 @@
+{
+  "extension_id": "flowsteward.elasticsearch",
+  "version": "1.0.3",
+  "repository": "https://github.com/Flow-Steward/ext-data-elasticsearch",
+  "tag": "v1.0.3",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.elasticsearch/1.0.3.png",
+    "sha256": "062e8e5ff64d67ecbb2148e72f0e4879c29de1d55dfbef49e5804362050b35a3",
+    "bytes": 5404,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-04T08:58:11Z",
+  "item": {
+    "extension_id": "flowsteward.elasticsearch",
+    "version": "1.0.3",
+    "name": "Elasticsearch",
+    "summary": "Direct document CRUD, bounded search and vectors.",
+    "description": "Direct Elasticsearch document, vector and read-only Dataset operations.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "artifact_bundle",
+      "dataset_connector"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "elasticsearch",
+      "database",
+      "vector",
+      "rag"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/tree/v1.0.3",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/releases/download/v1.0.3/flowsteward.elasticsearch-1.0.3-linux-amd64.zip",
+    "release_zip_bytes": 71062,
+    "release_zip_sha256": "7765106383ffc8fe9e5b29400e3774e3a7665a0f4a83e05e4a381f9ef0dc2340",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/releases/download/v1.0.3/flowsteward.elasticsearch-1.0.3-linux-amd64.zip",
+        "release_zip_bytes": 71062,
+        "release_zip_sha256": "7765106383ffc8fe9e5b29400e3774e3a7665a0f4a83e05e4a381f9ef0dc2340"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/releases/download/v1.0.3/flowsteward.elasticsearch-1.0.3-linux-arm64.zip",
+        "release_zip_bytes": 71062,
+        "release_zip_sha256": "672c2094db40f03a727c6d882b39eeda81f47d19057ee0313201b9169223bb3e"
+      }
+    }
+  }
+}
