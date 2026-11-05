@@ -1,0 +1,54 @@
+{
+  "extension_id": "flowsteward.rivile-erp",
+  "version": "0.1.0",
+  "repository": "https://github.com/Flow-Steward/ext-finance-rivile-erp",
+  "tag": "v0.1.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.rivile-erp/0.1.0.png",
+    "sha256": "e97fb20a3ca708c40efd6c31bbab3f5139a3976b76af6d5f5345fb61fc422eb1",
+    "bytes": 838,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-05T22:40:20Z",
+  "item": {
+    "extension_id": "flowsteward.rivile-erp",
+    "version": "0.1.0",
+    "name": "Rivile ERP",
+    "summary": "Everyday Rivile ERP steps — invoices, clients, products, payments, stock, prices, debts — plus every Public API endpoint.",
+    "description": "Rivile ERP (cloud) Public API for workflows. Everyday steps — create sales and purchase invoices, find or create clients and products, download document files, register payments, stock levels, prices, client debt and changes since a date — plus every documented endpoint (invoices, orders, deliveries, payments, products, stock, manufacturing, gift cards, clients, employees, timesheets) as a typed workflow operation.",
+    "categories": [
+      "finance",
+      "inventory",
+      "sales",
+      "hr"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "rivile",
+      "rivile-erp",
+      "accounting",
+      "erp",
+      "lithuania",
+      "invoices",
+      "inventory",
+      "orders"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-finance-rivile-erp/tree/v0.1.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-finance-rivile-erp/releases/download/v0.1.0/flowsteward.rivile-erp-0.1.0.zip",
+    "release_zip_bytes": 187190,
+    "release_zip_sha256": "3e108a09c94fb4a0bf913fdd9f1880ec576874d350c45b7c2a6db1aa8829cf23"
+  }
+}
