@@ -1,0 +1,53 @@
+{
+  "extension_id": "flowsteward.odoo",
+  "version": "0.1.0",
+  "repository": "https://github.com/Flow-Steward/ext-finance-odoo",
+  "tag": "v0.1.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.odoo/0.1.0.png",
+    "sha256": "79cde3373b19c443fbfbc61b5b0a2663177e7d577d0ed9e3d8d520f40186fff9",
+    "bytes": 9068,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-06T15:05:59Z",
+  "item": {
+    "extension_id": "flowsteward.odoo",
+    "version": "0.1.0",
+    "name": "Odoo",
+    "summary": "Everyday Odoo steps — partners, products, invoices, bills, payments, sale orders, stock — plus any model, on Odoo 16 to 20.",
+    "description": "Odoo 16 to 20 for workflows, through Odoo's external API (JSON-2 or XML-RPC). Everyday steps — find or create partners and products, customer invoices and vendor bills with attachments, payments, sale orders, stock levels, prices, partner balances, changes since a date — plus search, read, group, create, update, delete and method calls on any model.",
+    "categories": [
+      "finance",
+      "sales",
+      "inventory",
+      "crm"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "odoo",
+      "erp",
+      "accounting",
+      "invoices",
+      "crm",
+      "inventory",
+      "sales"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-finance-odoo/tree/v0.1.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-finance-odoo/releases/download/v0.1.0/flowsteward.odoo-0.1.0.zip",
+    "release_zip_bytes": 151653,
+    "release_zip_sha256": "7064d491977e4f24f6f7348d577d20cf7d1898e83c155feb1a60dd0038dec2e4"
+  }
+}
