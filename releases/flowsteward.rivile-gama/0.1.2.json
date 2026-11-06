@@ -1,0 +1,54 @@
+{
+  "extension_id": "flowsteward.rivile-gama",
+  "version": "0.1.2",
+  "repository": "https://github.com/Flow-Steward/ext-finance-rivile-gama",
+  "tag": "v0.1.2",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.rivile-gama/0.1.2.png",
+    "sha256": "e97fb20a3ca708c40efd6c31bbab3f5139a3976b76af6d5f5345fb61fc422eb1",
+    "bytes": 838,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-06T11:08:36Z",
+  "item": {
+    "extension_id": "flowsteward.rivile-gama",
+    "version": "0.1.2",
+    "name": "Rivile GAMA",
+    "summary": "Everyday Rivile GAMA steps — invoices, clients, products, payments, stock, prices, debts — plus all 209 API v2 methods.",
+    "description": "Rivile GAMA REST API v2 for workflows. Everyday steps — create sales and purchase invoices, find or create clients and products, attach and download document files, register payments, stock levels, prices, debts and changes since a date — plus every documented method (clients, products, documents, payments, inventory, general ledger, payroll, personnel, POS and more) as a typed workflow operation.",
+    "categories": [
+      "finance",
+      "inventory",
+      "hr"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "rivile",
+      "rivile-gama",
+      "accounting",
+      "erp",
+      "lithuania",
+      "invoices",
+      "vat",
+      "inventory",
+      "payroll"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-finance-rivile-gama/tree/v0.1.2",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-finance-rivile-gama/releases/download/v0.1.2/flowsteward.rivile-gama-0.1.2.zip",
+    "release_zip_bytes": 413084,
+    "release_zip_sha256": "8371ef7b343ec213bf304e2f79ec1e32514ea09edce0c9d6bb3cad91cf8cf67a"
+  }
+}
