@@ -1,0 +1,56 @@
+{
+  "extension_id": "flowsteward.amazon-sp-api",
+  "version": "0.2.8",
+  "repository": "https://github.com/Flow-Steward/ext-ecommerce-amazon",
+  "tag": "v0.2.8",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.amazon-sp-api/0.2.8.png",
+    "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
+    "bytes": 4915,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-08T07:15:09Z",
+  "item": {
+    "extension_id": "flowsteward.amazon-sp-api",
+    "version": "0.2.8",
+    "name": "Amazon Selling Partner API",
+    "summary": "Read and change Amazon orders, listings, prices and stock, submit listing feeds and download finance and settlement reports from your workflows.",
+    "description": "Atomic Amazon SP-API methods for orders, FBM shipment confirmation and Amazon Shipping labels, FBA inbound shipments (including India), catalog, listings, prices, stock, feeds, finances and reports. One connection is one seller account in one marketplace; Orders and Finances are available in both the current and the legacy API version.",
+    "categories": [
+      "ecommerce"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "amazon",
+      "sp-api",
+      "seller-central",
+      "orders",
+      "listings",
+      "pricing",
+      "inventory",
+      "fba",
+      "fbm",
+      "feeds",
+      "finances",
+      "reports",
+      "ecommerce"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-ecommerce-amazon/tree/v0.2.8",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-ecommerce-amazon/releases/download/v0.2.8/flowsteward.amazon-sp-api-0.2.8.zip",
+    "release_zip_bytes": 488503,
+    "release_zip_sha256": "33be2b245dfa623a17ee5480b382f1ea96cdd282000069fbdfb17093ed4fa8a9"
+  }
+}
