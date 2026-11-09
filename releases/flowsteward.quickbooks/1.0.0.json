@@ -1,0 +1,46 @@
+{
+  "extension_id": "flowsteward.quickbooks",
+  "version": "1.0.0",
+  "repository": "https://github.com/Flow-Steward/ext-finance-quickbooks",
+  "tag": "v1.0.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.quickbooks/1.0.0.png",
+    "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
+    "bytes": 4915,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-09T17:08:40Z",
+  "item": {
+    "extension_id": "flowsteward.quickbooks",
+    "version": "1.0.0",
+    "name": "QuickBooks Online",
+    "summary": "QuickBooks Online entities, financial reports and attachments.",
+    "description": "Native Python QuickBooks Online accounting integration: all tools from the pinned official MCP server, reports and document artifacts.",
+    "categories": [
+      "finance"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "quickbooks",
+      "accounting",
+      "intuit"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-finance-quickbooks/tree/v1.0.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-finance-quickbooks/releases/download/v1.0.0/flowsteward.quickbooks-1.0.0.zip",
+    "release_zip_bytes": 76963,
+    "release_zip_sha256": "7a0d362a6be32a8c4e6668d89381c1fb7d07cd03440ed2c8288664a85908802c"
+  }
+}
