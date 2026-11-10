@@ -84,3 +84,40 @@
   Root artifacts under /private/tmp/fs-updates-95-20261110. Existing task-owned
   release clones reused on codex/remaining-updates-20261110 branches. Root catalog
   branch codex/remaining-dependency-updates. No new publication yet.
+
+
+### Frozen v2 baseline and first review
+
+- All three native groups received final **v2** artifacts and may build one
+  native job per group. Module patch `/private/tmp/fs-updates-95-20261110/latest-dependencies-v2.patch`
+  SHA256af406af0a861bea0b8e3d83e55fbdef9173cc01762788c6d06cc9b47eaa558e1.
+  104 exact module targets, Go1.27.3. go.mod1c59a76307271df0a6992d9db406f9c49ba670dfb898e029bbc86136adcc9294;
+  go.sumd0e98fac8a9d4677bc239a668b472dd2f459ab65f3d0fec7ceb2a50bb6138841.
+  `native-latest-baseline-v2.json` and `baseline-identities-v2.json` are authoritative.
+- Ruling: remove upstream's same-path Apache Thrift replacement, require official
+  latestv0.25.0 directly — avoids weakening payload replacement checks. The only
+  retained source replacement is Cassandra, excluded by all shipped profiles.
+- Shared full SQL/write binding patch `sql/shared-binding-v1.patch` SHA256
+  b3c627eb605947134461c6a47dee83341c57e94508e4f9199df613937adf9eb8;
+  PostgreSQLvector separate `sql/managed-vector-v1.patch` SHA256
+  b73bf682eea7f7365c4a2be88fcab9f19ed75a91b4ac42318ddb05a226cf5eea.
+  Meaningful native RED/GREEN covers Invoke→RunSQL actual values, Invoke→RunWrite
+  dispatch and strict endpoint/wire/timeout protections. Final recipes still running.
+- Vertex final both-arch packaged suites44passed each, no-network hash installs,
+  pipcheck and health passed. Source remains frozen d3ddf21a.
+- Fresh reviewer `review_vertex_and_monitor_latest` reviewing Vertex and root
+  monitor2037c81 independently. No source/tag/release pushes yet.
+- AWS arm64 final package gate339passed/14optional live skips; amd64 gate pending.
+  Worker adding mandatory source/patch/wheel provenance negative controls. These
+  own fork versions expose original public identities to conservative OSV checks.
+
+
+- Fresh review approved Vertexd3ddf21 and monitor2037c81 with no findings.
+  Independent Vertex archive44passed; independent whole catalog suite290passed.
+  Live IAM behavior remains outside credential-free verification; future SDK
+  upgrades must rerun lifecycle controls. OSV completeness is an external limit.
+  Historical local SHA256SUMS is not used for current publication.
+- Exact v2 baseline OSV105queries returned zero known non-withdrawn matches.
+  Evidence /private/tmp/fs-updates-95-20261110/baseline-v2-osv.json.
+- AWS both architectures offline complete suite339passed/14optional integration
+  skips; final extracted-archive protocol tests and immutable commit still pending.
