@@ -77,6 +77,12 @@ Those need a separate source adapter with reliable product/version identity.
   upstream version. A local suffix such as `+flowsteward.1` therefore cannot hide
   known upstream advisories. The extension owns its patches and provenance;
   this conservative lookup does not assume a local patch fixes an advisory.
+  A GitHub provenance file may also declare an `upstream_module` Go identity
+  for a local driver fork. Its module path and major version must match the
+  source repository, its version must equal the pinned source tag, and commit,
+  module checksum and patch references are required. This adds a source-declared
+  advisory/update lookup; it does not attest binary contents or remove the
+  runtime inventory's local replacement coverage gap.
 - Updates retain one deterministic issue marker per dependency/release event.
   Security advisories are grouped by the transitive union of their primary IDs
   and explicit aliases, including advisories covering multiple Go modules.

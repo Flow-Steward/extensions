@@ -135,6 +135,72 @@ def test_github_provenance_records_commit_and_version():
     assert inv.dependencies[0].commit == "a" * 40
 
 
+@pytest.fixture
+def driver_provenance():
+    return {
+        "source": "https://github.com/neo4j/neo4j-go-driver",
+        "upstream_tag": "v6.4.0",
+        "upstream_commit": "a" * 40,
+        "module_sum": "h1:" + "A" * 43 + "=",
+        "patch": "scripts/patches/driver.patch",
+        "patch_sha256": "b" * 64,
+        "upstream_module": {
+            "ecosystem": "Go",
+            "name": "github.com/neo4j/neo4j-go-driver/v6",
+            "version": "v6.4.0",
+        },
+    }
+
+
+def test_fork_provenance_supplements_advisories_without_hiding_local_gap(
+    driver_provenance,
+):
+    inv = discover(
+        {
+            "neo4j-driver-provenance.json": json.dumps(driver_provenance),
+            "go.mod": "module example.org/app\n"
+            "require github.com/neo4j/neo4j-go-driver/v6 v6.4.0\n"
+            "replace github.com/neo4j/neo4j-go-driver/v6 => /driver\n",
+        },
+        [driver_provenance["patch"]],
+    )
+    assert ("Go", "github.com/neo4j/neo4j-go-driver/v6", "v6.4.0") in pins(inv)
+    assert ("GitHub", "neo4j/neo4j-go-driver", "v6.4.0") in pins(inv)
+    assert any("local Go replacement" in gap for gap in inv.gaps)
+    dep = next(d for d in inv.dependencies if d.ecosystem == "Go")
+    assert dep.scope == "upstream"
+    assert dep.source == "neo4j-driver-provenance.json"
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("name", "github.com/other/driver/v6"),
+        ("name", "github.com/neo4j/neo4j-go-driver/v7"),
+        ("version", "v6.0.0"),
+        ("version", "latest"),
+        ("ecosystem", "npm"),
+        ("module_sum", "h1:missing"),
+        ("patch_sha256", "missing"),
+        ("patch", "../driver.patch"),
+        ("upstream_commit", ""),
+    ],
+)
+def test_inconsistent_fork_identity_is_a_coverage_gap(driver_provenance, field, value):
+    target = (
+        driver_provenance["upstream_module"]
+        if field in {"name", "version", "ecosystem"}
+        else driver_provenance
+    )
+    target[field] = value
+    inv = discover(
+        {"neo4j-driver-provenance.json": json.dumps(driver_provenance)},
+        ["scripts/patches/driver.patch"],
+    )
+    assert not any(d.ecosystem == "Go" for d in inv.dependencies)
+    assert inv.gaps
+
+
 def test_go_module_replacements_do_not_scan_replaced_version():
     inv = discover(
         {

@@ -154,6 +154,34 @@ def _scope(path: str) -> str:
     return "development" if re.search(r"dev|test|\.github", path) else "runtime"
 
 
+def _declared_go_module(data, repository, paths):
+    """Supplement a local fork with its declared upstream; never replace runtime evidence."""
+    module = data["upstream_module"]
+    if not isinstance(module, dict) or module.get("ecosystem") != "Go":
+        raise ValueError("unsupported upstream module")
+    version = module.get("version", "")
+    match = re.fullmatch(r"v([0-9]+)\.[0-9]+\.[0-9]+(?:-[0-9A-Za-z.-]+)?", version)
+    if not match or version != data.get("upstream_tag"):
+        raise ValueError("upstream module version disagrees with source tag")
+    major = int(match[1])
+    expected = f"github.com/{repository}" + (f"/v{major}" if major >= 2 else "")
+    if module.get("name") != expected:
+        raise ValueError("upstream module disagrees with source repository")
+    patch = data.get("patch", "")
+    patch_path = PurePosixPath(patch)
+    if (
+        not data.get("upstream_commit")
+        or not re.fullmatch(r"h1:[A-Za-z0-9+/]{43}=", data.get("module_sum", ""))
+        or not re.fullmatch(r"[0-9a-f]{64}", data.get("patch_sha256", ""))
+        or not patch
+        or patch_path.is_absolute()
+        or ".." in patch_path.parts
+        or patch not in paths
+    ):
+        raise ValueError("upstream module provenance is incomplete")
+    return expected, version
+
+
 def discover(files: dict[str, str], paths: list[str]) -> Inventory:
     result = Inventory()
     custom_python_source = any(
@@ -334,6 +362,11 @@ def discover(files: dict[str, str], paths: list[str]) -> Inventory:
                     "upstream",
                     commit,
                 )
+                if "upstream_module" in data:
+                    package, module_version = _declared_go_module(
+                        data, match[1].removesuffix(".git"), paths
+                    )
+                    add("Go", package, module_version, path, "upstream")
             elif name == "go.mod":
                 for package, version in go_requirements(files[path], result.gaps, path):
                     add("Go", package, version, path)

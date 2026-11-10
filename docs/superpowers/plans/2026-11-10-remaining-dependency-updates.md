@@ -31,7 +31,7 @@
 ## Tasks
 
 - [x] 1. Freeze the 95-event inventory and map every event to affected repositories and intended target versions. Verify current upstream metadata.
-- [ ] 2. Vertex: reproduce google-auth 2.62.1 lifecycle failure with the existing real-credential control, repair ownership/lifecycle, update hashed wheels and tests, prepare next patch release.
+- [x] 2. Vertex: reproduce google-auth 2.62.1 lifecycle failure with the existing real-credential control, repair ownership/lifecycle, update hashed wheels and tests, prepare next patch release.
 - [ ] 3. File Transfer: resolve botocore 1.43.127 / python-dateutil 4.0.0 incompatibilities through a supported dependency graph or a narrowly justified, truthful compatibility adaptation; preserve S3/FTP/SFTP/Dropbox behavior and offline install integrity. Prepare next patch release only after resolver and behavioral gates.
 - [ ] 4. Toolbox migration: compare exact v1.16.0 source to v1.3.0, port the shared baseline to Go 1.27.3 and all 90 Go module update targets and the toolchain. Reproduce and repair compiler/API breaks; retain explicit upstream identities.
 - [ ] 5. Port and test five SQL connectors (PostgreSQL, MySQL, MSSQL, OceanBase, SingleStore) against the shared new baseline; build both architectures and prepare next patch versions.
@@ -121,3 +121,38 @@
   Evidence /private/tmp/fs-updates-95-20261110/baseline-v2-osv.json.
 - AWS both architectures offline complete suite339passed/14optional integration
   skips; final extracted-archive protocol tests and immutable commit still pending.
+
+
+### Publication and supplemental fork identity
+
+- Vertexv0.1.3 main+annotatedtag pushed atomically; normal GitHub release public:
+  https://github.com/Flow-Steward/ext-ai-google-cloud-vertex/releases/tag/v0.1.3.
+  Root checking public asset digests and equality to tested member contents.
+- Root monitor/local-Python adapter2037c81 and checkpoints8f26c5d published to main
+  after independent review. Complete suite290passed.
+- FileTransfer0.3.3 candidate7d7fee2df16e1b21782fe159e2989699344d67f4 ready;
+  official dateutil4.0.0/tzdata2026.6 plus disclosed reproducible local builds
+  botocore1.43.127+flowsteward.1/aiobotocore3.10.0+flowsteward.1. Botharches
+  full339passed/14external skips and63extracted archive tests. Official botocore
+  parser/credential tests40passed; wheel rebuild reproducibility and RECORD gate
+  pass. Fresh review pending; no AWS push/tag/release yet.
+- Neo4j's previously unversioned local driver revealed additional current upstream
+  v6.4.0, commitdd3f3684b7f331acc53ae0592a03c4e24a5c5059. Use a scoped Neo4j
+  dependency overlay over sharedv2, preserving the driver socket/wire guards;
+  do not mutate the frozen common patch. Source-only worker ports6.4 now.
+- Root supplemental upstream_module Go provenance adapter: ten RED/GREEN controls,
+  full300tests passed. Source repo/module-major/tag/commit/checksum/patch-reference
+  consistency required; add upstream Go lookup without deleting local runtime
+  replacement gaps or claiming source metadata proves binary identity. New
+  adapter awaiting fresh review before publication.
+- All5 SQL botharch recipes exited0, actual compiler1.27.3 and native floors pass.
+  Full suites/live controls pending. PostgreSQL live fixture race identified:
+  pg_isready over Unix socket observed Docker's temporary init server; readiness
+  corrected to127.0.0.1 finalTCP. Product deadlines and gates unchanged.
+- SpecialClick botharch builds successful; a running-script edit shifted shell
+  offsets at trailing provenance execution. Correct full frozen recipe rerun
+  required and planned; binary source tests passed, packaged185passed/72skips.
+  Snow exact driver guard updated2.2→reviewed2.4; builds continue.
+- NoSQL source-level controls now cover Mongo actual Invoke literal payload,
+  Oracle static binding/row bound, Firestore no-retry/receive limit and BigQuery
+  allowlist-before-wire. Final builds and review remain required.
