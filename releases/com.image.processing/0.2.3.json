@@ -1,0 +1,59 @@
+{
+  "extension_id": "com.image.processing",
+  "version": "0.2.3",
+  "repository": "https://github.com/Flow-Steward/ext-image-processing",
+  "tag": "v0.2.3",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/com.image.processing/0.2.3.png",
+    "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
+    "bytes": 4915,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-10T15:36:09Z",
+  "item": {
+    "extension_id": "com.image.processing",
+    "version": "0.2.3",
+    "name": "Image Processing",
+    "summary": "Resize image artifacts proportionally and remove backgrounds locally.",
+    "description": "Local, CPU-only image resizing and background removal for workflows.",
+    "categories": [
+      "media"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "images",
+      "resize",
+      "background-removal",
+      "local"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-image-processing/tree/v0.2.3",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.2.3/com.image.processing-0.2.3-linux-amd64.zip",
+    "release_zip_bytes": 52033904,
+    "release_zip_sha256": "a9d094e556c91024d6b05c96b927286aca83e0df7c74d14a0421e4061cb4391e",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.2.3/com.image.processing-0.2.3-linux-amd64.zip",
+        "release_zip_bytes": 52033904,
+        "release_zip_sha256": "a9d094e556c91024d6b05c96b927286aca83e0df7c74d14a0421e4061cb4391e"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.2.3/com.image.processing-0.2.3-linux-arm64.zip",
+        "release_zip_bytes": 48008316,
+        "release_zip_sha256": "1eb77d622381acc84e05d9ba469d724db693eaa6eb9f48bcf65cfe08a9159330"
+      }
+    }
+  }
+}

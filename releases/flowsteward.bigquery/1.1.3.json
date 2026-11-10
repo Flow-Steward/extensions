@@ -1,0 +1,57 @@
+{
+  "extension_id": "flowsteward.bigquery",
+  "version": "1.1.3",
+  "repository": "https://github.com/Flow-Steward/ext-data-bigquery",
+  "tag": "v1.1.3",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.bigquery/1.1.3.png",
+    "sha256": "f02f30a4af46c40aa2bee5c5822480d898d332944c92078504c323db0b74ff9b",
+    "bytes": 10716,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-10T15:36:15Z",
+  "item": {
+    "extension_id": "flowsteward.bigquery",
+    "version": "1.1.3",
+    "name": "BigQuery",
+    "summary": "SQL datasets and saved queries; read, insert, update, delete and merge workflow data.",
+    "description": "Read BigQuery datasets with scoped saved SQL; preserve parameterized SELECT, INSERT, UPDATE, DELETE and MERGE workflow actions.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "query",
+      "dataset_connector"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "bigquery",
+      "toolbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-bigquery/tree/v1.1.3",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.3/flowsteward.bigquery-1.1.3-linux-amd64.zip",
+    "release_zip_bytes": 11899656,
+    "release_zip_sha256": "b3fddd4701b6bbbba421abea5a8d7e787c2413a9f259973de7679d7a742bf7ef",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.3/flowsteward.bigquery-1.1.3-linux-amd64.zip",
+        "release_zip_bytes": 11899656,
+        "release_zip_sha256": "b3fddd4701b6bbbba421abea5a8d7e787c2413a9f259973de7679d7a742bf7ef"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.3/flowsteward.bigquery-1.1.3-linux-arm64.zip",
+        "release_zip_bytes": 10779784,
+        "release_zip_sha256": "be3d92e0e2caaf40df311c21ae7b3ad0c7524f02b45501038a5751c416629ec8"
+      }
+    }
+  }
+}

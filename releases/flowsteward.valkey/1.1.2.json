@@ -1,0 +1,56 @@
+{
+  "extension_id": "flowsteward.valkey",
+  "version": "1.1.2",
+  "repository": "https://github.com/Flow-Steward/ext-data-valkey",
+  "tag": "v1.1.2",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.valkey/1.1.2.png",
+    "sha256": "c880ad4a19f3941882808347663b5be75de67ccb088d186cd773a6508b24ff12",
+    "bytes": 15138,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-10T15:37:26Z",
+  "item": {
+    "extension_id": "flowsteward.valkey",
+    "version": "1.1.2",
+    "name": "Valkey",
+    "summary": "Workflow state, deduplication and bounded queues.",
+    "description": "Valkey normal-key and JSON Datasets, with guarded workflows and compatible project state.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "dataset_connector"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "valkey",
+      "toolbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-valkey/tree/v1.1.2",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-valkey/releases/download/v1.1.2/flowsteward.valkey-1.1.2-linux-amd64.zip",
+    "release_zip_bytes": 11016674,
+    "release_zip_sha256": "9b2a4c812b83ec6c5a643f35f766a0c8722c7e83261030c067c2cbd8057b78cd",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-valkey/releases/download/v1.1.2/flowsteward.valkey-1.1.2-linux-amd64.zip",
+        "release_zip_bytes": 11016674,
+        "release_zip_sha256": "9b2a4c812b83ec6c5a643f35f766a0c8722c7e83261030c067c2cbd8057b78cd"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-valkey/releases/download/v1.1.2/flowsteward.valkey-1.1.2-linux-arm64.zip",
+        "release_zip_bytes": 9857379,
+        "release_zip_sha256": "f7875b412e518a0c05abdc90dd888b77576eb19739ec46c85b6921540ec59659"
+      }
+    }
+  }
+}
