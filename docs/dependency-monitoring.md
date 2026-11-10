@@ -72,6 +72,11 @@ Those need a separate source adapter with reliable product/version identity.
   commit, paginate results and ignore withdrawn advisories. Fixed versions from
   the relevant package's advisory are included when present. No OSV match means
   **no known match in that source**, not proof of safety or complete coverage.
+  Python compatibility builds with a PEP 440 local suffix retain the complete
+  installed version in the report, while vulnerability queries use its public
+  upstream version. A local suffix such as `+flowsteward.1` therefore cannot hide
+  known upstream advisories. The extension owns its patches and provenance;
+  this conservative lookup does not assume a local patch fixes an advisory.
 - Updates retain one deterministic issue marker per dependency/release event.
   Security advisories are grouped by the transitive union of their primary IDs
   and explicit aliases, including advisories covering multiple Go modules.

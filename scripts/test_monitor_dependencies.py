@@ -148,6 +148,38 @@ def test_osv_paginates_and_excludes_withdrawn_advisories():
     assert [v["id"] for v in vulns] == ["GHSA-one", "GHSA-two"]
 
 
+@pytest.mark.parametrize(
+    "installed,upstream",
+    [
+        ("1.43.127+flowsteward.1", "1.43.127"),
+        ("3.10.0+flowsteward.1", "3.10.0"),
+        ("2.9.0.post1+vendor.2", "2.9.0.post1"),
+        ("1.43.127+incompatible", "1.43.127"),
+    ],
+)
+def test_local_python_builds_retain_upstream_advisory_coverage(installed, upstream):
+    query = {
+        "package": {"ecosystem": "PyPI", "name": "botocore"},
+        "version": upstream,
+    }
+    url = "https://api.osv.dev/v1/query"
+    http = MemoryHTTP(
+        {
+            (url, json.dumps(query, sort_keys=True)): {
+                "vulns": [{"id": "upstream-risk"}]
+            },
+            (url, json.dumps({**query, "version": installed}, sort_keys=True)): {
+                "vulns": []
+            },
+        }
+    )
+    dep = Dependency("PyPI", "botocore", installed, "requirements.txt")
+    assert Services(http).vulnerabilities(dep) == [{"id": "upstream-risk"}]
+    assert dep.version == installed
+    assert not stable_newer(installed, upstream)
+    assert stable_newer(installed, "99.0.0")
+
+
 class FakeServices:
     def __init__(self):
         self.sources = {

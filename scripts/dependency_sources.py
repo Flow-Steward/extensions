@@ -330,7 +330,18 @@ class Services:
         raise SourceError(f"unsupported update ecosystem: {ecosystem}")
 
     def vulnerabilities(self, dep: Dependency):
-        return self._vulnerabilities(dep.ecosystem, dep.name, dep.version, dep.commit)
+        version = dep.version
+        if dep.ecosystem == "PyPI":
+            # Local compatibility builds retain upstream advisory coverage. A
+            # vendor suffix must not make a vulnerable public release invisible.
+            try:
+                parsed = Version(version)
+            except InvalidVersion:
+                pass
+            else:
+                if parsed.local is not None:
+                    version = parsed.public
+        return self._vulnerabilities(dep.ecosystem, dep.name, version, dep.commit)
 
     def _vulnerabilities(self, ecosystem, name, version, commit):
         if ecosystem == "GitHub":
