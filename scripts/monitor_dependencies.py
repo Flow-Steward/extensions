@@ -7,10 +7,13 @@ import hashlib
 import json
 import os
 import re
-from dataclasses import asdict, replace
+from dataclasses import asdict
 from datetime import UTC, datetime
 from pathlib import Path
+from urllib.parse import quote as urlquote
+from urllib.parse import urlsplit
 
+from advisory_groups import group_security_findings
 from dependency_inventory import discover, select_extensions
 from dependency_sources import (
     HTTP,
@@ -55,29 +58,21 @@ def scan_extensions(extensions, services):
             sha, files, paths = services.source(ext)
             record["commit"] = sha
             inventory = discover(files, paths)
-            # Native upstream metadata gives us a pinned source without a hand-maintained map.
-            for dep in list(inventory.dependencies):
-                if dep.ecosystem == "GitHub" and dep.commit:
-                    try:
-                        content = services.upstream_go_mod(dep.name, dep.commit)
-                        if content:
-                            upstream = discover({"go.mod": content}, ["go.mod"])
-                            inventory.dependencies.extend(
-                                replace(
-                                    d,
-                                    source=f"https://github.com/{dep.name}/blob/{dep.commit}/go.mod",
-                                    scope="upstream-declared",
-                                )
-                                for d in upstream.dependencies
-                            )
-                            inventory.gaps.extend(upstream.gaps)
-                            inventory.gaps.append(
-                                f"{dep.name}: Go module declarations are not a binary SBOM or proof of vulnerability reachability"
-                            )
-                    except (SourceError, ValueError, KeyError, TypeError) as exc:
-                        report["errors"].append(
-                            f"{ext.extension_id}: upstream dependency lookup: {exc}"
-                        )
+            try:
+                loader = getattr(services, "runtime_inventory", None)
+                if loader:
+                    runtime_inventory = loader(ext)
+                    inventory.dependencies.extend(runtime_inventory.dependencies)
+                    inventory.gaps.extend(runtime_inventory.gaps)
+                else:
+                    inventory.gaps.append(
+                        "Runtime asset inventory unavailable; binary composition not assessed"
+                    )
+            except (SourceError, ValueError, KeyError, TypeError) as exc:
+                report["errors"].append(f"{ext.extension_id}: runtime inventory: {exc}")
+                inventory.gaps.append(
+                    "Runtime binary inventory unavailable; upstream declarations are not a fallback"
+                )
             record["dependencies"] = [
                 asdict(d) for d in sorted(set(inventory.dependencies))
             ]
@@ -104,9 +99,20 @@ def scan_extensions(extensions, services):
                 "current": dep.version or dep.commit,
                 "scope": dep.scope,
                 "source": dep.source,
+                "dependency": dep.name,
+                "ecosystem": dep.ecosystem,
             }
 
-            def finding(kind, event, url, details="", dep=dep, affected=affected):
+            def finding(
+                kind,
+                event,
+                url,
+                details="",
+                advisory_ids=(),
+                references=(),
+                dep=dep,
+                affected=affected,
+            ):
                 key = event_key(kind, dep.ecosystem, dep.name, event)
                 item = findings.setdefault(
                     key,
@@ -121,6 +127,13 @@ def scan_extensions(extensions, services):
                         "affected": [],
                     },
                 )
+                if kind == "security":
+                    item["references"] = sorted(
+                        set(item.get("references", [])) | set(references)
+                    )
+                    item["advisory_ids"] = sorted(
+                        set(item.get("advisory_ids", [])) | set(advisory_ids) | {event}
+                    )
                 if affected not in item["affected"]:
                     item["affected"].append(affected)
 
@@ -137,6 +150,8 @@ def scan_extensions(extensions, services):
                         url = f"https://pypi.org/project/{quote(dep.name)}/{quote(latest)}/"
                     elif dep.ecosystem == "npm":
                         url = f"https://www.npmjs.com/package/{quote(dep.name)}/v/{quote(latest)}"
+                    elif dep.ecosystem == "Go" and dep.name in {"stdlib", "toolchain"}:
+                        url = f"https://go.dev/doc/devel/release#go{quote(latest)}"
                     else:
                         url = f"https://pkg.go.dev/{quote(dep.name)}@{quote(latest)}"
                     finding(
@@ -191,6 +206,16 @@ def scan_extensions(extensions, services):
                         event,
                         f"https://osv.dev/vulnerability/{quote(advisory['id'])}",
                         details,
+                        advisory_ids=[advisory["id"], *advisory.get("aliases", [])],
+                        references=[
+                            r["url"]
+                            for r in advisory.get("references", [])
+                            if isinstance(r, dict)
+                            and isinstance(r.get("url"), str)
+                            and urlsplit(r["url"]).scheme in {"https", "http"}
+                            and urlsplit(r["url"]).hostname
+                            and not urlsplit(r["url"]).username
+                        ],
                     )
             except (SourceError, ValueError, KeyError, TypeError) as exc:
                 report["errors"].append(
@@ -198,7 +223,7 @@ def scan_extensions(extensions, services):
                 )
         record["gaps"] = sorted(set(record["gaps"]))
     report["findings"] = sorted(
-        findings.values(),
+        group_security_findings(list(findings.values())),
         key=lambda f: (f["kind"] != "security", f["dependency"], f["event"]),
     )
     report["errors"] = sorted(set(report["errors"]))
@@ -213,23 +238,38 @@ def issue_body(finding):
         "",
         safe_text(finding["details"]),
         "",
-        f"[Upstream evidence]({finding['url']})",
+        f"[Upstream evidence]({urlquote(finding['url'], safe=':/?=&%#@+~.-_')})",
         "",
-        "| Extension | Published version | Dependency version | Scope | Source |",
-        "|---|---|---|---|---|",
+        "| Extension | Published version | Dependency | Version | Scope | Source |",
+        "|---|---|---|---|---|---|",
     ]
     for item in sorted(
         finding["affected"],
         key=lambda x: (x["extension_id"], x["source"], x["current"], x["scope"]),
     ):
         url = (
-            item["source"]
+            item["source"].split("!/", 1)[0]
             if item["source"].startswith("https://github.com/")
             else f"https://github.com/{item['repository']}/blob/{item['commit']}/{quote(item['source'])}"
         )
         lines.append(
-            f"| {safe_text(item['extension_id'])} | {safe_text(item['extension_version'])} | {safe_text(item['current'])} | {safe_text(item['scope'])} | [declaration]({url}) |"
+            f"| {safe_text(item['extension_id'])} | {safe_text(item['extension_version'])} | {safe_text(item.get('dependency', finding['dependency']))} | {safe_text(item['current'])} | {safe_text(item['scope'])} | [declaration]({url}) |"
         )
+    if finding.get("advisory_ids"):
+        lines += [
+            "",
+            "Advisory IDs: " + ", ".join(safe_text(x) for x in finding["advisory_ids"]),
+        ]
+    for component in finding.get("component_details", []):
+        lines += [
+            "",
+            f"- {safe_text(component['dependency'])}: {safe_text(component['details'])} ([advisory]({urlquote(component['url'], safe=':/?=&%#@+~.-_')}))",
+        ]
+    if finding.get("references"):
+        lines += ["", "References:"] + [
+            f"- [Source {i}]({urlquote(url, safe=':/?=&%#@+~.-_')})"
+            for i, url in enumerate(finding["references"], 1)
+        ]
     lines += [
         "",
         "Review applicability and compatibility, update the extension where needed, run its tests, and publish a new release.",
@@ -257,7 +297,16 @@ def sync_issues(report, services, repository, *, write=False):
     incomplete_scan = bool(report["errors"])
     for finding in report["findings"]:
         body = issue_body(finding)
-        issue = existing.get(finding["key"])
+        matching = [
+            existing[key]
+            for key in [finding["key"], *finding.get("legacy_keys", [])]
+            if key in existing
+        ]
+        matching = sorted(
+            {i["number"]: i for i in matching}.values(),
+            key=lambda i: (i["state"] != "closed", i["number"]),
+        )
+        issue = matching[0] if matching else None
         if issue is None:
             title = f"[dependency {finding['kind']}] {safe_text(finding['dependency'])}: {safe_text(finding['event'])}"[
                 :240
@@ -274,9 +323,10 @@ def sync_issues(report, services, repository, *, write=False):
             counts["unchanged"] += 1
         else:
             old = issue.get("body") or ""
-            start = old.find(
-                f"<!-- flow-steward-dependency-monitor:{finding['key']} -->"
+            match = re.search(
+                r"<!-- flow-steward-dependency-monitor:[a-f0-9]{64} -->", old
             )
+            start = match.start() if match else -1
             end = old.find(END, start)
             if end == -1:
                 report["errors"].append(
@@ -318,7 +368,7 @@ def write_reports(report, directory):
     ]
     for finding in report["findings"]:
         lines.append(
-            f"- **{finding['kind']}** {safe_text(finding['dependency'])}: [{safe_text(finding['event'])}]({finding['url']}) — {', '.join(sorted({safe_text(a['extension_id']) for a in finding['affected']}))}"
+            f"- **{finding['kind']}** {safe_text(finding['dependency'])}: [{safe_text(finding['event'])}]({urlquote(finding['url'], safe=':/?=&%#@+~.-_')}) — {', '.join(sorted({safe_text(a['extension_id']) for a in finding['affected']}))}"
         )
     lines += ["", "## Coverage", ""]
     for ext in report["extensions"]:

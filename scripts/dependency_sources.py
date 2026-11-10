@@ -24,6 +24,7 @@ HOSTS = {
     "registry.npmjs.org",
     "proxy.golang.org",
     "api.osv.dev",
+    "go.dev",
 }
 
 
@@ -46,11 +47,58 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
         )
 
 
+class ReleaseRedirect(urllib.request.HTTPRedirectHandler):
+    """Release downloads carry no credentials, including across signed redirects."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        check_release_url(newurl)
+        redirected = super().redirect_request(req, fp, code, msg, headers, newurl)
+        if redirected:
+            redirected.remove_header("Authorization")
+        return redirected
+
+
+def check_release_url(url):
+    parsed = urllib.parse.urlsplit(url)
+    if (
+        parsed.scheme != "https"
+        or parsed.hostname
+        not in {
+            "github.com",
+            "release-assets.githubusercontent.com",
+            "objects.githubusercontent.com",
+        }
+        or parsed.username
+        or parsed.password
+        or parsed.port not in {None, 443}
+    ):
+        raise SourceError("unsupported release asset URL")
+
+
 class HTTP:
     def __init__(self, token=""):
         self.token = token
         self.opener = urllib.request.build_opener(NoRedirect())
         self.last_mutation = None
+
+    def download(self, url, *, max_bytes):
+        check_release_url(url)
+        request = urllib.request.Request(
+            url, headers={"User-Agent": "flow-steward-dependency-monitor"}
+        )
+        try:
+            with urllib.request.build_opener(ReleaseRedirect()).open(
+                request, timeout=60
+            ) as response:
+                data = response.read(max_bytes + 1)
+            if len(data) > max_bytes:
+                raise SourceError("release asset exceeds its declared size")
+            return data
+        except (urllib.error.URLError, TimeoutError, OSError) as exc:
+            # Signed redirect query strings are temporary credentials: never log them.
+            raise SourceError(
+                f"release asset download failed ({type(exc).__name__})"
+            ) from None
 
     def text(self, url, *, method="GET", body=None):
         parsed = urllib.parse.urlsplit(url)
@@ -156,6 +204,28 @@ class Services:
         self.upstream_go_mod = lru_cache(maxsize=128)(self.upstream_go_mod)
         self._latest = lru_cache(maxsize=4096)(self._latest)
         self._vulnerabilities = lru_cache(maxsize=8192)(self._vulnerabilities)
+        self._runtime_asset = lru_cache(maxsize=256)(self._runtime_asset)
+
+    def _runtime_asset(self, coordinates):
+        from runtime_inventory import RuntimeAsset, inspect_runtime_archive
+
+        asset = RuntimeAsset(*coordinates)
+        data = self.http.download(asset.url, max_bytes=asset.size)
+        return inspect_runtime_archive(data, asset)
+
+    def runtime_inventory(self, ext):
+        from dependency_inventory import Inventory
+
+        result = Inventory()
+        if not ext.assets:
+            result.gaps.append(
+                "Published runtime assets are unavailable; binary composition cannot be checked"
+            )
+        for coordinates in ext.assets:
+            inventory = self._runtime_asset(coordinates)
+            result.dependencies.extend(inventory.dependencies)
+            result.gaps.extend(inventory.gaps)
+        return result
 
     def pages(self, path):
         result = []
@@ -239,6 +309,11 @@ class Services:
             data = self.http.json(f"https://registry.npmjs.org/{quote(name)}/latest")
             return data["version"]
         if ecosystem == "Go":
+            if name in {"stdlib", "toolchain"}:
+                data = self.http.json("https://go.dev/dl/?mode=json")
+                return newest(
+                    r["version"].removeprefix("go") for r in data if r.get("stable")
+                )
             # Go's module proxy escapes uppercase characters with !lowercase.
             escaped = "".join("!" + c.lower() if c.isupper() else c for c in name)
             data = self.http.text(

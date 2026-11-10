@@ -46,6 +46,7 @@ class Extension:
     version: str
     repository: str
     tag: str
+    assets: tuple[tuple[str, str, str, int], ...] = ()
 
 
 @dataclass(frozen=True, order=True)
@@ -91,7 +92,27 @@ def select_extensions(root: Path) -> list[Extension]:
             raise ValueError(
                 f"catalog source disagrees with registration/version: {key}"
             )
-        selected.append(Extension(key, version, slug, tag))
+        asset_records = item.get("release_targets") or {"": item}
+        assets = []
+        for target, asset in sorted(asset_records.items()):
+            if "release_zip_url" not in asset:
+                continue
+            suffix = f"-{target}" if target else ""
+            expected = f"https://github.com/{slug}/releases/download/{tag}/{key}-{version}{suffix}.zip"
+            url = asset.get("release_zip_url", "")
+            digest = asset.get("release_zip_sha256", "")
+            size = asset.get("release_zip_bytes", 0)
+            if (
+                target not in {"", "linux-amd64", "linux-arm64"}
+                or url.lower() != expected.lower()
+                or not re.fullmatch(r"[a-f0-9]{64}", digest)
+                or not isinstance(size, int)
+                or isinstance(size, bool)
+                or not 0 < size <= 50 * 1024 * 1024
+            ):
+                raise ValueError(f"invalid published asset coordinates: {key}/{target}")
+            assets.append((target, url, digest, size))
+        selected.append(Extension(key, version, slug, tag, tuple(assets)))
     if not selected:
         raise ValueError("no published Flow-Steward extensions selected")
     return sorted(selected)

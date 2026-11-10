@@ -10,7 +10,8 @@ disabled. Check the Actions run history if reports stop arriving.
 No extra token or per-extension configuration is needed for public repositories.
 The workflow's `GITHUB_TOKEN` reads public source metadata and writes issues only
 in this catalog. Inspected extension source is never executed or installed. HTTP
-credentials are sent only to api.github.com and redirects are refused.
+credentials are sent only to api.github.com. API redirects are refused; release
+downloads carry no credentials and follow only GitHub asset-host redirects.
 
 ## Selection and discovery
 
@@ -32,14 +33,20 @@ records. The report records the resolved commit for auditability.
 | `package-lock.json` v2/v3 | npm locked versions, including transitive entries |
 | `go.mod` | Required modules and versioned replacements; local replacements are gaps |
 | `*-provenance.json`, `THIRD_PARTY.yml` | GitHub source, tag/version and commit fields used by maintained native components |
-| Pinned GitHub upstream `go.mod` | Upstream declared modules, explicitly separated from actual packaged contents |
+| Published release ZIPs | SHA-256/size verified against the catalog; runtime wheels and actual Go build metadata, separately for each target |
 
-This is a **static declaration inventory**, not a package resolver or exhaustive
-binary SBOM. It does not establish which Go modules were compiled into a native
-binary, which optional dependencies are active, or which code paths are reachable.
-Python wheels contribute names/versions; their metadata is not recursively
-resolved. A lockfile or committed runtime wheels provide the transitive coverage.
-Generated build dependencies and libraries absent from source are not inferred.
+Published archives are inspected without extracting, executing or installing their
+contents. Target package metadata and native-file hashes are checked; Go ELF build
+metadata supplies the modules actually compiled into each binary and its Go
+standard-library version. The monitor does not attribute a shared upstream
+`go.mod` to every database variant. Runtime wheels exclude `dev-wheels`; source
+build/development declarations remain visible with their own scopes.
+
+This remains a static inventory, not an exhaustive binary SBOM or reachability
+analysis. Unsupported/missing native build metadata is an explicit coverage gap.
+Python wheel dependencies are not recursively resolved; libraries absent from
+both declarations and supported binary metadata are not inferred. A dependency's
+presence does not establish that a vulnerable operation is reachable.
 
 Development/build dependencies are included and identified in findings. Unpinned
 ranges are not treated as installed versions. Unsupported manifests (including
@@ -55,7 +62,7 @@ Those need a separate source adapter with reliable product/version identity.
 
 ## Findings and issue lifecycle
 
-- Update sources: PyPI, npm's `latest` tag, the Go module proxy and GitHub releases.
+- Update sources: PyPI, npm's `latest` tag, the Go module proxy, official Go stable-release metadata and GitHub releases.
   PyPI yanked/empty releases and prereleases are excluded. Latest stable versions
   are candidates for review, not assertions of runtime compatibility. Go proxy
   version lists may contain retracted releases; assess upstream release notes.
@@ -65,13 +72,16 @@ Those need a separate source adapter with reliable product/version identity.
   commit, paginate results and ignore withdrawn advisories. Fixed versions from
   the relevant package's advisory are included when present. No OSV match means
   **no known match in that source**, not proof of safety or complete coverage.
-- A dependency/event has one deterministic issue marker. Shared dependencies are
-  grouped with all affected extensions and links to the source commits.
-- Repeated runs do not recreate the same event, including after an issue is closed.
-  Advisory identity uses its stable OSV record ID; adding a CVE alias does not create
-  another issue. A newer release or different advisory creates a new event. The generated section
-  of an open issue is refreshed only if its contents changed; human notes outside
-  that section are preserved. Only `github-actions[bot]` issues are reconciled.
+- Updates retain one deterministic issue marker per dependency/release event.
+  Security advisories are grouped by the transitive union of their primary IDs
+  and explicit aliases, including advisories covering multiple Go modules.
+  Every affected package/version/extension/target, advisory ID, source reference
+  and component-specific fixed-version detail is retained.
+- Repeated runs match both the canonical advisory marker and historical markers
+  for known aliases and packages. Adding a CVE alias therefore also matches an
+  old OSV issue. Closed issues are respected; open legacy generated sections are
+  migrated while preserving human notes. Only `github-actions[bot]` issues are
+  reconciled. Existing duplicate issues are not automatically closed.
 - Issues are not automatically closed or reopened. Closing an issue records your
   decision for that event; review applicability, update/test the extension and
   publish through its normal release workflow when appropriate.

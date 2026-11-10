@@ -36,7 +36,7 @@ jobs:
       - name: Install monitor dependencies
         run: python -m pip install -r requirements-monitor.txt
       - name: Test monitor before external writes
-        run: python -m pytest -q scripts/test_dependency_inventory.py scripts/test_monitor_dependencies.py
+        run: python -m pytest -q scripts
       - name: Check published extension dependencies
         env:
           GITHUB_TOKEN: ${{ github.token }}
