@@ -122,3 +122,10 @@ API references: [OSV queries](https://google.github.io/osv.dev/post-v1-query/),
 [PyPI JSON API](https://docs.pypi.org/api/json/),
 [GitHub issues](https://docs.github.com/en/rest/issues/issues),
 [scheduled workflow behavior](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
+
+
+## Maintenance results
+
+The [2026-11-10 maintenance batch](extension-maintenance-2026-11-10.md) records
+20 published releases, compatibility decisions, retained advisory applicability,
+coverage limits and the exact before/after monitor comparison.
