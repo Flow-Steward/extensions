@@ -1,0 +1,59 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-mysql",
+  "version": "1.3.4",
+  "repository": "https://github.com/Flow-Steward/ext-data-mysql",
+  "tag": "v1.3.4",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.data-connector-mcp-toolbox-mysql/1.3.4.png",
+    "sha256": "347f84e3740de7e655a3e4f47a9a7777f2c36b91bcc7dbc5d9fd67e6058bec8e",
+    "bytes": 30560,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-10T18:15:38Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-mysql",
+    "version": "1.3.4",
+    "name": "MySQL & MariaDB",
+    "summary": "MySQL & MariaDB dataset reads and parameterized workflow INSERT, UPDATE and DELETE.",
+    "description": "Connect MySQL & MariaDB datasets, inspect schemas, preview saved queries, and run bounded workflow writes.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "mysql",
+      "database",
+      "sql",
+      "dataset"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-mysql/tree/v1.3.4",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-mysql/releases/download/v1.3.4/flowsteward.data-connector-mcp-toolbox-mysql-1.3.4-linux-amd64.zip",
+    "release_zip_bytes": 11737341,
+    "release_zip_sha256": "c4942082c875ba8eba0238488d8915a90882f04496f37dbfadf4260660018634",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-mysql/releases/download/v1.3.4/flowsteward.data-connector-mcp-toolbox-mysql-1.3.4-linux-amd64.zip",
+        "release_zip_bytes": 11737341,
+        "release_zip_sha256": "c4942082c875ba8eba0238488d8915a90882f04496f37dbfadf4260660018634"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-mysql/releases/download/v1.3.4/flowsteward.data-connector-mcp-toolbox-mysql-1.3.4-linux-arm64.zip",
+        "release_zip_bytes": 10620060,
+        "release_zip_sha256": "d885dc24d7cd9ed1186d2f16c49e0f3f0eaa0e9849098db4ebdca7654a8c047e"
+      }
+    }
+  }
+}

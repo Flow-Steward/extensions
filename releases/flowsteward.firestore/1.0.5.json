@@ -1,0 +1,56 @@
+{
+  "extension_id": "flowsteward.firestore",
+  "version": "1.0.5",
+  "repository": "https://github.com/Flow-Steward/ext-data-firestore",
+  "tag": "v1.0.5",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.firestore/1.0.5.png",
+    "sha256": "c917315e332ba3744b7ada51cf1871aae2cb174d5e9e8940667410a29b51bf7c",
+    "bytes": 24649,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-10T18:15:52Z",
+  "item": {
+    "extension_id": "flowsteward.firestore",
+    "version": "1.0.5",
+    "name": "Firestore",
+    "summary": "Bounded typed Firestore document CRUD and query.",
+    "description": "Typed Firestore document reads and writes through a managed Google Cloud native adapter.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "firestore",
+      "documents",
+      "google-cloud"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-firestore/tree/v1.0.5",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-firestore/releases/download/v1.0.5/flowsteward.firestore-1.0.5-linux-amd64.zip",
+    "release_zip_bytes": 6543237,
+    "release_zip_sha256": "da487860624c8d666d15999ebbe4983681830a9f03a2ff6b62c6a6158978d49b",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-firestore/releases/download/v1.0.5/flowsteward.firestore-1.0.5-linux-amd64.zip",
+        "release_zip_bytes": 6543237,
+        "release_zip_sha256": "da487860624c8d666d15999ebbe4983681830a9f03a2ff6b62c6a6158978d49b"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-firestore/releases/download/v1.0.5/flowsteward.firestore-1.0.5-linux-arm64.zip",
+        "release_zip_bytes": 5923157,
+        "release_zip_sha256": "a6fbcd9f047d2bac8528322e02c0db137fe1bde0f59adce39adeb61d023dafb9"
+      }
+    }
+  }
+}
