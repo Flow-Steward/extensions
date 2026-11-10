@@ -225,6 +225,16 @@ still enforces `platform_min` itself.
 
 ## Maintainers
 
+### Dependency monitoring
+
+The **Monitor extension dependencies** workflow checks published Flow-Steward
+extensions daily, discovers dependency declarations from their tagged source, and
+opens catalog issues for newer stable versions and OSV vulnerability matches.
+Shared findings are grouped; repeated runs do not duplicate issues. Each run
+includes a dependency inventory and explicit coverage gaps. See
+[dependency monitoring](docs/dependency-monitoring.md) for supported sources,
+manual dry runs, limitations and issue handling.
+
 ```bash
 pip install -r requirements.txt
 python -m pytest -q scripts                                   # builder tests

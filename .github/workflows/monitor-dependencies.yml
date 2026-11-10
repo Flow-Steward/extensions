@@ -1,0 +1,65 @@
+name: Monitor extension dependencies
+
+on:
+  schedule:
+    - cron: "43 6 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Generate reports without creating or updating issues
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: extension-dependency-monitor
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    # Scheduled writes only use reviewed code on the default branch.
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install monitor dependencies
+        run: python -m pip install -r requirements-monitor.txt
+      - name: Test monitor before external writes
+        run: python -m pytest -q scripts/test_dependency_inventory.py scripts/test_monitor_dependencies.py
+      - name: Check published extension dependencies
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          WRITE_ISSUES: ${{ github.event_name == 'schedule' || !inputs.dry_run }}
+        run: |
+          args=()
+          if [ "$WRITE_ISSUES" = "true" ]; then args+=(--write-issues); fi
+          python scripts/monitor_dependencies.py \
+            --repository "$GITHUB_REPOSITORY" \
+            --output-dir dependency-report "${args[@]}"
+      - name: Summarize findings and coverage
+        if: always()
+        run: |
+          if [ -f dependency-report/dependency-report.md ]; then
+            cat dependency-report/dependency-report.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Dependency monitor did not produce a report. Check the failed setup/test step.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Preserve dependency inventory and findings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: extension-dependency-report
+          path: dependency-report/
+          retention-days: 30
+          if-no-files-found: warn
