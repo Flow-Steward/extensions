@@ -28,13 +28,13 @@ jobs:
       - run: python -m pip install -r requirements-monitor.txt
       - name: Test production monitor before external writes
         run: python -m pytest -q scripts
-      - name: Create one real TEST ONLY issue and verify deduplication
+      - name: Verify actual test issue creation and same-event deduplication
         id: probe
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           python - <<'PY'
-          import hashlib, json, os, sys
+          import hashlib, json, os, sys, time
           from pathlib import Path
           sys.path.insert(0, "scripts")
           from dependency_sources import HTTP, Services
@@ -43,10 +43,11 @@ jobs:
           repo = os.environ["GITHUB_REPOSITORY"]
           assert repo == "Flow-Steward/extensions"
           assert os.environ.get("GITHUB_ACTIONS") == "true"
-          nonce = os.environ["GITHUB_RUN_ID"] + "-" + os.environ["GITHUB_RUN_ATTEMPT"]
+          # Resume the exact real signal already created by the first test run.
+          nonce = "42879989859-1"
           key = hashlib.sha256(("TEST ONLY monitor lifecycle " + nonce).encode()).hexdigest()
           marker = "<!-- flow-steward-dependency-monitor:" + key + " -->"
-          run_url = "https://github.com/" + repo + "/actions/runs/" + os.environ["GITHUB_RUN_ID"]
+          run_url = "https://github.com/" + repo + "/actions/runs/42879989859"
           report = {"schema_version": 1, "extensions": [], "errors": [], "findings": [{
               "key": key, "kind": "update", "ecosystem": "Test",
               "dependency": "TEST ONLY monitor issue lifecycle", "event": "test-run-" + nonce,
@@ -56,25 +57,39 @@ jobs:
           out = Path("monitor-e2e")
           out.mkdir(exist_ok=True)
           (out / "test-report.json").write_text(json.dumps(report, indent=2) + "\n")
-          services = Services(HTTP(os.environ["GITHUB_TOKEN"]))
+          class ExistingSignalOnly(Services):
+              def create_issue(self, *args, **kwargs):
+                  raise AssertionError("Unexpected duplicate creation attempt for the existing test signal")
+          services = ExistingSignalOnly(HTTP(os.environ["GITHUB_TOKEN"]))
           def matching():
-              return [i for i in services.list_issues(repo)
-                      if i.get("user", {}).get("login") == "github-actions[bot]"
-                      and marker in (i.get("body") or "")]
-          assert not matching(), "Unique test event already exists"
+              for attempt in range(16):
+                  found = [i for i in services.list_issues(repo)
+                           if i.get("user", {}).get("login") == "github-actions[bot]"
+                           and marker in (i.get("body") or "")]
+                  if found:
+                      return found
+                  if attempt < 15:
+                      time.sleep(2)
+              return []
+          original = services.http.json("https://api.github.com/repos/" + repo + "/issues/4")
+          assert original["user"]["login"] == "github-actions[bot]" and marker in original["body"]
+          assert original["state"] == "open" and original["html_url"] == "https://github.com/" + repo + "/issues/4"
+          existing = matching()
+          assert len(existing) == 1 and existing[0]["number"] == 4, existing
           first = sync_issues(report, services, repo, write=True)
           issues = matching()
           assert len(issues) == 1 and issues[0]["state"] == "open", issues
-          assert first["created"] == 1 and first["failed"] == 0 and first["dry_run"] is False
+          assert first["created"] == 0 and first["unchanged"] == 1 and first["failed"] == 0 and first["dry_run"] is False
           second = sync_issues(report, services, repo, write=True)
           assert second["created"] == 0 and second["updated"] == 0 and second["unchanged"] == 1 and second["failed"] == 0
           assert len(matching()) == 1 and not report["errors"]
           proof = {"issue_url": issues[0]["html_url"], "issue_number": issues[0]["number"],
-                   "first_pass": first, "repeat_pass": second, "run_url": run_url}
+                   "first_pass": first, "repeat_pass": second, "creation_run_url": run_url,
+                   "verification_run_url": "https://github.com/" + repo + "/actions/runs/" + os.environ["GITHUB_RUN_ID"]}
           (out / "creation.json").write_text(json.dumps(proof, indent=2) + "\n")
           print(json.dumps(proof, indent=2))
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
-              summary.write("## TEST ONLY monitor issue lifecycle\n\nCreated one real issue: " + proof["issue_url"] + "\n\nRepeated signal: one unchanged issue, no duplicate.\n")
+              summary.write("## TEST ONLY monitor issue lifecycle\n\nVerified the real issue created by the first test run: " + proof["issue_url"] + "\n\nRepeated signal twice: one unchanged issue, no duplicate.\n")
           PY
       - name: Always close only this test issue and verify closed-event handling
         if: ${{ always() && steps.probe.outcome != 'skipped' }}
@@ -82,7 +97,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           python - <<'PY'
-          import hashlib, json, os, sys
+          import hashlib, json, os, sys, time
           from pathlib import Path
           sys.path.insert(0, "scripts")
           from dependency_sources import HTTP, Services
@@ -97,15 +112,23 @@ jobs:
           report = json.loads((out / "test-report.json").read_text())
           finding = report["findings"][0]
           assert finding["dependency"] == "TEST ONLY monitor issue lifecycle"
-          nonce = os.environ["GITHUB_RUN_ID"] + "-" + os.environ["GITHUB_RUN_ATTEMPT"]
+          nonce = "42879989859-1"
           expected_key = hashlib.sha256(("TEST ONLY monitor lifecycle " + nonce).encode()).hexdigest()
           assert finding["key"] == expected_key and finding["kind"] == "update" and finding["ecosystem"] == "Test"
           marker = "<!-- flow-steward-dependency-monitor:" + finding["key"] + " -->"
           http = HTTP(os.environ["GITHUB_TOKEN"])
-          services = Services(http)
-          matches = [i for i in services.list_issues(repo)
-                     if i.get("user", {}).get("login") == "github-actions[bot]"
-                     and marker in (i.get("body") or "")]
+          class ExistingSignalOnly(Services):
+              def create_issue(self, *args, **kwargs):
+                  raise AssertionError("Unexpected duplicate creation attempt for the existing test signal")
+          services = ExistingSignalOnly(http)
+          for attempt in range(16):
+              matches = [i for i in services.list_issues(repo)
+                         if i.get("user", {}).get("login") == "github-actions[bot]"
+                         and marker in (i.get("body") or "")]
+              if matches:
+                  break
+              if attempt < 15:
+                  time.sleep(2)
           closed = []
           for issue in matches:
               assert issue["title"].startswith("[dependency update] TEST ONLY monitor issue lifecycle:")
@@ -115,7 +138,12 @@ jobs:
               changed = issue["state"] == "open"
               if changed:
                   http.json(url, method="PATCH", body={"state": "closed", "state_reason": "completed"})
-              actual = http.json(url)
+              for attempt in range(16):
+                  actual = http.json(url)
+                  if actual["state"] == "closed" and actual["state_reason"] == "completed":
+                      break
+                  if attempt < 15:
+                      time.sleep(2)
               assert actual["state"] == "closed" and actual["state_reason"] == "completed"
               closed.append({"issue_url": actual["html_url"], "state": actual["state"],
                              "state_reason": actual["state_reason"], "closed_by_this_step": changed})
@@ -124,8 +152,13 @@ jobs:
           after_close = sync_issues(report, services, repo, write=True)
           assert after_close["created"] == 0 and after_close["updated"] == 0 and after_close["unchanged"] == 1 and after_close["failed"] == 0
           assert not report["errors"]
-          final = services.list_issues(repo)
-          final = [i for i in final if i.get("user", {}).get("login") == "github-actions[bot]" and marker in (i.get("body") or "")]
+          for attempt in range(16):
+              final = services.list_issues(repo)
+              final = [i for i in final if i.get("user", {}).get("login") == "github-actions[bot]" and marker in (i.get("body") or "")]
+              if len(final) == 1 and final[0]["state"] == "closed":
+                  break
+              if attempt < 15:
+                  time.sleep(2)
           assert len(final) == 1 and final[0]["state"] == "closed"
           (out / "closed-event-check.json").write_text(json.dumps(after_close, indent=2) + "\n")
           print(json.dumps({"closed": closed, "after_close": after_close}, indent=2))
