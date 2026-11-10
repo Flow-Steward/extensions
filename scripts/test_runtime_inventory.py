@@ -347,3 +347,31 @@ def test_universal_root_bin_directory_is_not_stripped_as_package_wrapper():
         ),
     )
     assert any("universal" in gap for gap in inv.gaps)
+
+
+@pytest.mark.parametrize("tamper", [None, "sha256", "size"])
+def test_legacy_provenance_without_path_uses_verified_native_metadata(tamper):
+    binary = elf()
+    native = {
+        "path": "bin/linux-amd64/toolbox",
+        "sha256": hashlib.sha256(binary).hexdigest(),
+    }
+    provenance = {"sha256": native["sha256"], "size": len(binary)}
+    if tamper == "sha256":
+        provenance["sha256"] = "0" * 64
+    if tamper == "size":
+        provenance["size"] += 1
+    files = {
+        native["path"]: binary,
+        "toolbox-provenance.json": json.dumps(
+            {"binaries": {"linux-amd64": provenance}}
+        ).encode(),
+    }
+    metadata = {"runtime_target": "linux-amd64", "native_executable": native}
+    if tamper:
+        with pytest.raises(ValueError):
+            inspect(files, metadata=metadata)
+    else:
+        inv = inspect(files, metadata=metadata)
+        assert ("Go", "example.org/lib", "v1.2.3") in pins(inv)
+        assert not inv.gaps

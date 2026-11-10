@@ -154,10 +154,12 @@ def inspect_runtime_archive(data: bytes, asset: RuntimeAsset) -> Inventory:
                     or metadata.get("runtime_target", "") != asset.target
                 ):
                     raise ValueError("package runtime target mismatch")
+            native_records = []
             for key in ("native_files", "native_executable"):
                 if key in metadata:
                     for record in _records(metadata[key]):
                         _verify_record(record, files, archive)
+                        native_records.append(record)
             for path, item in files.items():
                 if path.endswith("-provenance.json"):
                     provenance = json.loads(_read(archive, item, MAX_METADATA))
@@ -167,7 +169,22 @@ def inspect_runtime_archive(data: bytes, asset: RuntimeAsset) -> Inventory:
                     if not isinstance(binaries, dict):
                         raise ValueError("invalid provenance binaries")
                     if asset.target in binaries:
-                        _verify_record(binaries[asset.target], files, archive)
+                        record = binaries[asset.target]
+                        if isinstance(record, dict) and "path" not in record:
+                            # Earlier provenance pins hashes/sizes by target; the
+                            # package metadata supplies the independently verified path.
+                            candidates = {
+                                r["path"]
+                                for r in native_records
+                                if r.get("sha256", "").lower()
+                                == str(record.get("sha256", "")).lower()
+                            }
+                            if len(candidates) != 1:
+                                raise ValueError(
+                                    "native provenance has no unique verified path"
+                                )
+                            record = dict(record, path=candidates.pop())
+                        _verify_record(record, files, archive)
             for path, item in files.items():
                 source = f"{asset.url}!/{item.filename}"
                 scope = f"runtime:{asset.target}" if asset.target else "runtime"
