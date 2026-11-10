@@ -1,0 +1,52 @@
+{
+  "extension_id": "flowsteward.finvalda",
+  "version": "0.1.0",
+  "repository": "https://github.com/Flow-Steward/ext-finance-finvalda",
+  "tag": "v0.1.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.finvalda/0.1.0.png",
+    "sha256": "f1cf43b9912b1e1ec769e8e04641298b635f6979d21011aa0385728517757cf8",
+    "bytes": 3050,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-10T18:28:06Z",
+  "item": {
+    "extension_id": "flowsteward.finvalda",
+    "version": "0.1.0",
+    "name": "Finvalda",
+    "summary": "Everyday Finvalda steps — invoices, clients, products, payments, stock, prices, debts — plus every documented web service method.",
+    "description": "Finvalda accounting through its web service (FvsServicePure) for workflows. Everyday steps — find or create clients, products and services, create sales and purchase invoices, register payments, invoice PDFs, attach files, stock levels, prices, client debt and changes since a date — plus every documented web service method, list and operation class as a typed workflow step.",
+    "categories": [
+      "finance",
+      "inventory",
+      "sales"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "finvalda",
+      "accounting",
+      "erp",
+      "lithuania",
+      "invoices",
+      "inventory",
+      "payments"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-finance-finvalda/tree/v0.1.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-finance-finvalda/releases/download/v0.1.0/flowsteward.finvalda-0.1.0.zip",
+    "release_zip_bytes": 351952,
+    "release_zip_sha256": "5d4b957c73f3eaa3bc9047d16d31dcaf3c83f8bf75321663e23a2efe5db757b0"
+  }
+}
