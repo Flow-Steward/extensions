@@ -1,0 +1,142 @@
+name: TEST ONLY - monitor issue lifecycle
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: extension-dependency-monitor
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements-monitor.txt
+      - name: Test production monitor before external writes
+        run: python -m pytest -q scripts
+      - name: Create one real TEST ONLY issue and verify deduplication
+        id: probe
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import hashlib, json, os, sys
+          from pathlib import Path
+          sys.path.insert(0, "scripts")
+          from dependency_sources import HTTP, Services
+          from monitor_dependencies import sync_issues
+
+          repo = os.environ["GITHUB_REPOSITORY"]
+          assert repo == "Flow-Steward/extensions"
+          assert os.environ.get("GITHUB_ACTIONS") == "true"
+          nonce = os.environ["GITHUB_RUN_ID"] + "-" + os.environ["GITHUB_RUN_ATTEMPT"]
+          key = hashlib.sha256(("TEST ONLY monitor lifecycle " + nonce).encode()).hexdigest()
+          marker = "<!-- flow-steward-dependency-monitor:" + key + " -->"
+          run_url = "https://github.com/" + repo + "/actions/runs/" + os.environ["GITHUB_RUN_ID"]
+          report = {"schema_version": 1, "extensions": [], "errors": [], "findings": [{
+              "key": key, "kind": "update", "ecosystem": "Test",
+              "dependency": "TEST ONLY monitor issue lifecycle", "event": "test-run-" + nonce,
+              "details": "Synthetic signal for the explicitly requested monitor lifecycle test. This is not a real update or vulnerability. The workflow will close this issue after verification.",
+              "url": run_url, "affected": [],
+          }]}
+          out = Path("monitor-e2e")
+          out.mkdir(exist_ok=True)
+          (out / "test-report.json").write_text(json.dumps(report, indent=2) + "\n")
+          services = Services(HTTP(os.environ["GITHUB_TOKEN"]))
+          def matching():
+              return [i for i in services.list_issues(repo)
+                      if i.get("user", {}).get("login") == "github-actions[bot]"
+                      and marker in (i.get("body") or "")]
+          assert not matching(), "Unique test event already exists"
+          first = sync_issues(report, services, repo, write=True)
+          issues = matching()
+          assert len(issues) == 1 and issues[0]["state"] == "open", issues
+          assert first["created"] == 1 and first["failed"] == 0 and first["dry_run"] is False
+          second = sync_issues(report, services, repo, write=True)
+          assert second["created"] == 0 and second["updated"] == 0 and second["unchanged"] == 1 and second["failed"] == 0
+          assert len(matching()) == 1 and not report["errors"]
+          proof = {"issue_url": issues[0]["html_url"], "issue_number": issues[0]["number"],
+                   "first_pass": first, "repeat_pass": second, "run_url": run_url}
+          (out / "creation.json").write_text(json.dumps(proof, indent=2) + "\n")
+          print(json.dumps(proof, indent=2))
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
+              summary.write("## TEST ONLY monitor issue lifecycle\n\nCreated one real issue: " + proof["issue_url"] + "\n\nRepeated signal: one unchanged issue, no duplicate.\n")
+          PY
+      - name: Always close only this test issue and verify closed-event handling
+        if: ${{ always() && steps.probe.outcome != 'skipped' }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import hashlib, json, os, sys
+          from pathlib import Path
+          sys.path.insert(0, "scripts")
+          from dependency_sources import HTTP, Services
+          from monitor_dependencies import sync_issues
+
+          repo = os.environ["GITHUB_REPOSITORY"]
+          assert repo == "Flow-Steward/extensions"
+          assert os.environ.get("GITHUB_ACTIONS") == "true"
+          out = Path("monitor-e2e")
+          if not (out / "test-report.json").exists():
+              raise SystemExit("No persisted test signal; no external write was attempted")
+          report = json.loads((out / "test-report.json").read_text())
+          finding = report["findings"][0]
+          assert finding["dependency"] == "TEST ONLY monitor issue lifecycle"
+          nonce = os.environ["GITHUB_RUN_ID"] + "-" + os.environ["GITHUB_RUN_ATTEMPT"]
+          expected_key = hashlib.sha256(("TEST ONLY monitor lifecycle " + nonce).encode()).hexdigest()
+          assert finding["key"] == expected_key and finding["kind"] == "update" and finding["ecosystem"] == "Test"
+          marker = "<!-- flow-steward-dependency-monitor:" + finding["key"] + " -->"
+          http = HTTP(os.environ["GITHUB_TOKEN"])
+          services = Services(http)
+          matches = [i for i in services.list_issues(repo)
+                     if i.get("user", {}).get("login") == "github-actions[bot]"
+                     and marker in (i.get("body") or "")]
+          closed = []
+          for issue in matches:
+              assert issue["title"].startswith("[dependency update] TEST ONLY monitor issue lifecycle:")
+              number = int(issue["number"])
+              assert issue["html_url"] == "https://github.com/" + repo + "/issues/" + str(number)
+              url = "https://api.github.com/repos/" + repo + "/issues/" + str(number)
+              changed = issue["state"] == "open"
+              if changed:
+                  http.json(url, method="PATCH", body={"state": "closed", "state_reason": "completed"})
+              actual = http.json(url)
+              assert actual["state"] == "closed" and actual["state_reason"] == "completed"
+              closed.append({"issue_url": actual["html_url"], "state": actual["state"],
+                             "state_reason": actual["state_reason"], "closed_by_this_step": changed})
+          (out / "closure.json").write_text(json.dumps(closed, indent=2) + "\n")
+          assert len(closed) == 1 and closed[0]["closed_by_this_step"], closed
+          after_close = sync_issues(report, services, repo, write=True)
+          assert after_close["created"] == 0 and after_close["updated"] == 0 and after_close["unchanged"] == 1 and after_close["failed"] == 0
+          assert not report["errors"]
+          final = services.list_issues(repo)
+          final = [i for i in final if i.get("user", {}).get("login") == "github-actions[bot]" and marker in (i.get("body") or "")]
+          assert len(final) == 1 and final[0]["state"] == "closed"
+          (out / "closed-event-check.json").write_text(json.dumps(after_close, indent=2) + "\n")
+          print(json.dumps({"closed": closed, "after_close": after_close}, indent=2))
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
+              summary.write("\nClosed as completed: " + closed[0]["issue_url"] + "\n\nReprocessed the closed event: unchanged; not reopened and no duplicate.\n")
+          PY
+      - name: Preserve exact test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: monitor-issue-lifecycle-evidence
+          path: monitor-e2e/
+          retention-days: 30
+          if-no-files-found: warn
