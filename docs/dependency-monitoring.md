@@ -137,6 +137,7 @@ API references: [OSV queries](https://google.github.io/osv.dev/post-v1-query/),
 
 ## Maintenance results
 
-The [2026-11-10 maintenance batch](extension-maintenance-2026-11-10.md) records
-20 published releases, compatibility decisions, retained advisory applicability,
-coverage limits and the exact before/after monitor comparison.
+- [Security maintenance batch](extension-maintenance-2026-11-10.md): 20 releases,
+  compatibility decisions, advisory applicability and the 219 → 106 comparison.
+- [Remaining dependency updates](extension-updates-2026-11-10.md): 17 affected
+  extensions, compatibility repairs, maintained AWS builds and final verification.
