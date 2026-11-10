@@ -1,0 +1,57 @@
+{
+  "extension_id": "flowsteward.neo4j",
+  "version": "1.0.4",
+  "repository": "https://github.com/Flow-Steward/ext-graph-neo4j",
+  "tag": "v1.0.4",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.neo4j/1.0.4.png",
+    "sha256": "18c2cc6399007423ed069d188603b7be7725f39d12efbcb48c9b8f648010f2e7",
+    "bytes": 16668,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-10T17:16:42Z",
+  "item": {
+    "extension_id": "flowsteward.neo4j",
+    "version": "1.0.4",
+    "name": "Neo4j",
+    "summary": "Graph CRUD and native vector search.",
+    "description": "Neo4j graph reads and writes, vector index lifecycle and nearest-neighbor search through a minimal Google MCP Toolbox build.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "neo4j",
+      "graph",
+      "vector",
+      "toolbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-graph-neo4j/tree/v1.0.4",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-graph-neo4j/releases/download/v1.0.4/flowsteward.neo4j-1.0.4-linux-amd64.zip",
+    "release_zip_bytes": 11132483,
+    "release_zip_sha256": "e769e88eae54a39a44b3726c365a2db8ff390cbbf49404d467253e1420651d4c",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-graph-neo4j/releases/download/v1.0.4/flowsteward.neo4j-1.0.4-linux-amd64.zip",
+        "release_zip_bytes": 11132483,
+        "release_zip_sha256": "e769e88eae54a39a44b3726c365a2db8ff390cbbf49404d467253e1420651d4c"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-graph-neo4j/releases/download/v1.0.4/flowsteward.neo4j-1.0.4-linux-arm64.zip",
+        "release_zip_bytes": 10051295,
+        "release_zip_sha256": "78eb19a9e72193b30c1aed069cc5547bc546e745a611bfd27451ad00e9c37a0d"
+      }
+    }
+  }
+}

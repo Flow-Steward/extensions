@@ -1,0 +1,59 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-spanner",
+  "version": "1.3.3",
+  "repository": "https://github.com/Flow-Steward/ext-data-spanner",
+  "tag": "v1.3.3",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.data-connector-mcp-toolbox-spanner/1.3.3.png",
+    "sha256": "d6e8d09b5befadab677fddc128029c766603131a55dc4f044f2720abcbb32e72",
+    "bytes": 7181,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-10T17:16:29Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-spanner",
+    "version": "1.3.3",
+    "name": "Spanner",
+    "summary": "Spanner dataset reads and workflow writes.",
+    "description": "Connect project-scoped Spanner databases for saved queries, schema introspection and parameterized workflow writes.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "database",
+      "dataset",
+      "spanner",
+      "spanner-postgres"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-spanner/tree/v1.3.3",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-spanner/releases/download/v1.3.3/flowsteward.data-connector-mcp-toolbox-spanner-1.3.3-linux-amd64.zip",
+    "release_zip_bytes": 15366796,
+    "release_zip_sha256": "2836569693dc3388019cc7ead2b991982ae3d7cef4cc2e1a0421f3b1aa8b6e05",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-spanner/releases/download/v1.3.3/flowsteward.data-connector-mcp-toolbox-spanner-1.3.3-linux-amd64.zip",
+        "release_zip_bytes": 15366796,
+        "release_zip_sha256": "2836569693dc3388019cc7ead2b991982ae3d7cef4cc2e1a0421f3b1aa8b6e05"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-spanner/releases/download/v1.3.3/flowsteward.data-connector-mcp-toolbox-spanner-1.3.3-linux-arm64.zip",
+        "release_zip_bytes": 13879372,
+        "release_zip_sha256": "ad942fa3e6e09b6fa1cf8aad6191e5bc7e47746bbaf235cbca665ad50c45b02f"
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-singlestore",
+  "version": "1.3.4",
+  "repository": "https://github.com/Flow-Steward/ext-data-singlestore",
+  "tag": "v1.3.4",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.data-connector-mcp-toolbox-singlestore/1.3.4.png",
+    "sha256": "63756bc7868e4ab0ea37942eabfe59bd7524556331dbc9fb459f2f71747bea8c",
+    "bytes": 11034,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-10T17:16:26Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-singlestore",
+    "version": "1.3.4",
+    "name": "SingleStore",
+    "summary": "SingleStore dataset reads and workflow writes.",
+    "description": "Connect project-scoped SingleStore databases for saved queries, schema introspection and parameterized workflow writes.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "database",
+      "dataset",
+      "singlestore"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-singlestore/tree/v1.3.4",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-singlestore/releases/download/v1.3.4/flowsteward.data-connector-mcp-toolbox-singlestore-1.3.4-linux-amd64.zip",
+    "release_zip_bytes": 11033368,
+    "release_zip_sha256": "e63062f3bef20f13dc9201d2b8374734f735e3856d652c503c71c1da98567ab6",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-singlestore/releases/download/v1.3.4/flowsteward.data-connector-mcp-toolbox-singlestore-1.3.4-linux-amd64.zip",
+        "release_zip_bytes": 11033368,
+        "release_zip_sha256": "e63062f3bef20f13dc9201d2b8374734f735e3856d652c503c71c1da98567ab6"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-singlestore/releases/download/v1.3.4/flowsteward.data-connector-mcp-toolbox-singlestore-1.3.4-linux-arm64.zip",
+        "release_zip_bytes": 9971526,
+        "release_zip_sha256": "e98f51f6a629a750014b1251e098a9b42988d0bdddb100f66ccccb044072eb50"
+      }
+    }
+  }
+}

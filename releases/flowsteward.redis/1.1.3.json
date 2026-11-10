@@ -1,0 +1,56 @@
+{
+  "extension_id": "flowsteward.redis",
+  "version": "1.1.3",
+  "repository": "https://github.com/Flow-Steward/ext-data-redis",
+  "tag": "v1.1.3",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.redis/1.1.3.png",
+    "sha256": "300f2097a8ea1b2ce630e891cb69ff1550ead9cfa99d76c7f76eef9b89c7e88b",
+    "bytes": 9278,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-10T17:16:51Z",
+  "item": {
+    "extension_id": "flowsteward.redis",
+    "version": "1.1.3",
+    "name": "Redis",
+    "summary": "Workflow state, deduplication and bounded queues.",
+    "description": "Redis normal-key and JSON Datasets, with guarded workflows and compatible project state.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "dataset_connector"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "redis",
+      "toolbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-redis/tree/v1.1.3",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-redis/releases/download/v1.1.3/flowsteward.redis-1.1.3-linux-amd64.zip",
+    "release_zip_bytes": 12888675,
+    "release_zip_sha256": "130577b3d091d3aeab0cf2b3dbf9436d168254712def4b4aa7befd9b08488874",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-redis/releases/download/v1.1.3/flowsteward.redis-1.1.3-linux-amd64.zip",
+        "release_zip_bytes": 12888675,
+        "release_zip_sha256": "130577b3d091d3aeab0cf2b3dbf9436d168254712def4b4aa7befd9b08488874"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-redis/releases/download/v1.1.3/flowsteward.redis-1.1.3-linux-arm64.zip",
+        "release_zip_bytes": 11502949,
+        "release_zip_sha256": "84c2f55d442e34c42dd00280da23e8235901483ace7fd45469efda5604bf2104"
+      }
+    }
+  }
+}
