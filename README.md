@@ -256,3 +256,8 @@ FS_EXTENSION_CATALOG_URL=https://raw.githubusercontent.com/<owner>/<repo>/main/i
 
 The format is `extension_catalog/v1`, documented in Flow Steward's
 `docs/catalogs/static-catalog-contracts.md`.
+
+## Automatic first-party releases
+
+First-party extensions build, validate and publish release ZIPs through GitHub Actions.
+See [the release commands and CI contract](docs/automatic-extension-releases.md).
