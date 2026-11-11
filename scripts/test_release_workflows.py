@@ -63,5 +63,8 @@ def test_external_actions_are_pinned_and_untrusted_expressions_are_not_interpola
         for job in flow["jobs"].values():
             for step in job.get("steps", []):
                 if "uses" in step:
-                    assert re.fullmatch(r"actions/[a-z-]+@[0-9a-f]{40}", step["uses"])
+                    assert (
+                        re.fullmatch(r"actions/[a-z-]+@[0-9a-f]{40}", step["uses"])
+                        or step["uses"] == "docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1"
+                    )
                 assert "${{" not in step.get("run", "")

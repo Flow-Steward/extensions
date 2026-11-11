@@ -75,13 +75,14 @@ jobs:
             --source-root source --repository "$GITHUB_REPOSITORY" --tag "$RELEASE_TAG" \
             --config .github/release-config.json > "$RUNNER_TEMP/release-recipe.json"
       - name: Enable ARM64 payload identity checks on the hosted AMD64 runner
-        run: |
-          if [ -d source/bin ]; then
-            sudo apt-get update -qq
-            sudo apt-get install -y --no-install-recommends qemu-user-static binfmt-support
-            sudo update-binfmts --enable qemu-aarch64
-            grep -q '^enabled$' /proc/sys/fs/binfmt_misc/qemu-aarch64
-          fi
+        if: ${{ hashFiles('source/bin/**') != '' }}
+        uses: docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1 # v4.4.0
+        with:
+          platforms: arm64
+          cache-image: false
+      - name: Verify ARM64 emulator registration
+        if: ${{ hashFiles('source/bin/**') != '' }}
+        run: grep -q '^enabled$' /proc/sys/fs/binfmt_misc/qemu-aarch64
       - name: Install SDK and run extension tests
         working-directory: source
         run: |
