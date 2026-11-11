@@ -73,3 +73,18 @@ Catalog and first-party extension workflows use `ubuntu-24.04` explicitly.
 This keeps the OS release stable while the image continues receiving updates;
 it avoids inheriting a new Ubuntu release through `ubuntu-latest`.
 Reusable workflow callers pin the catalog commit that declares this baseline.
+
+## Code scanning
+
+First-party repositories use CodeQL advanced setup from `.github/workflows/codeql.yml`
+on `ubuntu-24.04`. The workflow scans pushes, pull requests, and a weekly schedule,
+using the default query suite and a separate category for each source language.
+Google Workspace also scans JavaScript/TypeScript; Firestore scans its native Go
+adapter with the same dependency lock and compiler version as its release build.
+The single-extension template includes Python and GitHub Actions analysis.
+
+Replace GitHub's default setup with advanced setup when installing this workflow:
+keeping default setup enabled prevents custom CodeQL analyses from uploading.
+Preserve existing alerts and language categories during the transition. Scanner
+actions are pinned to immutable commits and updated through weekly GitHub Actions
+Dependabot pull requests.
