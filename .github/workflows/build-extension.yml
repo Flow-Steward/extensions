@@ -1,0 +1,125 @@
+name: Build and validate extension
+
+on:
+  workflow_call:
+    inputs:
+      tag:
+        description: Release tag; empty validates the current commit without publication
+        type: string
+        default: ""
+    outputs:
+      tag:
+        value: ${{ jobs.build.outputs.tag }}
+      source_sha:
+        value: ${{ jobs.build.outputs.source_sha }}
+      artifact_name:
+        value: ${{ jobs.build.outputs.artifact_name }}
+
+permissions:
+  contents: read
+cache-mode: none
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    outputs:
+      tag: ${{ steps.identity.outputs.tag }}
+      source_sha: ${{ steps.identity.outputs.source_sha }}
+      artifact_name: extension-release-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - name: Check out extension source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ inputs.tag || github.sha }}
+          path: source
+          persist-credentials: false
+      - name: Check out immutable release tooling
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: Flow-Steward/extensions
+          ref: 4ad7b1131c72c381d6bcbb5613f209b077a01ce0
+          path: tooling
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: Install trusted tooling dependencies
+        run: python -m pip install PyYAML==6.0.3 pytest==9.0.3
+      - name: Resolve and validate source identity
+        id: identity
+        env:
+          REQUESTED_TAG: ${{ inputs.tag }}
+        run: |
+          python - <<'PYTHON'
+          import os, re, subprocess, yaml
+          from pathlib import Path
+          root = Path('source')
+          manifest = yaml.safe_load((root / 'extension.yaml').read_text())
+          tag = os.environ['REQUESTED_TAG'] or 'v' + str(manifest['version'])
+          if not re.fullmatch(r'v(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-[0-9A-Za-z.-]+)?', tag):
+              raise SystemExit('Invalid release tag')
+          sha = subprocess.check_output(['git', '-C', str(root), 'rev-parse', 'HEAD'], text=True).strip()
+          if not re.fullmatch('[0-9a-f]{40}', sha):
+              raise SystemExit('Invalid source SHA')
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'tag={tag}\nsource_sha={sha}\n')
+          PYTHON
+      - name: Validate recipe and restore verified runtime payloads
+        env:
+          RELEASE_TAG: ${{ steps.identity.outputs.tag }}
+        run: |
+          python tooling/scripts/release_extension.py prepare \
+            --source-root source --repository "$GITHUB_REPOSITORY" --tag "$RELEASE_TAG" \
+            --config .github/release-config.json > "$RUNNER_TEMP/release-recipe.json"
+      - name: Enable ARM64 payload identity checks on the hosted AMD64 runner
+        run: |
+          if [ -d source/bin ]; then
+            sudo apt-get update -qq
+            sudo apt-get install -y --no-install-recommends qemu-user-static binfmt-support
+            sudo update-binfmts --enable qemu-aarch64
+            grep -q '^enabled$' /proc/sys/fs/binfmt_misc/qemu-aarch64
+          fi
+      - name: Install SDK and run extension tests
+        working-directory: source
+        run: |
+          python - <<'PYTHON'
+          import hashlib, json, os, subprocess, sys, urllib.request
+          from pathlib import Path
+          recipe = json.loads((Path(os.environ['RUNNER_TEMP']) / 'release-recipe.json').read_text())
+          wheel = Path(os.environ['RUNNER_TEMP']) / 'flowsteward_extension_sdk-0.4.0-py3-none-any.whl'
+          url = 'https://raw.githubusercontent.com/Flow-Steward/ext-ecommerce-amazon/b04e19e68c84603efe68dfa36eac95d75d299f2e/dev-wheels/' + wheel.name
+          with urllib.request.urlopen(url, timeout=60) as response:
+              payload = response.read(29171)
+          if len(payload) != 29170 or hashlib.sha256(payload).hexdigest() != 'ffb5f3764d5a384b4441f6e3c0c4e66f5887d57c156fdc93abf70b5d0eeb22af':
+              raise SystemExit('SDK wheel identity mismatch')
+          wheel.write_bytes(payload)
+          subprocess.run([sys.executable, '-m', 'pip', 'install', str(wheel)], check=True)
+          for name in recipe['test_requirements']:
+              original = Path(name)
+              filtered = original.with_name('.ci-' + original.name)
+              lines = [line for line in original.read_text().splitlines() if 'flowsteward-extension-sdk' not in line.lower().replace('_', '-')]
+              filtered.write_text('\n'.join(lines) + '\n')
+              try:
+                  subprocess.run([sys.executable, '-m', 'pip', 'install', '-r', str(filtered)], check=True)
+              finally:
+                  filtered.unlink(missing_ok=True)
+          subprocess.run([sys.executable, '-m', 'pytest', '-q', '-o', 'addopts=', *recipe['test_paths']], check=True)
+          PYTHON
+      - name: Build and validate every archive
+        env:
+          RELEASE_TAG: ${{ steps.identity.outputs.tag }}
+        run: |
+          python tooling/scripts/release_extension.py build \
+            --source-root source --repository "$GITHUB_REPOSITORY" --tag "$RELEASE_TAG" \
+            --config .github/release-config.json --out-dir "$RUNNER_TEMP/extension-dist" \
+            --catalog-root tooling
+      - name: Upload only this run's validated release artifacts
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: extension-release-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/extension-dist/*
+          if-no-files-found: error
+          retention-days: 7
