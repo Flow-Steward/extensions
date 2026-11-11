@@ -66,3 +66,10 @@ source packager failure, native sidecars and immutable publication behavior. The
 release workflow tests enforce the read-only build / isolated publisher boundary.
 Archive validation is the catalog contract check; it does not claim a full application
 installer or live-provider integration run.
+
+## Runner baseline
+
+Catalog and first-party extension workflows use `ubuntu-24.04` explicitly.
+This keeps the OS release stable while the image continues receiving updates;
+it avoids inheriting a new Ubuntu release through `ubuntu-latest`.
+Reusable workflow callers pin the catalog commit that declares this baseline.
