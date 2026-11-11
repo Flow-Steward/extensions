@@ -1,0 +1,56 @@
+{
+  "extension_id": "flowsteward.airtable",
+  "version": "1.0.2",
+  "repository": "https://github.com/Flow-Steward/ext-data-airtable",
+  "tag": "v1.0.2",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.airtable/1.0.2.png",
+    "sha256": "da6774e6ca4779fdfc0c28e04b25d822d935d38715a4965c26f6411a372ee29d",
+    "bytes": 20041,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-11T13:26:52Z",
+  "item": {
+    "extension_id": "flowsteward.airtable",
+    "version": "1.0.2",
+    "name": "Airtable",
+    "summary": "Read, create, update, upsert and delete Airtable records, with formula filters and explicit pagination.",
+    "description": "Connect Airtable tables to Flow Steward workflows for record lookup, data collection and synchronization. Read an individual record by its Airtable ID, or list a table with an optional formula filter. Create new records, patch existing records, merge records using one to three matching fields, and delete records by ID. Actions work directly with the selected base and table, using your existing Airtable record identifiers and field values.\n\nCombine record reads with later workflow steps to look up customer details, collect items for processing or update the status of completed work. Upserts let a workflow match records on business fields instead of looking up every record ID first. Listing returns one page of up to 100 records and an offset for the next request; create, update, upsert and delete actions accept up to ten records per call.\n\nConfigure a base and a personal access token with access to it. Field values must already match the Airtable types, since automatic type conversion is not requested. This connector manages table records rather than base schemas and provides no webhooks, triggers or real-time subscriptions.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Create an Airtable project connection with the base ID and a personal access token permitted to read or write records in that base. Select the connection and table in each action.",
+    "tags": [
+      "airtable",
+      "database",
+      "rest"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-airtable/tree/v1.0.2",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-airtable/releases/download/v1.0.2/flowsteward.airtable-1.0.2-linux-amd64.zip",
+    "release_zip_bytes": 47975,
+    "release_zip_sha256": "bbcc4c24fb8992a1856e043bac21387837bff61ff6d7ec34f02d8892d5a619a4",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-airtable/releases/download/v1.0.2/flowsteward.airtable-1.0.2-linux-amd64.zip",
+        "release_zip_bytes": 47975,
+        "release_zip_sha256": "bbcc4c24fb8992a1856e043bac21387837bff61ff6d7ec34f02d8892d5a619a4"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-airtable/releases/download/v1.0.2/flowsteward.airtable-1.0.2-linux-arm64.zip",
+        "release_zip_bytes": 47975,
+        "release_zip_sha256": "5adbecf6c7e8733f687c7b4e0f5ca6035d5b5edbe95bcf7f9523d97479e3f630"
+      }
+    }
+  }
+}

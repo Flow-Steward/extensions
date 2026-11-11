@@ -1,0 +1,43 @@
+{
+  "extension_id": "flowsteward.openrouter",
+  "version": "1.2.3",
+  "repository": "https://github.com/Flow-Steward/ext-llm-openrouter",
+  "tag": "v1.2.3",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.openrouter/1.2.3.png",
+    "sha256": "5d10da68069d6adf7be2d9a919cbd7773193560127b4d95f5eb3e1332e2e696a",
+    "bytes": 8375,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-11T13:27:35Z",
+  "item": {
+    "extension_id": "flowsteward.openrouter",
+    "version": "1.2.3",
+    "name": "OpenRouter LLM Provider",
+    "summary": "Connect OpenRouter models to Flow Steward agents with one API key, model discovery, tool use and structured responses.",
+    "description": "Choose models from multiple publishers for your Flow Steward agents using OpenRouter LLM Provider. Discover the provider's catalog, search for models and add those that pass Flow Steward's capability verification. Selected models appear in the model catalog grouped by their upstream publisher, and can be assigned to agents or used as a project's default model.\n\nThe integration supports conversations, function calls with tool-result replay, and JSON Schema-guided structured responses through OpenRouter's chat-completion API. It preserves supported reasoning continuation data across tool turns and passes through token usage and a reported cost when supplied by OpenRouter. Requests involving tools or structured output ask OpenRouter to route to endpoints supporting those parameters.\n\nUse it to choose between multiple model publishers while managing provider access through one OpenRouter account. Discovery lists catalog metadata rather than guaranteeing that every model is usable: enabled models must support chat, tool calling and structured output and pass the host's verification. Your credits, limits, model access and upstream endpoint availability still apply. The extension uses the fixed OpenRouter service and requires no separate inference server deployment.",
+    "categories": [
+      "ai"
+    ],
+    "capabilities": [
+      "tool",
+      "llm_provider"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Enter a complete OpenRouter API key in the account-scoped LLM provider panel, then discover models and select the ones to verify and enable. Ensure the account has the credits and permissions needed for those models.",
+    "tags": [
+      "llm",
+      "openrouter"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-llm-openrouter/tree/v1.2.3",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-llm-openrouter/releases/download/v1.2.3/flowsteward.openrouter-1.2.3.zip",
+    "release_zip_bytes": 44007,
+    "release_zip_sha256": "5711276c32d519695cbdbe9ab1b1d947cbb2699ef4f27accf6a0716d6e869496"
+  }
+}

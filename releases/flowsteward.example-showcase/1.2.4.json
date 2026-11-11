@@ -1,0 +1,48 @@
+{
+  "extension_id": "flowsteward.example-showcase",
+  "version": "1.2.4",
+  "repository": "https://github.com/Flow-Steward/ext-example-showcase",
+  "tag": "v1.2.4",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.example-showcase/1.2.4.png",
+    "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
+    "bytes": 4915,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-11T13:27:17Z",
+  "item": {
+    "extension_id": "flowsteward.example-showcase",
+    "version": "1.2.4",
+    "name": "Example Showcase Extension",
+    "summary": "Explore the Flow Steward SDK through example extensions, declarative UI, workflow operations and runnable demo workflows.",
+    "description": "Example Showcase is an SDK reference bundle for developers building Flow Steward extensions. Explore project connection forms, encrypted secrets, declarative pages, queries, actions, workflow trigger declarations and packaged workflows, agents, tools, datasets and saved queries. Example operations demonstrate an external status request, record scoring with partial failures and reusable tool invocation.\n\nThe included workflows show sequential and parallel Groups, For each loops, collection, Break and Continue, and container error routes. A worked order-processing example introduces hooks: places where each project can add its own steps to an extension's workflow. Use these examples to learn how extension features fit together before adapting the patterns to a real integration.\n\nInstall the bundle on a compatible Flow Steward host and create a project connection for the API example. This is a demonstration rather than an operational service: the default status response and review notifications are simulated, and the OAuth example uses a placeholder provider. A live API example needs your own HTTPS endpoint and credentials. The dataset example separately requires the PostgreSQL connector and a project database connection.",
+    "categories": [
+      "developer-tools"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "query",
+      "workflow_trigger",
+      "artifact_bundle"
+    ],
+    "permissions_summary": [
+      "extension:invoke",
+      "read:projects"
+    ],
+    "setup_summary": "Install on a compatible Flow Steward host and create the example project connection; the default request example uses simulated responses. The dataset example additionally needs the PostgreSQL connector, a project database connection and dataset assignment.",
+    "tags": [
+      "example",
+      "showcase",
+      "extension-development"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-example-showcase/tree/v1.2.4",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-example-showcase/releases/download/v1.2.4/flowsteward.example-showcase-1.2.4.zip",
+    "release_zip_bytes": 114370,
+    "release_zip_sha256": "afa4b2139de6bc0e3809cc57fbe094001b1a97d5da1ce7cda6a9a9ea22bc3037"
+  }
+}

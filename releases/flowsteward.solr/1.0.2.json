@@ -1,0 +1,59 @@
+{
+  "extension_id": "flowsteward.solr",
+  "version": "1.0.2",
+  "repository": "https://github.com/Flow-Steward/ext-data-solr",
+  "tag": "v1.0.2",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.solr/1.0.2.png",
+    "sha256": "af11dcfb903d2e01109392c279e00c2d73ee9a919e0d181ffe1d5d8aab798339",
+    "bytes": 9014,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-11T13:27:51Z",
+  "item": {
+    "extension_id": "flowsteward.solr",
+    "version": "1.0.2",
+    "name": "Apache Solr",
+    "summary": "Search Apache Solr documents and vectors, manage records by ID, and use read-only JSON Datasets.",
+    "description": "Use Apache Solr in Flow Steward for searchable document collections, supplied-vector retrieval and read-only Dataset queries. Workflow actions retrieve a document by its unique key, search selected stored fields, replace one document or a batch of up to 100, set individual fields, and delete an exact document ID. Search supports text matching, exact terms, ranges, Boolean filters and sorting. Nearest-neighbor retrieval uses an existing dense-vector field and returns matching documents with scores.\n\nRead-only JSON Datasets add schema inspection, saved parameterized searches, previews and output-schema inference over explicitly allowed collections and fields. Included example workflows demonstrate chunk ingestion, field updates, deletion and question answering with source citations. You supply embeddings and configure the project's answer model; the extension does not generate vectors.\n\nCreate collections and schemas before connecting. Document fields must be flat scalars or arrays, and reads return at most 100 rows. Solr controls when accepted writes become searchable. The connector covers document access rather than schema administration and does not expose raw query syntax or delete-by-query. Multi-chunk changes require tracking and removing obsolete chunk IDs yourself.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "artifact_bundle",
+      "dataset_connector"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Create the Solr collection/core and schema first, then configure its origin, an explicit collection allowlist and either a bearer token or username/password. Vector retrieval also needs a matching indexed dense-vector field; private endpoints require the host administrator’s private-network setting.",
+    "tags": [
+      "solr",
+      "database",
+      "vector",
+      "rag"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-solr/tree/v1.0.2",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-solr/releases/download/v1.0.2/flowsteward.solr-1.0.2-linux-amd64.zip",
+    "release_zip_bytes": 79230,
+    "release_zip_sha256": "3e778220ca8fc38482145640a7d8b8b9f37e4e966e010379ad8cfe7915a5630c",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-solr/releases/download/v1.0.2/flowsteward.solr-1.0.2-linux-amd64.zip",
+        "release_zip_bytes": 79230,
+        "release_zip_sha256": "3e778220ca8fc38482145640a7d8b8b9f37e4e966e010379ad8cfe7915a5630c"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-solr/releases/download/v1.0.2/flowsteward.solr-1.0.2-linux-arm64.zip",
+        "release_zip_bytes": 79230,
+        "release_zip_sha256": "963a300636426deaf5b739d2ee039605c9f12fb2107fa8bbf1101f04dc89d829"
+      }
+    }
+  }
+}

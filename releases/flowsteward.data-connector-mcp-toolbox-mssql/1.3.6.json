@@ -1,0 +1,59 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-mssql",
+  "version": "1.3.6",
+  "repository": "https://github.com/Flow-Steward/ext-data-mssql",
+  "tag": "v1.3.6",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.data-connector-mcp-toolbox-mssql/1.3.6.png",
+    "sha256": "d2fcf18791449447c7ebe17cd5b0c55fed059aa84040ede1fe9d8c7ba4359f56",
+    "bytes": 46991,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-11T13:27:03Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-mssql",
+    "version": "1.3.6",
+    "name": "Microsoft SQL Server",
+    "summary": "Connect SQL Server or Cloud SQL for SQL Server for schema inspection, saved Dataset queries and parameterized writes.",
+    "description": "Connect Microsoft SQL Server to Flow Steward through a direct database connection or the Cloud SQL for SQL Server profile. Read-only Datasets support connection testing, typed schema inspection, saved-query validation, previews, execution and output-schema inference. Selected table and column scopes keep saved queries focused on the data a workflow needs, such as operational lookups, reporting extracts or application records used in later steps.\n\nA separate workflow action runs one INSERT, UPDATE or DELETE with named parameters and an optional parameter schema. Use it to store workflow results or update application records in the configured database. Parameter values are supplied separately from SQL, so a reusable statement can accept different inputs on each run. Workflow writes do not change the read-only nature of Dataset queries.\n\nDirect connections require the host, database and user with a password in connection secrets. The Cloud SQL profile uses Google project, region, instance and IP-type settings and also requires database credentials. Reads return at most 100 rows and 480 KiB. SQL support is a restricted subset; DDL, transaction scripts and database triggers are outside the connector's operation set.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Select the direct SQL Server or Cloud SQL for SQL Server profile and configure the database endpoint or Google project/region/instance settings. Store the database user’s password in secrets; the Cloud SQL profile also needs the runtime’s required Google Cloud access.",
+    "tags": [
+      "mssql",
+      "database",
+      "sql",
+      "dataset"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-mssql/tree/v1.3.6",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-mssql/releases/download/v1.3.6/flowsteward.data-connector-mcp-toolbox-mssql-1.3.6-linux-amd64.zip",
+    "release_zip_bytes": 12192288,
+    "release_zip_sha256": "91fbc13fdb5506f38ac8852fca735384c1ab1ea4f793752db007da8b2b266a36",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-mssql/releases/download/v1.3.6/flowsteward.data-connector-mcp-toolbox-mssql-1.3.6-linux-amd64.zip",
+        "release_zip_bytes": 12192288,
+        "release_zip_sha256": "91fbc13fdb5506f38ac8852fca735384c1ab1ea4f793752db007da8b2b266a36"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-mssql/releases/download/v1.3.6/flowsteward.data-connector-mcp-toolbox-mssql-1.3.6-linux-arm64.zip",
+        "release_zip_bytes": 11046538,
+        "release_zip_sha256": "35425658610daa5cf00f8401349924b438ae11301a03f176fe30e4b1f25ab8fc"
+      }
+    }
+  }
+}

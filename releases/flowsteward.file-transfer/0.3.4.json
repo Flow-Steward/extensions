@@ -1,0 +1,60 @@
+{
+  "extension_id": "flowsteward.file-transfer",
+  "version": "0.3.4",
+  "repository": "https://github.com/Flow-Steward/ext-file-transfer-sftp",
+  "tag": "v0.3.4",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.file-transfer/0.3.4.png",
+    "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
+    "bytes": 4915,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-11T13:27:19Z",
+  "item": {
+    "extension_id": "flowsteward.file-transfer",
+    "version": "0.3.4",
+    "name": "File Transfer",
+    "summary": "List, download and upload workflow files through FTP, FTPS, SFTP, S3-compatible storage and Dropbox.",
+    "description": "File Transfer connects Flow Steward workflows to FTP, explicit FTPS, SFTP, S3-compatible object storage and Dropbox. List files in a directory, download a selected file for the next workflow step, or upload a file produced earlier in the run. Select downloads by exact name or filename pattern, with options to choose by filename or modification time. Transfer results include file size and checksum information.\n\nCollect supplier feeds, retrieve invoice PDFs for document extraction, bring exported spreadsheets into tabular processing or publish generated reports to a partner's storage. The same three workflow operations work across the supported storage connections, letting you reuse a familiar approach as destinations change. Files are passed between steps as workflow artifacts; parsing and conversion can be added through other steps.\n\nConfigure each project connection with its remote root and credentials. FTP, FTPS, SFTP and S3 endpoints must be publicly reachable over the Internet; private-network destinations are not supported in production. SFTP setup includes confirming the server fingerprint; Dropbox uses your own app and account authorization. Listings cover one directory with up to 500 entries, and transfers default to a 200 MiB ceiling. Uploads preserve existing files unless you explicitly choose to replace them.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "extension:invoke"
+    ],
+    "setup_summary": "Create a project connection to a publicly reachable Internet FTP/FTPS, SFTP or S3 endpoint, with its root and credentials; verify the SFTP fingerprint with the server owner. For Dropbox, configure a scoped app with file metadata/read/write permissions, register the displayed redirect URI, then authorize the account.",
+    "tags": [
+      "file-transfer",
+      "ftp",
+      "ftps",
+      "sftp",
+      "s3",
+      "dropbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/tree/v0.3.4",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.3.4/flowsteward.file-transfer-0.3.4-linux-amd64.zip",
+    "release_zip_bytes": 27153843,
+    "release_zip_sha256": "fe598b8d42037050a4ebfea8487598d4c6cf5b5d2ce972e2a2de29a60011e98a",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.3.4/flowsteward.file-transfer-0.3.4-linux-amd64.zip",
+        "release_zip_bytes": 27153843,
+        "release_zip_sha256": "fe598b8d42037050a4ebfea8487598d4c6cf5b5d2ce972e2a2de29a60011e98a"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.3.4/flowsteward.file-transfer-0.3.4-linux-arm64.zip",
+        "release_zip_bytes": 26536278,
+        "release_zip_sha256": "aea06f1800877d4e0f8477f06b6ecac96682847fd15053fb5c00a1840baa8b82"
+      }
+    }
+  }
+}

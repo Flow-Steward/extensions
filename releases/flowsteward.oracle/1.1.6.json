@@ -1,0 +1,58 @@
+{
+  "extension_id": "flowsteward.oracle",
+  "version": "1.1.6",
+  "repository": "https://github.com/Flow-Steward/ext-data-oracle",
+  "tag": "v1.1.6",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.oracle/1.1.6.png",
+    "sha256": "f11415500fac3668ddcd6577d7bb5137cc2ae1e4b33077b354de852c0e51697c",
+    "bytes": 3358,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-11T13:27:37Z",
+  "item": {
+    "extension_id": "flowsteward.oracle",
+    "version": "1.1.6",
+    "name": "Oracle",
+    "summary": "Read Oracle datasets and automate parameterized SELECT, INSERT, UPDATE, DELETE and MERGE operations.",
+    "description": "Connect Oracle records to Flow Steward for database lookups, reusable datasets and workflow updates. The extension provides a SELECT action with positional bind values and a separate write action for INSERT, UPDATE, DELETE and MERGE. Use these steps to look up a customer before routing a request, record the outcome of a workflow, or merge incoming records into an existing application table without inserting values into SQL text.\n\nThe read-only Dataset connector adds connection testing, schema discovery, query validation, previews, saved-query execution and output-schema inference. Saved Dataset queries select explicit columns from one allowed SCHEMA.TABLE, with comparison or null filters and ordering. Selected table and column permissions constrain the query, while Oracle user grants determine the underlying access.\n\nConfigure one Oracle service per project connection and enable writes explicitly when needed. Query results contain at most 100 rows. Dataset SQL excludes joins, subqueries, expressions and star projections; workflow SQL has a separate, restricted statement contract. Schema administration, PL/SQL, scripts, database links and cluster routing are outside the extension’s scope.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Create a project Oracle connection with host, port, service name, TLS settings and secret username/password; enable allow_writes for mutation steps. Public endpoints require verified TLS, and private endpoints require host administrator permission.",
+    "tags": [
+      "oracle",
+      "sql",
+      "toolbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-oracle/tree/v1.1.6",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.1.6/flowsteward.oracle-1.1.6-linux-amd64.zip",
+    "release_zip_bytes": 13845087,
+    "release_zip_sha256": "7966badd5867f4961983b8261c163d3914e49e14efc36099d7bbde790cf8e8c8",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.1.6/flowsteward.oracle-1.1.6-linux-amd64.zip",
+        "release_zip_bytes": 13845087,
+        "release_zip_sha256": "7966badd5867f4961983b8261c163d3914e49e14efc36099d7bbde790cf8e8c8"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.1.6/flowsteward.oracle-1.1.6-linux-arm64.zip",
+        "release_zip_bytes": 12688521,
+        "release_zip_sha256": "11d12484539d6f4f36af70584ac74efc7435c8f047d9e1c2afdf27f804c2f9af"
+      }
+    }
+  }
+}

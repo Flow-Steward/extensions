@@ -1,0 +1,57 @@
+{
+  "extension_id": "flowsteward.bigquery",
+  "version": "1.1.7",
+  "repository": "https://github.com/Flow-Steward/ext-data-bigquery",
+  "tag": "v1.1.7",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.bigquery/1.1.7.png",
+    "sha256": "f02f30a4af46c40aa2bee5c5822480d898d332944c92078504c323db0b74ff9b",
+    "bytes": 10716,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-11T13:26:58Z",
+  "item": {
+    "extension_id": "flowsteward.bigquery",
+    "version": "1.1.7",
+    "name": "BigQuery",
+    "summary": "Query BigQuery Datasets and run parameterized SELECT, INSERT, UPDATE, DELETE or MERGE workflow actions.",
+    "description": "Bring BigQuery table data into Flow Steward for reporting, record lookup and workflow-driven data changes. Read-only Datasets support table and column discovery, saved SQL with named parameters, validation, previews, execution and output-schema inference. Separate workflow actions run one GoogleSQL SELECT or one INSERT, UPDATE, DELETE or MERGE, returning job identity and available row-count and processing metadata. Use query results in later workflow steps, or write calculated and collected data back to native BigQuery tables.\n\nThe connection selects one Google Cloud project, location and allowed datasets. Queries use ordinary native tables with fully qualified identifiers. Set a per-query bytes-billed ceiling to control each query's maximum billing exposure; this is not an account-wide spending limit. Authenticate using a matching service-account JSON key or a short-lived access token.\n\nDataset SQL reads one table with explicit columns, filters, ordering and a limit, without joins, functions or subqueries. The separate workflow query action accepts a broader supported GoogleSQL subset. Reads return at most 100 rows. Views, external tables, DDL, scripts and load/export jobs are outside this connector. Parameters support scalar strings, booleans and numbers.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "query",
+      "dataset_connector"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Configure the Google project, BigQuery location, allowed datasets and per-query billing ceiling, then supply either service-account JSON or an access token with the necessary job, table-metadata and data permissions. Access-token renewal is your responsibility.",
+    "tags": [
+      "bigquery",
+      "toolbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-bigquery/tree/v1.1.7",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.7/flowsteward.bigquery-1.1.7-linux-amd64.zip",
+    "release_zip_bytes": 13725233,
+    "release_zip_sha256": "5ba7cd5707462c4161f8c6ca58c1a538edcb34d03772ce2d0108fefe72eaaf30",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.7/flowsteward.bigquery-1.1.7-linux-amd64.zip",
+        "release_zip_bytes": 13725233,
+        "release_zip_sha256": "5ba7cd5707462c4161f8c6ca58c1a538edcb34d03772ce2d0108fefe72eaaf30"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.7/flowsteward.bigquery-1.1.7-linux-arm64.zip",
+        "release_zip_bytes": 12349193,
+        "release_zip_sha256": "d69c6430407e1bfb5f24c5f3b1fa98cd4ecba984e53509d42d6dca4cacd141d7"
+      }
+    }
+  }
+}

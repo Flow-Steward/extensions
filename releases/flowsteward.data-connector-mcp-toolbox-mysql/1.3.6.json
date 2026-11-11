@@ -1,0 +1,59 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-mysql",
+  "version": "1.3.6",
+  "repository": "https://github.com/Flow-Steward/ext-data-mysql",
+  "tag": "v1.3.6",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.data-connector-mcp-toolbox-mysql/1.3.6.png",
+    "sha256": "347f84e3740de7e655a3e4f47a9a7777f2c36b91bcc7dbc5d9fd67e6058bec8e",
+    "bytes": 30560,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-11T13:27:05Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-mysql",
+    "version": "1.3.6",
+    "name": "MySQL & MariaDB",
+    "summary": "Query MySQL, MariaDB or Cloud SQL for MySQL Datasets and run parameterized INSERT, UPDATE or DELETE actions.",
+    "description": "Connect MySQL and MariaDB data to Flow Steward through direct MySQL, MariaDB or Cloud SQL for MySQL profiles. Read-only Datasets support testing the connection, inspecting table schemas, validating saved SQL against selected tables and columns, previewing results, executing saved queries and inferring output schemas. Use application lookups, reporting extracts and reusable queries to supply data to later workflow steps.\n\nA separate workflow action executes one INSERT, UPDATE or DELETE with named parameters and an optional parameter schema. Use it to save workflow results or change application records while keeping Dataset queries read-only. Parameter values are supplied separately from the SQL statement, allowing the same query or write to be reused with different workflow inputs.\n\nDirect MySQL and MariaDB connections need a host, database, user and password. The Cloud SQL profile uses project, region, instance and database settings with the appropriate Google Cloud access and authentication configuration. Read output is limited to 100 rows and 480 KiB. SQL support is a restricted subset; schema-changing statements, transaction scripts and database triggers are outside the connector's operation set.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Choose MySQL, MariaDB or Cloud SQL for MySQL and configure its direct endpoint or cloud instance settings. Store direct-database passwords in secrets; Cloud SQL requires the runtime’s appropriate Google Cloud credentials and instance/database access.",
+    "tags": [
+      "mysql",
+      "database",
+      "sql",
+      "dataset"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-mysql/tree/v1.3.6",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-mysql/releases/download/v1.3.6/flowsteward.data-connector-mcp-toolbox-mysql-1.3.6-linux-amd64.zip",
+    "release_zip_bytes": 11738956,
+    "release_zip_sha256": "ee14343933081a47cd84044588fa2e119a90da1c13b8161dc54e0df0d2a5ef34",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-mysql/releases/download/v1.3.6/flowsteward.data-connector-mcp-toolbox-mysql-1.3.6-linux-amd64.zip",
+        "release_zip_bytes": 11738956,
+        "release_zip_sha256": "ee14343933081a47cd84044588fa2e119a90da1c13b8161dc54e0df0d2a5ef34"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-mysql/releases/download/v1.3.6/flowsteward.data-connector-mcp-toolbox-mysql-1.3.6-linux-arm64.zip",
+        "release_zip_bytes": 10621675,
+        "release_zip_sha256": "138c0fc9249ac83ba15de562d55f0812e3b5043c3afd3b0385a3460c0d1056da"
+      }
+    }
+  }
+}

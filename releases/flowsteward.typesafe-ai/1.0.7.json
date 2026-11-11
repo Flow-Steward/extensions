@@ -1,0 +1,46 @@
+{
+  "extension_id": "flowsteward.typesafe-ai",
+  "version": "1.0.7",
+  "repository": "https://github.com/Flow-Steward/ext-typesafe-ai",
+  "tag": "v1.0.7",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.typesafe-ai/1.0.7.png",
+    "sha256": "543dc214c51c72760e60f96a2131c3a236d3bed22eabdd722e5856b3fc63ae3a",
+    "bytes": 13561,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-11T13:27:54Z",
+  "item": {
+    "extension_id": "flowsteward.typesafe-ai",
+    "version": "1.0.7",
+    "name": "TypeSafe AI (JEV)",
+    "summary": "Evaluate text or structured state with TypeSafe JEV Choice, Score and Noul questions for classification and routing.",
+    "description": "Classify requests, score priorities and route workflow outcomes with TypeSafe AI's JEV structured decisions. Send text, an object or an array as state, together with named Choice, Score or Noul questions. The action returns the selected model, answer objects and usage information for subsequent workflow steps.\n\nChoice answers include a selected option, confidence and option probabilities. Score answers include the score, confidence, legend and probabilities. Noul returns a yes probability. These outputs let you build classification, prioritization and routing rules with thresholds that you control. Noul probability and Choice or Score confidence represent different quantities, so choose routing rules to match the question type.\n\nAn optional, separately imported support-triage example combines category, urgency and human-review questions using a reusable child workflow. It returns a routing recommendation; you connect the outcome to your own ticketing or human-handling process. The extension is a decision tool rather than a chat-model provider. It supports text and structured state, while image and Box questions are outside this release. Inputs are sent to TypeSafe, and provider credits and model access apply.",
+    "categories": [
+      "ai"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Create a project TypeSafe connection with an API key, choose a default model and test the connection. If using the optional support-triage workflow, import its separate asset and map the extension and connection dependencies before enabling it.",
+    "tags": [
+      "typesafe",
+      "jev",
+      "classification",
+      "routing",
+      "scoring"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-typesafe-ai/tree/v1.0.7",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-typesafe-ai/releases/download/v1.0.7/flowsteward.typesafe-ai-1.0.7.zip",
+    "release_zip_bytes": 40896,
+    "release_zip_sha256": "aac6d1dced6621f66b6a5ff820b5364435ee5c9dcdf5912d88b70d563abe42ba"
+  }
+}

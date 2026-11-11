@@ -1,0 +1,48 @@
+{
+  "extension_id": "flowsteward.wordpress-woocommerce",
+  "version": "1.2.3",
+  "repository": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce",
+  "tag": "v1.2.3",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.wordpress-woocommerce/1.2.3.png",
+    "sha256": "65d3e4a294f922134cf4a9c22f77a061312c275e759aa49f9d626992a6817ae7",
+    "bytes": 24292,
+    "mime_type": "image/png",
+    "size": "512x512"
+  },
+  "published_at": "2026-11-11T13:28:01Z",
+  "item": {
+    "extension_id": "flowsteward.wordpress-woocommerce",
+    "version": "1.2.3",
+    "name": "WordPress & WooCommerce",
+    "summary": "Automate WordPress content and media, plus WooCommerce products, stock, prices, orders, customers, coupons, reports and catalog exports.",
+    "description": "Connect WordPress publishing and WooCommerce store operations to Flow Steward over their standard REST APIs. WordPress steps list, read, create and update posts, pages, media, comments, categories, tags and reusable blocks. Additional supported operations expose revisions, autosaves, search, settings, widgets and site metadata, giving content workflows the records needed to publish material, maintain taxonomy or moderate comments with the connected user's permissions.\n\nFor WooCommerce, work with products and variations, prices and stock, categories, attributes, tags, reviews, customers, coupons, orders and order notes. Supported batch operations let a workflow submit related creates or updates together. Read store reports, taxes, shipping configuration and other supported reference data, or send an order email through its dedicated operation. A product export step follows the matching catalog's pages and writes a JSONL file for later processing.\n\nUse these operations to connect a supplier catalog, publish approved content, feed store records to accounting or produce reporting inputs. WooCommerce credentials are optional when only WordPress content is needed, and connection testing reports each service separately. Access is limited to the declared native API operations: WordPress user-account administration, deletion, refund creation and plugin-specific APIs are excluded. Custom workflows supply the business mapping and coordination between steps.",
+    "categories": [
+      "cms"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "Use a publicly reachable HTTPS WordPress 5.6+ site with REST access and create an Application Password for a suitable service user. Add its username and site base URL; for WooCommerce, also enable pretty permalinks and supply a matching consumer key and secret with the required read/write permissions.",
+    "tags": [
+      "wordpress",
+      "woocommerce",
+      "rest",
+      "cms",
+      "ecommerce"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/tree/v1.2.3",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/releases/download/v1.2.3/flowsteward.wordpress-woocommerce-1.2.3.zip",
+    "release_zip_bytes": 316708,
+    "release_zip_sha256": "0aad7560ba61f330dfd452c3895c78b6aa0b146676a8fb010d3ddaa74359ec4d"
+  }
+}

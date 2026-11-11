@@ -1,0 +1,59 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-spanner",
+  "version": "1.3.6",
+  "repository": "https://github.com/Flow-Steward/ext-data-spanner",
+  "tag": "v1.3.6",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.data-connector-mcp-toolbox-spanner/1.3.6.png",
+    "sha256": "d6e8d09b5befadab677fddc128029c766603131a55dc4f044f2720abcbb32e72",
+    "bytes": 7181,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-11T13:27:14Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-spanner",
+    "version": "1.3.6",
+    "name": "Spanner",
+    "summary": "Read Spanner datasets and automate parameterized SQL writes using GoogleSQL or PostgreSQL database profiles.",
+    "description": "Connect Spanner to Flow Steward for saved SQL datasets and workflow data changes. Choose the GoogleSQL or PostgreSQL profile to match the database dialect. Dataset operations test the connection, inspect typed schemas, validate queries against selected tables and columns, preview results, execute saved SQL and infer output schemas. Reads use the read-only path and return at most 100 rows and 480 KiB of inline output.\n\nThe separate execute_write action accepts one INSERT, UPDATE or DELETE with named parameters, a values object and an optional parameter schema. Parameters let the same SQL step accept different record identifiers and workflow values. For example, read a set of application records, route each record through a review process, then update the processing state or insert the workflow result. Read-only Dataset access stays separate from workflow mutations.\n\nConfigure the Google Cloud project, Spanner instance and database, and grant the server’s Application Default Credentials identity access to that database. The selected profile fixes the dialect and parameter binder; it is not a free-form dialect toggle. Schema changes, transaction scripts and database triggers are unavailable. Combine saved reads with explicit updates to connect application records to approvals, notifications and follow-up processing.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Select the Spanner GoogleSQL or Spanner PostgreSQL profile and configure project, instance and database. Provide server-side Application Default Credentials with appropriate database privileges; workflow connections do not accept a password or inline service-account JSON.",
+    "tags": [
+      "database",
+      "dataset",
+      "spanner",
+      "spanner-postgres"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-spanner/tree/v1.3.6",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-spanner/releases/download/v1.3.6/flowsteward.data-connector-mcp-toolbox-spanner-1.3.6-linux-amd64.zip",
+    "release_zip_bytes": 15372477,
+    "release_zip_sha256": "52217a9b318b81018500fbb91520dadd3568928d0c1b0b5769f8964ca5b12541",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-spanner/releases/download/v1.3.6/flowsteward.data-connector-mcp-toolbox-spanner-1.3.6-linux-amd64.zip",
+        "release_zip_bytes": 15372477,
+        "release_zip_sha256": "52217a9b318b81018500fbb91520dadd3568928d0c1b0b5769f8964ca5b12541"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-spanner/releases/download/v1.3.6/flowsteward.data-connector-mcp-toolbox-spanner-1.3.6-linux-arm64.zip",
+        "release_zip_bytes": 13885059,
+        "release_zip_sha256": "e18c2a7a9bdee1e00d44075634d520abbf0216c2b6dab55414ee12092e9d235a"
+      }
+    }
+  }
+}

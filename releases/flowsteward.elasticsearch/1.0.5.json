@@ -1,0 +1,59 @@
+{
+  "extension_id": "flowsteward.elasticsearch",
+  "version": "1.0.5",
+  "repository": "https://github.com/Flow-Steward/ext-data-elasticsearch",
+  "tag": "v1.0.5",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.elasticsearch/1.0.5.png",
+    "sha256": "062e8e5ff64d67ecbb2148e72f0e4879c29de1d55dfbef49e5804362050b35a3",
+    "bytes": 5404,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-11T13:27:16Z",
+  "item": {
+    "extension_id": "flowsteward.elasticsearch",
+    "version": "1.0.5",
+    "name": "Elasticsearch",
+    "summary": "Search Elasticsearch documents and dense vectors, update records, and build read-only JSON Dataset queries.",
+    "description": "Connect Elasticsearch to Flow Steward for document lookup, full-text retrieval and similarity search. Workflow actions get documents by ID, search selected source fields, create or replace documents, merge partial updates and delete individual IDs. Search supports text matches, exact terms, ranges and Boolean filters, with sorting. Dense-vector search uses your existing indexed vector field and returns neighbors with scores and selected document content.\n\nRead-only JSON Datasets provide mapping inspection, saved parameterized get/search queries, previews and output-schema inference within selected indices and fields. Included example workflows cover chunk ingestion, updates, deletion and answers with source citations. Supply your own document and question embeddings, and configure the project's answer model to compose a retrieval-and-answer workflow.\n\nCreate concrete indices and mappings before setup; this connector does not administer them. Search returns at most 100 hits and supports explicit top-level field selection. Aggregations, scripts, the bulk API and delete-by-query are outside its operation set. Elasticsearch's normal refresh interval controls search visibility after writes. Track chunk IDs externally when replacing or removing multi-chunk sources. The connector accesses Elasticsearch directly, without requiring Kibana.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "artifact_bundle",
+      "dataset_connector"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Create the Elasticsearch index and mapping, then configure its origin, exact allowed indices and either an encoded API key or username/password with the needed index permissions. Vector search requires a compatible indexed dense_vector field; private endpoints require the host administrator’s private-network setting.",
+    "tags": [
+      "elasticsearch",
+      "database",
+      "vector",
+      "rag"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/tree/v1.0.5",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/releases/download/v1.0.5/flowsteward.elasticsearch-1.0.5-linux-amd64.zip",
+    "release_zip_bytes": 73680,
+    "release_zip_sha256": "400c0c2d9e67269b4f544502341b2a3d6e7056ec6c88cf777a8759de2ab533c2",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/releases/download/v1.0.5/flowsteward.elasticsearch-1.0.5-linux-amd64.zip",
+        "release_zip_bytes": 73680,
+        "release_zip_sha256": "400c0c2d9e67269b4f544502341b2a3d6e7056ec6c88cf777a8759de2ab533c2"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/releases/download/v1.0.5/flowsteward.elasticsearch-1.0.5-linux-arm64.zip",
+        "release_zip_bytes": 73680,
+        "release_zip_sha256": "674d7497a439343aa3ff9cad5d7c9406e7fae79cc5a9582fdeecf4370b48a838"
+      }
+    }
+  }
+}

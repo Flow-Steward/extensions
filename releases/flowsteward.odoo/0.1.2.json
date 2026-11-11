@@ -1,0 +1,53 @@
+{
+  "extension_id": "flowsteward.odoo",
+  "version": "0.1.2",
+  "repository": "https://github.com/Flow-Steward/ext-finance-odoo",
+  "tag": "v0.1.2",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.odoo/0.1.2.png",
+    "sha256": "79cde3373b19c443fbfbc61b5b0a2663177e7d577d0ed9e3d8d520f40186fff9",
+    "bytes": 9068,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-11T13:27:33Z",
+  "item": {
+    "extension_id": "flowsteward.odoo",
+    "version": "0.1.2",
+    "name": "Odoo",
+    "summary": "Automate Odoo partners, products, invoices, bills, payments, sales and stock, with model-level search, reporting and record operations.",
+    "description": "Connect Flow Steward workflows to Odoo accounting, sales, inventory and partner records through Odoo's external APIs. Everyday steps find or create partners and products, create customer invoices and vendor bills, register payments and prepare sale orders. They also read stock levels, product prices, partner balances and records changed since a chosen date, and attach or download files associated with Odoo records.\n\nUse these steps to move incoming shop orders into sales and accounting, pass supplier invoices into Odoo, publish stock and price changes to other systems or assemble outstanding-balance checks. Where an integration needs another installed model, advanced operations provide domain-filtered search, reads by ID, record counts, grouped totals and field descriptions, alongside create, update, delete and public model-method calls. JSONL export supports larger record exchanges with continuation information.\n\nThe release targets Odoo 16 through 20, using JSON-2 on Odoo 19 and later or XML-RPC on the supported versions. Available models, fields and actions depend on the installed Odoo modules and the API user's permissions. Connections identify an Odoo database and API key within a project. Separate project connections let workflows select the intended company or database for each task.",
+    "categories": [
+      "finance",
+      "sales",
+      "inventory",
+      "crm"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "Create an API key for the Odoo user whose access the workflows should use, and configure the public HTTPS server and API mode in the project connection. XML-RPC also requires the database name and login; Odoo Online requires a plan with external API access, identified as Custom in this release guide.",
+    "tags": [
+      "odoo",
+      "erp",
+      "accounting",
+      "invoices",
+      "crm",
+      "inventory",
+      "sales"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-finance-odoo/tree/v0.1.2",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-finance-odoo/releases/download/v0.1.2/flowsteward.odoo-0.1.2.zip",
+    "release_zip_bytes": 154780,
+    "release_zip_sha256": "95fb128ddfcdabc1877ac6ee39c460e83d271aae1e23d1590b7b9faadd198bd3"
+  }
+}

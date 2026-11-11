@@ -1,0 +1,46 @@
+{
+  "extension_id": "flowsteward.outgoing-email",
+  "version": "0.3.3",
+  "repository": "https://github.com/Flow-Steward/ext-email-smtp",
+  "tag": "v0.3.3",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.outgoing-email/0.3.3.png",
+    "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
+    "bytes": 4915,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-11T13:27:37Z",
+  "item": {
+    "extension_id": "flowsteward.outgoing-email",
+    "version": "0.3.3",
+    "name": "Outgoing Email",
+    "summary": "Send text, HTML and template-based emails with workflow attachments through your project’s SMTP server.",
+    "description": "Outgoing Email sends workflow messages and project notifications through your own SMTP server. Compose plain-text or HTML email, or choose a saved project template and fill its variables from workflow data. Add To, CC and BCC recipients, and attach supported files produced or retrieved earlier in the workflow. Each send returns a message identifier plus recipient and attachment counts.\n\nEmail a generated report, distribute completed documents, announce a successful run or notify a team when a workflow fails or awaits approval. Notification messages include the workflow and step context where available, helping recipients locate the relevant run. Reusable templates keep recurring messages consistent while letting each workflow supply its own details.\n\nCreate a project connection with the SMTP host, supported port, SSL or STARTTLS mode and sender address. Add authentication credentials when required by your mail service, then select that connection in workflow steps or notification routes. This extension provides outbound email; reading replies requires a separate mailbox connector. Each message supports up to 10 recipients and a total encoded size of 25 MiB, or a lower configured limit. Attachment file-type restrictions apply.",
+    "categories": [
+      "messaging"
+    ],
+    "capabilities": [
+      "notify",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "extension:invoke",
+      "notify:dispatch"
+    ],
+    "setup_summary": "Create a custom SMTP project connection with host, supported port, SSL or STARTTLS and sender address; supply both username and secret password if authentication is required. Select that connection in Send Email steps or project notification routes and create saved templates if needed.",
+    "tags": [
+      "email",
+      "smtp",
+      "notifications"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-email-smtp/tree/v0.3.3",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-email-smtp/releases/download/v0.3.3/flowsteward.outgoing-email-0.3.3.zip",
+    "release_zip_bytes": 50922,
+    "release_zip_sha256": "f7ec0cb9156078e912f8d2bc117397438c625b1d1adacd7d0a69cc160d6b6434"
+  }
+}

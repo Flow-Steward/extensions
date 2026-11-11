@@ -1,0 +1,56 @@
+{
+  "extension_id": "flowsteward.google-cloud-vertex",
+  "version": "0.1.5",
+  "repository": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex",
+  "tag": "v0.1.5",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.google-cloud-vertex/0.1.5.png",
+    "sha256": "5a07416695e22b326514c35761050d20323d6b66e8bf715d09b7cd54ad736fa2",
+    "bytes": 8741,
+    "mime_type": "image/png",
+    "size": "512x512"
+  },
+  "published_at": "2026-11-11T13:27:26Z",
+  "item": {
+    "extension_id": "flowsteward.google-cloud-vertex",
+    "version": "0.1.5",
+    "name": "Google Cloud Vertex Gemini",
+    "summary": "Use Vertex AI Gemini models for agent conversations, tool calls and structured responses with your Google Cloud credentials.",
+    "description": "Run Flow Steward agents with Gemini models served through your Google Cloud project using Google Cloud Vertex Gemini. Configure a Google Cloud project, location and service-account credentials, discover Gemini model metadata, then add models that pass Flow Steward's capability verification. Enabled models can supply the language-model responses used by your agents.\n\nThe provider implements text conversations, function calling with tool-result replay, and JSON Schema-guided structured responses through Vertex AI's generateContent API. Responses include the assistant message and token-usage information, with a provider request identifier when available. This makes the integration suitable for agents that reason over text, call workflow tools and return structured results while using a Google Cloud project for access and billing.\n\nDiscovery reads Google's publisher catalog. A listed model may still be unavailable in your location or to your project, so discovery does not establish entitlement. IAM permissions, organization policy, quotas and model access remain Google Cloud settings. This release does not provide image or audio generation, realtime interaction, or Gemini Developer API-key authentication.",
+    "categories": [
+      "ai"
+    ],
+    "capabilities": [
+      "tool",
+      "llm_provider"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Enable billing and the Vertex AI API in your Google Cloud project, then create a service account with Vertex AI User access and a JSON key. Enter the project ID, supported location and full key in the account-scoped LLM provider panel, then discover and verify models.",
+    "tags": [
+      "llm",
+      "google-cloud",
+      "vertex-ai"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex/tree/v0.1.5",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex/releases/download/v0.1.5/flowsteward.google-cloud-vertex-0.1.5-linux-amd64.zip",
+    "release_zip_bytes": 6752623,
+    "release_zip_sha256": "00fcb2db6d37cef9a9d534d595069510ea5ef9a838104d0c0782a7692acc9764",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex/releases/download/v0.1.5/flowsteward.google-cloud-vertex-0.1.5-linux-amd64.zip",
+        "release_zip_bytes": 6752623,
+        "release_zip_sha256": "00fcb2db6d37cef9a9d534d595069510ea5ef9a838104d0c0782a7692acc9764"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex/releases/download/v0.1.5/flowsteward.google-cloud-vertex-0.1.5-linux-arm64.zip",
+        "release_zip_bytes": 6753551,
+        "release_zip_sha256": "40db386c8958b8d92dce6492a0987846b4803658ae79b25c09de17502cba85d9"
+      }
+    }
+  }
+}

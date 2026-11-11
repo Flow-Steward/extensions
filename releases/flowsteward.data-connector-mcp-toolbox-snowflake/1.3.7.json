@@ -1,0 +1,58 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-snowflake",
+  "version": "1.3.7",
+  "repository": "https://github.com/Flow-Steward/ext-data-snowflake",
+  "tag": "v1.3.7",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.data-connector-mcp-toolbox-snowflake/1.3.7.png",
+    "sha256": "c3cfa52f6724430ba7566accf6859a92653e9821f75c1e73bd191d458c36f94a",
+    "bytes": 15826,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-11T13:27:12Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-snowflake",
+    "version": "1.3.7",
+    "name": "Snowflake",
+    "summary": "Use Snowflake datasets for saved SQL reads and automate parameterized INSERT, UPDATE and DELETE workflow steps.",
+    "description": "Bring Snowflake data into Flow Steward through saved, parameterized Dataset queries. The connector tests connections, discovers typed schemas, validates selected tables and columns, previews results, executes saved SQL and infers output schemas. Reads use the read-only query path and return at most 100 rows and 480 KiB of inline output. Use these results to supply a workflow with the warehouse records needed for a decision or follow-up action.\n\nWorkflow writes are exposed separately through execute_write, which accepts one INSERT, UPDATE or DELETE with named parameters, a values object and an optional parameter schema. For example, query a review queue, route a record for approval, then update its status or insert an audit outcome. Parameter values stay separate from the SQL text, allowing the same step to process different records.\n\nConnections explicitly select the Snowflake account, database, schema, warehouse, user and role, with the password stored as a secret. Choose a role with the permissions your reads and writes require. Dataset queries stay read-only; this extension does not expose triggers, warehouse administration, schema-changing statements or multi-statement scripts. Use saved queries and explicit write steps together to turn warehouse findings into review tasks, notifications and recorded outcomes.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Create a project connection with account identifier, user, database, schema, warehouse and role, and store the user password in connection secrets. Warehouse and role are required explicitly; select a role with suitable privileges for the intended queries and workflow writes.",
+    "tags": [
+      "database",
+      "dataset",
+      "snowflake"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-snowflake/tree/v1.3.7",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-snowflake/releases/download/v1.3.7/flowsteward.data-connector-mcp-toolbox-snowflake-1.3.7-linux-amd64.zip",
+    "release_zip_bytes": 16458911,
+    "release_zip_sha256": "d86dde36e3ee64f2c78786bdc7af63231f8ee75c04d52f44dfab060898869864",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-snowflake/releases/download/v1.3.7/flowsteward.data-connector-mcp-toolbox-snowflake-1.3.7-linux-amd64.zip",
+        "release_zip_bytes": 16458911,
+        "release_zip_sha256": "d86dde36e3ee64f2c78786bdc7af63231f8ee75c04d52f44dfab060898869864"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-snowflake/releases/download/v1.3.7/flowsteward.data-connector-mcp-toolbox-snowflake-1.3.7-linux-arm64.zip",
+        "release_zip_bytes": 14844256,
+        "release_zip_sha256": "5aa8d827c033e635e76d0bb6ff22d3c38c0b5cc059dd945eca9b0acdb6eb5333"
+      }
+    }
+  }
+}

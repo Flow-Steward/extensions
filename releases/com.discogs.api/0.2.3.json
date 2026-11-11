@@ -1,0 +1,49 @@
+{
+  "extension_id": "com.discogs.api",
+  "version": "0.2.3",
+  "repository": "https://github.com/Flow-Steward/ext-discogs",
+  "tag": "v0.2.3",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/com.discogs.api/0.2.3.png",
+    "sha256": "675a3064c3ac54c1f2228245d99418865391fef4763d12be38406085dffcdea8",
+    "bytes": 4498,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-11T13:26:49Z",
+  "item": {
+    "extension_id": "com.discogs.api",
+    "version": "0.2.3",
+    "name": "Discogs API",
+    "summary": "Connect Discogs database, marketplace, collection and wantlist operations to music research and record-selling workflows.",
+    "description": "Research record releases, enrich a music catalog and manage Discogs account tasks from Flow Steward workflows. Search releases, masters, artists and labels using filters such as artist, release title, year, barcode or catalog number. Look up individual records, explore master versions and artist or label releases, and return result objects with pagination for subsequent workflow steps.\n\nMarketplace operations cover listings, release sales statistics, price suggestions, fee calculations, orders and order messages. Collection and wantlist operations let workflows inspect folders, release instances and custom collection fields, then add, update or remove supported items. The release also exposes user profiles, contributions, submissions, lists, release ratings and inventory export or upload operations.\n\nUse these functions to enrich a record catalog, research a pressing, compare collection holdings against a wantlist, or connect record-selling tasks to other systems. Write operations require a token, explicit enablement and confirmation. Discogs permissions and rate limits still apply. This is a Flow Steward-maintained integration with Discogs; the returned marketplace information does not itself place a purchase.",
+    "categories": [
+      "media"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke",
+      "read:projects"
+    ],
+    "setup_summary": "Configure a project Discogs connection with a user token and the account username where needed; self-hosted runtimes can also supply a Discogs token through supported environment variables. Enable write actions only when needed and supply confirmation for each modifying operation.",
+    "tags": [
+      "discogs",
+      "music",
+      "records",
+      "marketplace",
+      "collection",
+      "wantlist"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-discogs/tree/v0.2.3",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-discogs/releases/download/v0.2.3/com.discogs.api-0.2.3.zip",
+    "release_zip_bytes": 57916,
+    "release_zip_sha256": "a13c9e116dc3d10985188e2d2d6d0d18508afdb83ee85422e088bfbd1a2818c7"
+  }
+}

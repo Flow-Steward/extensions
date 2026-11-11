@@ -1,0 +1,56 @@
+{
+  "extension_id": "flowsteward.firestore",
+  "version": "1.0.7",
+  "repository": "https://github.com/Flow-Steward/ext-data-firestore",
+  "tag": "v1.0.7",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.firestore/1.0.7.png",
+    "sha256": "c917315e332ba3744b7ada51cf1871aae2cb174d5e9e8940667410a29b51bf7c",
+    "bytes": 24649,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-11T13:27:24Z",
+  "item": {
+    "extension_id": "flowsteward.firestore",
+    "version": "1.0.7",
+    "name": "Firestore",
+    "summary": "Get, query, create, patch, replace and delete typed Firestore documents, with pagination and version preconditions.",
+    "description": "Use Google Cloud Firestore documents in Flow Steward workflows for application record lookup, collection queries and updates. Actions read a document, create at a stable path, replace or upsert its fields, patch selected top-level fields, and delete it. Collection actions list documents, query with typed filters and ordering, or list root collections and subcollections. Listing returns a page token for explicit continuation.\n\nFirestore's typed Value JSON supports strings, booleans, numbers, timestamps, bytes, geographic points, references, arrays and maps. Integer values can retain full int64 precision as strings inside their Firestore type representation. Optional update-time preconditions help reject stale updates, replacements and deletes; creation fails when the supplied path already exists. Choose patches for individual field changes or replacements when a workflow owns the complete document.\n\nConfigure the Google Cloud project and database with an access token or service-account JSON and appropriate Firestore IAM permissions. Queries and pages return at most 100 documents, and some filters require an existing Firestore index. Document deletion does not recursively remove subcollections. The connector provides Firestore document operations rather than transactions, triggers, Rules management or Firebase Realtime Database access.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Create a Firestore project connection with the Google Cloud project, database and exactly one secret: an access token or service-account JSON. Grant the required Firestore IAM permissions and provision any indexes needed by your collection queries.",
+    "tags": [
+      "firestore",
+      "documents",
+      "google-cloud"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-firestore/tree/v1.0.7",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-firestore/releases/download/v1.0.7/flowsteward.firestore-1.0.7-linux-amd64.zip",
+    "release_zip_bytes": 6545552,
+    "release_zip_sha256": "75173fad6de461357db692e5778f4aa7fa2faf0c6b71ac3114f6e234b34786d6",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-firestore/releases/download/v1.0.7/flowsteward.firestore-1.0.7-linux-amd64.zip",
+        "release_zip_bytes": 6545552,
+        "release_zip_sha256": "75173fad6de461357db692e5778f4aa7fa2faf0c6b71ac3114f6e234b34786d6"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-firestore/releases/download/v1.0.7/flowsteward.firestore-1.0.7-linux-arm64.zip",
+        "release_zip_bytes": 5925472,
+        "release_zip_sha256": "3fff18abe481b3fe242204fcd3a1313b9cea778f66076f5250c03d7fdff1cfef"
+      }
+    }
+  }
+}
