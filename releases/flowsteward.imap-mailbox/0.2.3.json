@@ -1,0 +1,45 @@
+{
+  "extension_id": "flowsteward.imap-mailbox",
+  "version": "0.2.3",
+  "repository": "https://github.com/Flow-Steward/ext-email-imap",
+  "tag": "v0.2.3",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.imap-mailbox/0.2.3.png",
+    "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
+    "bytes": 4915,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-12T11:46:35Z",
+  "item": {
+    "extension_id": "flowsteward.imap-mailbox",
+    "version": "0.2.3",
+    "name": "Generic IMAP Mailbox",
+    "summary": "Search generic IMAP mailboxes, read messages and attachments, then update flags, move messages or send them to trash.",
+    "description": "Generic IMAP Mailbox brings email from Fastmail, Yahoo, Zoho, shared hosting and other compatible IMAP servers into Flow Steward workflows. List folders, search by sender, subject, date or read state, read selected messages and download their attachments for later steps. Reading a message leaves its read state unchanged, so your workflow can decide when processing is complete.\n\nBuild invoice intake, document collection or mailbox triage workflows by passing attachments to document extraction or tabular processing. Once downstream work succeeds, update read or starred flags, move messages into a processed folder or send them to trash. Permanent deletion is available as a separate, explicitly confirmed operation where the server supports it.\n\nCreate a project connection using the provider's IMAP host, port, SSL or STARTTLS mode, username and password or app password. Provider presets help with initial settings, and a connection test confirms access. This connector handles incoming mail; outbound messages use a separate email connection. Use dedicated connectors for Gmail and Microsoft mailboxes. Attachments support approved file types up to 20 MiB, and production connections require publicly reachable server addresses.",
+    "categories": [
+      "messaging"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "Create an imap_mailbox project connection with host, port, SSL or STARTTLS, username and a password or provider app password stored as a secret, then run Test Connection. Configure processed and trash folder names when your workflow moves or deletes messages.",
+    "tags": [
+      "imap",
+      "email",
+      "mailbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-email-imap/tree/v0.2.3",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-email-imap/releases/download/v0.2.3/flowsteward.imap-mailbox-0.2.3.zip",
+    "release_zip_bytes": 99455,
+    "release_zip_sha256": "1fc6184e0a9ddafdf938c31cc757fca9be7bd8cf8d5a54dbb32efb9f634e8b8b"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "extension_id": "flowsteward.amazon-sp-api",
+  "version": "0.2.11",
+  "repository": "https://github.com/Flow-Steward/ext-ecommerce-amazon",
+  "tag": "v0.2.11",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.amazon-sp-api/0.2.11.png",
+    "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
+    "bytes": 4915,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-12T11:46:26Z",
+  "item": {
+    "extension_id": "flowsteward.amazon-sp-api",
+    "version": "0.2.11",
+    "name": "Amazon Selling Partner API",
+    "summary": "Automate Amazon orders, listings, pricing, FBA and FBM inventory, inbound shipments, shipping labels, listing feeds and financial reports.",
+    "description": "Connect Amazon seller operations to Flow Steward workflows across order handling, catalog maintenance, fulfillment and financial reporting. Read orders and order items, retrieve permitted buyer information, confirm merchant-fulfilled shipments and update shipment status. Search Amazon catalog items and seller listings, inspect listing issues, retrieve product type requirements, check restrictions and validate proposed listing changes before submitting them.\n\nCatalog and inventory steps can create, update or delete listings, change offer prices and merchant-fulfilled quantities, read FBA inventory and compare offers and competitive pricing. FBA inbound operations cover plans, packing and placement choices, transportation, delivery windows, shipment details and shipping documents, with additional India compliance and challan operations. Amazon Shipping steps retrieve rates, purchase or cancel shipments, download labels and read tracking in supported countries.\n\nUse listing feeds for batch submissions, inspect their processing status and download results. Finance steps retrieve transactions, order-related financial records and legacy financial event groups; report steps request, inspect and download Amazon reports, including eligible settlement reports. These building blocks suit stock updates, shipment processing and accounting exports. Each connection selects one seller and marketplace. Lists return a page, and asynchronous submissions need later status checks; roles and marketplace availability determine which operations can run.",
+    "categories": [
+      "ecommerce"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "Use Flow Steward 0.9.12 or later and configure a private SP-API application with its LWA credentials. Self-authorize the seller in Seller Central, import its refresh token, and select the seller ID and marketplace; grant Product Listing for connection verification and add the roles needed by the operations you use.",
+    "tags": [
+      "amazon",
+      "sp-api",
+      "seller-central",
+      "orders",
+      "listings",
+      "pricing",
+      "inventory",
+      "fba",
+      "fbm",
+      "feeds",
+      "finances",
+      "reports",
+      "ecommerce"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-ecommerce-amazon/tree/v0.2.11",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-ecommerce-amazon/releases/download/v0.2.11/flowsteward.amazon-sp-api-0.2.11.zip",
+    "release_zip_bytes": 504772,
+    "release_zip_sha256": "a3e5153d35ccf266de96e3471aa04c96e53de21de2f8d734c6625399cff35106"
+  }
+}
