@@ -1,6 +1,7 @@
 """Publication must be isolated from extension-controlled build/test execution."""
 
 import re
+import shlex
 from pathlib import Path
 
 import yaml
@@ -68,3 +69,50 @@ def test_external_actions_are_pinned_and_untrusted_expressions_are_not_interpola
                         or step["uses"] == "docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1"
                     )
                 assert "${{" not in step.get("run", "")
+
+
+def test_native_build_requires_explicit_opt_in_for_validation_and_publication():
+    for name in ["build-extension.yml", "release-extension.yml"]:
+        inputs = load(name)["on"]["workflow_call"]["inputs"]
+        assert inputs.get("build_native", {}).get("type") == "boolean"
+        assert inputs["build_native"]["default"] == "false"
+        assert inputs["build_native"].get("required", "false") == "false"
+    release = load("release-extension.yml")
+    assert release["jobs"]["build"]["with"]["build_native"] == "${{ inputs.build_native }}"
+
+
+def test_native_payloads_are_built_after_identity_and_before_recipe_preparation():
+    job = load("build-extension.yml")["jobs"]["build"]
+    steps = job["steps"]
+    native = [step for step in steps if step.get("id", "").startswith("native_")]
+    assert len(native) == 2
+    assert all(step.get("if") == "${{ inputs.build_native }}" for step in native)
+    identity = next(i for i, step in enumerate(steps) if step.get("id") == "identity")
+    prepare = next(i for i, step in enumerate(steps) if "release_extension.py prepare" in step.get("run", ""))
+    pull, build = native
+    assert identity < steps.index(pull) < steps.index(build) < prepare
+    assert shlex.split(pull["run"]) == [
+        "docker", "pull",
+        "golang:1.27.3-bookworm@sha256:dc0963f32053e4bc451d24d87e3892d42d01021b61f093e98eb95c0352bb84b0",
+    ]
+    assert build["working-directory"] == "source"
+    assert shlex.split(build["run"]) == ["bash", "scripts/build_toolbox.sh"]
+    assert job["timeout-minutes"] == "${{ inputs.build_native && 90 || 30 }}"
+
+
+def test_native_build_keeps_source_execution_out_of_the_publisher():
+    publish = load("release-extension.yml")["jobs"]["publish"]
+    assert all(
+        not step.get("id", "").startswith("native_")
+        and "build_toolbox" not in step.get("run", "")
+        for step in publish["steps"]
+    )
+    native = [
+        step for step in load("build-extension.yml")["jobs"]["build"]["steps"]
+        if step.get("id", "").startswith("native_")
+    ]
+    assert native
+    for step in native:
+        assert "env" not in step
+        assert "docker.sock" not in step["run"]
+        assert "--privileged" not in step["run"]

@@ -7,6 +7,10 @@ on:
         description: Immutable v<semver> tag to publish
         required: true
         type: string
+      build_native:
+        description: Rebuild locked native payloads using the extension's source builder
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -24,6 +28,7 @@ jobs:
     uses: ./.github/workflows/build-extension.yml
     with:
       tag: ${{ inputs.tag }}
+      build_native: ${{ inputs.build_native }}
   publish:
     needs: build
     runs-on: ubuntu-24.04

@@ -7,6 +7,10 @@ on:
         description: Release tag; empty validates the current commit without publication
         type: string
         default: ""
+      build_native:
+        description: Rebuild locked native payloads using the extension's source builder
+        type: boolean
+        default: false
     outputs:
       tag:
         value: ${{ jobs.build.outputs.tag }}
@@ -22,7 +26,7 @@ cache-mode: none
 jobs:
   build:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: ${{ inputs.build_native && 90 || 30 }}
     permissions:
       contents: read
     outputs:
@@ -67,6 +71,15 @@ jobs:
           with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
               output.write(f'tag={tag}\nsource_sha={sha}\n')
           PYTHON
+      - name: Pull pinned native build bootstrap
+        id: native_bootstrap
+        if: ${{ inputs.build_native }}
+        run: docker pull golang:1.27.3-bookworm@sha256:dc0963f32053e4bc451d24d87e3892d42d01021b61f093e98eb95c0352bb84b0
+      - name: Rebuild locked native payloads from source
+        id: native_build
+        if: ${{ inputs.build_native }}
+        working-directory: source
+        run: bash scripts/build_toolbox.sh
       - name: Validate recipe and restore verified runtime payloads
         env:
           RELEASE_TAG: ${{ steps.identity.outputs.tag }}
