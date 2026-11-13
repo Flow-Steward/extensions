@@ -1,0 +1,54 @@
+{
+  "extension_id": "flowsteward.rivile-gama",
+  "version": "0.1.6",
+  "repository": "https://github.com/Flow-Steward/ext-finance-rivile-gama",
+  "tag": "v0.1.6",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.rivile-gama/0.1.6.png",
+    "sha256": "e97fb20a3ca708c40efd6c31bbab3f5139a3976b76af6d5f5345fb61fc422eb1",
+    "bytes": 838,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-13T13:12:28Z",
+  "item": {
+    "extension_id": "flowsteward.rivile-gama",
+    "version": "0.1.6",
+    "name": "Rivile GAMA",
+    "summary": "Connect Rivile GAMA invoices, clients, products, payments, stock and files, with advanced accounting, inventory, payroll and personnel methods.",
+    "description": "Connect the Rivile GAMA system behind Manorivile-Gateway to Flow Steward using REST API v2. Everyday operations find or create clients and products, create sales or purchase invoices with optional posting, register document payments and attach or download document files. Stock, price, client-balance and date-based change readers provide building blocks for storefront updates, accounting exchanges and debt review.\n\nFor integrations needing more of GAMA's data model, the release contains typed operations for 209 methods from its pinned API reference. Supported families include purchases and sales, general ledger, debts and payments, products and services, inventory and stocktaking, production, fixed assets, prices, payroll, personnel, point of sale, loyalty and gift vouchers, contracts and document management. Advanced steps accept the corresponding method parameters and Rivile data blocks, while list export can write paginated records to a JSONL workflow file.\n\nEach connection uses a Rivile API key and the associated user's rights. The gateway and company settings determine which functions are available. Workflows can combine everyday steps with the more detailed method operations for company-specific document and inventory processes. Configure Rivile change tracking before relying on the incremental readers that require it.",
+    "categories": [
+      "finance",
+      "inventory",
+      "hr"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "Enable the Rivile API service with a valid version-access agreement, use GAMA 119 or later and run Manorivile-Gateway beside the company database. Add the username.secret API key to a project connection and check the Rivile user rights and relevant RGI parameters, including change-tracking initialization when needed.",
+    "tags": [
+      "rivile",
+      "rivile-gama",
+      "accounting",
+      "erp",
+      "lithuania",
+      "invoices",
+      "vat",
+      "inventory",
+      "payroll"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-finance-rivile-gama/tree/v0.1.6",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-finance-rivile-gama/releases/download/v0.1.6/flowsteward.rivile-gama-0.1.6.zip",
+    "release_zip_bytes": 421176,
+    "release_zip_sha256": "2bf0e2c1d78635b0297285c1c75540de9a4984017c4395ef8db9c451af91b820"
+  }
+}

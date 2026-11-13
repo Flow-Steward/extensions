@@ -1,0 +1,46 @@
+{
+  "extension_id": "flowsteward.quickbooks",
+  "version": "1.0.3",
+  "repository": "https://github.com/Flow-Steward/ext-finance-quickbooks",
+  "tag": "v1.0.3",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.quickbooks/1.0.3.png",
+    "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
+    "bytes": 4915,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-13T13:12:16Z",
+  "item": {
+    "extension_id": "flowsteward.quickbooks",
+    "version": "1.0.3",
+    "name": "QuickBooks Online",
+    "summary": "Connect QuickBooks Online customers, invoices, bills, payments and accounting records, with financial reports, invoice PDFs and attachments.",
+    "description": "Connect a QuickBooks Online company to Flow Steward for accounting record automation, reporting and document handling. Search and read supported entities such as customers, vendors, accounts, items, invoices, bills, payments and purchase orders, then use the corresponding supported create and update operations to move approved business data into QuickBooks. The release provides 145 workflow operations based on a pinned Intuit tool inventory, implemented through native QuickBooks REST requests.\n\nFinancial reporting includes 12 reports covering areas such as profit and loss, balance sheet, cash flow and aged receivables or payables. Reports accept provider options for dates, accounting method and relevant entity filters, and preserve QuickBooks' own report structure and totals. Download invoice PDFs into Flow Steward storage and upload workflow files as QuickBooks attachments, or create attachment metadata without a file.\n\nUse these building blocks to transfer approved invoices, collect balances for follow-up workflows or assemble periodic accounting reports. Searches expose bounded pages and continuation positions. Updates require the current SyncToken to detect conflicting changes, and connection settings can separately disable creates, updates or deletions. Each operation explicitly selects one authorized company and its sandbox or production environment; available entities and behavior depend on the company's plan, region and permissions.",
+    "categories": [
+      "finance"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "Register an Intuit QuickBooks Online Accounting app, add the Flow Steward callback URL and configure its matching client ID and secret. Create a company connection with the explicit realm ID and sandbox or production environment, authorize that same company and verify the connection.",
+    "tags": [
+      "quickbooks",
+      "accounting",
+      "intuit"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-finance-quickbooks/tree/v1.0.3",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-finance-quickbooks/releases/download/v1.0.3/flowsteward.quickbooks-1.0.3.zip",
+    "release_zip_bytes": 84172,
+    "release_zip_sha256": "00969c4a72e93857fcac2db8c369cd5f7d1b57a32d4c38e0da78b33c924d4ee1"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "extension_id": "flowsteward.openai-tools",
+  "version": "1.1.4",
+  "repository": "https://github.com/Flow-Steward/ext-ai-openai-tools",
+  "tag": "v1.1.4",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.openai-tools/1.1.4.png",
+    "sha256": "9761c271afd3ed8e7e2c6b8095d96de9e73653b9748c7fa97e6e40d90da0658d",
+    "bytes": 12026,
+    "mime_type": "image/png",
+    "size": "512x512"
+  },
+  "published_at": "2026-11-13T13:12:06Z",
+  "item": {
+    "extension_id": "flowsteward.openai-tools",
+    "version": "1.1.4",
+    "name": "OpenAI Tools",
+    "summary": "Add OpenAI decision, moderation, image, audio and embedding actions to workflows using a project API connection.",
+    "description": "Build content-review, media-preparation and text-analysis workflows with OpenAI Tools. It provides focused actions across several OpenAI API families. Make a yes-or-no decision, choose from supplied options or score ordered levels using a prompt and evidence. Moderate text or an image and pass the flagged result and category information into review or routing steps.\n\nMedia actions generate or edit an image artifact, transcribe an audio artifact to text, or turn text into a speech artifact. Text embedding actions return ordered vectors with model, dimension and usage information. These functions can support content preparation, transcription pipelines, moderation queues and small embedding batches. They are workflow tools; this extension does not add a conversational model to the agent model catalog.\n\nEach action uses a selected project OpenAI connection and returns its relevant result or output artifact plus a provider request ID. Image inputs accept PNG, JPEG and WebP up to 15 MB; audio inputs are limited to 24 MB. Embedding calls accept one to four texts and do not chunk them automatically. Inputs are sent to OpenAI, where model access, pricing and API availability apply. The speech model is scheduled to shut down on 6 January 2027.",
+    "categories": [
+      "ai"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "Create an OpenAI project API key with access and billing for the required APIs, save it in a project-scoped OpenAI connection and select it in an Extension tools step.",
+    "tags": [
+      "openai",
+      "image",
+      "audio",
+      "moderation"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-ai-openai-tools/tree/v1.1.4",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-ai-openai-tools/releases/download/v1.1.4/flowsteward.openai-tools-1.1.4.zip",
+    "release_zip_bytes": 48713,
+    "release_zip_sha256": "cc0008a6269532408b98b18a8bf000e69fb305949ba7e4d42060c60eaadf767b"
+  }
+}

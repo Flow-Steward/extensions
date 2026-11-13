@@ -1,0 +1,54 @@
+{
+  "extension_id": "flowsteward.rivile-erp",
+  "version": "0.1.4",
+  "repository": "https://github.com/Flow-Steward/ext-finance-rivile-erp",
+  "tag": "v0.1.4",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.rivile-erp/0.1.4.png",
+    "sha256": "e97fb20a3ca708c40efd6c31bbab3f5139a3976b76af6d5f5345fb61fc422eb1",
+    "bytes": 838,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-13T13:12:22Z",
+  "item": {
+    "extension_id": "flowsteward.rivile-erp",
+    "version": "0.1.4",
+    "name": "Rivile ERP",
+    "summary": "Connect Rivile ERP cloud invoices, clients, products, payments and stock, with order, delivery, manufacturing and workforce API operations.",
+    "description": "Bring Rivile ERP cloud accounting and operational records into Flow Steward workflows. Everyday steps find or create customers, suppliers and products, create sales and purchase invoices with document lines and optional posting, register payments, download attached document files and read stock, prices and client debt. Changes-since reads help pass updated records to another system.\n\nThe release also exposes a registry of 136 Public API endpoints as typed advanced operations. Its supported families include clients and contacts, products, sales and purchase orders and invoices, deliveries, payments, receivables and payables, inventory adjustments and movements, lots, manufacturing, gift cards, employees, timesheets and workflow statuses. Supported endpoint actions include reads, creation, updates and deletion where the particular API route permits them. List export writes JSONL files for larger exchanges.\n\nCombine these capabilities to turn storefront orders into accounting documents, exchange warehouse availability, build payment-registration workflows or connect operational records to reporting. A company-specific API key determines the connection's access. Invoice steps support optional posting, and advanced operations expose the individual document and line actions when a process needs more control. Lists and file exports provide records for subsequent workflow steps.",
+    "categories": [
+      "finance",
+      "inventory",
+      "sales",
+      "hr"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "Create a company API key in Rivile ERP under Settings, General, API Keys, choose its validity and store it in the project connection. Use a separate connection for each company and confirm that the key permits the document and operational actions your workflow needs.",
+    "tags": [
+      "rivile",
+      "rivile-erp",
+      "accounting",
+      "erp",
+      "lithuania",
+      "invoices",
+      "inventory",
+      "orders"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-finance-rivile-erp/tree/v0.1.4",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-finance-rivile-erp/releases/download/v0.1.4/flowsteward.rivile-erp-0.1.4.zip",
+    "release_zip_bytes": 190071,
+    "release_zip_sha256": "fe6bf8b3df4f3d55a3dd871f3ace4f39a22c0b06f1df053e0048bc4367dddf18"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "extension_id": "flowsteward.redis",
+  "version": "1.1.7",
+  "repository": "https://github.com/Flow-Steward/ext-data-redis",
+  "tag": "v1.1.7",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.redis/1.1.7.png",
+    "sha256": "300f2097a8ea1b2ce630e891cb69ff1550ead9cfa99d76c7f76eef9b89c7e88b",
+    "bytes": 9278,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-13T13:12:19Z",
+  "item": {
+    "extension_id": "flowsteward.redis",
+    "version": "1.1.7",
+    "name": "Redis",
+    "summary": "Automate Redis key/value state, JSON documents, counters, hashes and list queues, with read-only Dataset views.",
+    "description": "Use Redis for workflow state, duplicate-event checks, counters and lightweight list processing. The extension reads and writes text keys or whole JSON values, checks existence and expiry, deletes keys, sets TTLs and increments counters. Hash actions read, write or delete fields; list actions push, pop, read a range or return the list length. Conditional SET supports create-only or update-only writes with an optional expiry, and returns whether the change applied.\n\nRead-only Datasets expose explicit-key string, hash, list and JSON views through saved definitions, typed parameters, validation, previews and schema inference. JSON lives in ordinary string keys, so RedisJSON is not required. Normal database connections use existing keys with an optional allowed prefix; legacy project-state connections retain their scoped key names.\n\nFor example, claim an event key with create-only SET and a TTL, continue only when applied is true, or push right and pop left for a basic FIFO list. Expiry does not guarantee exactly-once processing, and a popped item is removed immediately without acknowledgements or crash recovery. Connections target one standalone endpoint; cluster discovery, Sentinel, scans, arbitrary commands and blocking queue operations are unavailable.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "dataset_connector"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "On Flow Steward 1.5.0+, create a Redis database or project-state connection with host, port, logical database, TLS settings and optional ACL username/password secrets. Use a least-privilege account; private endpoints require host administrator permission, and database connections can restrict keys with key_prefix.",
+    "tags": [
+      "redis",
+      "toolbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-redis/tree/v1.1.7",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-redis/releases/download/v1.1.7/flowsteward.redis-1.1.7-linux-amd64.zip",
+    "release_zip_bytes": 12897580,
+    "release_zip_sha256": "84938e374472497511cb029fa5d0e592a302737e7ac97eccaf01559ea7d85320",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-redis/releases/download/v1.1.7/flowsteward.redis-1.1.7-linux-amd64.zip",
+        "release_zip_bytes": 12897580,
+        "release_zip_sha256": "84938e374472497511cb029fa5d0e592a302737e7ac97eccaf01559ea7d85320"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-redis/releases/download/v1.1.7/flowsteward.redis-1.1.7-linux-arm64.zip",
+        "release_zip_bytes": 11511514,
+        "release_zip_sha256": "0cd2733b96b1507ffa13249a5d6d8f36ed93be262dab853f78b543fe8ee8dab7"
+      }
+    }
+  }
+}

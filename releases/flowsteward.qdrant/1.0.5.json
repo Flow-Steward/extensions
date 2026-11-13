@@ -1,0 +1,57 @@
+{
+  "extension_id": "flowsteward.qdrant",
+  "version": "1.0.5",
+  "repository": "https://github.com/Flow-Steward/ext-vector-qdrant",
+  "tag": "v1.0.5",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.qdrant/1.0.5.png",
+    "sha256": "fddad4488145a9defd4b56b955820a1cff3a2a033ad69988b5486b6c4048fa83",
+    "bytes": 11752,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-13T13:12:14Z",
+  "item": {
+    "extension_id": "flowsteward.qdrant",
+    "version": "1.0.5",
+    "name": "Qdrant Vector Store",
+    "summary": "Index document chunks in Qdrant, search dense vectors, and compose question-answering workflows with source citations.",
+    "description": "Build document retrieval and cited-answer workflows around a Qdrant collection. Prepare text into overlapping chunks with stable IDs and provenance, replace a document’s stored chunks, delete a document, or work directly with vector points through upsert, get and delete operations. Dense vector search accepts filters and score thresholds and returns matches, source identifiers, exact excerpts and assembled context for downstream steps.\n\nCollection actions create or inspect the selected collection and ensure the payload indexes required for scoped retrieval. Data access is tied to the account, project and connection. Query preparation and answer finalization support source-based responses: finalization checks citation IDs and markers, and empty retrieval produces an abstention.\n\nBundled workflows cover text ingestion, file ingestion, questions and document deletion. They compose Cohere Retrieval for embeddings, Docling for file conversion and the project’s configured answer agent; those services need their own installation and connections. The Qdrant connector itself does not generate embeddings or run an LLM. Use matching embedding models and dimensions for ingestion and questions. Citation checks validate references against retrieved sources, helping later workflow steps present excerpts and citations alongside the answer.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "artifact_bundle"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Configure a project connection with Qdrant API origin, collection, optional vector name and API key, then create the collection or ensure payload indexes on an existing one. For bundled workflows, install Cohere Retrieval and Docling, import the workflow/agent/skill artifacts, select their connections and configure the project answer model.",
+    "tags": [
+      "qdrant",
+      "vector",
+      "rag"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-vector-qdrant/tree/v1.0.5",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-vector-qdrant/releases/download/v1.0.5/flowsteward.qdrant-1.0.5-linux-amd64.zip",
+    "release_zip_bytes": 65555,
+    "release_zip_sha256": "93aa6b349afe4db0d33a7cfcf1268fb015a4a8dd0dd9885eea7ede0a4de87da1",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-vector-qdrant/releases/download/v1.0.5/flowsteward.qdrant-1.0.5-linux-amd64.zip",
+        "release_zip_bytes": 65555,
+        "release_zip_sha256": "93aa6b349afe4db0d33a7cfcf1268fb015a4a8dd0dd9885eea7ede0a4de87da1"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-vector-qdrant/releases/download/v1.0.5/flowsteward.qdrant-1.0.5-linux-arm64.zip",
+        "release_zip_bytes": 65555,
+        "release_zip_sha256": "eea26b6b6ec8249fd3a588906e51b0b51e98f48745a78ab8c58eecab44c4047b"
+      }
+    }
+  }
+}

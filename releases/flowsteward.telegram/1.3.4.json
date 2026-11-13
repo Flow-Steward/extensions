@@ -1,0 +1,50 @@
+{
+  "extension_id": "flowsteward.telegram",
+  "version": "1.3.4",
+  "repository": "https://github.com/Flow-Steward/ext-messaging-telegram",
+  "tag": "v1.3.4",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.telegram/1.3.4.png",
+    "sha256": "a651f8a125fceb7a71fee7014448274323f55b38387f06610c6c8a169eada9e7",
+    "bytes": 38108,
+    "mime_type": "image/png",
+    "size": "512x512"
+  },
+  "published_at": "2026-11-13T13:12:35Z",
+  "item": {
+    "extension_id": "flowsteward.telegram",
+    "version": "1.3.4",
+    "name": "Telegram",
+    "summary": "Send Telegram notifications and files, manage bot messages, collect approvals and start workflows from selected chats.",
+    "description": "Telegram brings project notifications, workflow messaging and human approvals into chats served by your bot. Send text or HTML messages, reply to an existing message, deliver files, update bot messages, and delete, pin or unpin messages. Download incoming files for document processing or other workflow steps. Named project channels make it easy to route messages to the intended chat.\n\nPublish status updates, send reports, keep an incident message current or collect approve, reject and abort decisions when those actions are available in a workflow approval. Rejections can include a reason collected through a follow-up reply. A New Telegram message trigger can start workflows from explicitly enabled chats, carrying message text and file metadata.\n\nCreate a bot, save its token and configure each chat's notification, approval or workflow-trigger capabilities. Incoming updates support webhook or polling mode, and message-triggered workflows require a compatible Flow Steward host. Text messages support up to 4096 characters; file sending and downloading have separate limits. Message management also depends on the bot's Telegram permissions. Approval interactions are supported, while custom callback buttons do not provide a general button-click trigger in this release.",
+    "categories": [
+      "messaging"
+    ],
+    "capabilities": [
+      "notify",
+      "action",
+      "ingress_event"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "event:subscribe",
+      "extension:invoke",
+      "notify:dispatch",
+      "read:events"
+    ],
+    "setup_summary": "Create a Telegram bot and save its token, then discover or add named chats and enable each required capability. For approvals or incoming messages, configure webhook or polling; enable workflow triggers for the selected chats and use a Core version supporting provider-event triggers.",
+    "tags": [
+      "telegram",
+      "notifications",
+      "chatops"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-messaging-telegram/tree/v1.3.4",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-messaging-telegram/releases/download/v1.3.4/flowsteward.telegram-1.3.4.zip",
+    "release_zip_bytes": 204075,
+    "release_zip_sha256": "3db70e98ca24f459161790a550796e702a82b5eef0055a706e0021fe26931e58"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "extension_id": "flowsteward.cohere-retrieval",
+  "version": "1.0.5",
+  "repository": "https://github.com/Flow-Steward/ext-ai-cohere-retrieval",
+  "tag": "v1.0.5",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.cohere-retrieval/1.0.5.png",
+    "sha256": "e24654a404b05e3c1c670035f9aae6bca55a22a8a604fbc402df016eef784dcc",
+    "bytes": 14762,
+    "mime_type": "image/png",
+    "size": "400x400"
+  },
+  "published_at": "2026-11-13T13:11:14Z",
+  "item": {
+    "extension_id": "flowsteward.cohere-retrieval",
+    "version": "1.0.5",
+    "name": "Cohere Retrieval",
+    "summary": "Rerank search results and create Cohere text embeddings for retrieval, classification and clustering workflows.",
+    "description": "Improve search relevance and prepare text for similarity workflows with Cohere Retrieval. Its two actions rerank documents against a query or turn text into embedding vectors. Reranking accepts documents with your own IDs and returns their IDs, original positions and relevance scores, so later steps can select the most relevant material without losing its connection to the source.\n\nThe embedding action returns one floating-point vector per input text in the original order, together with the selected model, vector dimensions and provider request ID. Choose the input type for search documents, search queries, classification or clustering. The release exposes Cohere Rerank v3.5 and v5 model options, alongside Embed v4 and v5 options with configurable dimensions.\n\nUse it to reorder candidate search results before an agent reads them, prepare text for a vector store, or feed similarity and classification steps. The extension supplies retrieval results rather than managing a knowledge-base index. Reranking accepts up to 1,000 documents; embedding accepts up to 96 texts per call. Text is sent to Cohere, where model access, quotas and billing apply.",
+    "categories": [
+      "ai"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Create a project-scoped Cohere API connection with an API key and select it in the Extension tools step.",
+    "tags": [
+      "cohere",
+      "retrieval"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-ai-cohere-retrieval/tree/v1.0.5",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-ai-cohere-retrieval/releases/download/v1.0.5/flowsteward.cohere-retrieval-1.0.5.zip",
+    "release_zip_bytes": 38480,
+    "release_zip_sha256": "df247097288d4c3acf7a31352bbf05c1a178d3f0dba96a0c2c1310a583770d9e"
+  }
+}

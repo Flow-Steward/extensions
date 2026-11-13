@@ -1,0 +1,56 @@
+{
+  "extension_id": "flowsteward.mongodb",
+  "version": "1.1.7",
+  "repository": "https://github.com/Flow-Steward/ext-data-mongodb",
+  "tag": "v1.1.7",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.mongodb/1.1.7.png",
+    "sha256": "362be04d8a9d58c651bf3a10c02776ccf01b5240aecd179170f34beee41b40c6",
+    "bytes": 24736,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-13T13:11:59Z",
+  "item": {
+    "extension_id": "flowsteward.mongodb",
+    "version": "1.1.7",
+    "name": "MongoDB",
+    "summary": "Read and aggregate MongoDB documents, use JSON Datasets, and insert, update or delete workflow records.",
+    "description": "Connect MongoDB to Flow Steward for document lookup, reusable JSON Dataset queries and workflow record changes. Workflow reads support find, find-one, projections, sorting and read-only aggregation. Writes insert one document or a batch, apply update operators with optional upsert, and delete matching documents. Multi-document update and delete actions require explicit acknowledgement, while mutation filters must be nonempty.\n\nRead-only Datasets add authorized collection discovery, sampled schema inspection, parameterized find queries, a smaller aggregation subset, previews and output-schema inference. Dataset resource and field selections apply to queries and returned fields. Workflow document results preserve BSON types using canonical Extended JSON; Dataset results convert supported values into JSON while retaining large integers and Decimal128 values as strings.\n\nConfigure a database with username/password and a direct or SRV endpoint. Reads return at most 100 documents, but multi-document updates and deletes can affect every match. Aggregation result limits do not cap all server computation. Transactions, change streams, cross-collection joins and executable JavaScript are outside this connector. Sampled schemas describe observed documents rather than enforce collection structure. Atlas vector search and embedding generation are not provided.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "dataset_connector"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Configure the MongoDB hostname, database, authentication database and username/password; enable SRV for a suitable Atlas/SRV hostname. Public endpoints require verified TLS, and private endpoints require the host administrator’s private-network setting.",
+    "tags": [
+      "mongodb",
+      "toolbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-mongodb/tree/v1.1.7",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-mongodb/releases/download/v1.1.7/flowsteward.mongodb-1.1.7-linux-amd64.zip",
+    "release_zip_bytes": 12210838,
+    "release_zip_sha256": "24daf6bd5b8bd1df90ad15167bbce33010dbc4304f5af255e2160f3d5d2ba544",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-mongodb/releases/download/v1.1.7/flowsteward.mongodb-1.1.7-linux-amd64.zip",
+        "release_zip_bytes": 12210838,
+        "release_zip_sha256": "24daf6bd5b8bd1df90ad15167bbce33010dbc4304f5af255e2160f3d5d2ba544"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-mongodb/releases/download/v1.1.7/flowsteward.mongodb-1.1.7-linux-arm64.zip",
+        "release_zip_bytes": 11009951,
+        "release_zip_sha256": "26f1601598bf2d86ed76ce7745f4cdd7366d02ac115f60e25a56c94c32c76ab8"
+      }
+    }
+  }
+}

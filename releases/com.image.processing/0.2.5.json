@@ -1,0 +1,59 @@
+{
+  "extension_id": "com.image.processing",
+  "version": "0.2.5",
+  "repository": "https://github.com/Flow-Steward/ext-image-processing",
+  "tag": "v0.2.5",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/com.image.processing/0.2.5.png",
+    "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
+    "bytes": 4915,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-13T13:11:06Z",
+  "item": {
+    "extension_id": "com.image.processing",
+    "version": "0.2.5",
+    "name": "Image Processing",
+    "summary": "Check image dimensions, resize or pad images, and remove backgrounds locally using a bundled CPU model.",
+    "description": "Prepare product images, consistent catalog canvases and foreground cutouts locally with Image Processing. Check Image Size reads an image artifact and returns its dimensions with flags indicating whether resizing or padding is needed. Use those outputs to branch a workflow before creating a new image.\n\nUpscale Image can enlarge or reduce an image proportionally with Lanczos resampling. Choose a maximum bounding box, or fit the image onto an exact-size canvas with white, transparent or custom-color padding. It preserves the aspect ratio without stretching or cropping. Remove Background uses a bundled U2-NetP model on the CPU and returns a transparent PNG at the original dimensions. The actions can run independently or be combined in either order.\n\nUse the extension for product-image preparation, consistent catalog canvases or foreground cutouts. Processing needs no API key, external inference service or runtime model download. Inputs are single, non-animated PNG, JPEG or WebP artifacts up to 20 MiB and 16 megapixels. Enlargement is interpolation, so it does not reconstruct missing detail; fine edges and difficult backgrounds may need manual review.",
+    "categories": [
+      "media"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "Install the release archive for your runtime architecture and provide an image artifact from an earlier workflow step. No provider connection or API key is required.",
+    "tags": [
+      "images",
+      "resize",
+      "background-removal",
+      "local"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-image-processing/tree/v0.2.5",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.2.5/com.image.processing-0.2.5-linux-amd64.zip",
+    "release_zip_bytes": 52037848,
+    "release_zip_sha256": "5b519a61e681b671d7e69dc99fae8a168778dd6735257c323557dee8fe0dc657",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.2.5/com.image.processing-0.2.5-linux-amd64.zip",
+        "release_zip_bytes": 52037848,
+        "release_zip_sha256": "5b519a61e681b671d7e69dc99fae8a168778dd6735257c323557dee8fe0dc657"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.2.5/com.image.processing-0.2.5-linux-arm64.zip",
+        "release_zip_bytes": 48012260,
+        "release_zip_sha256": "44a13d350b8965ac9ae4c1d309dd4350ef62722b4e099d8518e06bd04d5852e0"
+      }
+    }
+  }
+}
