@@ -1,0 +1,58 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-oceanbase",
+  "version": "1.3.8",
+  "repository": "https://github.com/Flow-Steward/ext-data-oceanbase",
+  "tag": "v1.3.8",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.data-connector-mcp-toolbox-oceanbase/1.3.8.png",
+    "sha256": "d94b2c7d714eba554e792c3f7e31039800c3fc9bdc4ccf7091828546f97bddd8",
+    "bytes": 9417,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-13T17:29:47Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-oceanbase",
+    "version": "1.3.8",
+    "name": "OceanBase",
+    "summary": "Inspect OceanBase schemas, query read-only Datasets and run parameterized INSERT, UPDATE or DELETE workflow actions.",
+    "description": "Connect OceanBase to Flow Steward for reusable Dataset queries and workflow-driven data changes over its MySQL-compatible interface. The Dataset connector tests access, inspects typed table schemas, validates saved SQL against selected resources, previews results, runs saved queries and infers their output schema. Use application lookups and reporting extracts to supply data to subsequent workflow steps while keeping Dataset queries read-only.\n\nA separate workflow action runs one INSERT, UPDATE or DELETE with named parameters and an optional parameter schema. Use it to save workflow output or change existing application records in the configured OceanBase database, subject to the server's SQL support and the database user's permissions. Parameter values are supplied separately from SQL, allowing reusable statements to accept different workflow inputs.\n\nConfigure the host, port, database and user and store a nonempty password in secrets. This package targets OceanBase's MySQL-compatible endpoint and does not provide an Oracle-mode interface. Reads return at most 100 rows and 480 KiB. SQL support is a restricted subset; schema administration, transaction scripts and database triggers are outside the connector's operation set.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Configure the OceanBase MySQL-compatible host, port, database and user in a project connection, and put the required password in secrets. Use the user identity expected by that endpoint; Oracle-mode connections are outside this package.",
+    "tags": [
+      "database",
+      "dataset",
+      "oceanbase"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-oceanbase/tree/v1.3.8",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-oceanbase/releases/download/v1.3.8/flowsteward.data-connector-mcp-toolbox-oceanbase-1.3.8-linux-amd64.zip",
+    "release_zip_bytes": 11058494,
+    "release_zip_sha256": "b66bf9d0a4adc0b8a1e18fb48faabdc3616767ae28208fec448a84955c728127",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-oceanbase/releases/download/v1.3.8/flowsteward.data-connector-mcp-toolbox-oceanbase-1.3.8-linux-amd64.zip",
+        "release_zip_bytes": 11058494,
+        "release_zip_sha256": "b66bf9d0a4adc0b8a1e18fb48faabdc3616767ae28208fec448a84955c728127"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-oceanbase/releases/download/v1.3.8/flowsteward.data-connector-mcp-toolbox-oceanbase-1.3.8-linux-arm64.zip",
+        "release_zip_bytes": 9988199,
+        "release_zip_sha256": "55958fb076f8514f8f7a1b71d954451f9151eeb5d6583f0ad886570c41646035"
+      }
+    }
+  }
+}

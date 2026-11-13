@@ -1,0 +1,58 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-clickhouse",
+  "version": "1.3.8",
+  "repository": "https://github.com/Flow-Steward/ext-data-clickhouse",
+  "tag": "v1.3.8",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.data-connector-mcp-toolbox-clickhouse/1.3.8.png",
+    "sha256": "3f157e33b12ff2704ee2b5826a86669088844862b032265f2ea378474cb5133f",
+    "bytes": 5221,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-13T17:29:38Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-clickhouse",
+    "version": "1.3.8",
+    "name": "ClickHouse",
+    "summary": "Inspect ClickHouse schemas, query read-only Datasets and run parameterized workflow INSERT, UPDATE or DELETE.",
+    "description": "Connect ClickHouse to Flow Steward for analytical lookups, reusable Dataset queries and workflow-driven table changes. The Dataset connector tests the connection, inspects typed table schemas, checks saved SQL against selected resources, previews results, executes saved queries and infers their output schema. Use analytical results to drive later workflow steps, compare records or retrieve reporting data while keeping Dataset queries read-only.\n\nA separate workflow action executes one INSERT, UPDATE or DELETE using named parameters and an optional parameter schema. This provides a way to store workflow results or change existing data when the ClickHouse server supports the supplied SQL syntax. Parameter values are supplied separately from the statement, allowing the same workflow to reuse SQL with different inputs.\n\nConfigure the server host, HTTP(S) port, database and user, with any required password in connection secrets. HTTPS verifies the server certificate; native TCP is not supported. Read results are limited to 100 rows and 480 KiB, and SQL support is a restricted subset. The connector does not translate unsupported mutation syntax, administer schemas or provide database triggers.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Create a ClickHouse project connection with host, the server’s HTTP(S) port, database and user, and store any password required by the server in secrets. Choose HTTPS or HTTP explicitly as needed; this package does not use ClickHouse’s native TCP protocol.",
+    "tags": [
+      "clickhouse",
+      "database",
+      "dataset"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-clickhouse/tree/v1.3.8",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-clickhouse/releases/download/v1.3.8/flowsteward.data-connector-mcp-toolbox-clickhouse-1.3.8-linux-amd64.zip",
+    "release_zip_bytes": 12901809,
+    "release_zip_sha256": "b25e0cdbbda05f9579357354310af9163f377604eb5998dcc79775f126e4797a",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-clickhouse/releases/download/v1.3.8/flowsteward.data-connector-mcp-toolbox-clickhouse-1.3.8-linux-amd64.zip",
+        "release_zip_bytes": 12901809,
+        "release_zip_sha256": "b25e0cdbbda05f9579357354310af9163f377604eb5998dcc79775f126e4797a"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-clickhouse/releases/download/v1.3.8/flowsteward.data-connector-mcp-toolbox-clickhouse-1.3.8-linux-arm64.zip",
+        "release_zip_bytes": 11673782,
+        "release_zip_sha256": "4a06667c5597d371a7d33993da51e6efbcd4f4b69c07101cd12324aac0eaefd9"
+      }
+    }
+  }
+}

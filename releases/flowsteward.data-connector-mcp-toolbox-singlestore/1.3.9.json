@@ -1,0 +1,58 @@
+{
+  "extension_id": "flowsteward.data-connector-mcp-toolbox-singlestore",
+  "version": "1.3.9",
+  "repository": "https://github.com/Flow-Steward/ext-data-singlestore",
+  "tag": "v1.3.9",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.data-connector-mcp-toolbox-singlestore/1.3.9.png",
+    "sha256": "63756bc7868e4ab0ea37942eabfe59bd7524556331dbc9fb459f2f71747bea8c",
+    "bytes": 11034,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-13T17:29:53Z",
+  "item": {
+    "extension_id": "flowsteward.data-connector-mcp-toolbox-singlestore",
+    "version": "1.3.9",
+    "name": "SingleStore",
+    "summary": "Inspect SingleStore schemas, read saved datasets and automate parameterized INSERT, UPDATE and DELETE workflow steps.",
+    "description": "Connect SingleStore application data to Flow Steward for reusable lookups and workflow updates. The Dataset connector provides connection testing, typed schema inspection, saved SQL validation, previews, query execution and output-schema inference. Table and column resource selections constrain Dataset queries, while query parameters let the same saved definition accept different workflow values. Read results are limited to 100 rows and 480 KiB of inline output.\n\nA separate execute_write action runs one INSERT, UPDATE or DELETE against a selected project connection. SQL uses named parameters and a values object, with an optional parameter schema, so reusable statements can accept record identifiers, statuses and other workflow values. For example, read records that need attention, send them through a review workflow, then update their status or insert a processing result using the record identifier as a parameter.\n\nSet up the connection with an explicit SingleStore host, port, database and user, and keep the password in connection secrets. Reads remain read-only even when workflow write steps are available. This extension exposes selected SQL data access rather than database triggers, schema administration or multi-statement scripts. Use returned records in subsequent steps for branching, notifications or follow-up processing, and use separate write steps to persist the outcome.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "dataset_connector",
+      "action",
+      "query"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Create a project SingleStore connection with host, port, database and user, plus a nonempty secret password. Give the database user the read privileges needed for Dataset queries and the INSERT/UPDATE/DELETE grants required by your workflow steps.",
+    "tags": [
+      "database",
+      "dataset",
+      "singlestore"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-singlestore/tree/v1.3.9",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-singlestore/releases/download/v1.3.9/flowsteward.data-connector-mcp-toolbox-singlestore-1.3.9-linux-amd64.zip",
+    "release_zip_bytes": 11061910,
+    "release_zip_sha256": "dbc7f960c14704b65363013d2074bbb9a24bff92eec6407195aac5d31022adce",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-singlestore/releases/download/v1.3.9/flowsteward.data-connector-mcp-toolbox-singlestore-1.3.9-linux-amd64.zip",
+        "release_zip_bytes": 11061910,
+        "release_zip_sha256": "dbc7f960c14704b65363013d2074bbb9a24bff92eec6407195aac5d31022adce"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-singlestore/releases/download/v1.3.9/flowsteward.data-connector-mcp-toolbox-singlestore-1.3.9-linux-arm64.zip",
+        "release_zip_bytes": 9992450,
+        "release_zip_sha256": "b64e4073009ffe106e335b81c6eb6a777581b594b414de516409263d29a783b2"
+      }
+    }
+  }
+}
