@@ -3,7 +3,7 @@
 import json
 
 import pytest
-from dependency_inventory import discover, select_extensions
+from dependency_inventory import discover, select_extensions, source_file
 
 
 def pins(inventory):
@@ -133,6 +133,117 @@ def test_github_provenance_records_commit_and_version():
     )
     assert pins(inv) == {("GitHub", "googleapis/mcp-toolbox", "v1.3.0")}
     assert inv.dependencies[0].commit == "a" * 40
+
+
+@pytest.fixture(
+    params=["scripts/build-config.json", "scripts/native-build-identities.json"]
+)
+def native_build_pin(request):
+    if request.param == "scripts/build-config.json":
+        data = {
+            "source": "https://github.com/googleapis/mcp-toolbox",
+            "upstream_tag": "v1.17.0",
+            "upstream_commit": "45ed205cc8682ed066c82e0b65bcd0e8fc3becce",
+            "tag": "v1.17.0",
+            "commit": "45ed205cc8682ed066c82e0b65bcd0e8fc3becce",
+            "packages": ["github.com/googleapis/mcp-toolbox/internal/sources/redis"],
+            "module_lock": {"go.mod": "a" * 64, "go.sum": "b" * 64},
+        }
+    else:
+        data = {
+            "toolbox_tag": "v1.17.0",
+            "toolbox_commit": "45ed205cc8682ed066c82e0b65bcd0e8fc3becce",
+            "go.mod": "a" * 64,
+            "go.sum": "b" * 64,
+            "go_version": "go1.27.4",
+        }
+    return request.param, data
+
+
+def test_fresh_native_source_retains_upstream_pin_without_generated_provenance(
+    native_build_pin,
+):
+    path, data = native_build_pin
+    tracked = {path: json.dumps(data), "extension.yaml": "python_requirements: []\n"}
+    fetched = {p: text for p, text in tracked.items() if source_file(p)}
+    inv = discover(fetched, list(tracked))
+    assert pins(inv) == {("GitHub", "googleapis/mcp-toolbox", "v1.17.0")}
+    dependency = inv.dependencies[0]
+    assert dependency.commit == "45ed205cc8682ed066c82e0b65bcd0e8fc3becce"
+    assert dependency.source == path
+    assert dependency.scope == "upstream"
+    assert not inv.gaps
+
+
+def test_native_build_metadata_is_only_fetched_at_its_canonical_path():
+    assert source_file("scripts/build-config.json")
+    assert source_file("scripts/native-build-identities.json")
+    for path in [
+        "build-config.json", "other/build-config.json", "other/native-build-identities.json"
+    ]:
+        assert not source_file(path)
+        assert not discover({path: "{}"}, [path]).dependencies
+
+
+@pytest.mark.parametrize("value", ["", "latest", "v1", 17, None])
+def test_native_build_pin_requires_an_exact_release_tag(native_build_pin, value):
+    path, data = native_build_pin
+    data["upstream_tag" if "upstream_tag" in data else "toolbox_tag"] = value
+    inv = discover({path: json.dumps(data)}, [path])
+    assert not inv.dependencies
+    assert inv.gaps
+
+
+@pytest.mark.parametrize("value", ["", "main", "a" * 39, 42, None])
+def test_native_build_pin_requires_a_full_source_commit(native_build_pin, value):
+    path, data = native_build_pin
+    data["upstream_commit" if "upstream_commit" in data else "toolbox_commit"] = value
+    inv = discover({path: json.dumps(data)}, [path])
+    assert not inv.dependencies
+    assert inv.gaps
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("source", "https://github.com/other/project"),
+        ("tag", "v1.16.0"),
+        ("commit", "c" * 40),
+    ],
+)
+def test_toolbox_build_config_rejects_conflicting_upstream_identity(field, value):
+    data = {
+        "source": "https://github.com/googleapis/mcp-toolbox",
+        "upstream_tag": "v1.17.0",
+        "upstream_commit": "45ed205cc8682ed066c82e0b65bcd0e8fc3becce",
+        field: value,
+    }
+    path = "scripts/build-config.json"
+    inv = discover({path: json.dumps(data)}, [path])
+    assert not inv.dependencies
+    assert inv.gaps
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("go.mod", ""),
+        ("go.sum", "invalid"),
+        ("source", "https://github.com/other/project"),
+    ],
+)
+def test_implicit_toolbox_repository_requires_valid_native_identity_schema(field, value):
+    data = {
+        "toolbox_tag": "v1.17.0",
+        "toolbox_commit": "45ed205cc8682ed066c82e0b65bcd0e8fc3becce",
+        "go.mod": "a" * 64,
+        "go.sum": "b" * 64,
+        field: value,
+    }
+    path = "scripts/native-build-identities.json"
+    inv = discover({path: json.dumps(data)}, [path])
+    assert not inv.dependencies
+    assert inv.gaps
 
 
 @pytest.fixture

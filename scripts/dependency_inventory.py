@@ -16,6 +16,11 @@ from packaging.utils import canonicalize_name, parse_wheel_filename
 REPOSITORY = re.compile(
     r"https://github\.com/([A-Za-z0-9-]+/[A-Za-z0-9._-]+)(?:\.git)?/?$"
 )
+TOOLBOX_REPOSITORY = "googleapis/mcp-toolbox"
+NATIVE_BUILD_FILES = {
+    "scripts/build-config.json",
+    "scripts/native-build-identities.json",
+}
 IGNORED = {
     ".git",
     ".venv",
@@ -137,6 +142,7 @@ def source_file(path: str) -> bool:
             "go.mod",
             "THIRD_PARTY.yml",
         }
+        or path in NATIVE_BUILD_FILES
         or name.endswith("-provenance.json")
         or requirements_file(path)
     )
@@ -152,6 +158,39 @@ def requirements_file(path: str) -> bool:
 
 def _scope(path: str) -> str:
     return "development" if re.search(r"dev|test|\.github", path) else "runtime"
+
+
+def _native_toolbox_pin(data, path):
+    """Read canonical Toolbox source locks, not the modules shipped by its binary."""
+    official_source = f"https://github.com/{TOOLBOX_REPOSITORY}"
+    if path == "scripts/build-config.json":
+        if data.get("source") != official_source:
+            raise ValueError("native build source must be the official Toolbox repository")
+        version, commit = data["upstream_tag"], data["upstream_commit"]
+    else:
+        # This schema explicitly identifies Toolbox; module lock hashes distinguish
+        # it from unrelated JSON carrying tag/commit fields. No source is inferred
+        # from arbitrary filenames or accepted from a different repository.
+        if data.get("source", official_source) != official_source:
+            raise ValueError("native build source must be the official Toolbox repository")
+        for name in ("go.mod", "go.sum"):
+            if not re.fullmatch(r"[0-9a-f]{64}", data.get(name, "")):
+                raise ValueError("native module lock must contain SHA256 hashes")
+        version, commit = data["toolbox_tag"], data["toolbox_commit"]
+    if not re.fullmatch(
+        r"v(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-[0-9A-Za-z.-]+)?",
+        version,
+    ):
+        raise ValueError("native upstream tag must be an exact release version")
+    if not re.fullmatch(r"[0-9a-f]{40}", commit):
+        raise ValueError("native upstream commit must be a SHA")
+    for name in ("tag", "upstream_tag", "toolbox_tag"):
+        if name in data and data[name] != version:
+            raise ValueError("native upstream tags disagree")
+    for name in ("commit", "upstream_commit", "toolbox_commit"):
+        if name in data and data[name] != commit:
+            raise ValueError("native upstream commits disagree")
+    return version, commit
 
 
 def _declared_go_module(data, repository, paths):
@@ -335,6 +374,9 @@ def discover(files: dict[str, str], paths: list[str]) -> Inventory:
                         path,
                         "development" if dev else scope,
                     )
+            elif path in NATIVE_BUILD_FILES:
+                version, commit = _native_toolbox_pin(json.loads(files[path]), path)
+                add("GitHub", TOOLBOX_REPOSITORY, version, path, "upstream", commit)
             elif name.endswith("-provenance.json") or name == "THIRD_PARTY.yml":
                 data = (
                     json.loads(files[path])
