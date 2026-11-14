@@ -1,0 +1,56 @@
+{
+  "extension_id": "flowsteward.pinecone",
+  "version": "1.0.6",
+  "repository": "https://github.com/Flow-Steward/ext-vector-pinecone",
+  "tag": "v1.0.6",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.pinecone/1.0.6.png",
+    "sha256": "2cf2cd8ee499e71ad3d2072daedd6403897d2b8afc017b214cd9605ac58ad78b",
+    "bytes": 8361,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-14T09:26:02Z",
+  "item": {
+    "extension_id": "flowsteward.pinecone",
+    "version": "1.0.6",
+    "name": "Pinecone Vector Database",
+    "summary": "Manage Pinecone dense vectors, indexes and namespaces, replace document chunks, and retrieve matches with source metadata.",
+    "description": "Use Pinecone as a dense vector store for Flow Steward search and document retrieval workflows. Insert or update vectors with metadata, fetch or delete records by ID, list vectors by prefix, and query an embedding with metadata filters. Retrieval returns scores and source information such as record IDs, document IDs and stored text, so a later workflow step can assemble context for an answer or select related records.\n\nThe extension also manages index and namespace lifecycle: create a serverless index, list or inspect indexes, verify dimensions and metric, change deletion protection, and create, inspect, list or delete namespaces. Document replacement accepts prepared text chunks and their vectors, writes a new generation, and removes older generations; document deletion removes the selected document’s chunks.\n\nData operations use namespaces tied to the account, project and connection. Index administration operates at the wider Pinecone project level, so use a dedicated index when that separation matters. Supply embeddings and answer generation through other steps. Vector batches accept up to 100 records and searches return up to 50 matches, with pagination controls for larger record listings.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Create a project Pinecone connection with index name, vector dimension, metric and secret API key; an optional index host can pin the expected endpoint. Use a ready dense index, or create a serverless index with cloud and region, and provide embeddings from a separate provider.",
+    "tags": [
+      "pinecone",
+      "vector",
+      "rag"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-vector-pinecone/tree/v1.0.6",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-vector-pinecone/releases/download/v1.0.6/flowsteward.pinecone-1.0.6-linux-amd64.zip",
+    "release_zip_bytes": 49436,
+    "release_zip_sha256": "67ec00e839f478fc5467a9020773bd7bbbef2296d680ca188d197269ba6de75d",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-vector-pinecone/releases/download/v1.0.6/flowsteward.pinecone-1.0.6-linux-amd64.zip",
+        "release_zip_bytes": 49436,
+        "release_zip_sha256": "67ec00e839f478fc5467a9020773bd7bbbef2296d680ca188d197269ba6de75d"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-vector-pinecone/releases/download/v1.0.6/flowsteward.pinecone-1.0.6-linux-arm64.zip",
+        "release_zip_bytes": 49436,
+        "release_zip_sha256": "3fa654f466b73b2d1375b68ef141b743ef0382814e62eb572a32fac62e5d8789"
+      }
+    }
+  }
+}
