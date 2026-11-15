@@ -2,7 +2,7 @@
 
 The trusted catalog verifier owns archive inspection. This helper repeats that
 verification, uses only the job's explicit token, and never repairs an existing
-release: an identical public release is verified; every mismatch fails closed.
+release: an identical published release is verified; every mismatch fails closed.
 """
 
 from __future__ import annotations
@@ -117,6 +117,17 @@ class GitHub:
         return result.stdout
 
 
+def _verify_repository(github, repository, expected_visibility):
+    metadata = github.api(f"repos/{repository}")
+    _require(
+        isinstance(metadata, dict)
+        and metadata.get("full_name") == repository
+        and metadata.get("private") is (expected_visibility == "private")
+        and metadata.get("visibility") == expected_visibility,
+        f"repository identity or visibility does not match expected {expected_visibility}",
+    )
+
+
 def _tag_commit(github, repository, tag):
     reference = github.api(f"repos/{repository}/git/ref/tags/{tag}")
     for _ in range(8):
@@ -133,13 +144,15 @@ def _tag_commit(github, repository, tag):
     raise PublishError("annotated tag chain is too deep")
 
 
-def _verify_release(github, repository, tag, source_sha, plan, release):
+def _verify_release(
+    github, repository, tag, source_sha, plan, release, expected_visibility
+):
     _require(
         isinstance(release, dict)
         and release.get("tag_name") == tag
         and release.get("draft") is False
         and release.get("prerelease") is False,
-        "existing release must be public, non-draft and non-prerelease",
+        "existing release must be published, non-draft and non-prerelease",
     )
     _require(
         _tag_commit(github, repository, tag) == source_sha,
@@ -181,9 +194,14 @@ def _verify_release(github, repository, tag, source_sha, plan, release):
             "downloaded release asset SHA256 or size differs from verified plan",
         )
     _require(seen == set(expected), "release is missing verified assets")
+    _verify_repository(github, repository, expected_visibility)
 
 
-def publish(artifact_dir, repository, tag, source_sha):
+def publish(artifact_dir, repository, tag, source_sha, *, expected_visibility="public"):
+    _require(
+        expected_visibility in ("public", "private"),
+        "expected repository visibility must be public or private",
+    )
     _require(
         isinstance(repository, str)
         and re.fullmatch(r"Flow-Steward/ext-[a-z0-9]+(?:-[a-z0-9]+)*", repository),
@@ -217,13 +235,7 @@ def publish(artifact_dir, repository, tag, source_sha):
                 ),
                 "notes_file must identify a verified additional asset",
             )
-        metadata = github.api(f"repos/{repository}")
-        _require(
-            isinstance(metadata, dict)
-            and metadata.get("full_name") == repository
-            and metadata.get("private") is False,
-            "publication requires the expected public repository",
-        )
+        _verify_repository(github, repository, expected_visibility)
         _require(
             _tag_commit(github, repository, tag) == source_sha,
             "remote tag commit does not match expected source SHA",
@@ -256,13 +268,16 @@ def publish(artifact_dir, repository, tag, source_sha):
                 "release creation failed or its outcome is unknown; no repair or retry was attempted",
             )
             release = github.api(endpoint)
-        _verify_release(github, repository, tag, source_sha, plan, release)
+        _verify_release(
+            github, repository, tag, source_sha, plan, release, expected_visibility
+        )
     return {
         "repository": repository,
         "tag": tag,
         "source_sha": source_sha,
         "created": created,
         "verified_assets": len(plan["assets"]),
+        "visibility": expected_visibility,
     }
 
 
@@ -270,9 +285,18 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     for argument in ("artifact-dir", "repository", "tag", "source-sha"):
         parser.add_argument("--" + argument, required=True)
+    parser.add_argument(
+        "--expected-visibility", choices=("public", "private"), default="public"
+    )
     args = parser.parse_args(argv)
     try:
-        result = publish(args.artifact_dir, args.repository, args.tag, args.source_sha)
+        result = publish(
+            args.artifact_dir,
+            args.repository,
+            args.tag,
+            args.source_sha,
+            expected_visibility=args.expected_visibility,
+        )
     except (
         PublishError,
         release_extension.ReleaseError,

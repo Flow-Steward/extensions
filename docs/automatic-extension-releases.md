@@ -50,7 +50,7 @@ Native identity checks execute both architectures on the hosted Linux runner.
 The release plan binds the repository, tag, source commit, extension ID, targets,
 asset names, sizes and SHA-256 digests. The publisher rechecks the complete plan and
 catalog archive contract using immutable trusted tooling. It verifies the remote tag
-commit and creates a release once. An existing public release succeeds only if the
+commit and creates a release once. An existing published release succeeds only if the
 complete asset set and downloaded bytes match. Drafts, mismatches and missing assets
 stop the run; no clobber/upload replacement or tag mutation is used.
 
@@ -58,6 +58,28 @@ The existing catalog publish workflow discovers releases on its schedule. Existi
 optional dispatch integration can announce them immediately; no new cross-repository
 credential is required. A catalog workflow dispatch is also available for bulk release
 verification. The generated index records the source-manifest listing fields.
+
+## Private repository releases
+
+Public repository visibility remains the default expected publication mode. For a
+private repository, the caller must explicitly set the reusable release workflow
+input `expected_visibility: private`; omission never opts into private mode. The
+trusted publisher accepts only `public` or `private` and checks both the repository's
+exact identity and its actual visibility before publication and after authenticated
+asset readback. The private flag must agree with that visibility. The workflow never
+changes repository visibility, token permissions or the build's read-only boundary.
+
+Private releases retain the same immutable source/tag, archive, exact asset set,
+size and SHA-256 verification. They are stable, non-draft releases inside the private
+repository, read with the explicit job token through GitHub's authenticated API.
+A differing existing release or a visibility change fails closed without repair.
+Use an immutable reusable-workflow commit that includes this input and its matching
+trusted-tooling pin; do not bypass the verifier or manually replace release assets.
+
+Private release assets must not be registered in the public catalog while they are
+inaccessible to catalog consumers. The repository owner decides when to open access;
+public catalog registration is a separate step after public asset availability is
+verified. This workflow does not make that decision or change exposure automatically.
 
 ## Evidence
 
