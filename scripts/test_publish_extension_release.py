@@ -89,7 +89,7 @@ if args[:2]==["release","create"]:
  state_path.write_text(json.dumps(s));print("https://github.com/"+s["repository"]+"/releases/tag/"+s["tag"]);sys.exit(0)
 if args[:1]!=["api"]:sys.exit(99)
 endpoint=args[-1]
-if endpoint=="repos/"+s["repository"]:response(200,{"full_name":s["repository"],"private":s.get("private_repo",False)})
+if endpoint=="repos/"+s["repository"]:response(200,{"full_name":s["repository"],"private":s.get("private_repo",False),"visibility":s.get("visibility","private" if s.get("private_repo",False) is True else "public")})
 if "/git/ref/tags/" in endpoint:
  response(200,{"object":{"type":"tag" if s.get("annotated") else "commit","sha":"b"*40 if s.get("annotated") else s["tag_sha"]}})
 if "/git/tags/" in endpoint:response(200,{"object":{"type":"commit","sha":s["tag_sha"]}})
@@ -366,12 +366,23 @@ def test_explicit_private_mode_creates_or_verifies_authenticated_release(
     assert all(c[0] == "api" or c[:2] == ["release", "create"] for c in state["calls"])
 
 
-@pytest.mark.parametrize("actual", [False, None, 0, "false"])
+@pytest.mark.parametrize(
+    "actual,visibility",
+    [
+        (False, "public"),
+        (None, "private"),
+        (0, "private"),
+        ("false", "private"),
+        (True, "public"),
+        (True, "internal"),
+        (True, None),
+    ],
+)
 def test_explicit_private_mode_refuses_non_private_metadata_before_release_access(
-    publishing, actual
+    publishing, actual, visibility
 ):
     _, _, state, run = publishing
-    state["private_repo"] = actual
+    state.update(private_repo=actual, visibility=visibility)
     result = run("--expected-visibility", "private")
     assert result.returncode != 0
     assert "visibility" in result.stderr
