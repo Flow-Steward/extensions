@@ -11,6 +11,10 @@ on:
         description: Rebuild locked native payloads using the extension's source builder
         type: boolean
         default: false
+      expected_visibility:
+        description: Required actual repository visibility; private needs explicit opt-in
+        type: string
+        default: public
 
 permissions:
   contents: read
@@ -40,7 +44,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: Flow-Steward/extensions
-          ref: 4ad7b1131c72c381d6bcbb5613f209b077a01ce0
+          ref: 02c0f6f19b665c46300d42e790ef74375f3d0e67
           path: tooling
           persist-credentials: false
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
@@ -65,7 +69,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: ${{ needs.build.outputs.tag }}
           SOURCE_SHA: ${{ needs.build.outputs.source_sha }}
+          EXPECTED_VISIBILITY: ${{ inputs.expected_visibility }}
         run: |
           python tooling/scripts/publish_extension_release.py \
             --artifact-dir release-artifacts --repository "$GITHUB_REPOSITORY" \
-            --tag "$RELEASE_TAG" --source-sha "$SOURCE_SHA"
+            --tag "$RELEASE_TAG" --source-sha "$SOURCE_SHA" \
+            --expected-visibility "$EXPECTED_VISIBILITY"
