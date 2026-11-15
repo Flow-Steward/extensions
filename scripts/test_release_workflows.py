@@ -66,7 +66,8 @@ def test_external_actions_are_pinned_and_untrusted_expressions_are_not_interpola
                 if "uses" in step:
                     assert (
                         re.fullmatch(r"actions/[a-z-]+@[0-9a-f]{40}", step["uses"])
-                        or step["uses"] == "docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1"
+                        or step["uses"]
+                        == "docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1"
                     )
                 assert "${{" not in step.get("run", "")
 
@@ -78,7 +79,9 @@ def test_native_build_requires_explicit_opt_in_for_validation_and_publication():
         assert inputs["build_native"]["default"] == "false"
         assert inputs["build_native"].get("required", "false") == "false"
     release = load("release-extension.yml")
-    assert release["jobs"]["build"]["with"]["build_native"] == "${{ inputs.build_native }}"
+    assert (
+        release["jobs"]["build"]["with"]["build_native"] == "${{ inputs.build_native }}"
+    )
 
 
 def test_native_payloads_are_built_after_identity_and_before_recipe_preparation():
@@ -88,11 +91,16 @@ def test_native_payloads_are_built_after_identity_and_before_recipe_preparation(
     assert len(native) == 2
     assert all(step.get("if") == "${{ inputs.build_native }}" for step in native)
     identity = next(i for i, step in enumerate(steps) if step.get("id") == "identity")
-    prepare = next(i for i, step in enumerate(steps) if "release_extension.py prepare" in step.get("run", ""))
+    prepare = next(
+        i
+        for i, step in enumerate(steps)
+        if "release_extension.py prepare" in step.get("run", "")
+    )
     pull, build = native
     assert identity < steps.index(pull) < steps.index(build) < prepare
     assert shlex.split(pull["run"]) == [
-        "docker", "pull",
+        "docker",
+        "pull",
         "golang:1.27.3-bookworm@sha256:dc0963f32053e4bc451d24d87e3892d42d01021b61f093e98eb95c0352bb84b0",
     ]
     assert build["working-directory"] == "source"
@@ -108,7 +116,8 @@ def test_native_build_keeps_source_execution_out_of_the_publisher():
         for step in publish["steps"]
     )
     native = [
-        step for step in load("build-extension.yml")["jobs"]["build"]["steps"]
+        step
+        for step in load("build-extension.yml")["jobs"]["build"]["steps"]
         if step.get("id", "").startswith("native_")
     ]
     assert native
@@ -116,3 +125,20 @@ def test_native_build_keeps_source_execution_out_of_the_publisher():
         assert "env" not in step
         assert "docker.sock" not in step["run"]
         assert "--privileged" not in step["run"]
+
+
+def test_expected_visibility_defaults_public_and_reaches_only_trusted_publisher():
+    flow = load("release-extension.yml")
+    visibility = flow["on"]["workflow_call"]["inputs"]["expected_visibility"]
+    assert visibility["type"] == "string" and visibility["default"] == "public"
+    build = flow["jobs"]["build"]
+    assert build["permissions"] == {"contents": "read"}
+    assert "expected_visibility" not in build.get("with", {})
+    publish = next(
+        s
+        for s in flow["jobs"]["publish"]["steps"]
+        if "publish_extension_release.py" in s.get("run", "")
+    )
+    assert publish["env"]["EXPECTED_VISIBILITY"] == "${{ inputs.expected_visibility }}"
+    assert '--expected-visibility "$EXPECTED_VISIBILITY"' in publish["run"]
+    assert publish["env"]["GH_TOKEN"] == "${{ github.token }}"
