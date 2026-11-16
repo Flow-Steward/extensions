@@ -378,7 +378,8 @@ def test_archive_replacement_between_preflight_and_publication_is_refused(catalo
 
 
 @pytest.mark.parametrize("change", ["deleted", "replaced"])
-def test_newer_recorded_release_is_rechecked_before_claiming_delivery(catalog, github, change):
+@pytest.mark.parametrize("phase", ["check", "verify"])
+def test_newer_recorded_release_is_rechecked_before_claiming_delivery(catalog, github, monkeypatch, change, phase):
     receipt = register(github)
     url = github.release(
         REPOSITORY, "0.2.0", _zip(_manifest(extension_id="flowsteward.b1", version="0.2.0"), top="flowsteward_b1"),
@@ -390,8 +391,19 @@ def test_newer_recorded_release_is_rechecked_before_claiming_delivery(catalog, g
     else:
         github.assets[url] = _zip(_manifest(extension_id="flowsteward.b1", version="0.2.0"), top="flowsteward_b1",
                                   extra={"changed.py": "# replaced newer archive\n"})
-    with pytest.raises(builder.CatalogError, match="selected release"):
-        registration.validate_delivery(index, receipt, github=github)
+    if phase == "verify":
+        github.assets[INDEX_URL] = json.dumps(index).encode()
+        with pytest.raises(builder.CatalogError, match="selected release"):
+            registration.verify_published(receipt, PUBLISHED_SHA, index, github=github)
+    else:
+        monkeypatch.setattr(registration, "GitHubApi", lambda: github)
+        receipt_file = catalog / "receipt.json"
+        receipt_file.write_text(json.dumps(receipt))
+        expected = catalog / "expected.json"
+        expected.write_text(json.dumps(index))
+        with pytest.raises(SystemExit) as error:
+            registration.main(["check", "--receipt", str(receipt_file), "--expected-index", str(expected)])
+        assert error.value.code == 2
 
 
 def test_unchanged_newer_recorded_release_can_be_verified(catalog, github):
@@ -401,4 +413,5 @@ def test_unchanged_newer_recorded_release_can_be_verified(catalog, github):
         extension_id="flowsteward.b1", draft=False, prerelease=False,
     )
     index = _recorded_index(github)
-    assert registration.validate_delivery(index, receipt, github=github)["version"] == "0.2.0"
+    github.assets[INDEX_URL] = json.dumps(index).encode()
+    assert registration.verify_published(receipt, PUBLISHED_SHA, index, github=github)["version"] == "0.2.0"
