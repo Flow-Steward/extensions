@@ -365,7 +365,7 @@ def test_generator_prints_the_first_party_registration_command(tmp_path):
 
 def _recorded_index(github):
     builder.publish(github=github, recheck=False)
-    return builder.build_index(repository="Flow-Steward/extensions")
+    return builder.build_index()
 
 
 def test_archive_replacement_between_preflight_and_publication_is_refused(catalog, github):
