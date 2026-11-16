@@ -10,6 +10,10 @@ only holds a link to it, and publishes the author's releases automatically.
 
 ## Share an extension
 
+For Flow Steward maintained `ext-*` repositories, use [automatic registration](#automatic-first-party-registration)
+after publishing the release. It derives the filename from the manifest; do not
+write registration files by hand. Steps 1–4 below still describe release requirements.
+
 1. Keep the extension in its own public GitHub repository with `extension.yaml`
    at the repository root. Check it with
    `flow-steward extensions validate <extension_id>`.
@@ -57,6 +61,34 @@ only holds a link to it, and publishes the author's releases automatically.
    release and tells you what to fix.
 
 After the merge your latest release is listed within minutes.
+
+### Automatic first-party registration
+
+After the first public release, run one command (or open **Actions → Register
+extension and verify catalog delivery → Run workflow** on the catalog's main branch):
+
+```sh
+gh workflow run register-extension.yml --repo Flow-Steward/extensions \
+  -f repository=Flow-Steward/ext-finance-b1 -f tag=v0.1.0
+```
+
+Replace the repository and published stable tag with yours. For a variant manifest,
+add `-f manifest_path=variants/b1/extension.yaml`. The workflow reads that file from the
+resolved tag commit and derives `extensions/<extension_id>.yaml` itself, validates
+the public archives, publishes the index, then reads the exact public commit back
+to verify the ID, active version and archive identity. It never executes extension
+code. Only public `Flow-Steward/ext-*` repositories are accepted.
+
+The workflow uses the catalog's existing job token; no token from the extension
+repository is needed. Maintainers with permission to run catalog workflows can
+use it. The repository preparation script prints the same command automatically.
+
+Identical registrations are safe to repeat. An ID pointing to another repository,
+a moved source tag, changed existing release bytes, an invalid archive, or missing
+catalog delivery fails with a diagnostic. A retry does not replace a published ZIP
+or create a new extension version. Subsequent releases continue to be discovered
+on the existing schedule; use the command again when explicit delivery verification
+is needed. External authors continue to submit the registration by pull request.
 
 ### An extension with a native executable
 

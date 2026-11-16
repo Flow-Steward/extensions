@@ -54,10 +54,28 @@ commit and creates a release once. An existing public release succeeds only if t
 complete asset set and downloaded bytes match. Drafts, mismatches and missing assets
 stop the run; no clobber/upload replacement or tag mutation is used.
 
-The existing catalog publish workflow discovers releases on its schedule. Existing
-optional dispatch integration can announce them immediately; no new cross-repository
-credential is required. A catalog workflow dispatch is also available for bulk release
-verification. The generated index records the source-manifest listing fields.
+For a first-party extension's first listing, run the catalog-owned registration workflow
+after its public stable release exists:
+
+```sh
+gh workflow run register-extension.yml --repo Flow-Steward/extensions \
+  -f repository=Flow-Steward/ext-finance-b1 -f tag=v0.1.0
+```
+
+The workflow reads the manifest at the resolved tag commit, derives the dotted
+extension ID and registration filename, validates the archives, and publishes the
+registration, records and index. A final read of the exact public commit must contain
+the active ID and a release at least as new as requested, matching the validated
+archive identity. A GitHub Release alone never counts as catalog delivery.
+Identical reruns do not rewrite the registration; conflicting repositories and
+changed existing release bytes fail. Source code is never executed with catalog
+write credentials. The existing catalog job token is sufficient.
+
+The normal publisher continues discovering registered extensions' later releases on
+its schedule. Existing optional dispatch integration can announce them immediately;
+no new cross-repository credential is required. Repeat the registration command for
+explicit delivery verification. The generated index records source-manifest listing
+fields. See the catalog README for variant manifests and external-author submissions.
 
 ## Evidence
 
