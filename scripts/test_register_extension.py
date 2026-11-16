@@ -61,6 +61,7 @@ class OfflineGitHub(FakeGitHub):
 @pytest.fixture
 def catalog(tmp_path, monkeypatch):
     monkeypatch.setattr(builder, "ROOT", tmp_path)
+    monkeypatch.setenv("GITHUB_REPOSITORY", "Flow-Steward/extensions")
     (tmp_path / "extensions").mkdir()
     (tmp_path / "categories.json").write_text(json.dumps({"messaging": "Messaging"}))
     (tmp_path / "verified_publishers.json").write_text(json.dumps({"flowsteward": "Flow-Steward"}))

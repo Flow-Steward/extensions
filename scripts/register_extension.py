@@ -76,8 +76,33 @@ def _manifest(data):
     return result
 
 
+
+def _archive_identity(item, icon=None):
+    """Hash-bound runtime assets, independent of catalog prose and icon commit URL."""
+    icon = item.get("icon", {}) if icon is None else icon
+    require(isinstance(icon, dict), "invalid archive icon identity")
+    identity = {key: item.get(key) for key in (
+        "release_zip_url", "release_zip_bytes", "release_zip_sha256", "release_targets"
+    )}
+    identity["icon"] = {key: icon.get(key) for key in ("sha256", "bytes", "mime_type", "size")}
+    return identity
+
+
+def _public_release(github, slug, tag):
+    releases = github.releases(slug)
+    require(isinstance(releases, list), "could not read public releases")
+    candidates = [
+        release for release in releases
+        if isinstance(release, dict) and release.get("tag_name") == tag
+        and release.get("draft") is False and release.get("prerelease") is False
+    ]
+    require(len(candidates) == 1, f"{slug}: publish one public non-prerelease release {tag} first")
+    return candidates[0]
+
+
 def _receipt(receipt):
     require(isinstance(receipt, dict) and receipt.get("schema_version") == 1, "invalid registration receipt")
+    require(isinstance(receipt.get("validated_release"), dict), "receipt has no preflight archive identity")
     slug = repository_slug(receipt.get("repository"))
     extension_id, version = receipt.get("extension_id"), receipt.get("version")
     require(
@@ -136,16 +161,9 @@ def register(repository, tag, manifest_path="extension.yaml", *, github=None):
     existing = entries.get(extension_id)
     require(existing is None or existing.repository == entry.repository,
             f"{extension_id}: already registered to a different repository")
-    releases = github.releases(slug)
-    require(isinstance(releases, list), "could not read public releases")
-    candidates = [
-        release for release in releases
-        if isinstance(release, dict) and release.get("tag_name") == tag
-        and release.get("draft") is False and release.get("prerelease") is False
-    ]
-    require(len(candidates) == 1, f"{slug}: publish one public non-prerelease release {tag} first")
+    release = _public_release(github, slug, tag)
     record = builder.fetch_release(
-        entry, version, candidates[0], github=github,
+        entry, version, release, github=github,
         categories=set(builder.category_labels()), publishers=publishers,
     )
     known = builder.record_path(extension_id, version)
@@ -170,6 +188,7 @@ def register(repository, tag, manifest_path="extension.yaml", *, github=None):
         "schema_version": 1, "extension_id": extension_id, "version": version,
         "repository": entry.repository, "tag": tag, "source_sha": source_sha,
         "registration_path": f"{builder.ENTRIES_DIR}/{extension_id}.yaml", "changed": changed,
+        "validated_release": _archive_identity(record["item"], record["icon"]),
     }
 
 
@@ -203,8 +222,36 @@ def verify_index(index, receipt, *, expected_item=None):
         and type(item.get("release_zip_bytes")) is int and item["release_zip_bytes"] > 0,
         f"public catalog {entry.extension_id} has invalid archive identity",
     )
+    if actual == version:
+        require(_archive_identity(item) == receipt["validated_release"],
+                f"public catalog {entry.extension_id} differs from its preflight validated release")
     if expected_item is not None:
         require(item == expected_item, f"public catalog {entry.extension_id} differs from the validated item")
+    return item
+
+
+
+def validate_delivery(index, receipt, *, github=None):
+    """Recheck the actual indexed release, including when it is newer than requested."""
+    item = verify_index(index, receipt)
+    entry, _ = _receipt(receipt)
+    github = github or GitHubApi()
+    try:
+        release = _public_release(github, entry.slug, f"v{item['version']}")
+        served = builder.fetch_release(
+            entry, item["version"], release, github=github,
+            categories=set(builder.category_labels()), publishers=builder.verified_publishers(),
+        )
+        require(
+            _archive_identity(served["item"], served["icon"]) == _archive_identity(item),
+            "currently served archive or icon differs from its immutable catalog identity",
+        )
+    except (builder.CatalogError, OSError, ValueError, TypeError, KeyError) as exc:
+        raise builder.CatalogError(
+            f"{entry.extension_id} {item['version']}: selected release verification failed: {exc}"
+        ) from exc
+    require(github.source_commit(entry.slug, receipt["tag"]) == receipt["source_sha"],
+            "source tag changed during delivery verification")
     return item
 
 
@@ -230,7 +277,8 @@ def verify_published(receipt, commit, expected_index, *, github=None, attempts=6
             index = json.loads(data)
         except (ValueError, UnicodeError) as exc:
             raise builder.CatalogError("public catalog returned invalid JSON") from exc
-        return verify_index(index, receipt, expected_item=expected)
+        verify_index(index, receipt, expected_item=expected)
+        return validate_delivery(index, receipt, github=github)
     raise builder.CatalogError("public catalog verification did not complete")
 
 
@@ -257,7 +305,7 @@ def main(argv=None):
             receipt = json.loads(args.receipt.read_text(encoding="utf-8"))
             index = json.loads(args.expected_index.read_text(encoding="utf-8"))
             result = (verify_published(receipt, args.commit, index)
-                      if args.command == "verify" else verify_index(index, receipt))
+                      if args.command == "verify" else validate_delivery(index, receipt))
     except (builder.CatalogError, OSError, ValueError, TypeError, KeyError) as exc:
         parser.exit(2, f"Catalog registration refused: {exc}\n")
     print(json.dumps(result, sort_keys=True))

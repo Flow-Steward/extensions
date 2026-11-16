@@ -73,6 +73,8 @@ jobs:
       - name: Build the catalog index
         run: python scripts/build_index.py
       - name: Require delivery before publishing
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           python scripts/register_extension.py check \
             --receipt "$RUNNER_TEMP/registration.json" --expected-index index.json
