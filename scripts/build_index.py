@@ -348,7 +348,15 @@ def load_entries() -> dict[str, Entry]:
     base = ROOT / ENTRIES_DIR
     entries: dict[str, Entry] = {}
     problems: list[str] = []
-    for path in sorted(base.glob("*.yaml")) if base.is_dir() else []:
+    for path in sorted(base.iterdir()) if base.is_dir() else []:
+        if path.name == ".gitkeep" and path.is_file():
+            continue
+        if path.suffix != ".yaml" or not path.is_file():
+            problems.append(
+                f"{ENTRIES_DIR}/{path.name}: registration must be a regular file named "
+                f"{ENTRIES_DIR}/<extension_id>.yaml; subdirectories are not supported"
+            )
+            continue
         try:
             entry = parse_entry(path.stem, path.read_text(encoding="utf-8"))
         except CatalogError as exc:
@@ -1025,10 +1033,9 @@ def build_index() -> dict[str, Any]:
     An extension whose entry was removed stays listed as ``deprecated``, so
     existing installs still see where they came from.
     """
+    present = set(load_entries())
     records = load_records()
     corrections = category_overrides()
-    base = ROOT / ENTRIES_DIR
-    present = {path.stem for path in base.glob("*.yaml")} if base.is_dir() else set()
     items: list[dict[str, Any]] = []
     newest = ""
     for extension_id, versions in records.items():
