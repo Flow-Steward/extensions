@@ -1256,3 +1256,36 @@ def test_the_frequent_run_records_new_releases_without_downloading_listed_ones(r
 
     assert report.recorded == ["releases/acme.mailbox/1.1.0.json"]
     assert listed_url not in downloaded
+
+
+def test_publisher_checkout_preserves_the_original_icon_commit(repo, monkeypatch):
+    """An unrelated commit must not repin unchanged icons on the next CI build."""
+    github = FakeGitHub()
+    github.release(SLUG, "1.0.0", _zip(_manifest()))
+    _entry(repo)
+    builder.publish(github=github)
+    _commit(repo, "record icon and release")
+    icon_commit = _run(repo, "git", "rev-parse", "HEAD")
+    (repo / "README.md").write_text("An unrelated documentation change.\n")
+    _commit(repo, "update documentation")
+
+    workflow = yaml.load(
+        (Path(__file__).resolve().parents[1] / ".github/workflows/publish.yml").read_text(),
+        Loader=yaml.BaseLoader,
+    )
+    checkout = next(
+        step for step in workflow["jobs"]["publish"]["steps"]
+        if step.get("uses", "").startswith("actions/checkout@")
+    )
+    depth = int(checkout.get("with", {}).get("fetch-depth", "1"))
+    clone = repo.parent / f"{repo.name}-publisher-clone"
+    args = ["git", "clone", "-q"]
+    if depth:
+        args += ["--depth", str(depth)]
+    subprocess.run([*args, repo.as_uri(), str(clone)], check=True, capture_output=True)
+    monkeypatch.setattr(builder, "ROOT", clone)
+
+    [item] = builder.build_index()["items"]
+
+    assert f"/{icon_commit}/releases/acme.mailbox/1.0.0.png" in item["icon"]["url"]
+    assert item["release_zip_sha256"] == hashlib.sha256(next(iter(github.assets.values()))).hexdigest()
