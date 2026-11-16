@@ -165,6 +165,71 @@ def test_an_entry_that_is_not_a_repository_link_says_why(name, text, message):
         builder.parse_entry(name, text)
 
 
+
+@pytest.mark.parametrize("filename", ["acme.mailbox", "acme.mailbox.yml", "acme.mailbox.YAML", "acme.mailbox.yaml.bak"])
+def test_registration_with_wrong_suffix_is_not_silently_skipped(repo, filename):
+    (repo / "extensions" / filename).write_text(f"repository: {REPO}\n")
+
+    with pytest.raises(builder.CatalogError) as error:
+        builder.load_entries()
+
+    assert f"extensions/{filename}" in str(error.value)
+    assert "extensions/<extension_id>.yaml" in str(error.value)
+
+
+def test_nested_registration_directory_is_not_silently_skipped(repo):
+    nested = repo / "extensions" / "nested"
+    nested.mkdir()
+    (nested / "acme.mailbox.yaml").write_text(f"repository: {REPO}\n")
+
+    with pytest.raises(builder.CatalogError, match="extensions/nested"):
+        builder.load_entries()
+
+
+def test_yaml_named_directory_is_reported_as_invalid_registration(repo):
+    (repo / "extensions" / "acme.mailbox.yaml").mkdir()
+
+    with pytest.raises(builder.CatalogError, match="extensions/acme.mailbox.yaml"):
+        builder.load_entries()
+
+
+def test_valid_registrations_and_gitkeep_are_accepted(repo):
+    _entry(repo)
+    (repo / "extensions" / ".gitkeep").write_text("")
+
+    entries = builder.load_entries()
+
+    assert list(entries) == ["acme.mailbox"]
+    assert entries["acme.mailbox"].repository == REPO
+
+
+def test_all_invalid_registration_paths_are_reported_together(repo):
+    for filename in ("acme.mailbox", "acme.other.yml"):
+        (repo / "extensions" / filename).write_text(f"repository: {REPO}\n")
+
+    with pytest.raises(builder.CatalogError) as error:
+        builder.load_entries()
+
+    assert "extensions/acme.mailbox:" in str(error.value)
+    assert "extensions/acme.other.yml:" in str(error.value)
+
+
+@pytest.mark.parametrize(
+    "args",
+    [[], ["--check", "--base", "main", "--submitter", "acme"], ["--publish", "--records-only"]],
+)
+def test_invalid_registration_fails_cli_before_writing_catalog(repo, capsys, args):
+    (repo / "extensions" / "ext-finance-b1").write_text(
+        "repository: https://github.com/Flow-Steward/ext-finance-b1\n"
+    )
+    (repo / "index.json").write_text("previous catalog")
+
+    assert builder.main(args) == 1
+    assert "extensions/ext-finance-b1" in capsys.readouterr().err
+    assert (repo / "index.json").read_text() == "previous catalog"
+    assert not (repo / "releases").exists()
+
+
 def test_one_repository_can_publish_a_family_of_extensions(repo):
     """Variants built from one codebase share a repository, each with its own id."""
     github = FakeGitHub()
