@@ -48,6 +48,10 @@ only holds a link to it, and publishes the author's releases automatically.
    repository: https://github.com/<owner>/<repo>
    ```
 
+   Use the exact `.yaml` suffix and put the file directly in `extensions/`.
+   Other filenames and subdirectories fail validation and publication instead
+   of being skipped. The existing `.gitkeep` placeholder is allowed.
+
    Open it from the repository owner's account, or as a public member of the
    owning organization. The **Validate submission** check downloads your latest
    release and tells you what to fix.
