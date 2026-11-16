@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -11,7 +12,7 @@ import yaml
 
 import build_index as builder
 import register_extension as registration
-from test_build_index import FakeGitHub, _manifest, _zip
+from test_build_index import ICON, FakeGitHub, _manifest, _zip
 
 REPOSITORY = "Flow-Steward/ext-finance-b1"
 REPOSITORY_URL = f"https://github.com/{REPOSITORY}"
@@ -29,6 +30,7 @@ class OfflineGitHub(FakeGitHub):
         self.manifest_requests = []
         self.index_failures = 0
         self.index_reads = 0
+        self.unavailable_assets = set()
         self.release(
             REPOSITORY, "0.1.0",
             _zip(self.manifest_body, top="flowsteward_b1"),
@@ -46,6 +48,8 @@ class OfflineGitHub(FakeGitHub):
         return yaml.safe_dump(self.manifest_body).encode()
 
     def download(self, url, *, max_bytes):
+        if url in self.unavailable_assets:
+            raise OSError("asset is unavailable")
         if url.endswith("/index.json"):
             self.index_reads += 1
             if self.index_failures:
@@ -72,7 +76,9 @@ def register(github, **kwargs):
     return registration.register(REPOSITORY, "v0.1.0", github=github, **kwargs)
 
 
-def public_index():
+def public_index(github):
+    url = f"{REPOSITORY_URL}/releases/download/v0.1.0/flowsteward.b1-0.1.0.zip"
+    data = github.assets[url]
     return {
         "schema_version": "extension_catalog/v1",
         "items": [{
@@ -81,8 +87,11 @@ def public_index():
             "publication_status": "published",
             "repository_url": f"{REPOSITORY_URL}/tree/v0.1.0",
             "release_zip_url": f"{REPOSITORY_URL}/releases/download/v0.1.0/flowsteward.b1-0.1.0.zip",
-            "release_zip_sha256": "c" * 64,
-            "release_zip_bytes": 123,
+            "release_zip_sha256": hashlib.sha256(data).hexdigest(),
+            "release_zip_bytes": len(data),
+            "icon": {"url": "https://example.test/pinned-icon.png",
+                     "sha256": hashlib.sha256(ICON).hexdigest(), "bytes": len(ICON),
+                     "mime_type": "image/png", "size": "128x128"},
         }],
     }
 
@@ -208,13 +217,13 @@ def test_manifest_variant_path_is_read_at_resolved_commit(catalog, github):
 
 def test_public_catalog_must_contain_active_expected_identity(catalog, github):
     receipt = register(github)
-    assert registration.verify_index(public_index(), receipt)["extension_id"] == "flowsteward.b1"
+    assert registration.verify_index(public_index(github), receipt)["extension_id"] == "flowsteward.b1"
 
 
 @pytest.mark.parametrize("mutation", ["missing", "duplicate", "stale", "repository", "withdrawn", "schema"])
 def test_incomplete_or_wrong_public_catalog_is_refused(catalog, github, mutation):
     receipt = register(github)
-    index = public_index()
+    index = public_index(github)
     if mutation == "missing":
         index["items"] = []
     elif mutation == "duplicate":
@@ -233,7 +242,7 @@ def test_incomplete_or_wrong_public_catalog_is_refused(catalog, github, mutation
 
 def test_newer_published_version_is_accepted(catalog, github):
     receipt = register(github)
-    index = public_index()
+    index = public_index(github)
     index["items"][0].update(
         version="0.2.0",
         repository_url=f"{REPOSITORY_URL}/tree/v0.2.0",
@@ -244,7 +253,7 @@ def test_newer_published_version_is_accepted(catalog, github):
 
 def test_public_item_must_match_validated_archive_identity(catalog, github):
     receipt = register(github)
-    index = public_index()
+    index = public_index(github)
     expected = copy.deepcopy(index["items"][0])
     index["items"][0]["release_zip_sha256"] = "d" * 64
     with pytest.raises(builder.CatalogError, match="validated"):
@@ -253,7 +262,7 @@ def test_public_item_must_match_validated_archive_identity(catalog, github):
 
 def test_public_readback_retries_network_failures_then_verifies_commit(catalog, github, monkeypatch):
     receipt = register(github)
-    index = public_index()
+    index = public_index(github)
     github.assets[INDEX_URL] = json.dumps(index).encode()
     github.index_failures = 2
     monkeypatch.setattr(registration.time, "sleep", lambda _: None)
@@ -267,16 +276,16 @@ def test_public_readback_failure_is_bounded(catalog, github, monkeypatch):
     github.index_failures = 10
     monkeypatch.setattr(registration.time, "sleep", lambda _: None)
     with pytest.raises(builder.CatalogError, match="public catalog"):
-        registration.verify_published(receipt, PUBLISHED_SHA, public_index(), github=github, attempts=2)
+        registration.verify_published(receipt, PUBLISHED_SHA, public_index(github), github=github, attempts=2)
     assert github.index_reads == 2
 
 
 def test_publication_does_not_accept_a_moved_source_tag(catalog, github):
     receipt = register(github)
     github.commit = "e" * 40
-    github.assets[INDEX_URL] = json.dumps(public_index()).encode()
+    github.assets[INDEX_URL] = json.dumps(public_index(github)).encode()
     with pytest.raises(builder.CatalogError, match="tag"):
-        registration.verify_published(receipt, PUBLISHED_SHA, public_index(), github=github)
+        registration.verify_published(receipt, PUBLISHED_SHA, public_index(github), github=github)
 
 
 def test_cli_creates_a_receipt_and_verifies_the_index(catalog, github, monkeypatch, capsys):
@@ -287,7 +296,7 @@ def test_cli_creates_a_receipt_and_verifies_the_index(catalog, github, monkeypat
     receipt = json.loads(receipt_path.read_text())
     assert receipt["registration_path"] == "extensions/flowsteward.b1.yaml"
     expected = catalog / "expected.json"
-    expected.write_text(json.dumps(public_index()))
+    expected.write_text(json.dumps(public_index(github)))
     github.assets[INDEX_URL] = expected.read_bytes()
     assert registration.main(["verify", "--receipt", str(receipt_path), "--commit", PUBLISHED_SHA,
                               "--expected-index", str(expected)]) == 0
@@ -352,3 +361,44 @@ def test_generator_prints_the_first_party_registration_command(tmp_path):
         "-f", f"repository={REPOSITORY}", "-f", "tag=v0.1.0",
     ]
     assert "after publishing" in result.stdout.lower()
+
+
+def _recorded_index(github):
+    builder.publish(github=github, recheck=False)
+    return builder.build_index(repository="Flow-Steward/extensions")
+
+
+def test_archive_replacement_between_preflight_and_publication_is_refused(catalog, github):
+    receipt = register(github)
+    url = next(iter(github.assets))
+    github.assets[url] = _zip(github.manifest_body, top="flowsteward_b1", extra={"changed.py": "# replacement\n"})
+    index = _recorded_index(github)
+    with pytest.raises(builder.CatalogError, match="preflight"):
+        registration.verify_index(index, receipt)
+
+
+@pytest.mark.parametrize("change", ["deleted", "replaced"])
+def test_newer_recorded_release_is_rechecked_before_claiming_delivery(catalog, github, change):
+    receipt = register(github)
+    url = github.release(
+        REPOSITORY, "0.2.0", _zip(_manifest(extension_id="flowsteward.b1", version="0.2.0"), top="flowsteward_b1"),
+        extension_id="flowsteward.b1", draft=False, prerelease=False,
+    )
+    index = _recorded_index(github)
+    if change == "deleted":
+        github.unavailable_assets.add(url)
+    else:
+        github.assets[url] = _zip(_manifest(extension_id="flowsteward.b1", version="0.2.0"), top="flowsteward_b1",
+                                  extra={"changed.py": "# replaced newer archive\n"})
+    with pytest.raises(builder.CatalogError, match="selected release"):
+        registration.validate_delivery(index, receipt, github=github)
+
+
+def test_unchanged_newer_recorded_release_can_be_verified(catalog, github):
+    receipt = register(github)
+    github.release(
+        REPOSITORY, "0.2.0", _zip(_manifest(extension_id="flowsteward.b1", version="0.2.0"), top="flowsteward_b1"),
+        extension_id="flowsteward.b1", draft=False, prerelease=False,
+    )
+    index = _recorded_index(github)
+    assert registration.validate_delivery(index, receipt, github=github)["version"] == "0.2.0"
