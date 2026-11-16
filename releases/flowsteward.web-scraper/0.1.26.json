@@ -1,0 +1,53 @@
+{
+  "extension_id": "flowsteward.web-scraper",
+  "version": "0.1.26",
+  "repository": "https://github.com/Flow-Steward/ext-data-web-scraper",
+  "tag": "v0.1.26",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.web-scraper/0.1.26.png",
+    "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
+    "bytes": 4915,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-16T08:07:23Z",
+  "item": {
+    "extension_id": "flowsteward.web-scraper",
+    "version": "0.1.26",
+    "name": "Web Scraper",
+    "summary": "Collect product and page data from websites into a CSV or JSON Lines file for your workflows, through a scraper service you run yourself.",
+    "description": "Web Scraper collects structured records, such as products with their name, price, SKU, images and variants, from websites and gives each crawl to your workflow as two files: result.jsonl (one JSON record per line) and result.csv (semicolon-separated, opens in Excel). The crawling runs in the separate Web Scraper service, a Docker container you run yourself next to Flow Steward. The extension connects projects to that service, adds workflow actions and pages, and stores the results as workflow files.\n\nThe read-only Scrape a site workflow analyzes a site (robots.txt, sitemap, page types), loads a few sample pages, has AI write the extraction mapping with your project's default model, tests the mapping on the samples, starts the crawl and waits for it without holding a worker. When the crawl ends it returns the files, the first records and a run summary that says why the run stopped and how complete it is. A stored mapping is reused on the next run of the same site, and a mapping that stops matching during a crawl is repaired by AI and tested again before it is used. The Runs and Run detail pages follow every crawl; a run can be stopped, resumed, and its missed pages collected again.\n\nTypical uses: load a supplier's catalogue every week on a schedule and update your own product data; follow competitors' public prices, with the old price and a sale flag when the page shows them; or call Scrape a site from your own workflow with Invoke and process the CSV or JSON Lines file in the next steps.\n\nSetup: run the Web Scraper service in Docker with an API token and a secrets key (about 2 GB of memory per browser crawl), create a scraper profile in the project with the service address and token, and add the webhook the service uses to report finished runs. Politeness presets (gentle, normal, fast) set the pause between pages, the pages loaded at once, the requests per minute and the page timeout, and the service slows down by itself when a site struggles. A new start for a site that is still being crawled is skipped, or queued if you choose. Proxies and a third-party challenge solver are optional profile settings.\n\nLimits: scrape only sites whose terms allow it. robots.txt is respected by default. The scraper does not log in to sites, and it cannot promise to get past CAPTCHAs or bot protection; a site that blocks it ends the run with that reason. The service caps a result at 99 MiB by default. Requires Flow Steward 0.9.18 or later.",
+    "categories": [
+      "data",
+      "ai"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "query",
+      "artifact_bundle"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "Run the Web Scraper service in Docker with an API token and a secrets key. In a project, create a scraper profile with the service URL and token, approve its secrets, and add the Scraper events webhook so the service can report finished runs. A service on a private network also needs FS_ALLOW_PRIVATE_REMOTE_URLS=1 on the platform.",
+    "tags": [
+      "web-scraping",
+      "crawler",
+      "data-extraction",
+      "product-data",
+      "price-monitoring",
+      "json-lines",
+      "csv"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-web-scraper/tree/v0.1.26",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-web-scraper/releases/download/v0.1.26/flowsteward.web-scraper-0.1.26.zip",
+    "release_zip_bytes": 512938,
+    "release_zip_sha256": "a3a1e19a7e965851b592e55778cdbde166a5e682f98a3de453118879bb659a65"
+  }
+}
