@@ -292,3 +292,63 @@ def test_cli_creates_a_receipt_and_verifies_the_index(catalog, github, monkeypat
     assert registration.main(["verify", "--receipt", str(receipt_path), "--commit", PUBLISHED_SHA,
                               "--expected-index", str(expected)]) == 0
     assert "flowsteward.b1" in capsys.readouterr().out
+
+# The workflow is trusted catalog tooling; only validated release data is fetched.
+def test_registration_workflow_keeps_write_credentials_out_of_source_execution():
+    import re
+    flow = yaml.load(
+        (Path(__file__).parent.parent / ".github/workflows/register-extension.yml").read_text(),
+        Loader=yaml.BaseLoader,
+    )
+    assert set(flow["on"]) == {"workflow_dispatch"}
+    assert flow["permissions"] == {"contents": "read"}
+    assert flow["concurrency"] == {"group": "publish-index", "cancel-in-progress": "false"}
+    job = flow["jobs"]["register"]
+    assert job["if"] == "github.ref == 'refs/heads/main'"
+    assert job["permissions"] == {"contents": "write"}
+    assert job["runs-on"] == "ubuntu-24.04"
+    steps = job["steps"]
+    checkouts = [step for step in steps if step.get("uses", "").startswith("actions/checkout@")]
+    assert len(checkouts) == 1
+    assert checkouts[0].get("with", {}).get("repository", "Flow-Steward/extensions") == "Flow-Steward/extensions"
+    assert checkouts[0].get("with", {}).get("fetch-depth") == "0"
+    for step in steps:
+        if "uses" in step:
+            assert re.fullmatch(r"actions/[a-z-]+@[0-9a-f]{40}", step["uses"])
+        assert ("$" + "{{") not in step.get("run", "")
+        assert "source/" not in step.get("run", "")
+    runs = [step["run"] for step in steps if "run" in step]
+    prepare = next(i for i, run in enumerate(runs) if "register_extension.py register" in run)
+    records = next(i for i, run in enumerate(runs) if "--records-only" in run)
+    build = next(i for i, run in enumerate(runs) if run.strip() == "python scripts/build_index.py")
+    check = next(i for i, run in enumerate(runs) if "register_extension.py check" in run)
+    push = next(i for i, run in enumerate(runs) if "git push" in run)
+    verify = next(i for i, run in enumerate(runs) if "register_extension.py verify" in run)
+    assert prepare < records < build < check < push < verify
+    assert "--force" not in runs[push]
+    assert "|| true" not in runs[verify]
+
+
+def test_generator_prints_the_first_party_registration_command(tmp_path):
+    import shlex
+    import subprocess
+    import sys
+    from test_templates import _source_extension
+
+    source = _source_extension(tmp_path, None)
+    (source / "extension.yaml").write_text(
+        "extension_id: flowsteward.b1\nversion: 0.1.0\ndisplay_name: B1 Accounting\n"
+    )
+    target = tmp_path / "prepared"
+    result = subprocess.run(
+        [sys.executable, str(Path(__file__).parent / "new_extension_repo.py"),
+         str(source), str(target), "--repository", REPOSITORY_URL],
+        capture_output=True, text=True, check=False,
+    )
+    assert result.returncode == 0, result.stderr
+    command = next(line for line in result.stdout.splitlines() if line.startswith("gh workflow run "))
+    assert shlex.split(command) == [
+        "gh", "workflow", "run", "register-extension.yml", "--repo", "Flow-Steward/extensions",
+        "-f", f"repository={REPOSITORY}", "-f", "tag=v0.1.0",
+    ]
+    assert "after publishing" in result.stdout.lower()
