@@ -1,0 +1,91 @@
+name: Register extension and verify catalog delivery
+
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: Public Flow-Steward/ext-* repository containing the released manifest
+        required: true
+        type: string
+      tag:
+        description: Published stable vMAJOR.MINOR.PATCH tag
+        required: true
+        type: string
+      manifest_path:
+        description: Manifest path inside the tagged repository
+        required: false
+        default: extension.yaml
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-index
+  cancel-in-progress: false
+
+jobs:
+  reject-ref:
+    if: github.ref != 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - run: |
+          echo "::error::Registration must run from the catalog main branch."
+          exit 1
+
+  register:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - name: Check out trusted catalog tooling and history
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements.txt
+      - name: Validate the release and derive the canonical registration
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          SOURCE_REPOSITORY: ${{ inputs.repository }}
+          RELEASE_TAG: ${{ inputs.tag }}
+          MANIFEST_PATH: ${{ inputs.manifest_path }}
+        run: |
+          python scripts/register_extension.py register \
+            --repository "$SOURCE_REPOSITORY" --tag "$RELEASE_TAG" \
+            --manifest-path "$MANIFEST_PATH" --receipt "$RUNNER_TEMP/registration.json"
+      - name: Record available releases and icons
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/build_index.py --publish --records-only --skip-recheck
+      - name: Commit registration and release records before pinning icon URLs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add extensions releases
+          git diff --cached --quiet || git commit -m "Register extension and record releases"
+      - name: Build the catalog index
+        run: python scripts/build_index.py
+      - name: Require delivery before publishing
+        run: |
+          python scripts/register_extension.py check \
+            --receipt "$RUNNER_TEMP/registration.json" --expected-index index.json
+      - name: Publish the catalog normally
+        run: |
+          git add index.json
+          git diff --cached --quiet || git commit -m "Publish registered extension"
+          git push origin HEAD:main
+      - name: Verify the exact public catalog commit
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          published_sha="$(git rev-parse HEAD)"
+          python scripts/register_extension.py verify \
+            --receipt "$RUNNER_TEMP/registration.json" \
+            --commit "$published_sha" --expected-index index.json

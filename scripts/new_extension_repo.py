@@ -8,8 +8,9 @@ Copies the extension's tracked files (without dev-wheels), adds the CI and
 release workflows and packaging scripts from templates/single-extension/,
 adds the default logo `icon.png` when the extension has none, points the
 manifest's support and website links at the new repository, and makes the
-first commit. Push it, tag ``v<version>``, then add
-``extensions/<extension_id>.yaml`` here.
+first commit. Push it, tag ``v<version>``, then run the printed catalog
+registration command for a Flow Steward maintained repository. External authors
+submit ``extensions/<extension_id>.yaml`` by pull request.
 """
 
 from __future__ import annotations
@@ -17,6 +18,7 @@ from __future__ import annotations
 import argparse
 import re
 import shutil
+import shlex
 import subprocess
 import sys
 from pathlib import Path, PurePosixPath
@@ -115,6 +117,20 @@ def main(argv: list[str] | None = None) -> int:
     _git(args.target.parent, "init", "-q", "-b", "main", str(args.target))
     _git(args.target, "add", "-A")
     print(f"{args.target}: {copied} files copied, {skipped} left out (dev-wheels, caches, bin/)")
+    if args.repository.startswith("https://github.com/Flow-Steward/ext-"):
+        import yaml
+
+        metadata = yaml.safe_load(manifest.read_text(encoding="utf-8")) or {}
+        version = metadata.get("version") if isinstance(metadata, dict) else None
+        if isinstance(version, str) and re.fullmatch(r"(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)", version):
+            print("After publishing the stable tag, register and verify catalog delivery:")
+            print(shlex.join([
+                "gh", "workflow", "run", "register-extension.yml", "--repo", "Flow-Steward/extensions",
+                "-f", "repository=" + args.repository.removeprefix("https://github.com/").removesuffix(".git"),
+                "-f", f"tag=v{version}",
+            ]))
+        else:
+            print("note: publish a stable version matching extension.yaml before catalog registration")
     return 0
 
 
