@@ -1,0 +1,51 @@
+{
+  "extension_id": "flowsteward.agnum",
+  "version": "0.1.0",
+  "repository": "https://github.com/Flow-Steward/ext-finance-agnum",
+  "tag": "v0.1.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.agnum/0.1.0.png",
+    "sha256": "15d7ca546cbec4ffbdb23bd013b01dedece04b1fa1afa5dccba17e91b335f6da",
+    "bytes": 1978,
+    "mime_type": "image/png",
+    "size": "76x76"
+  },
+  "published_at": "2026-11-16T19:58:23Z",
+  "item": {
+    "extension_id": "flowsteward.agnum",
+    "version": "0.1.0",
+    "name": "Agnum",
+    "summary": "Read and write Agnum clients, products, prices, stock, sales documents, purchase receipts, returns and production norms.",
+    "description": "Connect workflows to Agnum, the Lithuanian business management and accounting system, through its Agnum DB API. Everyday steps find clients and products, find or create a client, create a sales document or a purchase receipt only when its number is new, and save a sales document as PDF.\n\nEvery one of the 39 documented operations has its own step: clients and their documents, products, prices and stock, sales documents and tracking, purchase receipts, customer returns, production and processing norms, and employees. Amounts are sent as exact decimals. Steps that replace, change or delete norms take an explicit ID. Each connection is one Agnum API address and its API key.",
+    "categories": [
+      "finance",
+      "inventory",
+      "sales"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "Get the Agnum DB API address and an API key with the rights the steps need from your Agnum administrator or provider, add them to a project connection and run the connection test.",
+    "tags": [
+      "agnum",
+      "accounting",
+      "lithuania",
+      "erp",
+      "invoices",
+      "inventory"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-finance-agnum/tree/v0.1.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-finance-agnum/releases/download/v0.1.0/flowsteward.agnum-0.1.0.zip",
+    "release_zip_bytes": 150161,
+    "release_zip_sha256": "64729713b3e293f77fcc2596d44b2b19ea4baa840da155f6f0abcf671aff1d8b"
+  }
+}

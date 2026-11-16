@@ -1,0 +1,52 @@
+{
+  "extension_id": "flowsteward.centas",
+  "version": "0.1.0",
+  "repository": "https://github.com/Flow-Steward/ext-finance-centas",
+  "tag": "v0.1.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.centas/0.1.0.png",
+    "sha256": "a172394b035307b66c692c3f6da432a9917c9aca7b7b709b6f9d13e36a9ea7e3",
+    "bytes": 7935,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-16T19:58:37Z",
+  "item": {
+    "extension_id": "flowsteward.centas",
+    "version": "0.1.0",
+    "name": "Centas",
+    "summary": "Send invoices, orders, payments, products and clients to Centas WS and read products, stock, documents and purchases.",
+    "description": "Connect workflows to Centas, the Lithuanian accounting and business program, through its web exchange Centas WS (ws.centas.lt), covering its whole documented API. Steps send sales invoices, customer orders, purchase invoices and invoices to other companies with their lines, and payments, products, clients and suppliers and consignment notes in batches; they also update, record payments against or delete sales documents. Totals are checked against the lines before anything is sent.\n\nRead steps return products, prices and stock, product cards and gallery links, clients and suppliers, sales documents by number, date or unpaid status, purchases of a date range, an order’s invoice PDF and counts of new records. When a workflow plays the Centas program’s part, take steps collect new sales documents, orders, purchases and payments from the Centas WS queue and save them as workflow files. Each connection is one Centas WS project, reached with its WS key.",
+    "categories": [
+      "finance",
+      "inventory",
+      "sales"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "Get the API key of your Centas WS project from Centas WS (ws.centas.lt; a company that already uses it has the same key in the Centas program as WS raktas), add it to a project connection and run the connection test, which also shows the key’s expiry.",
+    "tags": [
+      "centas",
+      "accounting",
+      "lithuania",
+      "invoices",
+      "orders",
+      "payments",
+      "inventory"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-finance-centas/tree/v0.1.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-finance-centas/releases/download/v0.1.0/flowsteward.centas-0.1.0.zip",
+    "release_zip_bytes": 151484,
+    "release_zip_sha256": "6b025b533a96a53022a363285402c216cf30e2f053ba26b268a66c68158c103f"
+  }
+}
