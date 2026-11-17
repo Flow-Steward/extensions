@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-17.06489ec7",
-  "published_at": "2026-11-17T10:28:41Z",
+  "catalog_revision": "2026-11-17.9b398cfd",
+  "published_at": "2026-11-17T23:10:35Z",
   "items": [
     {
       "extension_id": "flowsteward.agnum",
@@ -33,7 +33,7 @@
         "inventory"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-finance-agnum/tree/v0.1.0",
       "release_zip_url": "https://github.com/Flow-Steward/ext-finance-agnum/releases/download/v0.1.0/flowsteward.agnum-0.1.0.zip",
       "release_zip_bytes": 150161,
@@ -71,7 +71,7 @@
         "rest"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-data-airtable/tree/v1.0.6",
       "release_zip_url": "https://github.com/Flow-Steward/ext-data-airtable/releases/download/v1.0.6/flowsteward.airtable-1.0.6-linux-amd64.zip",
       "release_zip_bytes": 52641,
@@ -133,7 +133,7 @@
         "ecommerce"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-ecommerce-amazon/tree/v0.2.13",
       "release_zip_url": "https://github.com/Flow-Steward/ext-ecommerce-amazon/releases/download/v0.2.13/flowsteward.amazon-sp-api-0.2.13.zip",
       "release_zip_bytes": 509375,
@@ -174,7 +174,7 @@
         "rag"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-data-solr/tree/v1.0.5",
       "release_zip_url": "https://github.com/Flow-Steward/ext-data-solr/releases/download/v1.0.5/flowsteward.solr-1.0.5-linux-amd64.zip",
       "release_zip_bytes": 86994,
@@ -232,7 +232,7 @@
         "payments"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-finance-b1/tree/v0.1.0",
       "release_zip_url": "https://github.com/Flow-Steward/ext-finance-b1/releases/download/v0.1.0/flowsteward.b1-0.1.0.zip",
       "release_zip_bytes": 504942,
@@ -271,7 +271,7 @@
         "toolbox"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-data-bigquery/tree/v1.1.12",
       "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.12/flowsteward.bigquery-1.1.12-linux-amd64.zip",
       "release_zip_bytes": 13746361,
@@ -329,7 +329,7 @@
         "inventory"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-finance-centas/tree/v0.1.0",
       "release_zip_url": "https://github.com/Flow-Steward/ext-finance-centas/releases/download/v0.1.0/flowsteward.centas-0.1.0.zip",
       "release_zip_bytes": 151484,
@@ -369,7 +369,7 @@
         "dataset"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-data-clickhouse/tree/v1.3.11",
       "release_zip_url": "https://github.com/Flow-Steward/ext-data-clickhouse/releases/download/v1.3.11/flowsteward.data-connector-mcp-toolbox-clickhouse-1.3.11-linux-amd64.zip",
       "release_zip_bytes": 12907250,
@@ -418,7 +418,7 @@
         "retrieval"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-ai-cohere-retrieval/tree/v1.0.6",
       "release_zip_url": "https://github.com/Flow-Steward/ext-ai-cohere-retrieval/releases/download/v1.0.6/flowsteward.cohere-retrieval-1.0.6.zip",
       "release_zip_bytes": 39333,
@@ -435,7 +435,7 @@
     },
     {
       "extension_id": "com.discogs.api",
-      "version": "0.2.5",
+      "version": "0.2.6",
       "name": "Discogs API",
       "summary": "Connect Discogs database, marketplace, collection and wantlist operations to music research and record-selling workflows.",
       "description": "Research record releases, enrich a music catalog and manage Discogs account tasks from Flow Steward workflows. Search releases, masters, artists and labels using filters such as artist, release title, year, barcode or catalog number. Look up individual records, explore master versions and artist or label releases, and return result objects with pagination for subsequent workflow steps.\n\nMarketplace operations cover listings, release sales statistics, price suggestions, fee calculations, orders and order messages. Collection and wantlist operations let workflows inspect folders, release instances and custom collection fields, then add, update or remove supported items. The release also exposes user profiles, contributions, submissions, lists, release ratings and inventory export or upload operations.\n\nUse these functions to enrich a record catalog, research a pressing, compare collection holdings against a wantlist, or connect record-selling tasks to other systems. Write operations require a token, explicit enablement and confirmation. Discogs permissions and rate limits still apply. This is a Flow Steward-maintained integration with Discogs; the returned marketplace information does not itself place a purchase.",
@@ -461,20 +461,20 @@
         "wantlist"
       ],
       "publication_status": "published",
-      "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-discogs/tree/v0.2.5",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-discogs/releases/download/v0.2.5/com.discogs.api-0.2.5.zip",
-      "release_zip_bytes": 68374,
-      "release_zip_sha256": "52f21ed0c7f2e30c9687ff7e47b9f0100b720e49ea422959f64422ec7ce0c9ad",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-discogs/tree/v0.2.6",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-discogs/releases/download/v0.2.6/com.discogs.api-0.2.6.zip",
+      "release_zip_bytes": 68591,
+      "release_zip_sha256": "da11323890e8bbe84e2bc26189b53e7c26953c22d64eb9e9878fda6ad01483b3",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/95fccd260bb0394a97be66e78c0c5cd5d0fe5de3/releases/com.discogs.api/0.2.5.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/73e519641917a54c796eaf9b62e476d039594c64/releases/com.discogs.api/0.2.6.png",
         "sha256": "675a3064c3ac54c1f2228245d99418865391fef4763d12be38406085dffcdea8",
         "bytes": 4498,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-10-01T12:12:32Z",
-      "updated_at": "2026-11-15T09:16:57Z"
+      "updated_at": "2026-11-17T23:09:33Z"
     },
     {
       "extension_id": "flowsteward.docling",
@@ -542,7 +542,7 @@
         "rag"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/tree/v1.0.7",
       "release_zip_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/releases/download/v1.0.7/flowsteward.elasticsearch-1.0.7-linux-amd64.zip",
       "release_zip_bytes": 80387,
@@ -613,7 +613,7 @@
     },
     {
       "extension_id": "flowsteward.facebook",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "name": "Facebook Pages",
       "summary": "Publish Facebook Page posts and photos, reply to comments, and start workflows when new comments arrive.",
       "description": "Connect Facebook Pages to Flow Steward for social media publishing and comment management. Publish text updates, share a blog post with its link, or publish a photo with a caption. Read Page posts, retrieve comments and replies, and respond to a comment as the selected Page.\n\nUse these actions in marketing workflows to share approved articles, announce product updates, and pass customer questions to the next step. The New Facebook Page comment trigger starts a workflow when a new root comment arrives from another person. Workflow steps can prepare a response or route the conversation for human review before sending a reply.\n\nCreate a separate project connection for each Facebook Page and select the intended connection in each workflow step. Publishing requires a Page access token with the appropriate Meta permissions. Receiving comment events also requires a Meta app secret, public HTTPS callback setup and a Page subscription.\n\nThis extension covers organic Page posts and comments. Advertising campaigns, personal-profile publishing, Messenger conversations, image editing and text generation are outside its operation set. Combine it with other workflow steps to prepare content before publication.",
@@ -637,20 +637,20 @@
         "comments"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-social-facebook/tree/v0.1.0",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-social-facebook/releases/download/v0.1.0/flowsteward.facebook-0.1.0.zip",
-      "release_zip_bytes": 47398,
-      "release_zip_sha256": "26f60144d30fe0c67fafc6593100c514fe7a20525f6ae76deb262c4991e06e1e",
+      "verification_status": "unverified",
+      "repository_url": "https://github.com/Flow-Steward/ext-social-facebook/tree/v0.1.1",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-social-facebook/releases/download/v0.1.1/flowsteward.facebook-0.1.1.zip",
+      "release_zip_bytes": 48396,
+      "release_zip_sha256": "0df7bfc3aaf9a15961c42caf9feef4149031244ae3e1355b6ba9433beb90046d",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/9ae9cb9e76f748de013b17814059da53b23701f5/releases/flowsteward.facebook/0.1.0.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/73e519641917a54c796eaf9b62e476d039594c64/releases/flowsteward.facebook/0.1.1.png",
         "sha256": "a3c4f14c54929f56a44c8d7a551ad1b40c3f9fa8369da3a7a2b218f9d9831597",
         "bytes": 2998,
         "mime_type": "image/png",
         "size": "325x325"
       },
       "added_at": "2026-11-16T08:06:51Z",
-      "updated_at": "2026-11-16T08:06:51Z"
+      "updated_at": "2026-11-17T23:10:00Z"
     },
     {
       "extension_id": "flowsteward.file-transfer",
@@ -737,7 +737,7 @@
         "payments"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-finance-finvalda/tree/v0.1.5",
       "release_zip_url": "https://github.com/Flow-Steward/ext-finance-finvalda/releases/download/v0.1.5/flowsteward.finvalda-0.1.5.zip",
       "release_zip_bytes": 388808,
@@ -775,7 +775,7 @@
         "google-cloud"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-data-firestore/tree/v1.0.12",
       "release_zip_url": "https://github.com/Flow-Steward/ext-data-firestore/releases/download/v1.0.12/flowsteward.firestore-1.0.12-linux-amd64.zip",
       "release_zip_bytes": 6531990,
@@ -864,7 +864,7 @@
         "vertex-ai"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex/tree/v0.1.6",
       "release_zip_url": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex/releases/download/v0.1.6/flowsteward.google-cloud-vertex-0.1.6-linux-amd64.zip",
       "release_zip_bytes": 6753485,
@@ -937,7 +937,7 @@
     },
     {
       "extension_id": "com.image.processing",
-      "version": "0.2.8",
+      "version": "0.2.9",
       "name": "Image Processing",
       "summary": "Check image dimensions, resize or pad images, and remove backgrounds locally using a bundled CPU model.",
       "description": "Prepare product images, consistent catalog canvases and foreground cutouts locally with Image Processing. Check Image Size reads an image artifact and returns its dimensions with flags indicating whether resizing or padding is needed. Use those outputs to branch a workflow before creating a new image.\n\nUpscale Image can enlarge or reduce an image proportionally with Lanczos resampling. Choose a maximum bounding box, or fit the image onto an exact-size canvas with white, transparent or custom-color padding. It preserves the aspect ratio without stretching or cropping. Remove Background uses a bundled U2-NetP model on the CPU and returns a transparent PNG at the original dimensions. The actions can run independently or be combined in either order.\n\nUse the extension for product-image preparation, consistent catalog canvases or foreground cutouts. Processing needs no API key, external inference service or runtime model download. Inputs are single, non-animated PNG, JPEG or WebP artifacts up to 20 MiB and 16 megapixels. Enlargement is interpolation, so it does not reconstruct missing detail; fine edges and difficult backgrounds may need manual review.",
@@ -961,36 +961,36 @@
         "local"
       ],
       "publication_status": "published",
-      "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-image-processing/tree/v0.2.8",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.2.8/com.image.processing-0.2.8-linux-amd64.zip",
-      "release_zip_bytes": 41900055,
-      "release_zip_sha256": "7bcd710312e0ccb4e2bc724cad61ee1338a11ba88b7db4e1a036a9cfcc87e464",
+      "verification_status": "verified",
+      "repository_url": "https://github.com/Flow-Steward/ext-image-processing/tree/v0.2.9",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.2.9/com.image.processing-0.2.9-linux-amd64.zip",
+      "release_zip_bytes": 41900229,
+      "release_zip_sha256": "60241178cc35ff3c9a74c213b4a923ef90150c0a6ef6c2784e57547103577653",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.2.8/com.image.processing-0.2.8-linux-amd64.zip",
-          "release_zip_bytes": 41900055,
-          "release_zip_sha256": "7bcd710312e0ccb4e2bc724cad61ee1338a11ba88b7db4e1a036a9cfcc87e464"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.2.9/com.image.processing-0.2.9-linux-amd64.zip",
+          "release_zip_bytes": 41900229,
+          "release_zip_sha256": "60241178cc35ff3c9a74c213b4a923ef90150c0a6ef6c2784e57547103577653"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.2.8/com.image.processing-0.2.8-linux-arm64.zip",
-          "release_zip_bytes": 38525722,
-          "release_zip_sha256": "850e41d075875aee007477f2e20c95eca656e83bc55ddd8df4cc59cbdae6e8b0"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.2.9/com.image.processing-0.2.9-linux-arm64.zip",
+          "release_zip_bytes": 38525896,
+          "release_zip_sha256": "57cc253ada3eb022b046dac5e7d6163a8d6c5803d5a1c1a42c12ebb4e4e35f97"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/7a4109e331e09841d6f24c574cb4ed283dda5289/releases/com.image.processing/0.2.8.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/73e519641917a54c796eaf9b62e476d039594c64/releases/com.image.processing/0.2.9.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-10-01T12:12:35Z",
-      "updated_at": "2026-11-17T09:27:57Z"
+      "updated_at": "2026-11-17T23:09:38Z"
     },
     {
       "extension_id": "flowsteward.instagram",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "name": "Instagram",
       "summary": "Publish Instagram photos and image carousels, reply to comments, and start workflows when new comments arrive.",
       "description": "Connect an Instagram professional account to Flow Steward for image publishing and comment management through the Instagram API with Instagram Login. Publish a photo with a caption and optional alternative text, or publish an image carousel. Read account posts, retrieve comments and replies, and send a reply to a comment on your own media.\n\nUse these actions to share prepared images for a blog article, announce a product update, or collect audience questions for a review workflow. The New Instagram comment trigger starts a workflow for a new root comment from another person. Follow-up steps can classify the question, prepare a response, or request human approval before replying.\n\nPublishing accepts publicly accessible HTTPS JPEG images, captions up to 2,200 characters and image carousels of 2 to 20 items. It returns publication status and available media identifiers and permalinks. Dedicated status and recovery actions let a workflow inspect or resume a known publishing container without creating the content again.\n\nConfigure a separate project connection for each professional account, using an Instagram Login access token with the required permissions. Signed comment delivery additionally needs a Meta app secret and public HTTPS webhook setup. Advertising, Reels, Stories, video, direct messages, image resizing and text generation are outside this extension; prepare media and copy in earlier workflow steps.",
@@ -1014,24 +1014,24 @@
         "comments"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-social-instagram/tree/v0.1.0",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-social-instagram/releases/download/v0.1.0/flowsteward.instagram-0.1.0.zip",
-      "release_zip_bytes": 98900,
-      "release_zip_sha256": "aece61df0cb455380f802273ef1197311386b3e1b2151f28817cb6768a739ba2",
+      "verification_status": "unverified",
+      "repository_url": "https://github.com/Flow-Steward/ext-social-instagram/tree/v0.1.1",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-social-instagram/releases/download/v0.1.1/flowsteward.instagram-0.1.1.zip",
+      "release_zip_bytes": 99906,
+      "release_zip_sha256": "69a36070ab8df5e0aae0e4ddf7832832e6f658c43ca76a7c5e5c49bc089e8940",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/9ae9cb9e76f748de013b17814059da53b23701f5/releases/flowsteward.instagram/0.1.0.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/73e519641917a54c796eaf9b62e476d039594c64/releases/flowsteward.instagram/0.1.1.png",
         "sha256": "8878662ce6afc4a995bd80c67652a72642c9564b40cfc5ac94a802d7e0f8b6b1",
         "bytes": 34715,
         "mime_type": "image/png",
         "size": "192x192"
       },
       "added_at": "2026-11-16T08:07:01Z",
-      "updated_at": "2026-11-16T08:07:01Z"
+      "updated_at": "2026-11-17T23:10:08Z"
     },
     {
       "extension_id": "flowsteward.linkedin",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "name": "LinkedIn Publisher",
       "summary": "Publish prepared text, image posts and article links to LinkedIn from workflows, using a member profile or company Page.",
       "description": "LinkedIn Publisher connects Flow Steward workflows to LinkedIn organic publishing. Publish public text posts, posts with one JPEG or PNG image, and link cards for articles hosted on your own website. Choose an authenticated member profile or one explicitly configured company Page per connection.\n\nUse validate_post to check prepared content against local limits, upload_image to upload an authorized Flow Steward artifact, publish_post to submit the post, and test_connection to inspect redacted connection status. Successful publication returns a LinkedIn post ID, URL, author and API version. Release announcements, tutorials and blog updates can arrive from a webhook or another workflow step; no WordPress or AI-provider dependency is required.\n\nBring your own LinkedIn developer app, register the HTTPS OAuth redirect shown by Flow Steward, and create project-owned member or Page connections. Member publishing needs the LinkedIn sharing and OpenID Connect products. Page publishing needs Community Management access, an eligible Page role and a manually entered organization URN. Bind each connection explicitly in the workflow. Use separate bound steps to publish as both authors; there is no Page-discovery picker.\n\nContent must already be prepared. Local policy limits text to 3,000 UTF-16 code units and images to 8 MiB; images are not resized or cropped. Article links are link cards, not native LinkedIn articles. Comments, replies, private posts, video, documents, multiple images, editing, deletion, analytics and inbound LinkedIn events are not supported. Test mode suppresses uploads and posts. Rate limits and uncertain write outcomes use the existing workflow and effect-resolution controls; there are no automatic provider retries or status polls. An accepted receipt does not guarantee immediate visibility or completed image processing.\n\nThis independent integration is not endorsed by LinkedIn. Live OAuth, Page access and live publication have not been verified in this release preparation.",
@@ -1054,20 +1054,20 @@
         "marketing"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-social-linkedin/tree/v1.0.2",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-social-linkedin/releases/download/v1.0.2/flowsteward.linkedin-1.0.2.zip",
-      "release_zip_bytes": 56476,
-      "release_zip_sha256": "1c1228d497a3050e5d11bee61ed8bc982b77c97c7d4bb2ced7f05c8c556978ca",
+      "verification_status": "unverified",
+      "repository_url": "https://github.com/Flow-Steward/ext-social-linkedin/tree/v1.0.3",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-social-linkedin/releases/download/v1.0.3/flowsteward.linkedin-1.0.3.zip",
+      "release_zip_bytes": 59032,
+      "release_zip_sha256": "c89d3faeb2c5aab1137440fdd27b0a105294282f43b8db0320467ddf5ebb3780",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/2c2bf57ed15a7bbf9c2d2f09edec4944aec8ddf1/releases/flowsteward.linkedin/1.0.2.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/73e519641917a54c796eaf9b62e476d039594c64/releases/flowsteward.linkedin/1.0.3.png",
         "sha256": "324708d4d88afaef003ad25866e06ee23247cfc811e99fc050f01fbbe97c15e5",
         "bytes": 15318,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-11-16T08:07:02Z",
-      "updated_at": "2026-11-17T09:25:12Z"
+      "updated_at": "2026-11-17T23:10:09Z"
     },
     {
       "extension_id": "flowsteward.meta-ads",
@@ -1094,7 +1094,7 @@
         "advertising"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-marketing-meta-ads/tree/v1.0.2",
       "release_zip_url": "https://github.com/Flow-Steward/ext-marketing-meta-ads/releases/download/v1.0.2/flowsteward.meta-ads-1.0.2-linux-amd64.zip",
       "release_zip_bytes": 7157874,
@@ -1147,7 +1147,7 @@
         "dataset"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-data-mssql/tree/v1.3.11",
       "release_zip_url": "https://github.com/Flow-Steward/ext-data-mssql/releases/download/v1.3.11/flowsteward.data-connector-mcp-toolbox-mssql-1.3.11-linux-amd64.zip",
       "release_zip_bytes": 12286477,
@@ -1199,7 +1199,7 @@
         "document-extraction"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-document-mistral/tree/v0.1.6",
       "release_zip_url": "https://github.com/Flow-Steward/ext-document-mistral/releases/download/v0.1.6/flowsteward.mistral-document-0.1.6-linux-amd64.zip",
       "release_zip_bytes": 646003,
@@ -1249,7 +1249,7 @@
         "toolbox"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-data-mongodb/tree/v1.1.11",
       "release_zip_url": "https://github.com/Flow-Steward/ext-data-mongodb/releases/download/v1.1.11/flowsteward.mongodb-1.1.11-linux-amd64.zip",
       "release_zip_bytes": 12228694,
@@ -1353,7 +1353,7 @@
         "toolbox"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-graph-neo4j/tree/v1.0.13",
       "release_zip_url": "https://github.com/Flow-Steward/ext-graph-neo4j/releases/download/v1.0.13/flowsteward.neo4j-1.0.13-linux-amd64.zip",
       "release_zip_bytes": 11158699,
@@ -1405,7 +1405,7 @@
         "oceanbase"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-data-oceanbase/tree/v1.3.11",
       "release_zip_url": "https://github.com/Flow-Steward/ext-data-oceanbase/releases/download/v1.3.11/flowsteward.data-connector-mcp-toolbox-oceanbase-1.3.11-linux-amd64.zip",
       "release_zip_bytes": 11060976,
@@ -1464,7 +1464,7 @@
         "sales"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-finance-odoo/tree/v0.1.5",
       "release_zip_url": "https://github.com/Flow-Steward/ext-finance-odoo/releases/download/v0.1.5/flowsteward.odoo-0.1.5.zip",
       "release_zip_bytes": 163242,
@@ -1542,7 +1542,7 @@
         "moderation"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-ai-openai-tools/tree/v1.1.5",
       "release_zip_url": "https://github.com/Flow-Steward/ext-ai-openai-tools/releases/download/v1.1.5/flowsteward.openai-tools-1.1.5.zip",
       "release_zip_bytes": 49555,
@@ -1619,7 +1619,7 @@
         "toolbox"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-data-oracle/tree/v1.1.12",
       "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.1.12/flowsteward.oracle-1.1.12-linux-amd64.zip",
       "release_zip_bytes": 13442434,
@@ -1709,7 +1709,7 @@
         "rag"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-vector-pinecone/tree/v1.0.7",
       "release_zip_url": "https://github.com/Flow-Steward/ext-vector-pinecone/releases/download/v1.0.7/flowsteward.pinecone-1.0.7-linux-amd64.zip",
       "release_zip_bytes": 50341,
@@ -1815,7 +1815,7 @@
         "rag"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-vector-qdrant/tree/v1.0.6",
       "release_zip_url": "https://github.com/Flow-Steward/ext-vector-qdrant/releases/download/v1.0.6/flowsteward.qdrant-1.0.6-linux-amd64.zip",
       "release_zip_bytes": 66426,
@@ -1867,7 +1867,7 @@
         "intuit"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-finance-quickbooks/tree/v1.0.4",
       "release_zip_url": "https://github.com/Flow-Steward/ext-finance-quickbooks/releases/download/v1.0.4/flowsteward.quickbooks-1.0.4.zip",
       "release_zip_bytes": 85222,
@@ -1905,7 +1905,7 @@
         "toolbox"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-data-redis/tree/v1.1.11",
       "release_zip_url": "https://github.com/Flow-Steward/ext-data-redis/releases/download/v1.1.11/flowsteward.redis-1.1.11-linux-amd64.zip",
       "release_zip_bytes": 12916397,
@@ -1965,7 +1965,7 @@
         "orders"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-finance-rivile-erp/tree/v0.1.6",
       "release_zip_url": "https://github.com/Flow-Steward/ext-finance-rivile-erp/releases/download/v0.1.6/flowsteward.rivile-erp-0.1.6.zip",
       "release_zip_bytes": 194528,
@@ -2013,7 +2013,7 @@
         "payroll"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-finance-rivile-gama/tree/v0.1.8",
       "release_zip_url": "https://github.com/Flow-Steward/ext-finance-rivile-gama/releases/download/v0.1.8/flowsteward.rivile-gama-0.1.8.zip",
       "release_zip_bytes": 426568,
@@ -2098,7 +2098,7 @@
         "singlestore"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-data-singlestore/tree/v1.3.12",
       "release_zip_url": "https://github.com/Flow-Steward/ext-data-singlestore/releases/download/v1.3.12/flowsteward.data-connector-mcp-toolbox-singlestore-1.3.12-linux-amd64.zip",
       "release_zip_bytes": 11064255,
@@ -2150,7 +2150,7 @@
         "snowflake"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-data-snowflake/tree/v1.3.12",
       "release_zip_url": "https://github.com/Flow-Steward/ext-data-snowflake/releases/download/v1.3.12/flowsteward.data-connector-mcp-toolbox-snowflake-1.3.12-linux-amd64.zip",
       "release_zip_bytes": 16484534,
@@ -2203,7 +2203,7 @@
         "spanner-postgres"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-data-spanner/tree/v1.3.11",
       "release_zip_url": "https://github.com/Flow-Steward/ext-data-spanner/releases/download/v1.3.11/flowsteward.data-connector-mcp-toolbox-spanner-1.3.11-linux-amd64.zip",
       "release_zip_bytes": 15394970,
@@ -2253,7 +2253,7 @@
         "rest"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-data-supabase/tree/v1.0.6",
       "release_zip_url": "https://github.com/Flow-Steward/ext-data-supabase/releases/download/v1.0.6/flowsteward.supabase-1.0.6-linux-amd64.zip",
       "release_zip_bytes": 42199,
@@ -2387,7 +2387,7 @@
         "toolbox"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-data-valkey/tree/v1.1.11",
       "release_zip_url": "https://github.com/Flow-Steward/ext-data-valkey/releases/download/v1.1.11/flowsteward.valkey-1.1.11-linux-amd64.zip",
       "release_zip_bytes": 12921803,
@@ -2416,7 +2416,7 @@
     },
     {
       "extension_id": "flowsteward.web-scraper",
-      "version": "0.1.28",
+      "version": "0.1.29",
       "name": "Web Scraper",
       "summary": "Collect product and page data from websites into a CSV or JSON Lines file for your workflows, through a scraper service you run yourself.",
       "description": "Web Scraper collects structured records, such as products with their name, price, SKU, images and variants, from websites and gives each crawl to your workflow as two files: result.jsonl (one JSON record per line) and result.csv (semicolon-separated, opens in Excel). The crawling runs in the separate Web Scraper service, a Docker container you run yourself next to Flow Steward. The extension connects projects to that service, adds workflow actions and pages, and stores the results as workflow files.\n\nThe read-only Scrape a site workflow analyzes a site (robots.txt, sitemap, page types), loads a few sample pages, has AI write the extraction mapping with your project's default model, tests the mapping on the samples, starts the crawl and waits for it without holding a worker. When the crawl ends it returns the files, the first records and a run summary that says why the run stopped and how complete it is. A stored mapping is reused on the next run of the same site, and a mapping that stops matching during a crawl is repaired by AI and tested again before it is used. The Runs and Run detail pages follow every crawl; a run can be stopped, resumed, and its missed pages collected again.\n\nTypical uses: load a supplier's catalogue every week on a schedule and update your own product data; follow competitors' public prices, with the old price and a sale flag when the page shows them; or call Scrape a site from your own workflow with Invoke and process the CSV or JSON Lines file in the next steps.\n\nSetup: run the Web Scraper service in Docker with an API token and a secrets key (about 2 GB of memory per browser crawl), create a scraper profile in the project with the service address and token, and add the webhook the service uses to report finished runs. Politeness presets (gentle, normal, fast) set the pause between pages, the pages loaded at once, the requests per minute and the page timeout, and the service slows down by itself when a site struggles. A new start for a site that is still being crawled is skipped, or queued if you choose. Proxies and a third-party challenge solver are optional profile settings.\n\nLimits: scrape only sites whose terms allow it. robots.txt is respected by default. The scraper does not log in to sites, and it cannot promise to get past CAPTCHAs or bot protection; a site that blocks it ends the run with that reason. The service caps a result at 99 MiB by default. Requires Flow Steward 0.9.18 or later.",
@@ -2447,19 +2447,19 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-web-scraper/tree/v0.1.28",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-web-scraper/releases/download/v0.1.28/flowsteward.web-scraper-0.1.28.zip",
-      "release_zip_bytes": 515385,
-      "release_zip_sha256": "4719fbe5c3e2fa90817159fb4a11560b690de597b20b18a7cd5f91b2fed5dbb1",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-web-scraper/tree/v0.1.29",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-web-scraper/releases/download/v0.1.29/flowsteward.web-scraper-0.1.29.zip",
+      "release_zip_bytes": 517906,
+      "release_zip_sha256": "8e801e13e37335d5d997ff5f122c7515f823d025697cad5b668b150fb99c5427",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/180eabd63a536d27f77179ec73476d34d2282461/releases/flowsteward.web-scraper/0.1.28.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/73e519641917a54c796eaf9b62e476d039594c64/releases/flowsteward.web-scraper/0.1.29.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-11-16T08:07:23Z",
-      "updated_at": "2026-11-17T09:36:18Z"
+      "updated_at": "2026-11-17T23:10:33Z"
     },
     {
       "extension_id": "flowsteward.whatsapp",
@@ -2532,7 +2532,7 @@
         "ecommerce"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
+      "verification_status": "unverified",
       "repository_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/tree/v1.2.5",
       "release_zip_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/releases/download/v1.2.5/flowsteward.wordpress-woocommerce-1.2.5.zip",
       "release_zip_bytes": 330900,
@@ -2549,7 +2549,7 @@
     },
     {
       "extension_id": "flowsteward.x",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "name": "X",
       "summary": "Publish article announcements on X and handle direct replies in reviewed workflows.",
       "description": "Connect an X account to Flow Steward workflows to share published blog posts and manage direct replies. Publish an announcement with an intact article link and one static image. Validate ordinary 280-character weighted text, prepare a 1200x675 JPEG cover, upload media with optional alt text, read a post and send a reviewed reply.\n\nIncoming events cover new direct replies to posts authored by the connected account, including posts published outside Flow Steward. Use workflow conditions to filter comments, apply opt-out rules and decide whether to respond. The package includes disabled article-announcement and comment-reply templates with human review before sending by default.\n\nSet up an X OAuth application, connect the account and arrange the required X API access. Incoming replies also need the same application's webhook credentials and a public HTTPS callback. To generate drafts, select a verified model for the included agents and map the project connection before enabling the templates.\n\nThis release supports ordinary posts with at most one static image. It does not provide direct messages, historical comment import, deeper user-to-user reply threads, video or GIF uploads, multi-post threads, or a WordPress editor plugin. X API access and model usage are separate services. Automatic AI replies remain disabled until the required X approval, account-owner consent and opt-out controls are in place.",
@@ -2576,20 +2576,20 @@
         "comments"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-social-x/tree/v1.0.1",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-social-x/releases/download/v1.0.1/flowsteward.x-1.0.1.zip",
-      "release_zip_bytes": 14522555,
-      "release_zip_sha256": "830a2363d7d26517d2dabfc1cb974217251ec950b8e07c9a00a6e150b6a71e14",
+      "verification_status": "unverified",
+      "repository_url": "https://github.com/Flow-Steward/ext-social-x/tree/v1.0.2",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-social-x/releases/download/v1.0.2/flowsteward.x-1.0.2.zip",
+      "release_zip_bytes": 14525086,
+      "release_zip_sha256": "81037aa867520da70abc97dd92e336190e5f5cc1599be119a8cfe9aa25f422c8",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/9d3b2acdedc28322885deb533aaccd9edfe079b5/releases/flowsteward.x/1.0.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/73e519641917a54c796eaf9b62e476d039594c64/releases/flowsteward.x/1.0.2.png",
         "sha256": "777f4eced77ba24d98b4d542692c2a91b7ce0c33af35f1657ce32e381a1973d1",
         "bytes": 7723,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-11-16T08:07:26Z",
-      "updated_at": "2026-11-17T09:31:22Z"
+      "updated_at": "2026-11-17T23:10:35Z"
     }
   ],
   "category_labels": {
