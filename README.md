@@ -242,8 +242,30 @@ or endorsed by, the integrated product's provider.
 
 [`verified_extensions.json`](verified_extensions.json) selects tested integrations
 by exact extension id, repository URL and release version, with a maintainer
-reason. Currently this is Shopify 0.5.5, MySQL 1.3.11, PostgreSQL 1.4.13 and
-Google Workspace 0.3.6, as designated by the maintainer. This records that
+reason. The maintainer has designated these 17 integrations as tested:
+
+| Integration | Selected release |
+| --- | --- |
+| Shopify | 0.5.5 |
+| MySQL | 1.3.11 |
+| PostgreSQL | 1.4.13 |
+| Google Workspace | 0.3.6 |
+| Telegram | 1.3.5 |
+| WhatsApp | 0.1.4 |
+| Docling | 0.3.5 |
+| Example Showcase | 1.2.8 |
+| File Transfer | 0.3.9 |
+| Generic IMAP | 0.2.5 |
+| OpenRouter | 1.2.4 |
+| Ollama | 1.2.4 |
+| Outgoing Email | 0.3.5 |
+| TypeSafe AI | 1.0.9 |
+| Web Scraper | 0.1.29 |
+| Image Processing | 0.2.9 |
+| Discogs | 0.2.6 |
+
+The configuration binds each selection to its exact repository and extension id;
+it takes effect when that release is recorded and listed. This records that
 selection, not a new live-test result or date. Every other release is unverified;
 future versions require explicit review and selection. The index builder applies
 current curation to historical records without changing their archive hashes,

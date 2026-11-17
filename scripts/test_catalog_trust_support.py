@@ -143,9 +143,11 @@ def test_checked_in_curation_is_exactly_the_seventeen_designated_releases():
         (Path(__file__).resolve().parents[1] / "verified_extensions.json").read_text()
     )
     assert {
-        key: (value["repository"].rsplit("/", 1)[1], value["version"])
-        for key, value in policy.items()
-    } == CURATED
+        key: (value["repository"], value["version"]) for key, value in policy.items()
+    } == {
+        key: (f"https://github.com/Flow-Steward/{repo}", version)
+        for key, (repo, version) in CURATED.items()
+    }
 
 
 @pytest.mark.parametrize(
