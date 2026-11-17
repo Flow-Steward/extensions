@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-17.fda0561d",
-  "published_at": "2026-11-17T09:28:12Z",
+  "catalog_revision": "2026-11-17.d3f15a89",
+  "published_at": "2026-11-17T09:31:22Z",
   "items": [
     {
       "extension_id": "flowsteward.agnum",
@@ -2549,7 +2549,7 @@
     },
     {
       "extension_id": "flowsteward.x",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "name": "X",
       "summary": "Publish article announcements on X and handle direct replies in reviewed workflows.",
       "description": "Connect an X account to Flow Steward workflows to share published blog posts and manage direct replies. Publish an announcement with an intact article link and one static image. Validate ordinary 280-character weighted text, prepare a 1200x675 JPEG cover, upload media with optional alt text, read a post and send a reviewed reply.\n\nIncoming events cover new direct replies to posts authored by the connected account, including posts published outside Flow Steward. Use workflow conditions to filter comments, apply opt-out rules and decide whether to respond. The package includes disabled article-announcement and comment-reply templates with human review before sending by default.\n\nSet up an X OAuth application, connect the account and arrange the required X API access. Incoming replies also need the same application's webhook credentials and a public HTTPS callback. To generate drafts, select a verified model for the included agents and map the project connection before enabling the templates.\n\nThis release supports ordinary posts with at most one static image. It does not provide direct messages, historical comment import, deeper user-to-user reply threads, video or GIF uploads, multi-post threads, or a WordPress editor plugin. X API access and model usage are separate services. Automatic AI replies remain disabled until the required X approval, account-owner consent and opt-out controls are in place.",
@@ -2577,19 +2577,19 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-social-x/tree/v1.0.0",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-social-x/releases/download/v1.0.0/flowsteward.x-1.0.0.zip",
-      "release_zip_bytes": 14824901,
-      "release_zip_sha256": "4498b844a3b982ffede829fb3ec150bc764bcb6fc39faa7e1629577bc0c4ef3d",
+      "repository_url": "https://github.com/Flow-Steward/ext-social-x/tree/v1.0.1",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-social-x/releases/download/v1.0.1/flowsteward.x-1.0.1.zip",
+      "release_zip_bytes": 14522555,
+      "release_zip_sha256": "830a2363d7d26517d2dabfc1cb974217251ec950b8e07c9a00a6e150b6a71e14",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/9ae9cb9e76f748de013b17814059da53b23701f5/releases/flowsteward.x/1.0.0.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/9d3b2acdedc28322885deb533aaccd9edfe079b5/releases/flowsteward.x/1.0.1.png",
         "sha256": "777f4eced77ba24d98b4d542692c2a91b7ce0c33af35f1657ce32e381a1973d1",
         "bytes": 7723,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-11-16T08:07:26Z",
-      "updated_at": "2026-11-16T08:07:26Z"
+      "updated_at": "2026-11-17T09:31:22Z"
     }
   ],
   "category_labels": {
