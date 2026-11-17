@@ -116,3 +116,8 @@ def test_native_build_keeps_source_execution_out_of_the_publisher():
         assert "env" not in step
         assert "docker.sock" not in step["run"]
         assert "--privileged" not in step["run"]
+
+
+def test_verification_curation_changes_trigger_catalog_publication():
+    flow = load("publish.yml")
+    assert "verified_extensions.json" in flow["on"]["push"]["paths"]

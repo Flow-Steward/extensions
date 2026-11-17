@@ -58,6 +58,7 @@ RELEASES_DIR = "releases"
 CATEGORIES_FILE = "categories.json"
 CATEGORY_OVERRIDES_FILE = "category_overrides.json"
 VERIFIED_PUBLISHERS_FILE = "verified_publishers.json"
+VERIFIED_EXTENSIONS_FILE = "verified_extensions.json"
 INDEX_FILE = "index.json"
 MANIFEST = "extension.yaml"
 DESCRIPTOR = "extension-descriptor.yaml"
@@ -373,6 +374,48 @@ def load_entries() -> dict[str, Entry]:
 def verified_publishers() -> dict[str, str]:
     """Reserved namespace (first part of an id) -> the GitHub owner allowed to use it."""
     return {str(k): str(v) for k, v in _json_file(VERIFIED_PUBLISHERS_FILE, {}).items()}
+
+
+def verified_extensions() -> dict[str, Any]:
+    """Explicit tested releases; namespace ownership is a separate authorization policy."""
+    try:
+        raw = _json_file(VERIFIED_EXTENSIONS_FILE, {})
+    except (ValueError, UnicodeError) as exc:
+        raise CatalogError(f"{VERIFIED_EXTENSIONS_FILE}: invalid JSON") from exc
+    if not isinstance(raw, dict):
+        raise CatalogError(
+            f"{VERIFIED_EXTENSIONS_FILE} must map extension ids to tested releases"
+        )
+    for extension_id, selection in raw.items():
+        if (
+            not isinstance(extension_id, str)
+            or not _EXTENSION_ID.fullmatch(extension_id)
+            or not isinstance(selection, dict)
+            or set(selection) != {"repository", "version", "reason"}
+            or not isinstance(selection.get("repository"), str)
+            or not _REPOSITORY.fullmatch(selection["repository"])
+            or not isinstance(selection.get("version"), str)
+            or not _SEMVER.fullmatch(selection["version"])
+            or not isinstance(selection.get("reason"), str)
+            or not selection["reason"].strip()
+        ):
+            raise CatalogError(
+                f"{VERIFIED_EXTENSIONS_FILE}: invalid tested release for {extension_id}"
+            )
+    return raw
+
+
+def verification_status(
+    extension_id: str, version: str, repository: str, policy: dict[str, Any]
+) -> str:
+    selection = policy.get(extension_id)
+    return (
+        "verified"
+        if selection
+        and selection["version"] == version
+        and selection["repository"] == repository
+        else "unverified"
+    )
 
 
 def namespace_problem(entry: Entry, publishers: dict[str, str]) -> str:
@@ -696,6 +739,113 @@ def _native_problems(
     return problems
 
 
+def _support_problems(
+    manifest: dict[str, Any], contents: dict[str, bytes], entry: Entry
+) -> list[str]:
+    """Check the registered, rendered Support path without executing code or fetching URLs.
+
+    Apply to new first-party artifacts only. Immutable release rechecks compare
+    bytes and deliberately do not call this policy.
+    """
+    if entry.owner.lower() != "flow-steward":
+        return []
+    problems: list[str] = []
+    field = "Support"
+
+    def resolve(value: Any, parent: str) -> tuple[Any, str]:
+        if (
+            not isinstance(value, str)
+            or not value.strip()
+            or "\\" in value
+            or ":" in value
+            or PurePosixPath(value).suffix.lower() not in {".yaml", ".yml"}
+        ):
+            problems.append("Support: declare a bundle-local YAML ref")
+            return None, parent
+        return _archive_contract_ref(
+            contents, value, parent=parent, field=field, problems=problems
+        )
+
+    ui, ui_path = resolve(manifest.get("ui_manifest"), MANIFEST)
+    if not isinstance(ui, dict) or not isinstance(ui.get("pages"), list):
+        problems.append("Support: ui_manifest must register pages")
+        return problems
+    support: list[tuple[dict[str, Any], str]] = []
+    for registration in ui["pages"]:
+        page, page_path = registration, ui_path
+        if isinstance(registration, dict) and "ref" in registration:
+            page, page_path = resolve(registration["ref"], ui_path)
+        if not isinstance(page, dict):
+            problems.append("Support: registered page must resolve to an object")
+        elif page.get("page_id") == "support":
+            support.append((page, page_path))
+    if len(support) != 1:
+        problems.append(
+            "Support: register exactly one global page_id: support in ui_manifest.pages"
+        )
+        return problems
+    page, page_path = support[0]
+    if page.get("project_scoped") is not False:
+        problems.append("Support: page must declare project_scoped: false")
+    if page.get("title") != "Support":
+        problems.append("Support: page must have title: Support")
+    bodies: list[str] = []
+
+    def markdown(block: Any, parent: str) -> None:
+        if not isinstance(block, dict):
+            problems.append("Support: component must resolve to an object")
+            return
+        if "ref" in block:
+            block, _ = resolve(block["ref"], parent)
+            if not isinstance(block, dict):
+                problems.append("Support: component ref must resolve to an object")
+                return
+            # The host resolves this registration once; it does not follow a
+            # second own ref inside the resulting component object.
+            if "ref" in block:
+                problems.append(
+                    "Support: chained component refs are not rendered by the host"
+                )
+                return
+        if block.get("type") == "markdown":
+            text = block.get("content") or block.get("body")
+            if isinstance(text, str):
+                bodies.append(text)
+
+    components = page.get("components")
+    if not isinstance(components, list) or not components:
+        problems.append("Support: page must declare rendered markdown components")
+    else:
+        for component in components:
+            markdown(component, page_path)
+    # Only authored markdown links become clickable in the host renderer;
+    # bare URLs, code samples and image destinations cannot provide Support.
+    links: set[str] = set()
+    for body in bodies:
+        visible: list[str] = []
+        fenced = False
+        for line in body.splitlines():
+            if line.lstrip().startswith("```"):
+                fenced = not fenced
+            elif not fenced:
+                visible.append(line)
+        text = re.sub(r"`[^`]*`", " ", "\n".join(visible))
+        links.update(re.findall(r"(?<![!\\])\[[^\]\n]+\]\((https://[^\s()]+)\)", text))
+    expected = {f"{entry.repository}/issues", f"{entry.repository}/issues/new/choose"}
+    if not expected.issubset(links):
+        problems.append(
+            "Support: rendered markdown must link to this repository's /issues and /issues/new/choose"
+        )
+    raw_vendor = manifest.get("vendor")
+    vendor = raw_vendor if isinstance(raw_vendor, dict) else {}
+    support_url = vendor.get("support_url") or manifest.get("support_url")
+    if not isinstance(support_url, str) or support_url.strip() not in expected:
+        problems.append(
+            "Support: vendor.support_url must link to this repository's GitHub issues"
+        )
+    return problems
+
+
 def inspect_archive(
     data: bytes,
     *,
@@ -756,6 +906,7 @@ def inspect_archive(
             f"flowsteward-extension-sdk 0.4.0 or later (got '{declared_contract or 'nothing'}')"
         )
     problems.extend(_dataset_contract_problems(manifest, contents))
+    problems.extend(_support_problems(manifest, contents, entry))
     if not name or name == entry.extension_id:
         problems.append("display_name must be a readable title, not the extension id")
     if len(description) < MIN_DESCRIPTION_CHARS:
@@ -772,8 +923,6 @@ def inspect_archive(
     if problems:
         raise CatalogError("\n".join(f"{where}: {problem}" for problem in problems))
 
-    namespace = entry.extension_id.split(".", 1)[0]
-    verified = publishers.get(namespace, "").lower() == entry.owner.lower()
     # No compatible_flow_steward: the manifest's runtime.compatibility.platform_min is
     # the extension host contract version, not the product version Flow Steward
     # compares this range against. The installer still enforces platform_min itself.
@@ -789,7 +938,9 @@ def inspect_archive(
         "setup_summary": _text(listing.get("setup_summary")),
         "tags": _strings(listing.get("tags")),
         "publication_status": "published",
-        "verification_status": "verified" if verified else "unverified",
+        "verification_status": verification_status(
+            entry.extension_id, version, entry.repository, verified_extensions()
+        ),
     }
 
 
@@ -1036,6 +1187,7 @@ def build_index() -> dict[str, Any]:
     present = set(load_entries())
     records = load_records()
     corrections = category_overrides()
+    tested = verified_extensions()
     items: list[dict[str, Any]] = []
     newest = ""
     for extension_id, versions in records.items():
@@ -1043,6 +1195,22 @@ def build_index() -> dict[str, Any]:
         if listed is None:
             continue
         item = dict(listed["item"])
+        # Project current curation over old owner-derived fields; never rewrite
+        # immutable records or let their previous badge silently re-promote them.
+        identity_matches = (
+            listed.get("extension_id") == item.get("extension_id") == extension_id
+            and listed.get("version") == item.get("version")
+            and listed.get("tag") == f"v{listed.get('version')}"
+            and item.get("repository_url")
+            == f"{listed.get('repository')}/tree/{listed.get('tag')}"
+        )
+        item["verification_status"] = (
+            verification_status(
+                extension_id, listed["version"], listed.get("repository", ""), tested
+            )
+            if identity_matches
+            else "unverified"
+        )
         correction = corrections.get(extension_id)
         if correction and correction["repository_url"] == item.get("repository_url"):
             item["categories"] = list(correction["categories"])

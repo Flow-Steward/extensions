@@ -14,6 +14,8 @@ from pathlib import Path
 import pytest
 import yaml
 
+from catalog_test_helpers import _support
+
 HERE = Path(__file__).parent
 SCRIPT = HERE / "publish_extension_release.py"
 REPOSITORY = "Flow-Steward/ext-fixture"
@@ -38,7 +40,13 @@ def publishing(tmp_path):
         "required_scopes": ["extension:invoke"],
         "runtime": {"contract_version": "extension_host_v2"},
     }
+    manifest.update(
+        ui_manifest="ui/ui_manifest.yaml",
+        vendor={"support_url": f"https://github.com/{REPOSITORY}/issues"},
+    )
     with zipfile.ZipFile(artifacts / filename, "w") as archive:
+        for name, content in _support(f"https://github.com/{REPOSITORY}").items():
+            archive.writestr(f"flowsteward_fixture/{name}", content)
         archive.writestr("flowsteward_fixture/extension.yaml", yaml.safe_dump(manifest))
         archive.writestr("flowsteward_fixture/main.py", "print('fixture')\n")
         archive.writestr(

@@ -16,6 +16,8 @@ from pathlib import Path
 import pytest
 import yaml
 
+from catalog_test_helpers import _support
+
 HERE = Path(__file__).parent
 REPOSITORY = "Flow-Steward/ext-fixture"
 TAG = "v0.1.1"
@@ -93,6 +95,12 @@ def source(tmp_path):
         "required_scopes": ["extension:invoke"],
         "runtime": {"contract_version": "extension_host_v2"},
     }
+    manifest.update(
+        ui_manifest="ui/ui_manifest.yaml",
+        vendor={"support_url": f"https://github.com/{REPOSITORY}/issues"},
+    )
+    for name, content in _support(f"https://github.com/{REPOSITORY}").items():
+        write(root, name, content)
     write(root, "extension.yaml", yaml.safe_dump(manifest))
     write(
         root,
@@ -424,7 +432,7 @@ p=argparse.ArgumentParser();p.add_argument('--runtime-target');p.add_argument('-
 r=Path(__file__).resolve().parents[1];o=Path(a.out_dir);o.mkdir(parents=True,exist_ok=True)
 (o/'SHA256SUMS').write_text('packager-owned output inventory')
 with zipfile.ZipFile(o/f'flowsteward.fixture-0.1.1-{a.runtime_target}.zip','w') as z:
- for n in ['extension.yaml','extension-descriptor.yaml','icon.png','main.py','README.md']:
+ for n in ['extension.yaml','extension-descriptor.yaml','icon.png','main.py','README.md','ui/ui_manifest.yaml','ui/pages/support.yaml']:
   z.write(r/n,'flowsteward_fixture/'+n)
  z.writestr('flowsteward_fixture/from-source-packager.txt','packaged by source')
  z.writestr('flowsteward_fixture/.fs-package.yaml',json.dumps({'runtime_target':a.runtime_target}))

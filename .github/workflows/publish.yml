@@ -20,6 +20,7 @@ on:
       - "categories.json"
       - "category_overrides.json"
       - "verified_publishers.json"
+      - "verified_extensions.json"
       - "scripts/build_index.py"
   workflow_dispatch:
 
