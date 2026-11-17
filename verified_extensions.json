@@ -6,8 +6,8 @@
   },
   "flowsteward.data-connector-mcp-toolbox-mysql": {
     "repository": "https://github.com/Flow-Steward/ext-data-mysql",
-    "version": "1.3.11",
-    "reason": "Selected by the maintainer as a tested integration. This is not provider endorsement."
+    "version": "1.3.12",
+    "reason": "Maintainer-approved MySQL driver security patch, covered by source CI and independent review. No live database testing or provider endorsement is claimed."
   },
   "flowsteward.data-connector-mcp-toolbox-postgres": {
     "repository": "https://github.com/Flow-Steward/ext-data-postgres",
