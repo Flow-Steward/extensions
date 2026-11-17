@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-17.d3f15a89",
-  "published_at": "2026-11-17T09:31:22Z",
+  "catalog_revision": "2026-11-17.38722c19",
+  "published_at": "2026-11-17T09:36:18Z",
   "items": [
     {
       "extension_id": "flowsteward.agnum",
@@ -2416,7 +2416,7 @@
     },
     {
       "extension_id": "flowsteward.web-scraper",
-      "version": "0.1.27",
+      "version": "0.1.28",
       "name": "Web Scraper",
       "summary": "Collect product and page data from websites into a CSV or JSON Lines file for your workflows, through a scraper service you run yourself.",
       "description": "Web Scraper collects structured records, such as products with their name, price, SKU, images and variants, from websites and gives each crawl to your workflow as two files: result.jsonl (one JSON record per line) and result.csv (semicolon-separated, opens in Excel). The crawling runs in the separate Web Scraper service, a Docker container you run yourself next to Flow Steward. The extension connects projects to that service, adds workflow actions and pages, and stores the results as workflow files.\n\nThe read-only Scrape a site workflow analyzes a site (robots.txt, sitemap, page types), loads a few sample pages, has AI write the extraction mapping with your project's default model, tests the mapping on the samples, starts the crawl and waits for it without holding a worker. When the crawl ends it returns the files, the first records and a run summary that says why the run stopped and how complete it is. A stored mapping is reused on the next run of the same site, and a mapping that stops matching during a crawl is repaired by AI and tested again before it is used. The Runs and Run detail pages follow every crawl; a run can be stopped, resumed, and its missed pages collected again.\n\nTypical uses: load a supplier's catalogue every week on a schedule and update your own product data; follow competitors' public prices, with the old price and a sale flag when the page shows them; or call Scrape a site from your own workflow with Invoke and process the CSV or JSON Lines file in the next steps.\n\nSetup: run the Web Scraper service in Docker with an API token and a secrets key (about 2 GB of memory per browser crawl), create a scraper profile in the project with the service address and token, and add the webhook the service uses to report finished runs. Politeness presets (gentle, normal, fast) set the pause between pages, the pages loaded at once, the requests per minute and the page timeout, and the service slows down by itself when a site struggles. A new start for a site that is still being crawled is skipped, or queued if you choose. Proxies and a third-party challenge solver are optional profile settings.\n\nLimits: scrape only sites whose terms allow it. robots.txt is respected by default. The scraper does not log in to sites, and it cannot promise to get past CAPTCHAs or bot protection; a site that blocks it ends the run with that reason. The service caps a result at 99 MiB by default. Requires Flow Steward 0.9.18 or later.",
@@ -2447,19 +2447,19 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-web-scraper/tree/v0.1.27",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-web-scraper/releases/download/v0.1.27/flowsteward.web-scraper-0.1.27.zip",
-      "release_zip_bytes": 514270,
-      "release_zip_sha256": "e098007908e660c0fdd15666c37ff01a8839466bad47c28dee338af7fddd6ab6",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-web-scraper/tree/v0.1.28",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-web-scraper/releases/download/v0.1.28/flowsteward.web-scraper-0.1.28.zip",
+      "release_zip_bytes": 515385,
+      "release_zip_sha256": "4719fbe5c3e2fa90817159fb4a11560b690de597b20b18a7cd5f91b2fed5dbb1",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/3f53c3bcb3b86c797430181881896e673d2bbe5b/releases/flowsteward.web-scraper/0.1.27.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/180eabd63a536d27f77179ec73476d34d2282461/releases/flowsteward.web-scraper/0.1.28.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-11-16T08:07:23Z",
-      "updated_at": "2026-11-16T09:14:19Z"
+      "updated_at": "2026-11-17T09:36:18Z"
     },
     {
       "extension_id": "flowsteward.whatsapp",
