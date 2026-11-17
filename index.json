@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-16.0967d534",
-  "published_at": "2026-11-16T19:58:37Z",
+  "catalog_revision": "2026-11-17.a10c5b60",
+  "published_at": "2026-11-17T09:25:12Z",
   "items": [
     {
       "extension_id": "flowsteward.agnum",
@@ -1031,7 +1031,7 @@
     },
     {
       "extension_id": "flowsteward.linkedin",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "name": "LinkedIn Publisher",
       "summary": "Publish prepared text, image posts and article links to LinkedIn from workflows, using a member profile or company Page.",
       "description": "LinkedIn Publisher connects Flow Steward workflows to LinkedIn organic publishing. Publish public text posts, posts with one JPEG or PNG image, and link cards for articles hosted on your own website. Choose an authenticated member profile or one explicitly configured company Page per connection.\n\nUse validate_post to check prepared content against local limits, upload_image to upload an authorized Flow Steward artifact, publish_post to submit the post, and test_connection to inspect redacted connection status. Successful publication returns a LinkedIn post ID, URL, author and API version. Release announcements, tutorials and blog updates can arrive from a webhook or another workflow step; no WordPress or AI-provider dependency is required.\n\nBring your own LinkedIn developer app, register the HTTPS OAuth redirect shown by Flow Steward, and create project-owned member or Page connections. Member publishing needs the LinkedIn sharing and OpenID Connect products. Page publishing needs Community Management access, an eligible Page role and a manually entered organization URN. Bind each connection explicitly in the workflow. Use separate bound steps to publish as both authors; there is no Page-discovery picker.\n\nContent must already be prepared. Local policy limits text to 3,000 UTF-16 code units and images to 8 MiB; images are not resized or cropped. Article links are link cards, not native LinkedIn articles. Comments, replies, private posts, video, documents, multiple images, editing, deletion, analytics and inbound LinkedIn events are not supported. Test mode suppresses uploads and posts. Rate limits and uncertain write outcomes use the existing workflow and effect-resolution controls; there are no automatic provider retries or status polls. An accepted receipt does not guarantee immediate visibility or completed image processing.\n\nThis independent integration is not endorsed by LinkedIn. Live OAuth, Page access and live publication have not been verified in this release preparation.",
@@ -1055,19 +1055,19 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-social-linkedin/tree/v1.0.1",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-social-linkedin/releases/download/v1.0.1/flowsteward.linkedin-1.0.1.zip",
-      "release_zip_bytes": 56475,
-      "release_zip_sha256": "8a8f77e35242fa2ae0fc6b268bd647ec909e60fadf699088ad066d19d41239cc",
+      "repository_url": "https://github.com/Flow-Steward/ext-social-linkedin/tree/v1.0.2",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-social-linkedin/releases/download/v1.0.2/flowsteward.linkedin-1.0.2.zip",
+      "release_zip_bytes": 56476,
+      "release_zip_sha256": "1c1228d497a3050e5d11bee61ed8bc982b77c97c7d4bb2ced7f05c8c556978ca",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/3f53c3bcb3b86c797430181881896e673d2bbe5b/releases/flowsteward.linkedin/1.0.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/2c2bf57ed15a7bbf9c2d2f09edec4944aec8ddf1/releases/flowsteward.linkedin/1.0.2.png",
         "sha256": "324708d4d88afaef003ad25866e06ee23247cfc811e99fc050f01fbbe97c15e5",
         "bytes": 15318,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-11-16T08:07:02Z",
-      "updated_at": "2026-11-16T09:13:45Z"
+      "updated_at": "2026-11-17T09:25:12Z"
     },
     {
       "extension_id": "flowsteward.meta-ads",
