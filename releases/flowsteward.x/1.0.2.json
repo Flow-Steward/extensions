@@ -1,0 +1,50 @@
+{
+  "extension_id": "flowsteward.x",
+  "version": "1.0.2",
+  "repository": "https://github.com/Flow-Steward/ext-social-x",
+  "tag": "v1.0.2",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.x/1.0.2.png",
+    "sha256": "777f4eced77ba24d98b4d542692c2a91b7ce0c33af35f1657ce32e381a1973d1",
+    "bytes": 7723,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-17T23:10:35Z",
+  "item": {
+    "extension_id": "flowsteward.x",
+    "version": "1.0.2",
+    "name": "X",
+    "summary": "Publish article announcements on X and handle direct replies in reviewed workflows.",
+    "description": "Connect an X account to Flow Steward workflows to share published blog posts and manage direct replies. Publish an announcement with an intact article link and one static image. Validate ordinary 280-character weighted text, prepare a 1200x675 JPEG cover, upload media with optional alt text, read a post and send a reviewed reply.\n\nIncoming events cover new direct replies to posts authored by the connected account, including posts published outside Flow Steward. Use workflow conditions to filter comments, apply opt-out rules and decide whether to respond. The package includes disabled article-announcement and comment-reply templates with human review before sending by default.\n\nSet up an X OAuth application, connect the account and arrange the required X API access. Incoming replies also need the same application's webhook credentials and a public HTTPS callback. To generate drafts, select a verified model for the included agents and map the project connection before enabling the templates.\n\nThis release supports ordinary posts with at most one static image. It does not provide direct messages, historical comment import, deeper user-to-user reply threads, video or GIF uploads, multi-post threads, or a WordPress editor plugin. X API access and model usage are separate services. Automatic AI replies remain disabled until the required X approval, account-owner consent and opt-out controls are in place.",
+    "categories": [
+      "marketing"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "query",
+      "workflow_trigger"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "event:subscribe",
+      "extension:invoke"
+    ],
+    "setup_summary": "Configure an X OAuth app and connect your account. For incoming replies, add the app credentials and a public HTTPS callback; select a verified model and map the disabled workflow templates before enabling them.",
+    "tags": [
+      "x",
+      "twitter",
+      "publishing",
+      "comments"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-social-x/tree/v1.0.2",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-social-x/releases/download/v1.0.2/flowsteward.x-1.0.2.zip",
+    "release_zip_bytes": 14525086,
+    "release_zip_sha256": "81037aa867520da70abc97dd92e336190e5f5cc1599be119a8cfe9aa25f422c8"
+  }
+}

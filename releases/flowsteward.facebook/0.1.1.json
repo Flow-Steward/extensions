@@ -1,0 +1,47 @@
+{
+  "extension_id": "flowsteward.facebook",
+  "version": "0.1.1",
+  "repository": "https://github.com/Flow-Steward/ext-social-facebook",
+  "tag": "v0.1.1",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.facebook/0.1.1.png",
+    "sha256": "a3c4f14c54929f56a44c8d7a551ad1b40c3f9fa8369da3a7a2b218f9d9831597",
+    "bytes": 2998,
+    "mime_type": "image/png",
+    "size": "325x325"
+  },
+  "published_at": "2026-11-17T23:10:00Z",
+  "item": {
+    "extension_id": "flowsteward.facebook",
+    "version": "0.1.1",
+    "name": "Facebook Pages",
+    "summary": "Publish Facebook Page posts and photos, reply to comments, and start workflows when new comments arrive.",
+    "description": "Connect Facebook Pages to Flow Steward for social media publishing and comment management. Publish text updates, share a blog post with its link, or publish a photo with a caption. Read Page posts, retrieve comments and replies, and respond to a comment as the selected Page.\n\nUse these actions in marketing workflows to share approved articles, announce product updates, and pass customer questions to the next step. The New Facebook Page comment trigger starts a workflow when a new root comment arrives from another person. Workflow steps can prepare a response or route the conversation for human review before sending a reply.\n\nCreate a separate project connection for each Facebook Page and select the intended connection in each workflow step. Publishing requires a Page access token with the appropriate Meta permissions. Receiving comment events also requires a Meta app secret, public HTTPS callback setup and a Page subscription.\n\nThis extension covers organic Page posts and comments. Advertising campaigns, personal-profile publishing, Messenger conversations, image editing and text generation are outside its operation set. Combine it with other workflow steps to prepare content before publication.",
+    "categories": [
+      "marketing"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "query",
+      "workflow_trigger"
+    ],
+    "permissions_summary": [
+      "extension:invoke",
+      "read:projects"
+    ],
+    "setup_summary": "Create one Facebook Page connection per Page with its Page ID, Meta app ID, explicit Graph API version and Page access token. Comment triggers also need an app secret, public HTTPS callback setup and a Meta Page subscription.",
+    "tags": [
+      "facebook",
+      "pages",
+      "comments"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-social-facebook/tree/v0.1.1",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-social-facebook/releases/download/v0.1.1/flowsteward.facebook-0.1.1.zip",
+    "release_zip_bytes": 48396,
+    "release_zip_sha256": "0df7bfc3aaf9a15961c42caf9feef4149031244ae3e1355b6ba9433beb90046d"
+  }
+}

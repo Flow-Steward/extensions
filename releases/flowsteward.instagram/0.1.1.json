@@ -1,0 +1,47 @@
+{
+  "extension_id": "flowsteward.instagram",
+  "version": "0.1.1",
+  "repository": "https://github.com/Flow-Steward/ext-social-instagram",
+  "tag": "v0.1.1",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.instagram/0.1.1.png",
+    "sha256": "8878662ce6afc4a995bd80c67652a72642c9564b40cfc5ac94a802d7e0f8b6b1",
+    "bytes": 34715,
+    "mime_type": "image/png",
+    "size": "192x192"
+  },
+  "published_at": "2026-11-17T23:10:08Z",
+  "item": {
+    "extension_id": "flowsteward.instagram",
+    "version": "0.1.1",
+    "name": "Instagram",
+    "summary": "Publish Instagram photos and image carousels, reply to comments, and start workflows when new comments arrive.",
+    "description": "Connect an Instagram professional account to Flow Steward for image publishing and comment management through the Instagram API with Instagram Login. Publish a photo with a caption and optional alternative text, or publish an image carousel. Read account posts, retrieve comments and replies, and send a reply to a comment on your own media.\n\nUse these actions to share prepared images for a blog article, announce a product update, or collect audience questions for a review workflow. The New Instagram comment trigger starts a workflow for a new root comment from another person. Follow-up steps can classify the question, prepare a response, or request human approval before replying.\n\nPublishing accepts publicly accessible HTTPS JPEG images, captions up to 2,200 characters and image carousels of 2 to 20 items. It returns publication status and available media identifiers and permalinks. Dedicated status and recovery actions let a workflow inspect or resume a known publishing container without creating the content again.\n\nConfigure a separate project connection for each professional account, using an Instagram Login access token with the required permissions. Signed comment delivery additionally needs a Meta app secret and public HTTPS webhook setup. Advertising, Reels, Stories, video, direct messages, image resizing and text generation are outside this extension; prepare media and copy in earlier workflow steps.",
+    "categories": [
+      "marketing"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "query",
+      "workflow_trigger"
+    ],
+    "permissions_summary": [
+      "extension:invoke",
+      "read:projects"
+    ],
+    "setup_summary": "Create one connection per Instagram professional account with its account ID, Meta app ID, explicit Graph API version and Instagram Login token. Comment triggers also need an app secret and a public HTTPS webhook with the account subscribed in Meta.",
+    "tags": [
+      "instagram",
+      "images",
+      "comments"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-social-instagram/tree/v0.1.1",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-social-instagram/releases/download/v0.1.1/flowsteward.instagram-0.1.1.zip",
+    "release_zip_bytes": 99906,
+    "release_zip_sha256": "69a36070ab8df5e0aae0e4ddf7832832e6f658c43ca76a7c5e5c49bc089e8940"
+  }
+}
