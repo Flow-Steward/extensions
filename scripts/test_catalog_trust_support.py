@@ -13,7 +13,7 @@ from test_build_index import repo as repo
 
 CURATED = {
     "flowsteward.shopify": ("ext-ecommerce-shopify", "0.5.5"),
-    "flowsteward.data-connector-mcp-toolbox-mysql": ("ext-data-mysql", "1.3.11"),
+    "flowsteward.data-connector-mcp-toolbox-mysql": ("ext-data-mysql", "1.3.12"),
     "flowsteward.data-connector-mcp-toolbox-postgres": ("ext-data-postgres", "1.4.13"),
     "flowsteward.google-workspace": ("ext-google-workspace", "0.3.6"),
     "flowsteward.telegram": ("ext-messaging-telegram", "1.3.5"),
