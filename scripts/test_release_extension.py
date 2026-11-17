@@ -432,7 +432,7 @@ p=argparse.ArgumentParser();p.add_argument('--runtime-target');p.add_argument('-
 r=Path(__file__).resolve().parents[1];o=Path(a.out_dir);o.mkdir(parents=True,exist_ok=True)
 (o/'SHA256SUMS').write_text('packager-owned output inventory')
 with zipfile.ZipFile(o/f'flowsteward.fixture-0.1.1-{a.runtime_target}.zip','w') as z:
- for n in ['extension.yaml','extension-descriptor.yaml','icon.png','main.py','README.md']:
+ for n in ['extension.yaml','extension-descriptor.yaml','icon.png','main.py','README.md','ui/ui_manifest.yaml','ui/pages/support.yaml']:
   z.write(r/n,'flowsteward_fixture/'+n)
  z.writestr('flowsteward_fixture/from-source-packager.txt','packaged by source')
  z.writestr('flowsteward_fixture/.fs-package.yaml',json.dumps({'runtime_target':a.runtime_target}))

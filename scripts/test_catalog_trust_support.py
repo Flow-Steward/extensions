@@ -352,11 +352,12 @@ def test_missing_support_is_refused_at_publication_and_submission_boundaries(rep
     assert not report.recorded
     assert any("Support" in problem for problem in report.problems)
     entry = builder.parse_entry("flowsteward.example", f"repository: {REPOSITORY}\n")
-    assert "Support" in builder._check_new_entry(
-        entry,
-        submitter="Flow-Steward",
-        github=github,
-        categories=set(CATEGORIES),
-        publishers=builder.verified_publishers(),
-    )
+    with pytest.raises(builder.CatalogError, match="Support"):
+        builder._check_new_entry(
+            entry,
+            submitter="Flow-Steward",
+            github=github,
+            categories=set(CATEGORIES),
+            publishers=builder.verified_publishers(),
+        )
     assert not builder.record_path("flowsteward.example", "1.0.0").exists()
