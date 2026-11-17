@@ -361,3 +361,22 @@ def test_missing_support_is_refused_at_publication_and_submission_boundaries(rep
             publishers=builder.verified_publishers(),
         )
     assert not builder.record_path("flowsteward.example", "1.0.0").exists()
+
+
+def test_code_spans_cannot_synthesize_a_different_markdown_destination(repo):
+    files = support_files(REPOSITORY)
+    page = yaml.safe_load(files["ui/pages/support.yaml"])
+    page["components"][0]["body"] = (
+        f"[Issues]({REPOSITORY}/issues`x`)\n[Report]({REPOSITORY}/issues/new/choose)"
+    )
+    files["ui/pages/support.yaml"] = yaml.safe_dump(page)
+    with pytest.raises(builder.CatalogError, match="Support"):
+        _inspect(_first_party_manifest(), files)
+
+
+def test_component_ref_chain_does_not_provide_host_rendered_support(repo):
+    files = support_files(REPOSITORY, style="refs")
+    files["ui/components/contact_actual.yaml"] = files["ui/components/contact.yaml"]
+    files["ui/components/contact.yaml"] = "ref: contact_actual.yaml\n"
+    with pytest.raises(builder.CatalogError, match="Support"):
+        _inspect(_first_party_manifest(), files)
