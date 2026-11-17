@@ -15,6 +15,7 @@ import pytest
 import yaml
 
 import build_index as builder
+from catalog_test_helpers import _support
 
 CATEGORIES = ["data", "messaging", "other"]
 REPO = "https://github.com/acme/mailbox-extension"
@@ -163,7 +164,6 @@ def test_an_entry_is_one_repository_link():
 def test_an_entry_that_is_not_a_repository_link_says_why(name, text, message):
     with pytest.raises(builder.CatalogError, match=message):
         builder.parse_entry(name, text)
-
 
 
 @pytest.mark.parametrize("filename", ["acme.mailbox", "acme.mailbox.yml", "acme.mailbox.YAML", "acme.mailbox.yaml.bak"])
@@ -868,17 +868,28 @@ def test_a_removed_entry_stays_listed_as_deprecated(repo):
     assert builder.build_index()["items"][0]["publication_status"] == "deprecated"
 
 
-def test_a_reserved_namespace_is_verified_from_its_owner(repo):
+def test_a_reserved_namespace_owner_alone_is_unverified(repo):
     github = FakeGitHub()
-    manifest = _manifest(extension_id="flowsteward.mailbox")
+    manifest = _manifest(
+        extension_id="flowsteward.mailbox",
+        ui_manifest="ui/ui_manifest.yaml",
+        vendor={"support_url": "https://github.com/Flow-Steward/mailbox/issues"},
+    )
     github.release(
-        "Flow-Steward/mailbox", "1.0.0", _zip(manifest, top="flowsteward_mailbox"), extension_id="flowsteward.mailbox"
+        "Flow-Steward/mailbox",
+        "1.0.0",
+        _zip(
+            manifest,
+            top="flowsteward_mailbox",
+            extra=_support("https://github.com/Flow-Steward/mailbox"),
+        ),
+        extension_id="flowsteward.mailbox",
     )
     _entry(repo, "flowsteward.mailbox", "https://github.com/Flow-Steward/mailbox")
 
     builder.publish(github=github)
 
-    assert builder.build_index()["items"][0]["verification_status"] == "verified"
+    assert builder.build_index()["items"][0]["verification_status"] == "unverified"
 
 
 # --- pull requests ------------------------------------------------------------------------

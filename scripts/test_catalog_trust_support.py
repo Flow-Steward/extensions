@@ -7,6 +7,7 @@ import pytest
 import yaml
 
 import build_index as builder
+from catalog_test_helpers import _support as support_files
 from test_build_index import CATEGORIES, FakeGitHub, _commit, _entry, _manifest, _zip
 from test_build_index import repo as repo
 
@@ -17,26 +18,6 @@ CURATED = {
     "flowsteward.google-workspace": ("ext-google-workspace", "0.3.6"),
 }
 REPOSITORY = "https://github.com/Flow-Steward/ext-example"
-
-
-def _support(repository=REPOSITORY, *, style="inline"):
-    body = f"[Report a problem or ask a question]({repository}/issues/new/choose)\n[Existing issues]({repository}/issues)"
-    component = {"component_id": "contact", "type": "markdown", "body": body}
-    page = {"page_id": "support", "title": "Support", "project_scoped": False}
-    files = {
-        "ui/ui_manifest.yaml": yaml.safe_dump(
-            {"version": "1", "pages": [{"ref": "pages/support.yaml"}]}
-        )
-    }
-    if style == "page":
-        page.update({"type": "markdown", "content": body})
-    elif style == "refs":
-        page["components"] = [{"ref": "../components/contact.yaml"}]
-        files["ui/components/contact.yaml"] = yaml.safe_dump(component)
-    else:
-        page["components"] = [component]
-    files["ui/pages/support.yaml"] = yaml.safe_dump(page)
-    return files
 
 
 def _first_party_manifest(
@@ -62,7 +43,7 @@ def _inspect(manifest, extra, repository=REPOSITORY):
 
 
 def test_namespace_authorization_does_not_grant_verification(repo):
-    item = _inspect(_first_party_manifest(), _support())
+    item = _inspect(_first_party_manifest(), support_files(REPOSITORY))
     assert item["verification_status"] == "unverified"
     unauthorized = builder.parse_entry(
         "flowsteward.example", "repository: https://github.com/other/ext-example\n"
@@ -88,7 +69,7 @@ def test_curated_release_survives_publish_and_index_without_mutating_records(
     (repo / "verified_extensions.json").write_text(json.dumps(policy))
     manifest = _first_party_manifest(extension_id, version, repository)
     data = _zip(
-        manifest, top=builder.folder_name(extension_id), extra=_support(repository)
+        manifest, top=builder.folder_name(extension_id), extra=support_files(repository)
     )
     github = FakeGitHub()
     github.release(f"Flow-Steward/{name}", version, data, extension_id=extension_id)
@@ -121,6 +102,13 @@ def test_old_namespace_verified_records_are_projected_unverified_without_rewriti
         "tag": "v1.0.0",
         "host_contract": builder.HOST_CONTRACT,
         "published_at": "2026-11-18T00:00:00Z",
+        "icon": {
+            "path": builder.icon_path(extension_id, "1.0.0"),
+            "sha256": "a" * 64,
+            "bytes": 1,
+            "mime_type": "image/png",
+            "size": "128x128",
+        },
         "item": {
             "extension_id": extension_id,
             "version": "1.0.0",
@@ -188,10 +176,12 @@ def test_invalid_json_curation_fails_clearly(repo):
         builder.build_index()
 
 
-@pytest.mark.parametrize("style", ["inline", "refs", "page"])
+@pytest.mark.parametrize("style", ["inline", "refs", "content"])
 def test_registered_global_support_accepts_existing_content_styles(repo, style):
     assert (
-        _inspect(_first_party_manifest(), _support(style=style))["extension_id"]
+        _inspect(_first_party_manifest(), support_files(REPOSITORY, style=style))[
+            "extension_id"
+        ]
         == "flowsteward.example"
     )
 
@@ -213,7 +203,7 @@ def test_registered_global_support_accepts_existing_content_styles(repo, style):
     ],
 )
 def test_broken_first_party_support_is_rejected(repo, broken):
-    manifest, files = _first_party_manifest(), _support(style="refs")
+    manifest, files = _first_party_manifest(), support_files(REPOSITORY, style="refs")
     if broken == "missing_manifest":
         manifest.pop("ui_manifest")
     elif broken == "unregistered":
@@ -231,7 +221,7 @@ def test_broken_first_party_support_is_rejected(repo, broken):
             "../components/contact.yaml", "../../../contact.yaml"
         )
     elif broken == "wrong_repo":
-        files = _support("https://github.com/Flow-Steward/ext-other")
+        files = support_files("https://github.com/Flow-Steward/ext-other")
     elif broken == "missing_issues_link":
         files["ui/components/contact.yaml"] = yaml.safe_dump(
             {
@@ -289,3 +279,84 @@ def test_unchanged_old_release_recheck_does_not_apply_new_support_policy(repo):
     before = path.read_bytes()
     assert builder.publish(github=github) == builder.PublishReport([], [], [])
     assert path.read_bytes() == before
+
+
+@pytest.mark.parametrize("vendor", [None, {}, {"name": "Flow Steward"}])
+def test_root_support_url_alias_matches_host_manifest_normalization(repo, vendor):
+    manifest = _first_party_manifest()
+    manifest["support_url"] = manifest["vendor"]["support_url"]
+    manifest["vendor_name"] = "Flow Steward"
+    if vendor is None:
+        manifest.pop("vendor")
+    else:
+        manifest["vendor"] = vendor
+    assert (
+        _inspect(manifest, support_files(REPOSITORY))["verification_status"]
+        == "unverified"
+    )
+
+
+def test_page_metadata_urls_cannot_substitute_for_rendered_support(repo):
+    files = support_files(REPOSITORY)
+    files["ui/pages/support.yaml"] = yaml.safe_dump(
+        {
+            "page_id": "support",
+            "title": "Support",
+            "project_scoped": False,
+            "type": "markdown",
+            "content": f"{REPOSITORY}/issues {REPOSITORY}/issues/new/choose",
+        }
+    )
+    with pytest.raises(builder.CatalogError, match="Support"):
+        _inspect(_first_party_manifest(), files)
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        f"{REPOSITORY}/issues {REPOSITORY}/issues/new/choose",
+        f"```markdown\n[Issues]({REPOSITORY}/issues) [Report]({REPOSITORY}/issues/new/choose)\n```",
+        f"`[Issues]({REPOSITORY}/issues)` `[Report]({REPOSITORY}/issues/new/choose)`",
+        f"![Issues]({REPOSITORY}/issues) ![Report]({REPOSITORY}/issues/new/choose)",
+    ],
+)
+def test_non_actionable_url_mentions_do_not_provide_support(repo, text):
+    files = support_files(REPOSITORY)
+    page = yaml.safe_load(files["ui/pages/support.yaml"])
+    page["components"][0]["body"] = text
+    files["ui/pages/support.yaml"] = yaml.safe_dump(page)
+    with pytest.raises(builder.CatalogError, match="Support"):
+        _inspect(_first_party_manifest(), files)
+
+
+def test_rendered_content_takes_precedence_over_hidden_body(repo):
+    files = support_files(REPOSITORY)
+    page = yaml.safe_load(files["ui/pages/support.yaml"])
+    page["components"][0]["content"] = "Support is unavailable."
+    files["ui/pages/support.yaml"] = yaml.safe_dump(page)
+    with pytest.raises(builder.CatalogError, match="Support"):
+        _inspect(_first_party_manifest(), files)
+
+
+def test_missing_support_is_refused_at_publication_and_submission_boundaries(repo):
+    manifest = _manifest(extension_id="flowsteward.example")
+    github = FakeGitHub()
+    github.release(
+        "Flow-Steward/ext-example",
+        "1.0.0",
+        _zip(manifest, top="flowsteward_example"),
+        extension_id="flowsteward.example",
+    )
+    _entry(repo, "flowsteward.example", REPOSITORY)
+    report = builder.publish(github=github)
+    assert not report.recorded
+    assert any("Support" in problem for problem in report.problems)
+    entry = builder.parse_entry("flowsteward.example", f"repository: {REPOSITORY}\n")
+    assert "Support" in builder._check_new_entry(
+        entry,
+        submitter="Flow-Steward",
+        github=github,
+        categories=set(CATEGORIES),
+        publishers=builder.verified_publishers(),
+    )
+    assert not builder.record_path("flowsteward.example", "1.0.0").exists()

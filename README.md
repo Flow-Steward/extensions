@@ -231,7 +231,48 @@ is listed instead. Removing an entry keeps the extension listed as **deprecated*
 | Documentation link | the repository at the release tag |
 | Download URL, size, SHA-256 | the release asset, recorded once in `releases/` |
 | Logo (`icon`: URL, SHA-256, bytes, `image/png`, `WxH`) | the release's `icon.png`, copied once to `releases/<extension_id>/<version>.png` and linked at the catalog commit that added it |
-| Verified | the id's namespace is mapped to the repository owner in `verified_publishers.json` |
+| Verified | the exact repository, extension id and release version are selected in `verified_extensions.json` |
+
+### Authorship and tested releases
+
+`verified_publishers.json` reserves namespaces for authorized repository owners;
+it does not grant a Verified badge. Flow Steward maintained integrations are
+created and maintained by Flow Steward. They are not official extensions from,
+or endorsed by, the integrated product's provider.
+
+[`verified_extensions.json`](verified_extensions.json) selects tested integrations
+by exact extension id, repository URL and release version, with a maintainer
+reason. Currently this is Shopify 0.5.5, MySQL 1.3.11, PostgreSQL 1.4.13 and
+Google Workspace 0.3.6, as designated by the maintainer. This records that
+selection, not a new live-test result or date. Every other release is unverified;
+future versions require explicit review and selection. The index builder applies
+current curation to historical records without changing their archive hashes,
+source tags or immutable release records. Missing curation grants no badges;
+malformed curation fails the build.
+
+### Support in Flow Steward maintained extensions
+
+New releases and submissions from `Flow-Steward` repositories must register a
+**Support** page through `extension.yaml`'s `ui_manifest` and its `pages` list.
+The page must have `page_id: support`, `title: Support` and
+`project_scoped: false`, so administrators can reach it without a project.
+Ship every referenced page and component in the archive. Inline markdown and
+bundle-local component refs are supported; merely shipping a file called
+`support.yaml` does not register a page.
+
+The rendered markdown must contain both links to the extension's own repository:
+`https://github.com/Flow-Steward/<repo>/issues/new/choose` and
+`https://github.com/Flow-Steward/<repo>/issues`. Set `vendor.support_url` to that
+repository's issues page or issue chooser (the host's root `support_url` alias
+is also accepted). Enable GitHub Issues and maintain the
+issue templates in the source repository; the archive validator checks the
+registered content and exact destinations without making network requests.
+See [`templates/single-extension/SUPPORT.md`](templates/single-extension/SUPPORT.md)
+for a minimal contract and report guidance.
+
+This first-party publication policy does not apply to unrelated external authors.
+Previously recorded releases remain immutable and are rechecked for changed
+archive bytes, not retrospectively rejected for this new Support policy.
 
 ### Reviewing categorization
 

@@ -16,6 +16,8 @@ from pathlib import Path
 import pytest
 import yaml
 
+from catalog_test_helpers import _support
+
 HERE = Path(__file__).parent
 REPOSITORY = "Flow-Steward/ext-fixture"
 TAG = "v0.1.1"
@@ -93,6 +95,12 @@ def source(tmp_path):
         "required_scopes": ["extension:invoke"],
         "runtime": {"contract_version": "extension_host_v2"},
     }
+    manifest.update(
+        ui_manifest="ui/ui_manifest.yaml",
+        vendor={"support_url": f"https://github.com/{REPOSITORY}/issues"},
+    )
+    for name, content in _support(f"https://github.com/{REPOSITORY}").items():
+        write(root, name, content)
     write(root, "extension.yaml", yaml.safe_dump(manifest))
     write(
         root,

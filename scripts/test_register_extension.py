@@ -1,4 +1,5 @@
 """Registration and public catalog delivery, with real files and offline GitHub."""
+
 from __future__ import annotations
 
 import copy
@@ -9,6 +10,8 @@ from pathlib import Path
 
 import pytest
 import yaml
+
+from catalog_test_helpers import _support
 
 import build_index as builder
 import register_extension as registration
@@ -25,16 +28,26 @@ class OfflineGitHub(FakeGitHub):
     def __init__(self):
         super().__init__()
         self.metadata = {"full_name": REPOSITORY, "private": False}
-        self.manifest_body = _manifest(extension_id="flowsteward.b1", version="0.1.0")
+        self.manifest_body = _manifest(
+            extension_id="flowsteward.b1",
+            version="0.1.0",
+            ui_manifest="ui/ui_manifest.yaml",
+            vendor={"support_url": f"{REPOSITORY_URL}/issues"},
+        )
         self.commit = SOURCE_SHA
         self.manifest_requests = []
         self.index_failures = 0
         self.index_reads = 0
         self.unavailable_assets = set()
         self.release(
-            REPOSITORY, "0.1.0",
-            _zip(self.manifest_body, top="flowsteward_b1"),
-            extension_id="flowsteward.b1", draft=False, prerelease=False,
+            REPOSITORY,
+            "0.1.0",
+            _zip(
+                self.manifest_body, top="flowsteward_b1", extra=_support(REPOSITORY_URL)
+            ),
+            extension_id="flowsteward.b1",
+            draft=False,
+            prerelease=False,
         )
 
     def repository(self, slug):
@@ -302,6 +315,7 @@ def test_cli_creates_a_receipt_and_verifies_the_index(catalog, github, monkeypat
     assert registration.main(["verify", "--receipt", str(receipt_path), "--commit", PUBLISHED_SHA,
                               "--expected-index", str(expected)]) == 0
     assert "flowsteward.b1" in capsys.readouterr().out
+
 
 # The workflow is trusted catalog tooling; only validated release data is fetched.
 def test_registration_workflow_keeps_write_credentials_out_of_source_execution():
