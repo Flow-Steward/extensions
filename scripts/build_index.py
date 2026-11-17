@@ -791,19 +791,22 @@ def _support_problems(
         problems.append("Support: page must have title: Support")
     bodies: list[str] = []
 
-    def markdown(block: Any, parent: str, stack: frozenset[str]) -> None:
+    def markdown(block: Any, parent: str) -> None:
         if not isinstance(block, dict):
             problems.append("Support: component must resolve to an object")
             return
         if "ref" in block:
-            block, path = resolve(block["ref"], parent)
-            if path in stack:
-                problems.append("Support: circular component ref")
+            block, _ = resolve(block["ref"], parent)
+            if not isinstance(block, dict):
+                problems.append("Support: component ref must resolve to an object")
                 return
-            if block is None:
+            # The host resolves this registration once; it does not follow a
+            # second own ref inside the resulting component object.
+            if "ref" in block:
+                problems.append(
+                    "Support: chained component refs are not rendered by the host"
+                )
                 return
-            markdown(block, path, stack | {path})
-            return
         if block.get("type") == "markdown":
             text = block.get("content") or block.get("body")
             if isinstance(text, str):
@@ -814,7 +817,7 @@ def _support_problems(
         problems.append("Support: page must declare rendered markdown components")
     else:
         for component in components:
-            markdown(component, page_path, frozenset({page_path}))
+            markdown(component, page_path)
     # Only authored markdown links become clickable in the host renderer;
     # bare URLs, code samples and image destinations cannot provide Support.
     links: set[str] = set()
@@ -826,7 +829,7 @@ def _support_problems(
                 fenced = not fenced
             elif not fenced:
                 visible.append(line)
-        text = re.sub(r"`[^`]*`", "", "\n".join(visible))
+        text = re.sub(r"`[^`]*`", " ", "\n".join(visible))
         links.update(re.findall(r"(?<![!\\])\[[^\]\n]+\]\((https://[^\s()]+)\)", text))
     expected = {f"{entry.repository}/issues", f"{entry.repository}/issues/new/choose"}
     if not expected.issubset(links):
