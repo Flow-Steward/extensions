@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-17.a10c5b60",
-  "published_at": "2026-11-17T09:25:12Z",
+  "catalog_revision": "2026-11-17.fda0561d",
+  "published_at": "2026-11-17T09:28:12Z",
   "items": [
     {
       "extension_id": "flowsteward.agnum",
@@ -654,7 +654,7 @@
     },
     {
       "extension_id": "flowsteward.file-transfer",
-      "version": "0.3.7",
+      "version": "0.3.8",
       "name": "File Transfer",
       "summary": "List, download and upload workflow files through FTP, FTPS, SFTP, S3-compatible storage and Dropbox.",
       "description": "File Transfer connects Flow Steward workflows to FTP, explicit FTPS, SFTP, S3-compatible object storage and Dropbox. List files in a directory, download a selected file for the next workflow step, or upload a file produced earlier in the run. Select downloads by exact name or filename pattern, with options to choose by filename or modification time. Transfer results include file size and checksum information.\n\nCollect supplier feeds, retrieve invoice PDFs for document extraction, bring exported spreadsheets into tabular processing or publish generated reports to a partner's storage. The same three workflow operations work across the supported storage connections, letting you reuse a familiar approach as destinations change. Files are passed between steps as workflow artifacts; parsing and conversion can be added through other steps.\n\nConfigure each project connection with its remote root and credentials. FTP, FTPS, SFTP and S3 endpoints must be publicly reachable over the Internet; private-network destinations are not supported in production. SFTP setup includes confirming the server fingerprint; Dropbox uses your own app and account authorization. Listings cover one directory with up to 500 entries, and transfers default to a 200 MiB ceiling. Uploads preserve existing files unless you explicitly choose to replace them.",
@@ -680,31 +680,31 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/tree/v0.3.7",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.3.7/flowsteward.file-transfer-0.3.7-linux-amd64.zip",
-      "release_zip_bytes": 27246583,
-      "release_zip_sha256": "edb1798a8c9dc89aa89932680b36bc386e29933315d36e8020140934e2148d95",
+      "repository_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/tree/v0.3.8",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.3.8/flowsteward.file-transfer-0.3.8-linux-amd64.zip",
+      "release_zip_bytes": 27273225,
+      "release_zip_sha256": "0ef768189975c18d64cf7a0bac2d89c647e11bbb3ba63f110a4464f48830c0eb",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.3.7/flowsteward.file-transfer-0.3.7-linux-amd64.zip",
-          "release_zip_bytes": 27246583,
-          "release_zip_sha256": "edb1798a8c9dc89aa89932680b36bc386e29933315d36e8020140934e2148d95"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.3.8/flowsteward.file-transfer-0.3.8-linux-amd64.zip",
+          "release_zip_bytes": 27273225,
+          "release_zip_sha256": "0ef768189975c18d64cf7a0bac2d89c647e11bbb3ba63f110a4464f48830c0eb"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.3.7/flowsteward.file-transfer-0.3.7-linux-arm64.zip",
-          "release_zip_bytes": 26629018,
-          "release_zip_sha256": "1d8936293361356856267b4dac4e91f2d6f4b2facde5cf7222aaa3bbe7a87e77"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.3.8/flowsteward.file-transfer-0.3.8-linux-arm64.zip",
+          "release_zip_bytes": 26655660,
+          "release_zip_sha256": "f6aae7a7ceba6d1bfb7deb0f8e219f6263188d7ea69bf679abee85af2052a485"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/95fccd260bb0394a97be66e78c0c5cd5d0fe5de3/releases/flowsteward.file-transfer/0.3.7.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/7a4109e331e09841d6f24c574cb4ed283dda5289/releases/flowsteward.file-transfer/0.3.8.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-10-01T12:12:41Z",
-      "updated_at": "2026-11-15T09:17:21Z"
+      "updated_at": "2026-11-17T09:28:12Z"
     },
     {
       "extension_id": "flowsteward.finvalda",
@@ -937,7 +937,7 @@
     },
     {
       "extension_id": "com.image.processing",
-      "version": "0.2.7",
+      "version": "0.2.8",
       "name": "Image Processing",
       "summary": "Check image dimensions, resize or pad images, and remove backgrounds locally using a bundled CPU model.",
       "description": "Prepare product images, consistent catalog canvases and foreground cutouts locally with Image Processing. Check Image Size reads an image artifact and returns its dimensions with flags indicating whether resizing or padding is needed. Use those outputs to branch a workflow before creating a new image.\n\nUpscale Image can enlarge or reduce an image proportionally with Lanczos resampling. Choose a maximum bounding box, or fit the image onto an exact-size canvas with white, transparent or custom-color padding. It preserves the aspect ratio without stretching or cropping. Remove Background uses a bundled U2-NetP model on the CPU and returns a transparent PNG at the original dimensions. The actions can run independently or be combined in either order.\n\nUse the extension for product-image preparation, consistent catalog canvases or foreground cutouts. Processing needs no API key, external inference service or runtime model download. Inputs are single, non-animated PNG, JPEG or WebP artifacts up to 20 MiB and 16 megapixels. Enlargement is interpolation, so it does not reconstruct missing detail; fine edges and difficult backgrounds may need manual review.",
@@ -962,31 +962,31 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-image-processing/tree/v0.2.7",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.2.7/com.image.processing-0.2.7-linux-amd64.zip",
-      "release_zip_bytes": 42899325,
-      "release_zip_sha256": "341ad77d89e78a08d916fcf199373e3ac119faa166ff2abed454e4e85fa6afd0",
+      "repository_url": "https://github.com/Flow-Steward/ext-image-processing/tree/v0.2.8",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.2.8/com.image.processing-0.2.8-linux-amd64.zip",
+      "release_zip_bytes": 41900055,
+      "release_zip_sha256": "7bcd710312e0ccb4e2bc724cad61ee1338a11ba88b7db4e1a036a9cfcc87e464",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.2.7/com.image.processing-0.2.7-linux-amd64.zip",
-          "release_zip_bytes": 42899325,
-          "release_zip_sha256": "341ad77d89e78a08d916fcf199373e3ac119faa166ff2abed454e4e85fa6afd0"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.2.8/com.image.processing-0.2.8-linux-amd64.zip",
+          "release_zip_bytes": 41900055,
+          "release_zip_sha256": "7bcd710312e0ccb4e2bc724cad61ee1338a11ba88b7db4e1a036a9cfcc87e464"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.2.7/com.image.processing-0.2.7-linux-arm64.zip",
-          "release_zip_bytes": 38929465,
-          "release_zip_sha256": "b1501fb022298f72ced5a0025b22bd05cdb866061534ecf834ecdbd67b0ad14f"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-image-processing/releases/download/v0.2.8/com.image.processing-0.2.8-linux-arm64.zip",
+          "release_zip_bytes": 38525722,
+          "release_zip_sha256": "850e41d075875aee007477f2e20c95eca656e83bc55ddd8df4cc59cbdae6e8b0"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/95fccd260bb0394a97be66e78c0c5cd5d0fe5de3/releases/com.image.processing/0.2.7.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/7a4109e331e09841d6f24c574cb4ed283dda5289/releases/com.image.processing/0.2.8.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-10-01T12:12:35Z",
-      "updated_at": "2026-11-15T09:16:58Z"
+      "updated_at": "2026-11-17T09:27:57Z"
     },
     {
       "extension_id": "flowsteward.instagram",
