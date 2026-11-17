@@ -16,6 +16,19 @@ CURATED = {
     "flowsteward.data-connector-mcp-toolbox-mysql": ("ext-data-mysql", "1.3.11"),
     "flowsteward.data-connector-mcp-toolbox-postgres": ("ext-data-postgres", "1.4.13"),
     "flowsteward.google-workspace": ("ext-google-workspace", "0.3.6"),
+    "flowsteward.telegram": ("ext-messaging-telegram", "1.3.5"),
+    "flowsteward.whatsapp": ("ext-messaging-whatsapp", "0.1.4"),
+    "flowsteward.docling": ("ext-document-docling", "0.3.5"),
+    "flowsteward.example-showcase": ("ext-example-showcase", "1.2.8"),
+    "flowsteward.file-transfer": ("ext-file-transfer-sftp", "0.3.9"),
+    "flowsteward.imap-mailbox": ("ext-email-imap", "0.2.5"),
+    "flowsteward.openrouter": ("ext-llm-openrouter", "1.2.4"),
+    "flowsteward.ollama-remote": ("ext-llm-ollama", "1.2.4"),
+    "flowsteward.outgoing-email": ("ext-email-smtp", "0.3.5"),
+    "flowsteward.typesafe-ai": ("ext-typesafe-ai", "1.0.9"),
+    "flowsteward.web-scraper": ("ext-data-web-scraper", "0.1.29"),
+    "com.image.processing": ("ext-image-processing", "0.2.9"),
+    "com.discogs.api": ("ext-discogs", "0.2.6"),
 }
 REPOSITORY = "https://github.com/Flow-Steward/ext-example"
 
@@ -125,7 +138,7 @@ def test_old_namespace_verified_records_are_projected_unverified_without_rewriti
     assert path.read_bytes() == before
 
 
-def test_checked_in_curation_is_exactly_the_four_designated_releases():
+def test_checked_in_curation_is_exactly_the_seventeen_designated_releases():
     policy = json.loads(
         (Path(__file__).resolve().parents[1] / "verified_extensions.json").read_text()
     )
