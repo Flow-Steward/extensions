@@ -1,0 +1,58 @@
+{
+  "extension_id": "flowsteward.meta-ads",
+  "version": "1.0.2",
+  "repository": "https://github.com/Flow-Steward/ext-marketing-meta-ads",
+  "tag": "v1.0.2",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.meta-ads/1.0.2.png",
+    "sha256": "a3e8a46ec3f24ceee55174b7be045ae8d1b57661fc6e707e20fa12562d750657",
+    "bytes": 14934,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-17T09:42:03Z",
+  "item": {
+    "extension_id": "flowsteward.meta-ads",
+    "version": "1.0.2",
+    "name": "Meta Ads",
+    "summary": "Create paused website traffic campaigns and single-image Facebook and Instagram feed ads from workflows.",
+    "description": "Meta Ads connects Flow Steward workflows to Facebook and Instagram advertising. Discover accessible advertising accounts and Page/Instagram identities, create campaigns and ad sets, upload an approved image artifact, build a creative and create an ad. Read object status and explicitly activate or pause one selected campaign, ad set or ad.\n\nUse it to prepare a complete paused campaign or add a single-image ad to a compatible existing ad set. The supported profile is website traffic optimized for link clicks, with daily ad-set budgets, explicit country/age targeting and scheduled dates. Placements are Facebook Feed, Instagram Feed or both. New campaigns, ad sets and ads are paused; activation does not automatically activate parents or children, and ACTIVE does not prove approval or delivery.\n\nSetup requires an operator-owned Meta app, native OAuth authorization and one selected advertising account per project connection. Instagram ads require an explicitly selected professional account linked to the selected Page. Images must be granted 1080 x 1080 JPEG/PNG artifacts up to 5 MiB. Video, carousel, organic posting, reporting, custom audiences, campaign budgets and special advertising categories are outside this version. Live OAuth and actual advertising-object acceptance have not been verified.",
+    "categories": [
+      "marketing"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "extension:invoke"
+    ],
+    "setup_summary": "Configure your own Meta app with Marketing API and Facebook Login, register the exact callback URL shown by Flow Steward, and save the App ID and secret in native OAuth setup. Authorize the required permissions, then verify and select one advertising account for the project connection. For Instagram select a linked professional account and Page. App Review, business verification and account permissions are managed by your operator.",
+    "tags": [
+      "meta",
+      "facebook",
+      "instagram",
+      "advertising"
+    ],
+    "publication_status": "published",
+    "verification_status": "verified",
+    "repository_url": "https://github.com/Flow-Steward/ext-marketing-meta-ads/tree/v1.0.2",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-marketing-meta-ads/releases/download/v1.0.2/flowsteward.meta-ads-1.0.2-linux-amd64.zip",
+    "release_zip_bytes": 7157874,
+    "release_zip_sha256": "e91764ad76c6f5bc0ac39da1f0ebd4464206604629a16260583b1cf5ec184f4c",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-marketing-meta-ads/releases/download/v1.0.2/flowsteward.meta-ads-1.0.2-linux-amd64.zip",
+        "release_zip_bytes": 7157874,
+        "release_zip_sha256": "e91764ad76c6f5bc0ac39da1f0ebd4464206604629a16260583b1cf5ec184f4c"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-marketing-meta-ads/releases/download/v1.0.2/flowsteward.meta-ads-1.0.2-linux-arm64.zip",
+        "release_zip_bytes": 6515280,
+        "release_zip_sha256": "e7896740a6d3ef36122ec7711ca2d5904ca148e1e93b83364c0eddc095d9703b"
+      }
+    }
+  }
+}
