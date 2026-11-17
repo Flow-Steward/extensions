@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-17.38722c19",
-  "published_at": "2026-11-17T09:36:18Z",
+  "catalog_revision": "2026-11-17.4ca3c808",
+  "published_at": "2026-11-17T09:42:03Z",
   "items": [
     {
       "extension_id": "flowsteward.agnum",
@@ -1071,7 +1071,7 @@
     },
     {
       "extension_id": "flowsteward.meta-ads",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "name": "Meta Ads",
       "summary": "Create paused website traffic campaigns and single-image Facebook and Instagram feed ads from workflows.",
       "description": "Meta Ads connects Flow Steward workflows to Facebook and Instagram advertising. Discover accessible advertising accounts and Page/Instagram identities, create campaigns and ad sets, upload an approved image artifact, build a creative and create an ad. Read object status and explicitly activate or pause one selected campaign, ad set or ad.\n\nUse it to prepare a complete paused campaign or add a single-image ad to a compatible existing ad set. The supported profile is website traffic optimized for link clicks, with daily ad-set budgets, explicit country/age targeting and scheduled dates. Placements are Facebook Feed, Instagram Feed or both. New campaigns, ad sets and ads are paused; activation does not automatically activate parents or children, and ACTIVE does not prove approval or delivery.\n\nSetup requires an operator-owned Meta app, native OAuth authorization and one selected advertising account per project connection. Instagram ads require an explicitly selected professional account linked to the selected Page. Images must be granted 1080 x 1080 JPEG/PNG artifacts up to 5 MiB. Video, carousel, organic posting, reporting, custom audiences, campaign budgets and special advertising categories are outside this version. Live OAuth and actual advertising-object acceptance have not been verified.",
@@ -1095,31 +1095,31 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-marketing-meta-ads/tree/v1.0.1",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-marketing-meta-ads/releases/download/v1.0.1/flowsteward.meta-ads-1.0.1-linux-amd64.zip",
-      "release_zip_bytes": 6943696,
-      "release_zip_sha256": "446f96474c2882066c669b3efb90c61bbd9fa291cf6be07570789d2da44f1b99",
+      "repository_url": "https://github.com/Flow-Steward/ext-marketing-meta-ads/tree/v1.0.2",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-marketing-meta-ads/releases/download/v1.0.2/flowsteward.meta-ads-1.0.2-linux-amd64.zip",
+      "release_zip_bytes": 7157874,
+      "release_zip_sha256": "e91764ad76c6f5bc0ac39da1f0ebd4464206604629a16260583b1cf5ec184f4c",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-marketing-meta-ads/releases/download/v1.0.1/flowsteward.meta-ads-1.0.1-linux-amd64.zip",
-          "release_zip_bytes": 6943696,
-          "release_zip_sha256": "446f96474c2882066c669b3efb90c61bbd9fa291cf6be07570789d2da44f1b99"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-marketing-meta-ads/releases/download/v1.0.2/flowsteward.meta-ads-1.0.2-linux-amd64.zip",
+          "release_zip_bytes": 7157874,
+          "release_zip_sha256": "e91764ad76c6f5bc0ac39da1f0ebd4464206604629a16260583b1cf5ec184f4c"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-marketing-meta-ads/releases/download/v1.0.1/flowsteward.meta-ads-1.0.1-linux-arm64.zip",
-          "release_zip_bytes": 6253208,
-          "release_zip_sha256": "2589d15cedeafc9cd79a9549f7ad43638a76aeb853a4b153bc4b856c34f4b7ac"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-marketing-meta-ads/releases/download/v1.0.2/flowsteward.meta-ads-1.0.2-linux-arm64.zip",
+          "release_zip_bytes": 6515280,
+          "release_zip_sha256": "e7896740a6d3ef36122ec7711ca2d5904ca148e1e93b83364c0eddc095d9703b"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/3f53c3bcb3b86c797430181881896e673d2bbe5b/releases/flowsteward.meta-ads/1.0.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a8912ee769d2245645fe7058d025ff6690c6dcff/releases/flowsteward.meta-ads/1.0.2.png",
         "sha256": "a3e8a46ec3f24ceee55174b7be045ae8d1b57661fc6e707e20fa12562d750657",
         "bytes": 14934,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-11-16T08:07:03Z",
-      "updated_at": "2026-11-16T09:13:47Z"
+      "updated_at": "2026-11-17T09:42:03Z"
     },
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-mssql",
@@ -1738,7 +1738,7 @@
     },
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-postgres",
-      "version": "1.4.11",
+      "version": "1.4.12",
       "name": "PostgreSQL",
       "summary": "Use PostgreSQL datasets and SQL writes, plus pgvector collections, document chunks and similarity search.",
       "description": "Bring PostgreSQL data and vector retrieval into the same Flow Steward project connection. The read-only Dataset connector tests connections, inspects schemas, validates saved SQL, previews results and executes saved queries. SQL profiles cover direct PostgreSQL, AlloyDB Omni, AlloyDB for PostgreSQL and Cloud SQL for PostgreSQL. Workflow steps separately run one parameterized INSERT, UPDATE or DELETE, for example to record a completed approval or update an application record after processing.\n\nFor direct PostgreSQL connections, pgvector actions create, inspect and explicitly drop collections; insert, retrieve, update or delete individual chunks; upsert documents; and delete documents. Similarity search supports cosine, L2 or inner product, metadata containment filters, minimum scores and optional returned vectors. Use these operations to store externally generated embeddings alongside document content, then retrieve related chunks for a later answer step.\n\nA database administrator must install pgvector before using vector actions, which do not run through the managed cloud profiles. Collections support up to 2,000 dimensions and searches up to 100 matches. A document upsert updates the supplied chunks; removing omitted chunks requires explicit deletion. Embedding generation and database triggers are outside this extension.",
@@ -1765,31 +1765,31 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-postgres/tree/v1.4.11",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-postgres/releases/download/v1.4.11/flowsteward.data-connector-mcp-toolbox-postgres-1.4.11-linux-amd64.zip",
-      "release_zip_bytes": 13265661,
-      "release_zip_sha256": "21dace7557b21f215a52bad2eb14f771b84bbd6fc2b8ca89e808bd8c83c95705",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-postgres/tree/v1.4.12",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-postgres/releases/download/v1.4.12/flowsteward.data-connector-mcp-toolbox-postgres-1.4.12-linux-amd64.zip",
+      "release_zip_bytes": 13266305,
+      "release_zip_sha256": "f0535a4ed7238c6f1c7d4cea2f3915dad524f6858f6984524d6226c6dee45888",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-postgres/releases/download/v1.4.11/flowsteward.data-connector-mcp-toolbox-postgres-1.4.11-linux-amd64.zip",
-          "release_zip_bytes": 13265661,
-          "release_zip_sha256": "21dace7557b21f215a52bad2eb14f771b84bbd6fc2b8ca89e808bd8c83c95705"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-postgres/releases/download/v1.4.12/flowsteward.data-connector-mcp-toolbox-postgres-1.4.12-linux-amd64.zip",
+          "release_zip_bytes": 13266305,
+          "release_zip_sha256": "f0535a4ed7238c6f1c7d4cea2f3915dad524f6858f6984524d6226c6dee45888"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-postgres/releases/download/v1.4.11/flowsteward.data-connector-mcp-toolbox-postgres-1.4.11-linux-arm64.zip",
-          "release_zip_bytes": 12009955,
-          "release_zip_sha256": "d1f72b1492a1c126e6d688b1793fde44d8f8fdd5591a7f856dd7bb72f618c49d"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-postgres/releases/download/v1.4.12/flowsteward.data-connector-mcp-toolbox-postgres-1.4.12-linux-arm64.zip",
+          "release_zip_bytes": 12010549,
+          "release_zip_sha256": "b467cf23a91a723525a44eafc963b2f21364ae537242b0c8c07fb4bb7086d3b3"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/95fccd260bb0394a97be66e78c0c5cd5d0fe5de3/releases/flowsteward.data-connector-mcp-toolbox-postgres/1.4.11.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/a8912ee769d2245645fe7058d025ff6690c6dcff/releases/flowsteward.data-connector-mcp-toolbox-postgres/1.4.12.png",
         "sha256": "5be20852e40322f5cd91162462da11d0f1b93d6ad11cc6b03a3f1cdf29df668b",
         "bytes": 26504,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-10-01T13:29:15Z",
-      "updated_at": "2026-11-15T09:17:11Z"
+      "updated_at": "2026-11-17T09:41:57Z"
     },
     {
       "extension_id": "flowsteward.qdrant",
