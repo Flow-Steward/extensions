@@ -1,0 +1,63 @@
+{
+  "extension_id": "flowsteward.xml",
+  "version": "0.1.0",
+  "repository": "https://github.com/Flow-Steward/ext-xml-tools",
+  "tag": "v0.1.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.xml/0.1.0.png",
+    "sha256": "ddfb76b933f7782c8c4e1a62946c6559f8f9d77296bc926d3b05763ff24fc817",
+    "bytes": 1304,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-19T12:10:46Z",
+  "item": {
+    "extension_id": "flowsteward.xml",
+    "version": "0.1.0",
+    "name": "XML Tools",
+    "summary": "Parse, query, build, validate, transform, convert, edit and compare XML documents and feeds in workflows.",
+    "description": "Universal XML steps for workflows: parse XML into JSON records, read huge files element by element into JSONL, select with XPath 1.0, build XML from records, check well-formedness and validate against an XSD, transform with XSLT, convert between XML and JSON, CSV or XLSX, edit nodes by XPath, merge and split documents, format, canonicalize (C14N) and compare.\n\nDocuments come as text or as workflow files and large results are saved as files. The extension never connects anywhere: use File Transfer or an HTTP step to fetch and deliver files. DTDs, external entities, XInclude and network or file access from XSLT and XSD are refused, and every step runs under size, depth and time limits.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "Nothing to set up. Add XML Tools steps to a workflow and give them XML as text or as a workflow file, for example one File Transfer downloaded.",
+    "tags": [
+      "xml",
+      "xpath",
+      "xslt",
+      "xsd",
+      "json",
+      "csv",
+      "xlsx",
+      "feeds"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-xml-tools/tree/v0.1.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-xml-tools/releases/download/v0.1.0/flowsteward.xml-0.1.0-linux-amd64.zip",
+    "release_zip_bytes": 5205751,
+    "release_zip_sha256": "d0b3c1eec947f7dc89ad4b4c4b2c0a2c0353260ed9aff434398f511e6f4ef8f3",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-xml-tools/releases/download/v0.1.0/flowsteward.xml-0.1.0-linux-amd64.zip",
+        "release_zip_bytes": 5205751,
+        "release_zip_sha256": "d0b3c1eec947f7dc89ad4b4c4b2c0a2c0353260ed9aff434398f511e6f4ef8f3"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-xml-tools/releases/download/v0.1.0/flowsteward.xml-0.1.0-linux-arm64.zip",
+        "release_zip_bytes": 5040049,
+        "release_zip_sha256": "6f8d6b14dd5ac1021ee4298132d7b7fce8679b96f7132a21bafae00c5c937bd0"
+      }
+    }
+  }
+}
