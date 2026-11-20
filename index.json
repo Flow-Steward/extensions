@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-20.8764e9ff",
-  "published_at": "2026-11-20T11:04:01Z",
+  "catalog_revision": "2026-11-20.f498ed7d",
+  "published_at": "2026-11-20T13:28:57Z",
   "items": [
     {
       "extension_id": "flowsteward.agnum",
@@ -50,7 +50,7 @@
     },
     {
       "extension_id": "flowsteward.airtable",
-      "version": "1.0.6",
+      "version": "1.0.7",
       "name": "Airtable",
       "summary": "Read, create, update, upsert and delete Airtable records, with formula filters and explicit pagination.",
       "description": "Connect Airtable tables to Flow Steward workflows for record lookup, data collection and synchronization. Read an individual record by its Airtable ID, or list a table with an optional formula filter. Create new records, patch existing records, merge records using one to three matching fields, and delete records by ID. Actions work directly with the selected base and table, using your existing Airtable record identifiers and field values.\n\nCombine record reads with later workflow steps to look up customer details, collect items for processing or update the status of completed work. Upserts let a workflow match records on business fields instead of looking up every record ID first. Listing returns one page of up to 100 records and an offset for the next request; create, update, upsert and delete actions accept up to ten records per call.\n\nConfigure a base and a personal access token with access to it. Field values must already match the Airtable types, since automatic type conversion is not requested. This connector manages table records rather than base schemas and provides no webhooks, triggers or real-time subscriptions.",
@@ -72,31 +72,31 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-airtable/tree/v1.0.6",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-airtable/releases/download/v1.0.6/flowsteward.airtable-1.0.6-linux-amd64.zip",
-      "release_zip_bytes": 52641,
-      "release_zip_sha256": "b08ce13271243ad738c174a1a4f8ddb83b05ea24b66bc6943e5bdd201607df9e",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-airtable/tree/v1.0.7",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-airtable/releases/download/v1.0.7/flowsteward.airtable-1.0.7-linux-amd64.zip",
+      "release_zip_bytes": 54349,
+      "release_zip_sha256": "a4850ed99488c9844cf7f8c6de0f428334483ff0223a9c018b51ff02f68521fc",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-airtable/releases/download/v1.0.6/flowsteward.airtable-1.0.6-linux-amd64.zip",
-          "release_zip_bytes": 52641,
-          "release_zip_sha256": "b08ce13271243ad738c174a1a4f8ddb83b05ea24b66bc6943e5bdd201607df9e"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-airtable/releases/download/v1.0.7/flowsteward.airtable-1.0.7-linux-amd64.zip",
+          "release_zip_bytes": 54349,
+          "release_zip_sha256": "a4850ed99488c9844cf7f8c6de0f428334483ff0223a9c018b51ff02f68521fc"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-airtable/releases/download/v1.0.6/flowsteward.airtable-1.0.6-linux-arm64.zip",
-          "release_zip_bytes": 52641,
-          "release_zip_sha256": "75f2e81f48100eecaddd1d2dfb44f59a260ca26f84a30b54c4b57322b3284ee0"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-airtable/releases/download/v1.0.7/flowsteward.airtable-1.0.7-linux-arm64.zip",
+          "release_zip_bytes": 54349,
+          "release_zip_sha256": "24eb433a72c68bb46fe616e6ea00d06f155c1ec832bf51b580bc97382ecfd0ab"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/95fccd260bb0394a97be66e78c0c5cd5d0fe5de3/releases/flowsteward.airtable/1.0.6.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/5d04753c84cb3b83d6fa79ad02c1d35c94ae6bd0/releases/flowsteward.airtable/1.0.7.png",
         "sha256": "da6774e6ca4779fdfc0c28e04b25d822d935d38715a4965c26f6411a372ee29d",
         "bytes": 20041,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-11-02T08:20:09Z",
-      "updated_at": "2026-11-15T09:16:59Z"
+      "updated_at": "2026-11-20T13:28:15Z"
     },
     {
       "extension_id": "flowsteward.allegro",
@@ -145,7 +145,7 @@
     },
     {
       "extension_id": "flowsteward.amazon-sp-api",
-      "version": "0.2.13",
+      "version": "0.2.14",
       "name": "Amazon Selling Partner API",
       "summary": "Automate Amazon orders, listings, pricing, FBA and FBM inventory, inbound shipments, shipping labels, listing feeds and financial reports.",
       "description": "Connect Amazon seller operations to Flow Steward workflows across order handling, catalog maintenance, fulfillment and financial reporting. Read orders and order items, retrieve permitted buyer information, confirm merchant-fulfilled shipments and update shipment status. Search Amazon catalog items and seller listings, inspect listing issues, retrieve product type requirements, check restrictions and validate proposed listing changes before submitting them.\n\nCatalog and inventory steps can create, update or delete listings, change offer prices and merchant-fulfilled quantities, read FBA inventory and compare offers and competitive pricing. FBA inbound operations cover plans, packing and placement choices, transportation, delivery windows, shipment details and shipping documents, with additional India compliance and challan operations. Amazon Shipping steps retrieve rates, purchase or cancel shipments, download labels and read tracking in supported countries.\n\nUse listing feeds for batch submissions, inspect their processing status and download results. Finance steps retrieve transactions, order-related financial records and legacy financial event groups; report steps request, inspect and download Amazon reports, including eligible settlement reports. These building blocks suit stock updates, shipment processing and accounting exports. Each connection selects one seller and marketplace. Lists return a page, and asynchronous submissions need later status checks; roles and marketplace availability determine which operations can run.",
@@ -179,19 +179,19 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-ecommerce-amazon/tree/v0.2.13",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-ecommerce-amazon/releases/download/v0.2.13/flowsteward.amazon-sp-api-0.2.13.zip",
-      "release_zip_bytes": 509375,
-      "release_zip_sha256": "e18351f4eb7359fcc2d1f5865dcf2b9df7ca84849c5780198e20b20902ea84b1",
+      "repository_url": "https://github.com/Flow-Steward/ext-ecommerce-amazon/tree/v0.2.14",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-ecommerce-amazon/releases/download/v0.2.14/flowsteward.amazon-sp-api-0.2.14.zip",
+      "release_zip_bytes": 510912,
+      "release_zip_sha256": "8d2792ab63cafaa6e540e6e9fc5e10d57739c6d8ec317ae2157483cd1f1de070",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/95fccd260bb0394a97be66e78c0c5cd5d0fe5de3/releases/flowsteward.amazon-sp-api/0.2.13.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/5d04753c84cb3b83d6fa79ad02c1d35c94ae6bd0/releases/flowsteward.amazon-sp-api/0.2.14.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-11-08T07:15:09Z",
-      "updated_at": "2026-11-15T09:17:01Z"
+      "updated_at": "2026-11-20T13:28:18Z"
     },
     {
       "extension_id": "flowsteward.solr",
@@ -443,7 +443,7 @@
     },
     {
       "extension_id": "flowsteward.cohere-retrieval",
-      "version": "1.0.6",
+      "version": "1.0.7",
       "name": "Cohere Retrieval",
       "summary": "Rerank search results and create Cohere text embeddings for retrieval, classification and clustering workflows.",
       "description": "Improve search relevance and prepare text for similarity workflows with Cohere Retrieval. Its two actions rerank documents against a query or turn text into embedding vectors. Reranking accepts documents with your own IDs and returns their IDs, original positions and relevance scores, so later steps can select the most relevant material without losing its connection to the source.\n\nThe embedding action returns one floating-point vector per input text in the original order, together with the selected model, vector dimensions and provider request ID. Choose the input type for search documents, search queries, classification or clustering. The release exposes Cohere Rerank v3.5 and v5 model options, alongside Embed v4 and v5 options with configurable dimensions.\n\nUse it to reorder candidate search results before an agent reads them, prepare text for a vector store, or feed similarity and classification steps. The extension supplies retrieval results rather than managing a knowledge-base index. Reranking accepts up to 1,000 documents; embedding accepts up to 96 texts per call. Text is sent to Cohere, where model access, quotas and billing apply.",
@@ -464,19 +464,19 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-ai-cohere-retrieval/tree/v1.0.6",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-ai-cohere-retrieval/releases/download/v1.0.6/flowsteward.cohere-retrieval-1.0.6.zip",
-      "release_zip_bytes": 39333,
-      "release_zip_sha256": "17718ab3163c58ebc64a964616c9a8d48e359b33be709b30b71dde089dfebec2",
+      "repository_url": "https://github.com/Flow-Steward/ext-ai-cohere-retrieval/tree/v1.0.7",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-ai-cohere-retrieval/releases/download/v1.0.7/flowsteward.cohere-retrieval-1.0.7.zip",
+      "release_zip_bytes": 40339,
+      "release_zip_sha256": "5bfdefc7eba9f4c0363ce2edab9628fde07370986bb13f8a7a49c780cae1d227",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/95fccd260bb0394a97be66e78c0c5cd5d0fe5de3/releases/flowsteward.cohere-retrieval/1.0.6.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/5d04753c84cb3b83d6fa79ad02c1d35c94ae6bd0/releases/flowsteward.cohere-retrieval/1.0.7.png",
         "sha256": "e24654a404b05e3c1c670035f9aae6bca55a22a8a604fbc402df016eef784dcc",
         "bytes": 14762,
         "mime_type": "image/png",
         "size": "400x400"
       },
       "added_at": "2026-11-03T11:43:22Z",
-      "updated_at": "2026-11-15T09:17:03Z"
+      "updated_at": "2026-11-20T13:28:20Z"
     },
     {
       "extension_id": "com.discogs.api",
@@ -563,7 +563,7 @@
     },
     {
       "extension_id": "flowsteward.elasticsearch",
-      "version": "1.0.7",
+      "version": "1.0.8",
       "name": "Elasticsearch",
       "summary": "Search Elasticsearch documents and dense vectors, update records, and build read-only JSON Dataset queries.",
       "description": "Connect Elasticsearch to Flow Steward for document lookup, full-text retrieval and similarity search. Workflow actions get documents by ID, search selected source fields, create or replace documents, merge partial updates and delete individual IDs. Search supports text matches, exact terms, ranges and Boolean filters, with sorting. Dense-vector search uses your existing indexed vector field and returns neighbors with scores and selected document content.\n\nRead-only JSON Datasets provide mapping inspection, saved parameterized get/search queries, previews and output-schema inference within selected indices and fields. Included example workflows cover chunk ingestion, updates, deletion and answers with source citations. Supply your own document and question embeddings, and configure the project's answer model to compose a retrieval-and-answer workflow.\n\nCreate concrete indices and mappings before setup; this connector does not administer them. Search returns at most 100 hits and supports explicit top-level field selection. Aggregations, scripts, the bulk API and delete-by-query are outside its operation set. Elasticsearch's normal refresh interval controls search visibility after writes. Track chunk IDs externally when replacing or removing multi-chunk sources. The connector accesses Elasticsearch directly, without requiring Kibana.",
@@ -588,31 +588,31 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/tree/v1.0.7",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/releases/download/v1.0.7/flowsteward.elasticsearch-1.0.7-linux-amd64.zip",
-      "release_zip_bytes": 80387,
-      "release_zip_sha256": "adeb4e4da6fe5dc68a3519f0980e4988b05e0fff4df2bac917649e72821d0d77",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/tree/v1.0.8",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/releases/download/v1.0.8/flowsteward.elasticsearch-1.0.8-linux-amd64.zip",
+      "release_zip_bytes": 81404,
+      "release_zip_sha256": "a85dbde7790c1dea4df5680d144fa5ae8269cf2944ba6e6190f498d3094fd181",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/releases/download/v1.0.7/flowsteward.elasticsearch-1.0.7-linux-amd64.zip",
-          "release_zip_bytes": 80387,
-          "release_zip_sha256": "adeb4e4da6fe5dc68a3519f0980e4988b05e0fff4df2bac917649e72821d0d77"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/releases/download/v1.0.8/flowsteward.elasticsearch-1.0.8-linux-amd64.zip",
+          "release_zip_bytes": 81404,
+          "release_zip_sha256": "a85dbde7790c1dea4df5680d144fa5ae8269cf2944ba6e6190f498d3094fd181"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/releases/download/v1.0.7/flowsteward.elasticsearch-1.0.7-linux-arm64.zip",
-          "release_zip_bytes": 80387,
-          "release_zip_sha256": "c88f4c10fd80cb250105fda984bf8d74573bedede51c7fd444efd2be57e76a07"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-elasticsearch/releases/download/v1.0.8/flowsteward.elasticsearch-1.0.8-linux-arm64.zip",
+          "release_zip_bytes": 81404,
+          "release_zip_sha256": "4be72adb83aea82a67a2d6285af1f06051673d8b0018862c1d94ea42eedca945"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/95fccd260bb0394a97be66e78c0c5cd5d0fe5de3/releases/flowsteward.elasticsearch/1.0.7.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/5d04753c84cb3b83d6fa79ad02c1d35c94ae6bd0/releases/flowsteward.elasticsearch/1.0.8.png",
         "sha256": "062e8e5ff64d67ecbb2148e72f0e4879c29de1d55dfbef49e5804362050b35a3",
         "bytes": 5404,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-11-02T21:55:38Z",
-      "updated_at": "2026-11-15T09:17:18Z"
+      "updated_at": "2026-11-20T13:28:27Z"
     },
     {
       "extension_id": "flowsteward.example-showcase",
@@ -799,7 +799,7 @@
     },
     {
       "extension_id": "flowsteward.firestore",
-      "version": "1.0.12",
+      "version": "1.0.13",
       "name": "Firestore",
       "summary": "Get, query, create, patch, replace and delete typed Firestore documents, with pagination and version preconditions.",
       "description": "Use Google Cloud Firestore documents in Flow Steward workflows for application record lookup, collection queries and updates. Actions read a document, create at a stable path, replace or upsert its fields, patch selected top-level fields, and delete it. Collection actions list documents, query with typed filters and ordering, or list root collections and subcollections. Listing returns a page token for explicit continuation.\n\nFirestore's typed Value JSON supports strings, booleans, numbers, timestamps, bytes, geographic points, references, arrays and maps. Integer values can retain full int64 precision as strings inside their Firestore type representation. Optional update-time preconditions help reject stale updates, replacements and deletes; creation fails when the supplied path already exists. Choose patches for individual field changes or replacements when a workflow owns the complete document.\n\nConfigure the Google Cloud project and database with an access token or service-account JSON and appropriate Firestore IAM permissions. Queries and pages return at most 100 documents, and some filters require an existing Firestore index. Document deletion does not recursively remove subcollections. The connector provides Firestore document operations rather than transactions, triggers, Rules management or Firebase Realtime Database access.",
@@ -821,31 +821,31 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-firestore/tree/v1.0.12",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-firestore/releases/download/v1.0.12/flowsteward.firestore-1.0.12-linux-amd64.zip",
-      "release_zip_bytes": 6531990,
-      "release_zip_sha256": "e2270daed9f17c3b074e423fe65a9b1ede3953814476a1eacafdcb856c953f3e",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-firestore/tree/v1.0.13",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-firestore/releases/download/v1.0.13/flowsteward.firestore-1.0.13-linux-amd64.zip",
+      "release_zip_bytes": 6533718,
+      "release_zip_sha256": "298d2471ca680050c194f423f4b6485a9b32a318eebe65198ce4c1e6297cb94b",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-firestore/releases/download/v1.0.12/flowsteward.firestore-1.0.12-linux-amd64.zip",
-          "release_zip_bytes": 6531990,
-          "release_zip_sha256": "e2270daed9f17c3b074e423fe65a9b1ede3953814476a1eacafdcb856c953f3e"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-firestore/releases/download/v1.0.13/flowsteward.firestore-1.0.13-linux-amd64.zip",
+          "release_zip_bytes": 6533718,
+          "release_zip_sha256": "298d2471ca680050c194f423f4b6485a9b32a318eebe65198ce4c1e6297cb94b"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-firestore/releases/download/v1.0.12/flowsteward.firestore-1.0.12-linux-arm64.zip",
-          "release_zip_bytes": 5911767,
-          "release_zip_sha256": "473242da93b8e1f5057bd2efe7b77c19c7c2c17d754ea31789b34a73510ce66c"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-firestore/releases/download/v1.0.13/flowsteward.firestore-1.0.13-linux-arm64.zip",
+          "release_zip_bytes": 5913495,
+          "release_zip_sha256": "2215cd0408f7229bba278317a6dc28e93c3a55b6d10edf9a7af502b073422d62"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/95fccd260bb0394a97be66e78c0c5cd5d0fe5de3/releases/flowsteward.firestore/1.0.12.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/5d04753c84cb3b83d6fa79ad02c1d35c94ae6bd0/releases/flowsteward.firestore/1.0.13.png",
         "sha256": "c917315e332ba3744b7ada51cf1871aae2cb174d5e9e8940667410a29b51bf7c",
         "bytes": 24649,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-11-02T09:55:25Z",
-      "updated_at": "2026-11-15T09:17:25Z"
+      "updated_at": "2026-11-20T13:28:31Z"
     },
     {
       "extension_id": "flowsteward.imap-mailbox",
@@ -888,7 +888,7 @@
     },
     {
       "extension_id": "flowsteward.google-cloud-vertex",
-      "version": "0.1.6",
+      "version": "0.1.7",
       "name": "Google Cloud Vertex Gemini",
       "summary": "Use Vertex AI Gemini models for agent conversations, tool calls and structured responses with your Google Cloud credentials.",
       "description": "Run Flow Steward agents with Gemini models served through your Google Cloud project using Google Cloud Vertex Gemini. Configure a Google Cloud project, location and service-account credentials, discover Gemini model metadata, then add models that pass Flow Steward's capability verification. Enabled models can supply the language-model responses used by your agents.\n\nThe provider implements text conversations, function calling with tool-result replay, and JSON Schema-guided structured responses through Vertex AI's generateContent API. Responses include the assistant message and token-usage information, with a provider request identifier when available. This makes the integration suitable for agents that reason over text, call workflow tools and return structured results while using a Google Cloud project for access and billing.\n\nDiscovery reads Google's publisher catalog. A listed model may still be unavailable in your location or to your project, so discovery does not establish entitlement. IAM permissions, organization policy, quotas and model access remain Google Cloud settings. This release does not provide image or audio generation, realtime interaction, or Gemini Developer API-key authentication.",
@@ -910,31 +910,31 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex/tree/v0.1.6",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex/releases/download/v0.1.6/flowsteward.google-cloud-vertex-0.1.6-linux-amd64.zip",
-      "release_zip_bytes": 6753485,
-      "release_zip_sha256": "bb06c5def89a1f7e261ad15aa75c5fea7e402e623ad8a80fcf6124c89d904976",
+      "repository_url": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex/tree/v0.1.7",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex/releases/download/v0.1.7/flowsteward.google-cloud-vertex-0.1.7-linux-amd64.zip",
+      "release_zip_bytes": 6753896,
+      "release_zip_sha256": "1ab681500057cdc36f921b5c18d3401f9f4d0ca12d87100f1b28deb991aaddc9",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex/releases/download/v0.1.6/flowsteward.google-cloud-vertex-0.1.6-linux-amd64.zip",
-          "release_zip_bytes": 6753485,
-          "release_zip_sha256": "bb06c5def89a1f7e261ad15aa75c5fea7e402e623ad8a80fcf6124c89d904976"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex/releases/download/v0.1.7/flowsteward.google-cloud-vertex-0.1.7-linux-amd64.zip",
+          "release_zip_bytes": 6753896,
+          "release_zip_sha256": "1ab681500057cdc36f921b5c18d3401f9f4d0ca12d87100f1b28deb991aaddc9"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex/releases/download/v0.1.6/flowsteward.google-cloud-vertex-0.1.6-linux-arm64.zip",
-          "release_zip_bytes": 6754413,
-          "release_zip_sha256": "f64cb15857defbc5887e87d4e323f4f2869ab4d7540c2026b493b8bc18fe02cd"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex/releases/download/v0.1.7/flowsteward.google-cloud-vertex-0.1.7-linux-arm64.zip",
+          "release_zip_bytes": 6754824,
+          "release_zip_sha256": "970eb5ad62f0a203c9d8bf7356e01b78eb31a17202f31642f607c8cf78af90e5"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/95fccd260bb0394a97be66e78c0c5cd5d0fe5de3/releases/flowsteward.google-cloud-vertex/0.1.6.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/5d04753c84cb3b83d6fa79ad02c1d35c94ae6bd0/releases/flowsteward.google-cloud-vertex/0.1.7.png",
         "sha256": "5a07416695e22b326514c35761050d20323d6b66e8bf715d09b7cd54ad736fa2",
         "bytes": 8741,
         "mime_type": "image/png",
         "size": "512x512"
       },
       "added_at": "2026-11-03T11:43:45Z",
-      "updated_at": "2026-11-15T09:17:26Z"
+      "updated_at": "2026-11-20T13:28:32Z"
     },
     {
       "extension_id": "flowsteward.google-workspace",
@@ -1260,7 +1260,7 @@
     },
     {
       "extension_id": "flowsteward.mistral-document",
-      "version": "0.1.6",
+      "version": "0.1.7",
       "name": "Mistral Document AI",
       "summary": "Extract PDF text, table content and optional schema-guided data with Mistral OCR, preserving the complete JSON result.",
       "description": "Turn PDF artifacts into text and structured data for document review and processing workflows with Mistral Document AI. The action uses Mistral's OCR service. Supply a JSON Schema when you want document data organized into named fields, or use the text output directly in later workflow steps. A complete JSON result is also saved as an artifact.\n\nChoose whether tables appear as inline Markdown, separate Markdown or HTML tables. The schema-guided extraction applies to the whole document, making the action useful for preparing invoice data, document summaries or review inputs before your own workflow applies business rules. The operation returns a provider request ID, a text-truncation flag and, when relevant, a reason why structured data was omitted from the inline result.\n\nPDF input is limited to 20 MiB. Inline text and structured data each have 128 KiB JSON-encoded limits, while the complete result artifact can be up to 50 MiB. Some structured results therefore need to be read from the artifact. Document contents are sent to Mistral, and provider access and billing apply. Review extracted values before acting on them.",
@@ -1284,31 +1284,31 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-document-mistral/tree/v0.1.6",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-document-mistral/releases/download/v0.1.6/flowsteward.mistral-document-0.1.6-linux-amd64.zip",
-      "release_zip_bytes": 646003,
-      "release_zip_sha256": "2f031bebe109a2f6676c7793e536e6c793c98bc50e7356451f075a68d6e7b0d5",
+      "repository_url": "https://github.com/Flow-Steward/ext-document-mistral/tree/v0.1.7",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-document-mistral/releases/download/v0.1.7/flowsteward.mistral-document-0.1.7-linux-amd64.zip",
+      "release_zip_bytes": 646488,
+      "release_zip_sha256": "d4f57d001581e05f322bb896c2ebf0f825666ea5c98e4e7ab50049dad6381b2e",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-document-mistral/releases/download/v0.1.6/flowsteward.mistral-document-0.1.6-linux-amd64.zip",
-          "release_zip_bytes": 646003,
-          "release_zip_sha256": "2f031bebe109a2f6676c7793e536e6c793c98bc50e7356451f075a68d6e7b0d5"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-document-mistral/releases/download/v0.1.7/flowsteward.mistral-document-0.1.7-linux-amd64.zip",
+          "release_zip_bytes": 646488,
+          "release_zip_sha256": "d4f57d001581e05f322bb896c2ebf0f825666ea5c98e4e7ab50049dad6381b2e"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-document-mistral/releases/download/v0.1.6/flowsteward.mistral-document-0.1.6-linux-arm64.zip",
-          "release_zip_bytes": 647271,
-          "release_zip_sha256": "b008506e6b8427fefbf87c39e2ad6d224b2c61b387a80b7acf97cfe11420968b"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-document-mistral/releases/download/v0.1.7/flowsteward.mistral-document-0.1.7-linux-arm64.zip",
+          "release_zip_bytes": 647756,
+          "release_zip_sha256": "6ecb3ca57285f21831456565c02c19a0b16198e067d80f83b423ebb066bbf1ef"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/95fccd260bb0394a97be66e78c0c5cd5d0fe5de3/releases/flowsteward.mistral-document/0.1.6.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/5d04753c84cb3b83d6fa79ad02c1d35c94ae6bd0/releases/flowsteward.mistral-document/0.1.7.png",
         "sha256": "ae4127b3b7fd2ab77475c57df44fdf66c979ff0a294b483dee1661de5aad03c7",
         "bytes": 13800,
         "mime_type": "image/png",
         "size": "400x400"
       },
       "added_at": "2026-11-03T11:43:48Z",
-      "updated_at": "2026-11-15T09:17:28Z"
+      "updated_at": "2026-11-20T13:28:37Z"
     },
     {
       "extension_id": "flowsteward.mongodb",
@@ -1518,7 +1518,7 @@
     },
     {
       "extension_id": "flowsteward.odoo",
-      "version": "0.1.5",
+      "version": "0.1.6",
       "name": "Odoo",
       "summary": "Automate Odoo partners, products, invoices, bills, payments, sales and stock, with model-level search, reporting and record operations.",
       "description": "Connect Flow Steward workflows to Odoo accounting, sales, inventory and partner records through Odoo's external APIs. Everyday steps find or create partners and products, create customer invoices and vendor bills, register payments and prepare sale orders. They also read stock levels, product prices, partner balances and records changed since a chosen date, and attach or download files associated with Odoo records.\n\nUse these steps to move incoming shop orders into sales and accounting, pass supplier invoices into Odoo, publish stock and price changes to other systems or assemble outstanding-balance checks. Where an integration needs another installed model, advanced operations provide domain-filtered search, reads by ID, record counts, grouped totals and field descriptions, alongside create, update, delete and public model-method calls. JSONL export supports larger record exchanges with continuation information.\n\nThe release targets Odoo 16 through 20, using JSON-2 on Odoo 19 and later or XML-RPC on the supported versions. Available models, fields and actions depend on the installed Odoo modules and the API user's permissions. Connections identify an Odoo database and API key within a project. Separate project connections let workflows select the intended company or database for each task.",
@@ -1549,19 +1549,19 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-finance-odoo/tree/v0.1.5",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-finance-odoo/releases/download/v0.1.5/flowsteward.odoo-0.1.5.zip",
-      "release_zip_bytes": 163242,
-      "release_zip_sha256": "7f57d8e32e0fcdd2ee461a1478572a877a79a31117913359d685b1afacaa657e",
+      "repository_url": "https://github.com/Flow-Steward/ext-finance-odoo/tree/v0.1.6",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-finance-odoo/releases/download/v0.1.6/flowsteward.odoo-0.1.6.zip",
+      "release_zip_bytes": 164238,
+      "release_zip_sha256": "09c8da62b03da7de4b8f3b304ca87e91acd530e736c1a64834b88adc3de64c31",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/3f53c3bcb3b86c797430181881896e673d2bbe5b/releases/flowsteward.odoo/0.1.5.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/5d04753c84cb3b83d6fa79ad02c1d35c94ae6bd0/releases/flowsteward.odoo/0.1.6.png",
         "sha256": "e4f95158dad6df4d6aa07d98073fce7f6c15c8087350ec369fb19d1b150b5641",
         "bytes": 10871,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-11-06T15:05:59Z",
-      "updated_at": "2026-11-16T09:13:52Z"
+      "updated_at": "2026-11-20T13:28:40Z"
     },
     {
       "extension_id": "flowsteward.ollama-remote",
@@ -2066,7 +2066,7 @@
     },
     {
       "extension_id": "flowsteward.rivile-gama",
-      "version": "0.1.10",
+      "version": "0.1.11",
       "name": "Rivile GAMA",
       "summary": "Connect Rivile GAMA invoices, clients, products, payments, stock and files, with advanced accounting, inventory, payroll and personnel methods.",
       "description": "Connect the Rivile GAMA system behind Manorivile-Gateway to Flow Steward using REST API v2. Everyday operations find or create clients and products, create sales or purchase invoices with optional posting, register document payments and attach or download document files. Stock, price, client-balance and date-based change readers provide building blocks for storefront updates, accounting exchanges and debt review.\n\nFor integrations needing more of GAMA's data model, the release contains typed operations for 209 methods from its pinned API reference. Supported families include purchases and sales, general ledger, debts and payments, products and services, inventory and stocktaking, production, fixed assets, prices, payroll, personnel, point of sale, loyalty and gift vouchers, contracts and document management. Advanced steps accept the corresponding method parameters and Rivile data blocks, while list export can write paginated records to a JSONL workflow file.\n\nEach connection uses a Rivile API key and the associated user's rights. The gateway and company settings determine which functions are available. Workflows can combine everyday steps with the more detailed method operations for company-specific document and inventory processes. Configure Rivile change tracking before relying on the incremental readers that require it.",
@@ -2098,19 +2098,19 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-finance-rivile-gama/tree/v0.1.10",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-finance-rivile-gama/releases/download/v0.1.10/flowsteward.rivile-gama-0.1.10.zip",
-      "release_zip_bytes": 439985,
-      "release_zip_sha256": "1b726d46e61f6d41b502137e1761e683cb6ea3d6a91d0691bd649bfed991aebb",
+      "repository_url": "https://github.com/Flow-Steward/ext-finance-rivile-gama/tree/v0.1.11",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-finance-rivile-gama/releases/download/v0.1.11/flowsteward.rivile-gama-0.1.11.zip",
+      "release_zip_bytes": 441799,
+      "release_zip_sha256": "acbcc13fc2ce051c5204fc57f20dcc35a9f647e2c42371f24754ce4bfdbe06d0",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/0d7dc7a461b5a0515aff71e03464052e86ea5315/releases/flowsteward.rivile-gama/0.1.10.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/5d04753c84cb3b83d6fa79ad02c1d35c94ae6bd0/releases/flowsteward.rivile-gama/0.1.11.png",
         "sha256": "e97fb20a3ca708c40efd6c31bbab3f5139a3976b76af6d5f5345fb61fc422eb1",
         "bytes": 838,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-11-05T15:57:45Z",
-      "updated_at": "2026-11-20T09:46:28Z"
+      "updated_at": "2026-11-20T13:28:49Z"
     },
     {
       "extension_id": "flowsteward.shopify",
@@ -2591,7 +2591,7 @@
     },
     {
       "extension_id": "flowsteward.wordpress-woocommerce",
-      "version": "1.2.5",
+      "version": "1.2.6",
       "name": "WordPress & WooCommerce",
       "summary": "Automate WordPress content and media, plus WooCommerce products, stock, prices, orders, customers, coupons, reports and catalog exports.",
       "description": "Connect WordPress publishing and WooCommerce store operations to Flow Steward over their standard REST APIs. WordPress steps list, read, create and update posts, pages, media, comments, categories, tags and reusable blocks. Additional supported operations expose revisions, autosaves, search, settings, widgets and site metadata, giving content workflows the records needed to publish material, maintain taxonomy or moderate comments with the connected user's permissions.\n\nFor WooCommerce, work with products and variations, prices and stock, categories, attributes, tags, reviews, customers, coupons, orders and order notes. Supported batch operations let a workflow submit related creates or updates together. Read store reports, taxes, shipping configuration and other supported reference data, or send an order email through its dedicated operation. A product export step follows the matching catalog's pages and writes a JSONL file for later processing.\n\nUse these operations to connect a supplier catalog, publish approved content, feed store records to accounting or produce reporting inputs. WooCommerce credentials are optional when only WordPress content is needed, and connection testing reports each service separately. Access is limited to the declared native API operations: WordPress user-account administration, deletion, refund creation and plugin-specific APIs are excluded. Custom workflows supply the business mapping and coordination between steps.",
@@ -2617,19 +2617,19 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/tree/v1.2.5",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/releases/download/v1.2.5/flowsteward.wordpress-woocommerce-1.2.5.zip",
-      "release_zip_bytes": 330900,
-      "release_zip_sha256": "0b668db7616c24799c51dccd78f46502964c7e8fc942096eb36901224bb9dc74",
+      "repository_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/tree/v1.2.6",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/releases/download/v1.2.6/flowsteward.wordpress-woocommerce-1.2.6.zip",
+      "release_zip_bytes": 332327,
+      "release_zip_sha256": "737858361ac523647f28f56218996ca5be5763ce81515f8da6c67988342a722b",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/95fccd260bb0394a97be66e78c0c5cd5d0fe5de3/releases/flowsteward.wordpress-woocommerce/1.2.5.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/5d04753c84cb3b83d6fa79ad02c1d35c94ae6bd0/releases/flowsteward.wordpress-woocommerce/1.2.6.png",
         "sha256": "65d3e4a294f922134cf4a9c22f77a061312c275e759aa49f9d626992a6817ae7",
         "bytes": 24292,
         "mime_type": "image/png",
         "size": "512x512"
       },
       "added_at": "2026-10-01T12:12:49Z",
-      "updated_at": "2026-11-15T09:17:57Z"
+      "updated_at": "2026-11-20T13:28:57Z"
     },
     {
       "extension_id": "flowsteward.x",
