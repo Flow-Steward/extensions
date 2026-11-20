@@ -1,0 +1,51 @@
+{
+  "extension_id": "flowsteward.locatory",
+  "version": "0.1.0",
+  "repository": "https://github.com/Flow-Steward/ext-ecommerce-locatory",
+  "tag": "v0.1.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.locatory/0.1.0.png",
+    "sha256": "f48ad4f4b91f7cc2c3a3b2689b84e2273a57060a436a81b0781eb02061f577be",
+    "bytes": 12958,
+    "mime_type": "image/png",
+    "size": "180x180"
+  },
+  "published_at": "2026-11-20T18:09:47Z",
+  "item": {
+    "extension_id": "flowsteward.locatory",
+    "version": "0.1.0",
+    "name": "Locatory.com",
+    "summary": "Find aircraft parts, update your stock on the Locatory market, read and answer RFQs and request quotes.",
+    "description": "Connect workflows to Locatory.com, the aviation parts marketplace, through the Locatory API. Everyday steps find parts and their sellers, keep your stock on the market up to date row by row or from a file, read the RFQs you received and answer them, and request quotes.\n\nEvery request of Locatory's API documentation besides the sign-in (32 in all) has its own step, MRO capabilities and their RFQs included. Amounts are exact decimals. A connection is one Locatory user, in production or in Locatory's test environment.",
+    "categories": [
+      "ecommerce",
+      "sales",
+      "inventory"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "extension:invoke"
+    ],
+    "setup_summary": "Add the login and password of your Locatory user to the connection, choose production or test and run the connection test.",
+    "tags": [
+      "locatory",
+      "aviation",
+      "aircraft-parts",
+      "ecommerce",
+      "marketplace",
+      "rfq",
+      "inventory"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-ecommerce-locatory/tree/v0.1.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-ecommerce-locatory/releases/download/v0.1.0/flowsteward.locatory-0.1.0.zip",
+    "release_zip_bytes": 205646,
+    "release_zip_sha256": "4311a58563c319d1801123ce8fec327579336507608efadee347562582a148bc"
+  }
+}

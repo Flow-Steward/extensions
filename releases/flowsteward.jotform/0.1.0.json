@@ -1,0 +1,49 @@
+{
+  "extension_id": "flowsteward.jotform",
+  "version": "0.1.0",
+  "repository": "https://github.com/Flow-Steward/ext-productivity-jotform",
+  "tag": "v0.1.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.jotform/0.1.0.png",
+    "sha256": "734b98bc4163acffe779a3924d6bb1c43850472ef42e01947ed0923c4fa6d269",
+    "bytes": 9398,
+    "mime_type": "image/png",
+    "size": "180x180"
+  },
+  "published_at": "2026-11-20T18:09:45Z",
+  "item": {
+    "extension_id": "flowsteward.jotform",
+    "version": "0.1.0",
+    "name": "Jotform",
+    "summary": "Read Jotform forms and submissions, create submissions, download uploads and manage webhooks.",
+    "description": "Connect workflows to Jotform, the online form builder, through its REST API. Everyday steps list forms and their questions, read a form's new submissions with a cursor that continues where the last run stopped, read one submission, create a submission, download an uploaded file and manage a form's webhooks.\n\n52 operations of the Jotform API documentation have their own step. A connection is one Jotform account's API key and its region: standard, EU or HIPAA.",
+    "categories": [
+      "productivity",
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "Create an API key in Jotform (My Account → API), add it and the account's region to the connection and run the connection test.",
+    "tags": [
+      "jotform",
+      "forms",
+      "submissions",
+      "surveys",
+      "webhooks"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-productivity-jotform/tree/v0.1.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-productivity-jotform/releases/download/v0.1.0/flowsteward.jotform-0.1.0.zip",
+    "release_zip_bytes": 183137,
+    "release_zip_sha256": "ce4be84006bf133d2396e61ad86335c4cb4f6f5867c06192f9e3141522a36c36"
+  }
+}
