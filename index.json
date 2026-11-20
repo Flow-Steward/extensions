@@ -1,11 +1,11 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-19.fcbfed0d",
-  "published_at": "2026-11-19T12:10:46Z",
+  "catalog_revision": "2026-11-20.5ea59ee1",
+  "published_at": "2026-11-20T09:46:28Z",
   "items": [
     {
       "extension_id": "flowsteward.agnum",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "name": "Agnum",
       "summary": "Read and write Agnum clients, products, prices, stock, sales documents, purchase receipts, returns and production norms.",
       "description": "Connect workflows to Agnum, the Lithuanian business management and accounting system, through its Agnum DB API. Everyday steps find clients and products, find or create a client, create a sales document or a purchase receipt only when its number is new, and save a sales document as PDF.\n\nEvery one of the 39 documented operations has its own step: clients and their documents, products, prices and stock, sales documents and tracking, purchase receipts, customer returns, production and processing norms, and employees. Amounts are sent as exact decimals. Steps that replace, change or delete norms take an explicit ID. Each connection is one Agnum API address and its API key.",
@@ -34,19 +34,19 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-finance-agnum/tree/v0.1.0",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-finance-agnum/releases/download/v0.1.0/flowsteward.agnum-0.1.0.zip",
-      "release_zip_bytes": 150161,
-      "release_zip_sha256": "64729713b3e293f77fcc2596d44b2b19ea4baa840da155f6f0abcf671aff1d8b",
+      "repository_url": "https://github.com/Flow-Steward/ext-finance-agnum/tree/v0.1.1",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-finance-agnum/releases/download/v0.1.1/flowsteward.agnum-0.1.1.zip",
+      "release_zip_bytes": 162049,
+      "release_zip_sha256": "fdd92a949385d443045db331b384a35952566dd30bea8db2ac3cb545f7d5fc97",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/96a72f7c12efecd173afd9cc4530bf2dbc2008e7/releases/flowsteward.agnum/0.1.0.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/0d7dc7a461b5a0515aff71e03464052e86ea5315/releases/flowsteward.agnum/0.1.1.png",
         "sha256": "15d7ca546cbec4ffbdb23bd013b01dedece04b1fa1afa5dccba17e91b335f6da",
         "bytes": 1978,
         "mime_type": "image/png",
         "size": "76x76"
       },
       "added_at": "2026-11-16T19:58:23Z",
-      "updated_at": "2026-11-16T19:58:23Z"
+      "updated_at": "2026-11-20T09:45:48Z"
     },
     {
       "extension_id": "flowsteward.airtable",
@@ -97,6 +97,51 @@
       },
       "added_at": "2026-11-02T08:20:09Z",
       "updated_at": "2026-11-15T09:16:59Z"
+    },
+    {
+      "extension_id": "flowsteward.allegro",
+      "version": "0.1.2",
+      "name": "Allegro",
+      "summary": "Read and update Allegro offers, stock and prices, orders, returns, shipments and messages.",
+      "description": "Connect workflows to Allegro, the Polish online marketplace, through the Allegro REST API. Everyday steps read all your offers, update stock and prices of many offers at once and read the outcome, and read orders and order events.\n\nEvery one of the 270 documented operations of the Allegro REST API has its own step: offers and batch changes, products and categories, pricing and promotion, orders, returns, disputes and messages, shipping and delivery, account and fulfillment. Amounts are exact decimals. A connection is one Allegro or Allegro Sandbox account, authorized through your own Allegro application.",
+      "categories": [
+        "sales",
+        "inventory",
+        "ecommerce"
+      ],
+      "capabilities": [
+        "tool",
+        "action"
+      ],
+      "permissions_summary": [
+        "artifact:read",
+        "artifact:write",
+        "extension:invoke"
+      ],
+      "setup_summary": "Register an application at apps.developer.allegro.pl, add its Client ID and Client Secret to the connection, sign in to Allegro and run the connection test.",
+      "tags": [
+        "allegro",
+        "marketplace",
+        "poland",
+        "e-commerce",
+        "offers",
+        "orders"
+      ],
+      "publication_status": "published",
+      "verification_status": "unverified",
+      "repository_url": "https://github.com/Flow-Steward/ext-marketplace-allegro/tree/v0.1.2",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-marketplace-allegro/releases/download/v0.1.2/flowsteward.allegro-0.1.2.zip",
+      "release_zip_bytes": 345855,
+      "release_zip_sha256": "5f5ba1e66900e5874286290506dcd7dbb0058a758b735f41473bf1eaf0c10a44",
+      "icon": {
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/0d7dc7a461b5a0515aff71e03464052e86ea5315/releases/flowsteward.allegro/0.1.2.png",
+        "sha256": "e0b4c3549cb634e4adbecce09b88f05e16bdc0163947fd598bc14244051f339d",
+        "bytes": 648,
+        "mime_type": "image/png",
+        "size": "48x48"
+      },
+      "added_at": "2026-11-20T09:45:51Z",
+      "updated_at": "2026-11-20T09:45:51Z"
     },
     {
       "extension_id": "flowsteward.amazon-sp-api",
@@ -203,7 +248,7 @@
     },
     {
       "extension_id": "flowsteward.b1",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "name": "B1 (Site.pro Accounting)",
       "summary": "Read and write B1 (Site.pro Accounting) clients, items, sales, purchases, payments, stock and reports.",
       "description": "Connect workflows to B1 (Site.pro Accounting), the Lithuanian online accounting software, through its API. Everyday steps find or create clients and items, create sales and purchase invoices with their lines, record payments for sales checked for repeats and generate reports; amounts are taken as plain decimals and converted where the API expects them multiplied.\n\nEvery one of the 600 documented operations has its own step: clients, items and reference data, sales, purchases and stock, bank and cash, documents, general ledger, personnel, salary, production, long-term assets, e-commerce and shop, with cursor or page paging and filters, files and every report. Deletions take explicit IDs only, and irreversible accounting actions say what they change. Each connection is one company, reached with its API key.",
@@ -233,19 +278,19 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-finance-b1/tree/v0.1.0",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-finance-b1/releases/download/v0.1.0/flowsteward.b1-0.1.0.zip",
-      "release_zip_bytes": 504942,
-      "release_zip_sha256": "027a411067abec4dc15c6dd68dc78d6a882fe6abb594ea6290e0a4cc873ef354",
+      "repository_url": "https://github.com/Flow-Steward/ext-finance-b1/tree/v0.1.1",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-finance-b1/releases/download/v0.1.1/flowsteward.b1-0.1.1.zip",
+      "release_zip_bytes": 514552,
+      "release_zip_sha256": "b6768d6fed8b597d87fa0a830e061e315b6784396afe2e19354e960868b887df",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/96a72f7c12efecd173afd9cc4530bf2dbc2008e7/releases/flowsteward.b1/0.1.0.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/0d7dc7a461b5a0515aff71e03464052e86ea5315/releases/flowsteward.b1/0.1.1.png",
         "sha256": "aab61183fb811e19c52528f47725bec7a1585b4f20f1ef0865a3f4fdd4ef4d9f",
         "bytes": 3212,
         "mime_type": "image/png",
         "size": "180x180"
       },
       "added_at": "2026-11-16T19:58:34Z",
-      "updated_at": "2026-11-16T19:58:34Z"
+      "updated_at": "2026-11-20T09:45:58Z"
     },
     {
       "extension_id": "flowsteward.bigquery",
@@ -300,7 +345,7 @@
     },
     {
       "extension_id": "flowsteward.centas",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "name": "Centas",
       "summary": "Send invoices, orders, payments, products and clients to Centas WS and read products, stock, documents and purchases.",
       "description": "Connect workflows to Centas, the Lithuanian accounting and business program, through its web exchange Centas WS (ws.centas.lt), covering its whole documented API. Steps send sales invoices, customer orders, purchase invoices and invoices to other companies with their lines, and payments, products, clients and suppliers and consignment notes in batches; they also update, record payments against or delete sales documents. Totals are checked against the lines before anything is sent.\n\nRead steps return products, prices and stock, product cards and gallery links, clients and suppliers, sales documents by number, date or unpaid status, purchases of a date range, an order’s invoice PDF and counts of new records. When a workflow plays the Centas program’s part, take steps collect new sales documents, orders, purchases and payments from the Centas WS queue and save them as workflow files. Each connection is one Centas WS project, reached with its WS key.",
@@ -330,19 +375,19 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-finance-centas/tree/v0.1.0",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-finance-centas/releases/download/v0.1.0/flowsteward.centas-0.1.0.zip",
-      "release_zip_bytes": 151484,
-      "release_zip_sha256": "6b025b533a96a53022a363285402c216cf30e2f053ba26b268a66c68158c103f",
+      "repository_url": "https://github.com/Flow-Steward/ext-finance-centas/tree/v0.1.1",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-finance-centas/releases/download/v0.1.1/flowsteward.centas-0.1.1.zip",
+      "release_zip_bytes": 159515,
+      "release_zip_sha256": "88db393c32d141baac53a569fd261ab5e1ae867495570812ca00c89603eab542",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/96a72f7c12efecd173afd9cc4530bf2dbc2008e7/releases/flowsteward.centas/0.1.0.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/0d7dc7a461b5a0515aff71e03464052e86ea5315/releases/flowsteward.centas/0.1.1.png",
         "sha256": "a172394b035307b66c692c3f6da432a9917c9aca7b7b709b6f9d13e36a9ea7e3",
         "bytes": 7935,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-11-16T19:58:37Z",
-      "updated_at": "2026-11-16T19:58:37Z"
+      "updated_at": "2026-11-20T09:46:00Z"
     },
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-clickhouse",
@@ -708,7 +753,7 @@
     },
     {
       "extension_id": "flowsteward.finvalda",
-      "version": "0.1.5",
+      "version": "0.1.6",
       "name": "Finvalda",
       "summary": "Connect Finvalda invoices, clients, products, payments, stock, prices, debt checks and document files to business workflows.",
       "description": "Bring Finvalda accounting and business records into Flow Steward through the FvsServicePure web service. Everyday steps find or create clients, products and services, prepare sales and purchase invoices, register incoming or outgoing payments and work with invoice PDFs and attachments. Client searches can use business identifiers or email, while product searches can use codes or barcodes.\n\nRead warehouse stock, reserved quantities, costs, sales and purchase prices, client-specific prices and outstanding debt. Date-based change reads expose clients, products, services, sales, purchases and payments for incremental exchange with other systems. Files move through Flow Steward storage, so a workflow can pass an invoice PDF to another document, email or archival step.\n\nFor more detailed integrations, the release includes 160 advanced operations derived from its pinned Finvalda reference. These cover description lists, operation classes, older record readers, record and document changes, locking, copying, journal moves, invoice and report generation and list exports. Combine these steps to turn shop orders into accounting documents, feed warehouse availability to a storefront or check unpaid invoices before processing a new order. Each connection carries its company and import settings; the configured Finvalda user and employee permissions control access.",
@@ -738,19 +783,19 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-finance-finvalda/tree/v0.1.5",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-finance-finvalda/releases/download/v0.1.5/flowsteward.finvalda-0.1.5.zip",
-      "release_zip_bytes": 388808,
-      "release_zip_sha256": "b5607eb13f3454c9d152d387569ccd9a1ce298fe505b0b67de41784719db7614",
+      "repository_url": "https://github.com/Flow-Steward/ext-finance-finvalda/tree/v0.1.6",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-finance-finvalda/releases/download/v0.1.6/flowsteward.finvalda-0.1.6.zip",
+      "release_zip_bytes": 397351,
+      "release_zip_sha256": "7e6fa3a05f65c30af0295ebd4d55cdac376e5a9239eaa1a0cb0d6466af4a6ef7",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/9ae9cb9e76f748de013b17814059da53b23701f5/releases/flowsteward.finvalda/0.1.5.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/0d7dc7a461b5a0515aff71e03464052e86ea5315/releases/flowsteward.finvalda/0.1.6.png",
         "sha256": "dafc106ffc949b2ee459e662e96f76504b1b528abfb9f89efc9e5a4265c15714",
         "bytes": 4403,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-11-10T18:28:06Z",
-      "updated_at": "2026-11-16T08:06:57Z"
+      "updated_at": "2026-11-20T09:46:08Z"
     },
     {
       "extension_id": "flowsteward.firestore",
@@ -1934,7 +1979,7 @@
     },
     {
       "extension_id": "flowsteward.rivile-erp",
-      "version": "0.1.6",
+      "version": "0.1.8",
       "name": "Rivile ERP",
       "summary": "Connect Rivile ERP cloud invoices, clients, products, payments and stock, with order, delivery, manufacturing and workforce API operations.",
       "description": "Bring Rivile ERP cloud accounting and operational records into Flow Steward workflows. Everyday steps find or create customers, suppliers and products, create sales and purchase invoices with document lines and optional posting, register payments, download attached document files and read stock, prices and client debt. Changes-since reads help pass updated records to another system.\n\nThe release also exposes a registry of 136 Public API endpoints as typed advanced operations. Its supported families include clients and contacts, products, sales and purchase orders and invoices, deliveries, payments, receivables and payables, inventory adjustments and movements, lots, manufacturing, gift cards, employees, timesheets and workflow statuses. Supported endpoint actions include reads, creation, updates and deletion where the particular API route permits them. List export writes JSONL files for larger exchanges.\n\nCombine these capabilities to turn storefront orders into accounting documents, exchange warehouse availability, build payment-registration workflows or connect operational records to reporting. A company-specific API key determines the connection's access. Invoice steps support optional posting, and advanced operations expose the individual document and line actions when a process needs more control. Lists and file exports provide records for subsequent workflow steps.",
@@ -1966,23 +2011,23 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-finance-rivile-erp/tree/v0.1.6",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-finance-rivile-erp/releases/download/v0.1.6/flowsteward.rivile-erp-0.1.6.zip",
-      "release_zip_bytes": 194528,
-      "release_zip_sha256": "60f6a708be653c10268c6b0911852d3f3a59b99741f316d2ade6d560699fca3b",
+      "repository_url": "https://github.com/Flow-Steward/ext-finance-rivile-erp/tree/v0.1.8",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-finance-rivile-erp/releases/download/v0.1.8/flowsteward.rivile-erp-0.1.8.zip",
+      "release_zip_bytes": 202647,
+      "release_zip_sha256": "104a5bdaa7383d8a44f567c60b7d038b6a0843e89442aecd4b84f17cfbb6957d",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/3f53c3bcb3b86c797430181881896e673d2bbe5b/releases/flowsteward.rivile-erp/0.1.6.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/0d7dc7a461b5a0515aff71e03464052e86ea5315/releases/flowsteward.rivile-erp/0.1.8.png",
         "sha256": "e97fb20a3ca708c40efd6c31bbab3f5139a3976b76af6d5f5345fb61fc422eb1",
         "bytes": 838,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-11-05T22:40:20Z",
-      "updated_at": "2026-11-16T09:14:04Z"
+      "updated_at": "2026-11-20T09:46:21Z"
     },
     {
       "extension_id": "flowsteward.rivile-gama",
-      "version": "0.1.8",
+      "version": "0.1.10",
       "name": "Rivile GAMA",
       "summary": "Connect Rivile GAMA invoices, clients, products, payments, stock and files, with advanced accounting, inventory, payroll and personnel methods.",
       "description": "Connect the Rivile GAMA system behind Manorivile-Gateway to Flow Steward using REST API v2. Everyday operations find or create clients and products, create sales or purchase invoices with optional posting, register document payments and attach or download document files. Stock, price, client-balance and date-based change readers provide building blocks for storefront updates, accounting exchanges and debt review.\n\nFor integrations needing more of GAMA's data model, the release contains typed operations for 209 methods from its pinned API reference. Supported families include purchases and sales, general ledger, debts and payments, products and services, inventory and stocktaking, production, fixed assets, prices, payroll, personnel, point of sale, loyalty and gift vouchers, contracts and document management. Advanced steps accept the corresponding method parameters and Rivile data blocks, while list export can write paginated records to a JSONL workflow file.\n\nEach connection uses a Rivile API key and the associated user's rights. The gateway and company settings determine which functions are available. Workflows can combine everyday steps with the more detailed method operations for company-specific document and inventory processes. Configure Rivile change tracking before relying on the incremental readers that require it.",
@@ -2014,19 +2059,19 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-finance-rivile-gama/tree/v0.1.8",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-finance-rivile-gama/releases/download/v0.1.8/flowsteward.rivile-gama-0.1.8.zip",
-      "release_zip_bytes": 426568,
-      "release_zip_sha256": "697eb6b507ba5b5f959521160bb1c0bef21b9d107dd52491191e422c65e145bc",
+      "repository_url": "https://github.com/Flow-Steward/ext-finance-rivile-gama/tree/v0.1.10",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-finance-rivile-gama/releases/download/v0.1.10/flowsteward.rivile-gama-0.1.10.zip",
+      "release_zip_bytes": 439985,
+      "release_zip_sha256": "1b726d46e61f6d41b502137e1761e683cb6ea3d6a91d0691bd649bfed991aebb",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/3f53c3bcb3b86c797430181881896e673d2bbe5b/releases/flowsteward.rivile-gama/0.1.8.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/0d7dc7a461b5a0515aff71e03464052e86ea5315/releases/flowsteward.rivile-gama/0.1.10.png",
         "sha256": "e97fb20a3ca708c40efd6c31bbab3f5139a3976b76af6d5f5345fb61fc422eb1",
         "bytes": 838,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-11-05T15:57:45Z",
-      "updated_at": "2026-11-16T09:14:10Z"
+      "updated_at": "2026-11-20T09:46:28Z"
     },
     {
       "extension_id": "flowsteward.shopify",
