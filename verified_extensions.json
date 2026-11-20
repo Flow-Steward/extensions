@@ -81,7 +81,7 @@
   },
   "com.discogs.api": {
     "repository": "https://github.com/Flow-Steward/ext-discogs",
-    "version": "0.2.6",
+    "version": "0.2.7",
     "reason": "Selected by the maintainer as a tested integration. This is not provider endorsement."
   }
 }
