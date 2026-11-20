@@ -1,0 +1,52 @@
+{
+  "extension_id": "flowsteward.b1",
+  "version": "0.1.1",
+  "repository": "https://github.com/Flow-Steward/ext-finance-b1",
+  "tag": "v0.1.1",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.b1/0.1.1.png",
+    "sha256": "aab61183fb811e19c52528f47725bec7a1585b4f20f1ef0865a3f4fdd4ef4d9f",
+    "bytes": 3212,
+    "mime_type": "image/png",
+    "size": "180x180"
+  },
+  "published_at": "2026-11-20T09:45:58Z",
+  "item": {
+    "extension_id": "flowsteward.b1",
+    "version": "0.1.1",
+    "name": "B1 (Site.pro Accounting)",
+    "summary": "Read and write B1 (Site.pro Accounting) clients, items, sales, purchases, payments, stock and reports.",
+    "description": "Connect workflows to B1 (Site.pro Accounting), the Lithuanian online accounting software, through its API. Everyday steps find or create clients and items, create sales and purchase invoices with their lines, record payments for sales checked for repeats and generate reports; amounts are taken as plain decimals and converted where the API expects them multiplied.\n\nEvery one of the 600 documented operations has its own step: clients, items and reference data, sales, purchases and stock, bank and cash, documents, general ledger, personnel, salary, production, long-term assets, e-commerce and shop, with cursor or page paging and filters, files and every report. Deletions take explicit IDs only, and irreversible accounting actions say what they change. Each connection is one company, reached with its API key.",
+    "categories": [
+      "finance",
+      "inventory",
+      "sales"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "Create an API key under Settings → Integrations → API simplified in Site.pro Accounting, add it to a project connection and run the connection test.",
+    "tags": [
+      "b1",
+      "site-pro",
+      "accounting",
+      "lithuania",
+      "invoices",
+      "inventory",
+      "payments"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-finance-b1/tree/v0.1.1",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-finance-b1/releases/download/v0.1.1/flowsteward.b1-0.1.1.zip",
+    "release_zip_bytes": 514552,
+    "release_zip_sha256": "b6768d6fed8b597d87fa0a830e061e315b6784396afe2e19354e960868b887df"
+  }
+}
