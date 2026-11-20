@@ -639,6 +639,25 @@ def test_generic_workflow_actions_do_not_claim_native_dataset_discovery():
     assert "dataset_connector" not in _inspect(archive)["capabilities"]
 
 
+def test_action_reference_yaml_constructor_error_is_a_validation_problem(monkeypatch):
+    def invalid_yaml(_text):
+        raise ValueError("invalid scalar")
+
+    monkeypatch.setattr(builder.yaml, "safe_load", invalid_yaml)
+    problems = []
+
+    document, path = builder._archive_contract_ref(
+        {"ui/actions.yaml": b"fixture"},
+        "ui/actions.yaml",
+        parent=builder.MANIFEST,
+        field="action_manifest",
+        problems=problems,
+    )
+
+    assert (document, path) == (None, "ui/actions.yaml")
+    assert problems == ["action_manifest: ref 'ui/actions.yaml' is not valid YAML"]
+
+
 @pytest.mark.parametrize(
     "shape",
     ["single", "dataset_connectors", "connectors", "items", "file", "ref", "snapshot"],

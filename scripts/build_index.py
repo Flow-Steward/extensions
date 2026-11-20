@@ -500,7 +500,7 @@ def _descriptor_problems(contents: dict[str, bytes], *, extension_id: str, versi
         return []
     try:
         descriptor = yaml.safe_load(contents[DESCRIPTOR].decode("utf-8"))
-    except (yaml.YAMLError, UnicodeDecodeError):
+    except (yaml.YAMLError, ValueError):
         descriptor = None
     if not isinstance(descriptor, dict):
         return [f"{DESCRIPTOR} must be a YAML mapping"]
@@ -547,7 +547,7 @@ def _archive_contract_ref(
         return None, path
     try:
         return yaml.safe_load(contents[path].decode("utf-8")), path
-    except (yaml.YAMLError, UnicodeDecodeError):
+    except (yaml.YAMLError, ValueError):
         problems.append(f"{field}: ref '{ref}' is not valid YAML")
         return None, path
 
@@ -560,7 +560,7 @@ def _dataset_contract_problems(
     if DESCRIPTOR in contents:
         try:
             descriptor = yaml.safe_load(contents[DESCRIPTOR].decode("utf-8"))
-        except (yaml.YAMLError, UnicodeDecodeError):
+        except (yaml.YAMLError, ValueError):
             descriptor = None
         if isinstance(descriptor, dict):
             sources.append(descriptor)
@@ -704,7 +704,7 @@ def _native_problems(
         return [f"{PACKAGE_METADATA} is missing; build with `flow-steward extensions bundle --runtime-target {target}`"]
     try:
         metadata = yaml.safe_load(contents[PACKAGE_METADATA].decode("utf-8")) or {}
-    except (yaml.YAMLError, UnicodeDecodeError):
+    except (yaml.YAMLError, ValueError):
         metadata = None
     if not isinstance(metadata, dict):
         return [f"{PACKAGE_METADATA} must be a YAML mapping"]
@@ -882,7 +882,7 @@ def inspect_archive(
 
     try:
         manifest = yaml.safe_load(contents[MANIFEST].decode("utf-8"))
-    except (yaml.YAMLError, UnicodeDecodeError) as exc:
+    except (yaml.YAMLError, ValueError) as exc:
         raise CatalogError(f"{where}: {MANIFEST} is not valid YAML ({exc})") from exc
     if not isinstance(manifest, dict):
         raise CatalogError(f"{where}: {MANIFEST} must be a mapping")
