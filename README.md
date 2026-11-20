@@ -262,7 +262,7 @@ reason. The maintainer has designated these 17 integrations as tested:
 | TypeSafe AI | 1.0.9 |
 | Web Scraper | 0.1.29 |
 | Image Processing | 0.2.9 |
-| Discogs | 0.2.6 |
+| Discogs | 0.2.7 |
 
 The configuration binds each selection to its exact repository and extension id;
 it takes effect when that release is recorded and listed. This records that
