@@ -1,0 +1,45 @@
+{
+  "extension_id": "flowsteward.gotenberg",
+  "version": "0.1.0",
+  "repository": "https://github.com/Flow-Steward/ext-document-gotenberg",
+  "tag": "v0.1.0",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.gotenberg/0.1.0.png",
+    "sha256": "463c09009f040225d1ced3747ef68d8c64d58f3e3835c942923b3ef5db8ffe39",
+    "bytes": 75403,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-20T11:04:01Z",
+  "item": {
+    "extension_id": "flowsteward.gotenberg",
+    "version": "0.1.0",
+    "name": "Gotenberg",
+    "summary": "Turn workflow HTML into PDF files for reports, invoices, and attachments.",
+    "description": "Generate a PDF artifact from HTML with a Gotenberg service you run yourself.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "Start Gotenberg with Docker Compose and save its base URL in a project connection.",
+    "tags": [
+      "gotenberg",
+      "pdf",
+      "documents"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-document-gotenberg/tree/v0.1.0",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-document-gotenberg/releases/download/v0.1.0/flowsteward.gotenberg-0.1.0.zip",
+    "release_zip_bytes": 89601,
+    "release_zip_sha256": "7003c2936e4ddbe3c071709ac6be23133841f67255e18d47fa85d9c853774e58"
+  }
+}
