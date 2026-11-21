@@ -101,19 +101,23 @@ extension tests, builds its archive, and checks the catalog contract.
 Before approving the visibility change, review the source, history, and Actions
 logs that GitHub will make public. Keep the CI and CodeQL workflow files on the
 default branch with the `public` trigger. When visibility changes, GitHub runs CI
-and CodeQL against the default branch automatically. The visibility event does
-not create a tag or publish a release.
+and CodeQL against the default branch automatically.
 
-Verify the CI result, the first CodeQL analysis, and the organization security
-profile before tagging the first release. When GitHub default setup is active,
-check its managed CodeQL analysis. Re-enable **Watch → Custom → Issues** for
+Before tagging the first release, check the CI result and the first CodeQL
+analysis. Confirm that [Flow Steward public security][public-security] applies
+to the public repository and attach it if needed. Re-enable
+**Watch → Custom → Issues** for
 the maintainers' GitHub accounts. GitHub clears repository watchers on the
 visibility change.
 
+[public-security]: https://github.com/organizations/Flow-Steward/settings/security_products
+
 ## Code scanning
 
-First-party repositories use CodeQL advanced setup from `.github/workflows/codeql.yml`
-on `ubuntu-24.04`. The workflow scans pushes, pull requests, the change to public visibility,
+New public repositories inherit the organization security profile. GitHub uses
+default CodeQL setup where an active advanced setup is absent. First-party
+advanced workflows run on `ubuntu-24.04` from `.github/workflows/codeql.yml`.
+They scan pushes, pull requests, the change to public visibility,
 and a weekly schedule, using the default query suite and a separate category
 for each source language. GitHub Free enables CodeQL uploads once the
 repository is public, so these advanced analysis jobs skip private repositories.
