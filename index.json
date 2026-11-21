@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-21.f45786b1",
-  "published_at": "2026-11-21T11:16:27Z",
+  "catalog_revision": "2026-11-21.883022a0",
+  "published_at": "2026-11-21T19:11:32Z",
   "items": [
     {
       "extension_id": "flowsteward.agnum",
@@ -523,7 +523,7 @@
     },
     {
       "extension_id": "flowsteward.docling",
-      "version": "0.3.5",
+      "version": "0.3.6",
       "name": "Docling Document Extraction",
       "summary": "Convert document artifacts to Markdown and Docling JSON through a managed or self-hosted Docling service.",
       "description": "Prepare documents for agents, classification and review with Docling Document Extraction. It sends a workflow document artifact to an external Docling REST service and returns Markdown plus Docling JSON. It writes both outputs as workflow artifacts, giving later steps readable text and the service's structured document representation. The result also includes inline Markdown, a preview, the full character count and a flag showing whether the inline text was shortened.\n\nThe conversion action supports optional source-format, OCR, OCR-language and table-processing settings. Use it to prepare documents for an agent, pass extracted text into a classification or review step, or preserve converted files for downstream processing. Document-specific field extraction and business rules can be implemented in later workflow steps.\n\nYou can connect a public managed endpoint or a separately deployed Docling service on your own infrastructure. Docling itself is not bundled with the extension. Input documents are limited to 20 MiB, and each output artifact to 50 MiB. Large inline Markdown is shortened while the Markdown artifact retains the complete conversion.",
@@ -546,20 +546,20 @@
         "markdown"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-document-docling/tree/v0.3.5",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-document-docling/releases/download/v0.3.5/flowsteward.docling-0.3.5.zip",
-      "release_zip_bytes": 82355,
-      "release_zip_sha256": "8e5a9eb59580017a24e6cdd37b7454ddc16a1cca03693400cbd012a94376dd63",
+      "verification_status": "unverified",
+      "repository_url": "https://github.com/Flow-Steward/ext-document-docling/tree/v0.3.6",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-document-docling/releases/download/v0.3.6/flowsteward.docling-0.3.6.zip",
+      "release_zip_bytes": 82588,
+      "release_zip_sha256": "0ed6a7ee42b931fd69cb6f6847f5336dae20a09c1135d0b8e5be48e938458295",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/95fccd260bb0394a97be66e78c0c5cd5d0fe5de3/releases/flowsteward.docling/0.3.5.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/b7f4de451f5ee05ed83d7cc000a065c1f38b51a3/releases/flowsteward.docling/0.3.6.png",
         "sha256": "de40855bc3ace4a02933c32d5330c770a62deb199da34eb951877ac8a92c4807",
         "bytes": 52642,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-10-01T12:12:39Z",
-      "updated_at": "2026-11-15T09:17:16Z"
+      "updated_at": "2026-11-21T19:11:32Z"
     },
     {
       "extension_id": "flowsteward.elasticsearch",
