@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-21.883022a0",
-  "published_at": "2026-11-21T19:11:32Z",
+  "catalog_revision": "2026-11-21.0c2e9ee8",
+  "published_at": "2026-11-21T20:13:13Z",
   "items": [
     {
       "extension_id": "flowsteward.agnum",
@@ -1608,7 +1608,7 @@
     },
     {
       "extension_id": "flowsteward.ollama-remote",
-      "version": "1.2.4",
+      "version": "1.2.5",
       "name": "Ollama LLM Provider",
       "summary": "Add hosted or self-hosted Ollama models to Flow Steward agents with model discovery, tool calling and structured responses.",
       "description": "Run Flow Steward agents with models from Ollama's hosted API or an Ollama server you operate using Ollama LLM Provider. Discover the server's models, select the ones you need and add those that pass Flow Steward's capability verification to the model catalog. You can then choose a model for an agent or use it as a project's default.\n\nThe provider uses Ollama's model-list, model-information and chat APIs. It supports conversations, tool calls with result replay, and schema-guided structured responses. Structured responses use a forced-tool approach, with the local Ollama format option supplied as well. Returned messages, tool calls and usage information are passed back to Flow Steward.\n\nUse it when you want agents backed by Ollama cloud models or by models running on your own infrastructure. The extension does not install Ollama or download model weights. Models must meet Flow Steward's chat, tool-use and structured-output requirements; appearing in discovery does not guarantee enablement. Hosted access depends on your API key, plan and quota. A private server must be reachable from Flow Steward's runtime and permitted by the host's network policy.",
@@ -1622,26 +1622,26 @@
       "permissions_summary": [
         "extension:invoke"
       ],
-      "setup_summary": "For hosted Ollama, enter the complete API key in the account-scoped LLM provider panel and leave the Base URL empty. For your own server, enter its reachable base URL, supply a key if it requires one, and enable the host's private-address policy when needed; then discover and verify models.",
+      "setup_summary": "For hosted Ollama, enter the complete API key in the account-scoped LLM provider panel and leave the Base URL empty. For your own server, enter its reachable base URL, supply a key if it requires one, and have an administrator allow a private server's exact origin when needed; then discover and verify models.",
       "tags": [
         "llm",
         "ollama"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-llm-ollama/tree/v1.2.4",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-llm-ollama/releases/download/v1.2.4/flowsteward.ollama-remote-1.2.4.zip",
-      "release_zip_bytes": 48574,
-      "release_zip_sha256": "0050b23c12b1415b306360e647a0d67fd13f33f6e21a7bd72c3aa638cb58f003",
+      "verification_status": "unverified",
+      "repository_url": "https://github.com/Flow-Steward/ext-llm-ollama/tree/v1.2.5",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-llm-ollama/releases/download/v1.2.5/flowsteward.ollama-remote-1.2.5.zip",
+      "release_zip_bytes": 52043,
+      "release_zip_sha256": "281f01393185b7fa00cfb9e39cc1f57ee4b24d3119be29ac07197610a9a11335",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/95fccd260bb0394a97be66e78c0c5cd5d0fe5de3/releases/flowsteward.ollama-remote/1.2.4.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/2be67eea7023edb9f0e119f5942a94163662516e/releases/flowsteward.ollama-remote/1.2.5.png",
         "sha256": "d01de2189d517e07d51096393bb9e8499e6324ef57409b8e269cf333b141785f",
         "bytes": 7932,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-10-01T12:12:43Z",
-      "updated_at": "2026-11-15T09:17:32Z"
+      "updated_at": "2026-11-21T20:13:13Z"
     },
     {
       "extension_id": "flowsteward.openai-tools",
