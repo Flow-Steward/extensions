@@ -1,0 +1,57 @@
+{
+  "extension_id": "flowsteward.neo4j",
+  "version": "1.0.15",
+  "repository": "https://github.com/Flow-Steward/ext-graph-neo4j",
+  "tag": "v1.0.15",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.neo4j/1.0.15.png",
+    "sha256": "18c2cc6399007423ed069d188603b7be7725f39d12efbcb48c9b8f648010f2e7",
+    "bytes": 16668,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-21T11:16:07Z",
+  "item": {
+    "extension_id": "flowsteward.neo4j",
+    "version": "1.0.15",
+    "name": "Neo4j",
+    "summary": "Create and query Neo4j graphs, manage node vector indexes and retrieve similar nodes with metadata.",
+    "description": "Use Neo4j in Flow Steward for graph-backed records, relationship lookups and vector retrieval. Actions upsert, read, find and delete nodes using a label and stable string ID; create or patch directed relationships between existing nodes; and retrieve incident edges and neighboring nodes. Create a uniqueness constraint for each node label before concurrent upserts.\n\nVector actions create or verify a node vector index, inspect and list indexes, wait for an index to become ready, or drop it while preserving graph nodes. Write embeddings and metadata to indexed nodes, search for nearest neighbors with scores, and remove indexed nodes when source data changes. Indexes support cosine or Euclidean similarity and vectors of 1–4096 components. Combine retrieved source properties and graph relationships with your own answer-generation workflow.\n\nConfigure a direct Bolt endpoint, database and username/password. Supply embeddings externally; chunking, model calls and citation generation belong to your workflow. Reads return at most 100 records, and properties are flat values or homogeneous primitive arrays. Cluster routing and arbitrary Cypher are outside the operation set. Node deletion needs explicit detach to remove connected relationships, and schema operations require appropriate Neo4j privileges.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Create a Neo4j project connection with a direct Bolt host, database, stable ID property and username/password; public endpoints require verified TLS. Create per-label uniqueness constraints before concurrent upserts, and configure a matching vector index plus externally generated embeddings for similarity search.",
+    "tags": [
+      "neo4j",
+      "graph",
+      "vector",
+      "toolbox"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-graph-neo4j/tree/v1.0.15",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-graph-neo4j/releases/download/v1.0.15/flowsteward.neo4j-1.0.15-linux-amd64.zip",
+    "release_zip_bytes": 11208841,
+    "release_zip_sha256": "f2ba3e72c9c9e6eee2f88e769a6fe61c01bf419388dfb3f941d2331c50e55e5b",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-graph-neo4j/releases/download/v1.0.15/flowsteward.neo4j-1.0.15-linux-amd64.zip",
+        "release_zip_bytes": 11208841,
+        "release_zip_sha256": "f2ba3e72c9c9e6eee2f88e769a6fe61c01bf419388dfb3f941d2331c50e55e5b"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-graph-neo4j/releases/download/v1.0.15/flowsteward.neo4j-1.0.15-linux-arm64.zip",
+        "release_zip_bytes": 10115722,
+        "release_zip_sha256": "97e3fc4cfe54f925491c185262b39d8e9953ac00db168ebeb83dc4ca57cac896"
+      }
+    }
+  }
+}
