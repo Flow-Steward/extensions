@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-20.c6aea566",
-  "published_at": "2026-11-20T18:10:10Z",
+  "catalog_revision": "2026-11-20.3f56b1a8",
+  "published_at": "2026-11-20T18:09:45Z",
   "items": [
     {
       "extension_id": "flowsteward.agnum",
@@ -1020,54 +1020,6 @@
       "updated_at": "2026-11-20T11:04:01Z"
     },
     {
-      "extension_id": "flowsteward.ilsmart",
-      "version": "0.1.0",
-      "name": "ILSmart",
-      "summary": "Search aircraft parts, receive and quote RFQs, send RFQs and keep inventory listings on ILSmart up to date.",
-      "description": "Connect workflows to ILSmart, the aviation and marine parts marketplace of Inventory Locator Service, through its SOAP web services. Everyday steps check the availability of a list of part numbers, receive new RFQs, quote every item of an RFQ, send a parts RFQ and upload an inventory file, then follow its processing.\n\nEach of the 61 services of the ILS SOAP 1.1 WSDL (all but the mobile variants and the legacy text search) has its own step: searches and market statistics, part and MRO listings, RFQs and quotes, documents and messages. Amounts are exact decimals. A connection is an ILS user ID and its password.",
-      "categories": [
-        "ecommerce",
-        "sales",
-        "inventory"
-      ],
-      "capabilities": [
-        "tool",
-        "action"
-      ],
-      "permissions_summary": [
-        "artifact:read",
-        "artifact:write",
-        "extension:invoke"
-      ],
-      "setup_summary": "Add your ILS user ID and password to a project connection and run the connection test; the services you can call depend on your ILS subscription.",
-      "tags": [
-        "ilsmart",
-        "ils",
-        "aviation",
-        "aircraft-parts",
-        "ecommerce",
-        "marketplace",
-        "rfq",
-        "inventory",
-        "soap"
-      ],
-      "publication_status": "published",
-      "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-ecommerce-ilsmart/tree/v0.1.0",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-ecommerce-ilsmart/releases/download/v0.1.0/flowsteward.ilsmart-0.1.0.zip",
-      "release_zip_bytes": 241890,
-      "release_zip_sha256": "28cd13394191b0ad41c84fee2fe73e24e13ad1a3e2ee0d749096f2ebdb4623bf",
-      "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/1b1aaa1f9bd8ce9a140fa424d11ee08503680b78/releases/flowsteward.ilsmart/0.1.0.png",
-        "sha256": "758c11e22ae7603cb81e0810382afb619d90882a25bd56bea722027e4c11fad1",
-        "bytes": 71565,
-        "mime_type": "image/png",
-        "size": "512x512"
-      },
-      "added_at": "2026-11-20T18:09:42Z",
-      "updated_at": "2026-11-20T18:09:42Z"
-    },
-    {
       "extension_id": "com.image.processing",
       "version": "0.2.9",
       "name": "Image Processing",
@@ -1243,51 +1195,6 @@
       },
       "added_at": "2026-11-16T08:07:02Z",
       "updated_at": "2026-11-17T23:10:09Z"
-    },
-    {
-      "extension_id": "flowsteward.locatory",
-      "version": "0.1.0",
-      "name": "Locatory.com",
-      "summary": "Find aircraft parts, update your stock on the Locatory market, read and answer RFQs and request quotes.",
-      "description": "Connect workflows to Locatory.com, the aviation parts marketplace, through the Locatory API. Everyday steps find parts and their sellers, keep your stock on the market up to date row by row or from a file, read the RFQs you received and answer them, and request quotes.\n\nEvery request of Locatory's API documentation besides the sign-in (32 in all) has its own step, MRO capabilities and their RFQs included. Amounts are exact decimals. A connection is one Locatory user, in production or in Locatory's test environment.",
-      "categories": [
-        "ecommerce",
-        "sales",
-        "inventory"
-      ],
-      "capabilities": [
-        "tool",
-        "action"
-      ],
-      "permissions_summary": [
-        "artifact:read",
-        "extension:invoke"
-      ],
-      "setup_summary": "Add the login and password of your Locatory user to the connection, choose production or test and run the connection test.",
-      "tags": [
-        "locatory",
-        "aviation",
-        "aircraft-parts",
-        "ecommerce",
-        "marketplace",
-        "rfq",
-        "inventory"
-      ],
-      "publication_status": "published",
-      "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-ecommerce-locatory/tree/v0.1.0",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-ecommerce-locatory/releases/download/v0.1.0/flowsteward.locatory-0.1.0.zip",
-      "release_zip_bytes": 205646,
-      "release_zip_sha256": "4311a58563c319d1801123ce8fec327579336507608efadee347562582a148bc",
-      "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/1b1aaa1f9bd8ce9a140fa424d11ee08503680b78/releases/flowsteward.locatory/0.1.0.png",
-        "sha256": "f48ad4f4b91f7cc2c3a3b2689b84e2273a57060a436a81b0781eb02061f577be",
-        "bytes": 12958,
-        "mime_type": "image/png",
-        "size": "180x180"
-      },
-      "added_at": "2026-11-20T18:09:47Z",
-      "updated_at": "2026-11-20T18:09:47Z"
     },
     {
       "extension_id": "flowsteward.meta-ads",
@@ -1907,53 +1814,6 @@
       "updated_at": "2026-11-15T09:17:36Z"
     },
     {
-      "extension_id": "flowsteward.partsbase",
-      "version": "0.1.0",
-      "name": "PartsBase",
-      "summary": "Search aviation parts, read market prices, send and answer RFQs and upload inventory on PartsBase.",
-      "description": "Connect workflows to PartsBase, the aviation parts marketplace, through the PartsBase API. Everyday steps send an RFQ, read the market prices of a list of part numbers and read the RFQs your company received for any period.\n\nEach of the 23 callable operations of the PartsBase API documentation has its own step: real-time and batch part search, market and MRO pricing, government data, RFQs and quotes, inventory upload and API consumption. Amounts are exact decimals. A connection is one set of PartsBase API credentials.",
-      "categories": [
-        "ecommerce",
-        "sales",
-        "inventory"
-      ],
-      "capabilities": [
-        "tool",
-        "action"
-      ],
-      "permissions_summary": [
-        "artifact:read",
-        "artifact:write",
-        "extension:invoke"
-      ],
-      "setup_summary": "Ask your PartsBase account manager for API credentials, add the client id, client secret and API key to the connection and run the connection test.",
-      "tags": [
-        "partsbase",
-        "aviation",
-        "aircraft-parts",
-        "ecommerce",
-        "marketplace",
-        "rfq",
-        "quotes",
-        "inventory"
-      ],
-      "publication_status": "published",
-      "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-ecommerce-partsbase/tree/v0.1.0",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-ecommerce-partsbase/releases/download/v0.1.0/flowsteward.partsbase-0.1.0.zip",
-      "release_zip_bytes": 222326,
-      "release_zip_sha256": "32feb3daec8f92a9eb3a7ca881a5d27a89ac09dc97298597fb9ca3ade308dfb5",
-      "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/1b1aaa1f9bd8ce9a140fa424d11ee08503680b78/releases/flowsteward.partsbase/0.1.0.png",
-        "sha256": "5f1d83e8463cbb491cf6692a532904bfd1454cb27d139d8aa2ad3e94d627ded0",
-        "bytes": 1761,
-        "mime_type": "image/png",
-        "size": "96x96"
-      },
-      "added_at": "2026-11-20T18:10:01Z",
-      "updated_at": "2026-11-20T18:10:01Z"
-    },
-    {
       "extension_id": "flowsteward.pinecone",
       "version": "1.0.7",
       "name": "Pinecone Vector Database",
@@ -2391,51 +2251,6 @@
       },
       "added_at": "2026-10-01T13:29:17Z",
       "updated_at": "2026-11-17T23:39:27Z"
-    },
-    {
-      "extension_id": "flowsteward.skyselect",
-      "version": "0.1.0",
-      "name": "SkySelect",
-      "summary": "Read SkySelect RFQ invitations, send quotes and no-quotes and attach part documents.",
-      "description": "Connect workflows to SkySelect, the aircraft parts procurement platform, as a supplier through the SkySelect Supplier API. Everyday steps read your RFQ invitations, read one invitation, decline an RFQ with a no-quote and attach certificates and other documents to your quote.\n\nEach of the 7 operations of the Supplier API 2.0.0 has its own step, including adding a quote with its alternates and reading the quote fields of an RFQ template. Amounts are exact decimals. A connection is one SkySelect supplier account and the API key and secret of one of its users.",
-      "categories": [
-        "sales",
-        "ecommerce"
-      ],
-      "capabilities": [
-        "tool",
-        "action"
-      ],
-      "permissions_summary": [
-        "artifact:read",
-        "artifact:write",
-        "extension:invoke"
-      ],
-      "setup_summary": "Generate an API key and secret in SkySelect under Settings, Developer, add them to the connection and run the connection test.",
-      "tags": [
-        "skyselect",
-        "aviation",
-        "aircraft-parts",
-        "sales",
-        "rfq",
-        "quotes",
-        "supplier"
-      ],
-      "publication_status": "published",
-      "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-sales-skyselect/tree/v0.1.0",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-sales-skyselect/releases/download/v0.1.0/flowsteward.skyselect-0.1.0.zip",
-      "release_zip_bytes": 124096,
-      "release_zip_sha256": "00e7f532128c60b11d2b5ff326f6b3577519d71adee6af1e78a9f3e5288c48dd",
-      "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/1b1aaa1f9bd8ce9a140fa424d11ee08503680b78/releases/flowsteward.skyselect/0.1.0.png",
-        "sha256": "563a4d8e00565cb564b9204767766ecda2a247694d6e670ada06e94f97cf6b77",
-        "bytes": 6225,
-        "mime_type": "image/png",
-        "size": "120x120"
-      },
-      "added_at": "2026-11-20T18:10:10Z",
-      "updated_at": "2026-11-20T18:10:10Z"
     },
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-snowflake",
