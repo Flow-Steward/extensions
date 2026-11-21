@@ -5,6 +5,7 @@ on:
     branches-ignore:
       - "dependabot/**"
   pull_request:
+  public:
   schedule:
     - cron: "26 1 * * 2"
   workflow_dispatch:
@@ -15,6 +16,7 @@ cache-mode: none
 
 jobs:
   analyze:
+    if: ${{ github.event.repository.private == false }}
     name: Analyze (${{ matrix.language }})
     runs-on: ubuntu-24.04
     timeout-minutes: 30

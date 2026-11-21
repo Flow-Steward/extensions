@@ -92,11 +92,31 @@ This keeps the OS release stable while the image continues receiving updates;
 it avoids inheriting a new Ubuntu release through `ubuntu-latest`.
 Reusable workflow callers pin the catalog commit that declares this baseline.
 
+## Taking a first-party repository public
+
+Use the single-extension scaffold for a new repository. Run the normal CI on the
+candidate on the default branch while the repository is private. CI runs the
+extension tests, builds its archive, and checks the catalog contract.
+
+Before approving the visibility change, review the source, history, and Actions
+logs that GitHub will make public. Keep the CI and CodeQL workflow files on the
+default branch with the `public` trigger. When visibility changes, GitHub runs CI
+and CodeQL against the default branch automatically. The visibility event does
+not create a tag or publish a release.
+
+Verify the CI result, the first CodeQL analysis, and the organization security
+profile before tagging the first release. When GitHub default setup is active,
+check its managed CodeQL analysis. Re-enable **Watch → Custom → Issues** for
+the maintainers' GitHub accounts. GitHub clears repository watchers on the
+visibility change.
+
 ## Code scanning
 
 First-party repositories use CodeQL advanced setup from `.github/workflows/codeql.yml`
-on `ubuntu-24.04`. The workflow scans pushes, pull requests, and a weekly schedule,
-using the default query suite and a separate category for each source language.
+on `ubuntu-24.04`. The workflow scans pushes, pull requests, the change to public visibility,
+and a weekly schedule, using the default query suite and a separate category
+for each source language. GitHub Free enables CodeQL uploads once the
+repository is public, so these advanced analysis jobs skip private repositories.
 Google Workspace also scans JavaScript/TypeScript; Firestore scans its native Go
 adapter with the same dependency lock and compiler version as its release build.
 The single-extension template includes Python and GitHub Actions analysis.

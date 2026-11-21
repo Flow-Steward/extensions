@@ -1,11 +1,12 @@
-# Every push and pull request runs the extension's tests and builds the archive
-# the catalog would publish. The Release workflow runs this same workflow.
+# Validate source changes and the current default branch when the repository
+# becomes public. The Release workflow also runs this workflow before publishing.
 name: CI
 
 on:
   push:
     branches: [main]
   pull_request:
+  public:
   workflow_call:
 
 permissions:
