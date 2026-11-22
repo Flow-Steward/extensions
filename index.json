@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-21.cdbdb18b",
-  "published_at": "2026-11-21T20:55:49Z",
+  "catalog_revision": "2026-11-22.4df4b056",
+  "published_at": "2026-11-22T10:27:32Z",
   "items": [
     {
       "extension_id": "flowsteward.agnum",
@@ -938,7 +938,7 @@
     },
     {
       "extension_id": "flowsteward.google-workspace",
-      "version": "0.3.6",
+      "version": "0.3.7",
       "name": "Google Workspace",
       "summary": "Read and organize Gmail, transfer Drive files, and read or update Google Sheets through explicitly selected project accounts.",
       "description": "Google Workspace connects Gmail, Google Drive and Google Sheets to Flow Steward workflows. Search and read Gmail messages, retrieve attachments, organize messages with labels, change read or starred flags and move messages to trash. Search Drive files available to the app, download files or supported native exports, and upload workflow files to a selected folder. Read a Sheets range into a dataset, create a spreadsheet, replace a selected rectangle or append rows to a table.\n\nCombine these operations for invoice intake, document processing and reporting. Retrieve an email attachment, extract its contents in another step, save the resulting document to Drive and append records to Sheets. Every step selects a compatible project connection, allowing several accounts to participate in a workflow.\n\nSetup requires your own Google Cloud OAuth web application, enabled service APIs and the Flow Steward redirect URI. Authorize Gmail, Drive and Sheets separately; optional Google Picker configuration enables interactive file selection. File access follows each account's authorization. The extension covers these specific operations rather than every Workspace feature: Gmail sending, Drive sharing and spreadsheet formatting are outside its scope. Sheets writes store values as data, including formula-looking strings.",
@@ -965,20 +965,20 @@
         "spreadsheets"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-google-workspace/tree/v0.3.6",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-google-workspace/releases/download/v0.3.6/flowsteward.google-workspace-0.3.6.zip",
-      "release_zip_bytes": 187085,
-      "release_zip_sha256": "b132195157451f02b9cd01e5699aa6722366a6f3d121e966d41a977e449f468a",
+      "verification_status": "unverified",
+      "repository_url": "https://github.com/Flow-Steward/ext-productivity-google-workspace/tree/v0.3.7",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-productivity-google-workspace/releases/download/v0.3.7/flowsteward.google-workspace-0.3.7.zip",
+      "release_zip_bytes": 187098,
+      "release_zip_sha256": "4976ed4f5717ab5c48dff5ca2fdbb0bc12e7d87158f89840a130a93cd83ae228",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/95fccd260bb0394a97be66e78c0c5cd5d0fe5de3/releases/flowsteward.google-workspace/0.3.6.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/b7a8528b3db63d50bd38c5e7fb6f91ce7ccbbf63/releases/flowsteward.google-workspace/0.3.7.png",
         "sha256": "e4a550a2b736fa8d6a8549aa7196ab9fa450fb5b7a27b2f980534b44d5d84383",
         "bytes": 28499,
         "mime_type": "image/png",
         "size": "512x512"
       },
       "added_at": "2026-10-01T12:12:41Z",
-      "updated_at": "2026-11-15T09:17:26Z"
+      "updated_at": "2026-11-22T10:27:32Z"
     },
     {
       "extension_id": "flowsteward.gotenberg",
