@@ -249,7 +249,7 @@ reason. The maintainer has designated these 17 integrations as tested:
 | Shopify | 0.5.5 |
 | MySQL | 1.3.12 |
 | PostgreSQL | 1.4.13 |
-| Google Workspace | 0.3.6 |
+| Google Workspace | 0.3.7 |
 | Telegram | 1.3.5 |
 | WhatsApp | 0.1.4 |
 | Docling | 0.3.5 |

@@ -15,8 +15,8 @@
     "reason": "Selected by the maintainer as a tested integration. This is not provider endorsement."
   },
   "flowsteward.google-workspace": {
-    "repository": "https://github.com/Flow-Steward/ext-google-workspace",
-    "version": "0.3.6",
+    "repository": "https://github.com/Flow-Steward/ext-productivity-google-workspace",
+    "version": "0.3.7",
     "reason": "Selected by the maintainer as a tested integration. This is not provider endorsement."
   },
   "flowsteward.telegram": {

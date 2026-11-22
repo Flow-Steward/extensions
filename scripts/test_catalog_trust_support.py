@@ -15,7 +15,7 @@ CURATED = {
     "flowsteward.shopify": ("ext-ecommerce-shopify", "0.5.5"),
     "flowsteward.data-connector-mcp-toolbox-mysql": ("ext-data-mysql", "1.3.12"),
     "flowsteward.data-connector-mcp-toolbox-postgres": ("ext-data-postgres", "1.4.13"),
-    "flowsteward.google-workspace": ("ext-google-workspace", "0.3.6"),
+    "flowsteward.google-workspace": ("ext-productivity-google-workspace", "0.3.7"),
     "flowsteward.telegram": ("ext-messaging-telegram", "1.3.5"),
     "flowsteward.whatsapp": ("ext-messaging-whatsapp", "0.1.4"),
     "flowsteward.docling": ("ext-document-docling", "0.3.5"),
