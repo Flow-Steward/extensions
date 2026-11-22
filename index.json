@@ -1,6 +1,6 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-22.4df4b056",
+  "catalog_revision": "2026-11-22.dd4884d3",
   "published_at": "2026-11-22T10:27:32Z",
   "items": [
     {
@@ -965,7 +965,7 @@
         "spreadsheets"
       ],
       "publication_status": "published",
-      "verification_status": "unverified",
+      "verification_status": "verified",
       "repository_url": "https://github.com/Flow-Steward/ext-productivity-google-workspace/tree/v0.3.7",
       "release_zip_url": "https://github.com/Flow-Steward/ext-productivity-google-workspace/releases/download/v0.3.7/flowsteward.google-workspace-0.3.7.zip",
       "release_zip_bytes": 187098,
