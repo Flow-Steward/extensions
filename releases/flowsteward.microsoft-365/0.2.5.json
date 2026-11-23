@@ -1,0 +1,56 @@
+{
+  "extension_id": "flowsteward.microsoft-365",
+  "version": "0.2.5",
+  "repository": "https://github.com/Flow-Steward/ext-productivity-microsoft-365",
+  "tag": "v0.2.5",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.microsoft-365/0.2.5.png",
+    "sha256": "f3aa3c7b2856a53c358d0dfc2acae8e3fe1e53954a12ebb6639a1fe07eac7e2a",
+    "bytes": 2657,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-23T07:35:36Z",
+  "item": {
+    "extension_id": "flowsteward.microsoft-365",
+    "version": "0.2.5",
+    "name": "Microsoft 365",
+    "summary": "Outlook mail and calendar, SharePoint files, Excel and Teams in workflows; notifications by email or in Teams.",
+    "description": "Outlook mail and calendar, OneDrive / SharePoint files, Excel workbooks and Microsoft Teams for project workflows through Microsoft Graph, plus Flow Steward notifications by Outlook email or in Teams.",
+    "categories": [
+      "productivity"
+    ],
+    "capabilities": [
+      "notify",
+      "action",
+      "tool"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke",
+      "notify:dispatch"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "microsoft",
+      "outlook",
+      "onedrive",
+      "sharepoint",
+      "excel",
+      "calendar",
+      "teams",
+      "email",
+      "notifications",
+      "files",
+      "spreadsheets"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-productivity-microsoft-365/tree/v0.2.5",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-productivity-microsoft-365/releases/download/v0.2.5/flowsteward.microsoft-365-0.2.5.zip",
+    "release_zip_bytes": 383718,
+    "release_zip_sha256": "25cc05fed162dfeadb59c33a336f4ba32e3c82e5dbfbb0709fb023a6ab2dfb5e"
+  }
+}
