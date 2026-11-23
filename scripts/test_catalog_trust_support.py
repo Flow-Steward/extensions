@@ -28,7 +28,8 @@ CURATED = {
     "flowsteward.typesafe-ai": ("ext-typesafe-ai", "1.0.9"),
     "flowsteward.web-scraper": ("ext-data-web-scraper", "0.1.29"),
     "com.image.processing": ("ext-image-processing", "0.2.9"),
-    "com.discogs.api": ("ext-discogs", "0.2.6"),
+    "com.discogs.api": ("ext-discogs", "0.2.7"),
+    "flowsteward.microsoft-365": ("ext-productivity-microsoft-365", "0.2.5"),
 }
 REPOSITORY = "https://github.com/Flow-Steward/ext-example"
 
@@ -138,7 +139,7 @@ def test_old_namespace_verified_records_are_projected_unverified_without_rewriti
     assert path.read_bytes() == before
 
 
-def test_checked_in_curation_is_exactly_the_seventeen_designated_releases():
+def test_checked_in_curation_is_exactly_the_designated_releases():
     policy = json.loads(
         (Path(__file__).resolve().parents[1] / "verified_extensions.json").read_text()
     )

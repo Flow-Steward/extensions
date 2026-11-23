@@ -242,7 +242,7 @@ or endorsed by, the integrated product's provider.
 
 [`verified_extensions.json`](verified_extensions.json) selects tested integrations
 by exact extension id, repository URL and release version, with a maintainer
-reason. The maintainer has designated these 17 integrations as tested:
+reason. The maintainer has designated these 18 integrations as tested:
 
 | Integration | Selected release |
 | --- | --- |
@@ -263,6 +263,7 @@ reason. The maintainer has designated these 17 integrations as tested:
 | Web Scraper | 0.1.29 |
 | Image Processing | 0.2.9 |
 | Discogs | 0.2.7 |
+| Microsoft 365 | 0.2.5 |
 
 The configuration binds each selection to its exact repository and extension id;
 it takes effect when that release is recorded and listed. This records that
