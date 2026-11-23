@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-23.6ee71498",
-  "published_at": "2026-11-23T14:56:21Z",
+  "catalog_revision": "2026-11-23.185c66d4",
+  "published_at": "2026-11-23T19:41:42Z",
   "items": [
     {
       "extension_id": "flowsteward.agnum",
@@ -1250,7 +1250,7 @@
     },
     {
       "extension_id": "flowsteward.microsoft-365",
-      "version": "0.2.5",
+      "version": "0.2.7",
       "name": "Microsoft 365",
       "summary": "Outlook mail and calendar, SharePoint files, Excel and Teams in workflows; notifications by email or in Teams.",
       "description": "Outlook mail and calendar, OneDrive / SharePoint files, Excel workbooks and Microsoft Teams for project workflows through Microsoft Graph, plus Flow Steward notifications by Outlook email or in Teams.",
@@ -1283,20 +1283,20 @@
         "spreadsheets"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-productivity-microsoft-365/tree/v0.2.5",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-productivity-microsoft-365/releases/download/v0.2.5/flowsteward.microsoft-365-0.2.5.zip",
-      "release_zip_bytes": 383718,
-      "release_zip_sha256": "25cc05fed162dfeadb59c33a336f4ba32e3c82e5dbfbb0709fb023a6ab2dfb5e",
+      "verification_status": "unverified",
+      "repository_url": "https://github.com/Flow-Steward/ext-productivity-microsoft-365/tree/v0.2.7",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-productivity-microsoft-365/releases/download/v0.2.7/flowsteward.microsoft-365-0.2.7.zip",
+      "release_zip_bytes": 389107,
+      "release_zip_sha256": "3a016d560da4a0235dade6a1c9d0407300a2a3885a05a586c9cef86b1c656e78",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/d1b4e7d3386e78f86d1d89c92986ab6c48fe3f84/releases/flowsteward.microsoft-365/0.2.5.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/e78f1d4dea51cf288c00b593ceec1902e1e753ce/releases/flowsteward.microsoft-365/0.2.7.png",
         "sha256": "f3aa3c7b2856a53c358d0dfc2acae8e3fe1e53954a12ebb6639a1fe07eac7e2a",
         "bytes": 2657,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-11-23T07:35:36Z",
-      "updated_at": "2026-11-23T07:35:36Z"
+      "updated_at": "2026-11-23T19:41:42Z"
     },
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-mssql",
