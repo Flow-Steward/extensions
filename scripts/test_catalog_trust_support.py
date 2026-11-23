@@ -29,7 +29,7 @@ CURATED = {
     "flowsteward.web-scraper": ("ext-data-web-scraper", "0.1.29"),
     "com.image.processing": ("ext-image-processing", "0.2.9"),
     "com.discogs.api": ("ext-discogs", "0.2.7"),
-    "flowsteward.microsoft-365": ("ext-productivity-microsoft-365", "0.2.5"),
+    "flowsteward.microsoft-365": ("ext-productivity-microsoft-365", "0.2.7"),
 }
 REPOSITORY = "https://github.com/Flow-Steward/ext-example"
 
