@@ -1,6 +1,6 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-23.f6ae1d57",
+  "catalog_revision": "2026-11-23.d003aa56",
   "published_at": "2026-11-23T07:35:36Z",
   "items": [
     {
@@ -1283,7 +1283,7 @@
         "spreadsheets"
       ],
       "publication_status": "published",
-      "verification_status": "unverified",
+      "verification_status": "verified",
       "repository_url": "https://github.com/Flow-Steward/ext-productivity-microsoft-365/tree/v0.2.5",
       "release_zip_url": "https://github.com/Flow-Steward/ext-productivity-microsoft-365/releases/download/v0.2.5/flowsteward.microsoft-365-0.2.5.zip",
       "release_zip_bytes": 383718,
