@@ -1,0 +1,46 @@
+{
+  "extension_id": "flowsteward.linkedin",
+  "version": "1.0.6",
+  "repository": "https://github.com/Flow-Steward/ext-social-linkedin",
+  "tag": "v1.0.6",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.linkedin/1.0.6.png",
+    "sha256": "324708d4d88afaef003ad25866e06ee23247cfc811e99fc050f01fbbe97c15e5",
+    "bytes": 15318,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-24T07:40:28Z",
+  "item": {
+    "extension_id": "flowsteward.linkedin",
+    "version": "1.0.6",
+    "name": "LinkedIn Publisher",
+    "summary": "Publish prepared text, image posts and article links to LinkedIn from workflows, using a member profile or company Page.",
+    "description": "LinkedIn Publisher connects Flow Steward workflows to LinkedIn organic publishing. Publish public text posts, posts with one JPEG or PNG image, and link cards for articles hosted on your own website. Choose an authenticated member profile or one explicitly configured company Page per connection.\n\nUse validate_post to check prepared content against local limits, upload_image to upload an authorized Flow Steward artifact, publish_post to submit the post, and test_connection to inspect redacted connection status. Successful publication returns a LinkedIn post ID, URL, author and API version. Release announcements, tutorials and blog updates can arrive from a webhook or another workflow step; no WordPress or AI-provider dependency is required.\n\nBring your own LinkedIn developer app, register the HTTPS OAuth redirect shown by Flow Steward, and create project-owned member or Page connections. Member publishing needs the LinkedIn sharing and OpenID Connect products. Page publishing needs Community Management access, an eligible Page role and a manually entered organization URN. Bind each connection explicitly in the workflow. Use separate bound steps to publish as both authors; there is no Page-discovery picker.\n\nContent must already be prepared. Local policy limits text to 3,000 UTF-16 code units and images to 8 MiB; images are not resized or cropped. Article links are link cards, not native LinkedIn articles. Comments, replies, private posts, video, documents, multiple images, editing, deletion, analytics and inbound LinkedIn events are not supported. Test mode suppresses uploads and posts. Rate limits and uncertain write outcomes use the existing workflow and effect-resolution controls; there are no automatic provider retries or status polls. An accepted receipt does not guarantee immediate visibility or completed image processing.\n\nThis independent integration is not endorsed by LinkedIn. Live OAuth, Page access and live publication have not been verified in this release preparation.",
+    "categories": [
+      "marketing"
+    ],
+    "capabilities": [
+      "tool",
+      "action",
+      "artifact_bundle"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "extension:invoke"
+    ],
+    "setup_summary": "Register Flow Steward’s HTTPS OAuth redirect in your LinkedIn developer app, then create and bind project member or Page connections. Pages need Community Management access, an eligible role and an organization URN.",
+    "tags": [
+      "linkedin",
+      "publishing",
+      "marketing"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-social-linkedin/tree/v1.0.6",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-social-linkedin/releases/download/v1.0.6/flowsteward.linkedin-1.0.6.zip",
+    "release_zip_bytes": 63139,
+    "release_zip_sha256": "2b692921890aff2b0442adc478ed1ac13fefc792307dfdd9db017fbeda874633"
+  }
+}

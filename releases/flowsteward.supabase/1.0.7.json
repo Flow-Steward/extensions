@@ -1,0 +1,56 @@
+{
+  "extension_id": "flowsteward.supabase",
+  "version": "1.0.7",
+  "repository": "https://github.com/Flow-Steward/ext-data-supabase",
+  "tag": "v1.0.7",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.supabase/1.0.7.png",
+    "sha256": "41d05b5446677318bf89dd8332c9274308fb4968dd8a6fbc39674bbe03abfc4e",
+    "bytes": 8595,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-24T07:40:57Z",
+  "item": {
+    "extension_id": "flowsteward.supabase",
+    "version": "1.0.7",
+    "name": "Supabase",
+    "summary": "List, insert, upsert, update and delete Supabase table rows through workflow steps with filters and selected columns.",
+    "description": "Automate Supabase table records from Flow Steward without writing a custom HTTP integration. List rows with column selection, filters, a limit and an offset; insert batches; upsert against explicit conflict columns; or update and delete rows selected by filters. The extension uses Supabase’s PostgREST table API and supports comparison, membership, null/boolean and LIKE filters. Nested JSON column values remain JSON.\n\nFor example, read new requests from a table, enrich them with another workflow step, then upsert a result by its unique external identifier. Update an approval status using a record ID filter, or delete matching records as part of an authorized cleanup workflow. Inserts and upserts accept up to 100 rows with matching column sets; upserts require the chosen conflict columns to be present and nonnull.\n\nConfigure a hosted Supabase project reference, schema and API key, with an optional access-token JWT. The selected credentials determine table access and row-level security; service-role credentials can bypass those policies. Update and delete require filters, but those filters can still match many rows. The extension covers table records rather than Storage, Auth administration, SQL, RPC, webhooks or realtime subscriptions.",
+    "categories": [
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Create a project Supabase connection with the hosted project reference, optional schema and secret API key; add an access-token JWT when the workflow requires that identity. Ensure the schema/table is exposed through the Data API and the chosen credentials and row-level security policies permit the intended operations.",
+    "tags": [
+      "supabase",
+      "database",
+      "rest"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-data-supabase/tree/v1.0.7",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-data-supabase/releases/download/v1.0.7/flowsteward.supabase-1.0.7-linux-amd64.zip",
+    "release_zip_bytes": 42234,
+    "release_zip_sha256": "082b0e700d37ecb330ee7c50c028dcad40e9da114b42cdd226814e4d3c7b4d75",
+    "release_targets": {
+      "linux-amd64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-supabase/releases/download/v1.0.7/flowsteward.supabase-1.0.7-linux-amd64.zip",
+        "release_zip_bytes": 42234,
+        "release_zip_sha256": "082b0e700d37ecb330ee7c50c028dcad40e9da114b42cdd226814e4d3c7b4d75"
+      },
+      "linux-arm64": {
+        "release_zip_url": "https://github.com/Flow-Steward/ext-data-supabase/releases/download/v1.0.7/flowsteward.supabase-1.0.7-linux-arm64.zip",
+        "release_zip_bytes": 42234,
+        "release_zip_sha256": "c4b083a72524a8751b1b69e7c6b43198b4646c2d5ef600b7a14fbd65ce7f5153"
+      }
+    }
+  }
+}
