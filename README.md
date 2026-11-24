@@ -267,7 +267,6 @@ reason. The maintainer has designated these 21 integrations as tested:
 | WordPress & WooCommerce | 1.2.6 |
 | Gotenberg | 0.1.0 |
 | Discord | 0.1.4 |
-| Discord | 0.1.3 |
 
 The configuration binds each selection to its exact repository and extension id;
 it takes effect when that release is recorded and listed. This records that
