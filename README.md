@@ -242,19 +242,19 @@ or endorsed by, the integrated product's provider.
 
 [`verified_extensions.json`](verified_extensions.json) selects tested integrations
 by exact extension id, repository URL and release version, with a maintainer
-reason. The maintainer has designated these 18 integrations as tested:
+reason. The maintainer has designated these 20 integrations as tested:
 
 | Integration | Selected release |
 | --- | --- |
 | Shopify | 0.5.5 |
 | MySQL | 1.3.12 |
-| PostgreSQL | 1.4.13 |
+| PostgreSQL | 1.4.14 |
 | Google Workspace | 0.3.7 |
 | Telegram | 1.3.5 |
 | WhatsApp | 0.1.4 |
-| Docling | 0.3.5 |
+| Docling | 0.3.7 |
 | Example Showcase | 1.2.8 |
-| File Transfer | 0.3.9 |
+| File Transfer | 0.3.10 |
 | Generic IMAP | 0.2.5 |
 | OpenRouter | 1.2.4 |
 | Ollama | 1.2.4 |
@@ -264,6 +264,8 @@ reason. The maintainer has designated these 18 integrations as tested:
 | Image Processing | 0.2.9 |
 | Discogs | 0.2.7 |
 | Microsoft 365 | 0.2.7 |
+| WordPress & WooCommerce | 1.2.6 |
+| Gotenberg | 0.1.0 |
 
 The configuration binds each selection to its exact repository and extension id;
 it takes effect when that release is recorded and listed. This records that

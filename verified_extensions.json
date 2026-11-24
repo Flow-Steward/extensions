@@ -11,7 +11,7 @@
   },
   "flowsteward.data-connector-mcp-toolbox-postgres": {
     "repository": "https://github.com/Flow-Steward/ext-data-postgres",
-    "version": "1.4.13",
+    "version": "1.4.14",
     "reason": "Selected by the maintainer as a tested integration. This is not provider endorsement."
   },
   "flowsteward.google-workspace": {
@@ -31,7 +31,7 @@
   },
   "flowsteward.docling": {
     "repository": "https://github.com/Flow-Steward/ext-document-docling",
-    "version": "0.3.5",
+    "version": "0.3.7",
     "reason": "Selected by the maintainer as a tested integration. This is not provider endorsement."
   },
   "flowsteward.example-showcase": {
@@ -41,7 +41,7 @@
   },
   "flowsteward.file-transfer": {
     "repository": "https://github.com/Flow-Steward/ext-file-transfer-sftp",
-    "version": "0.3.9",
+    "version": "0.3.10",
     "reason": "Selected by the maintainer as a tested integration. This is not provider endorsement."
   },
   "flowsteward.imap-mailbox": {
@@ -88,5 +88,15 @@
     "repository": "https://github.com/Flow-Steward/ext-productivity-microsoft-365",
     "version": "0.2.7",
     "reason": "Selected by the maintainer as a tested integration after live tests on 2026-11-22/23 against a real Microsoft 365 tenant: sign-in, Outlook mail and the new-email trigger with attachments, calendar events, OneDrive files, Excel and a Teams channel message. Teams meeting links were not tested. 0.2.7 adds the New-email trigger page (switch the trigger on or off per mailbox), checked on the stand on 2026-11-23. This is not provider endorsement."
+  },
+  "flowsteward.wordpress-woocommerce": {
+    "repository": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce",
+    "version": "1.2.6",
+    "reason": "Selected by the maintainer as a tested integration."
+  },
+  "flowsteward.gotenberg": {
+    "repository": "https://github.com/Flow-Steward/ext-document-gotenberg",
+    "version": "0.1.0",
+    "reason": "Selected by the maintainer as a tested integration."
   }
 }
