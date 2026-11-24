@@ -1,0 +1,50 @@
+{
+  "extension_id": "flowsteward.youtube",
+  "version": "0.1.2",
+  "repository": "https://github.com/Flow-Steward/ext-media-youtube",
+  "tag": "v0.1.2",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.youtube/0.1.2.png",
+    "sha256": "fb322da575201bf9b0873aaee8dac7f0eaea922e46d5ba61c453dc3c74cb3223",
+    "bytes": 3917,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-24T17:12:22Z",
+  "item": {
+    "extension_id": "flowsteward.youtube",
+    "version": "0.1.2",
+    "name": "YouTube",
+    "summary": "Upload and update YouTube videos, manage playlists, comments, captions and live streams.",
+    "description": "Connect workflows to your YouTube channel through the YouTube Data API v3. Everyday steps read your channels and all videos of a channel, read videos by ID, upload a video from a workflow file and follow its processing, change a video's details and thumbnail, read all comments of a video and reply, and manage playlists.\n\n81 of the 83 methods of the API have their own step: channels, videos, playlists, comments, captions, live streaming and subscriptions, 94 steps in all. A connection is one YouTube channel, authorized through your own Google Cloud OAuth client. YouTube Analytics reports are in the separate extension YouTube Analytics (flowsteward.youtube-analytics).",
+    "categories": [
+      "media",
+      "marketing"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "Create a Web application OAuth client in Google Cloud with the YouTube Data API v3 enabled, enter its Client ID and Client Secret on the Connection page, connect the channel and run the connection test.",
+    "tags": [
+      "youtube",
+      "video",
+      "upload",
+      "comments",
+      "playlists",
+      "captions"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-media-youtube/tree/v0.1.2",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-media-youtube/releases/download/v0.1.2/flowsteward.youtube-0.1.2.zip",
+    "release_zip_bytes": 309023,
+    "release_zip_sha256": "e1203233477f095a8b8b1c76f4e8a56cb6f806fd283fd4acc2746ec8b60bd3f6"
+  }
+}

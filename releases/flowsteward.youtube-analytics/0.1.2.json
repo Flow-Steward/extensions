@@ -1,0 +1,49 @@
+{
+  "extension_id": "flowsteward.youtube-analytics",
+  "version": "0.1.2",
+  "repository": "https://github.com/Flow-Steward/ext-marketing-youtube-analytics",
+  "tag": "v0.1.2",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.youtube-analytics/0.1.2.png",
+    "sha256": "fb322da575201bf9b0873aaee8dac7f0eaea922e46d5ba61c453dc3c74cb3223",
+    "bytes": 3917,
+    "mime_type": "image/png",
+    "size": "256x256"
+  },
+  "published_at": "2026-11-24T17:12:20Z",
+  "item": {
+    "extension_id": "flowsteward.youtube-analytics",
+    "version": "0.1.2",
+    "name": "YouTube Analytics",
+    "summary": "Read YouTube Analytics reports for your channel and videos, find your top videos and manage analytics groups.",
+    "description": "Connect workflows to the YouTube Analytics API v2 of your YouTube channel. Everyday steps read a channel report for a period with the metrics and dimensions you choose, a report for one video and the top videos of a period, and list, create and fill YouTube Analytics groups. Before a report is asked for, the combination of dimensions, metrics and filters is checked against YouTube's channel report tables.\n\nAll 8 methods of the API have their own step, 15 steps in all. A connection is one YouTube channel, authorized through your own Google Cloud OAuth client; revenue metrics need a connection with revenue access.",
+    "categories": [
+      "marketing",
+      "data"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "Create a Web application OAuth client in Google Cloud with the YouTube Analytics API enabled, enter its Client ID and Client Secret on the Connection page, connect the channel and run the connection test.",
+    "tags": [
+      "youtube",
+      "analytics",
+      "reports",
+      "views",
+      "video",
+      "revenue"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-marketing-youtube-analytics/tree/v0.1.2",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-marketing-youtube-analytics/releases/download/v0.1.2/flowsteward.youtube-analytics-0.1.2.zip",
+    "release_zip_bytes": 179202,
+    "release_zip_sha256": "d066b502527d315c9b0b9155e8341595a7aa9040d920256b34b7d4042261220b"
+  }
+}
