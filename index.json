@@ -1,6 +1,6 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-23.98e60c1d",
+  "catalog_revision": "2026-11-23.d38c34e9",
   "published_at": "2026-11-23T19:41:42Z",
   "items": [
     {
@@ -546,7 +546,7 @@
         "markdown"
       ],
       "publication_status": "published",
-      "verification_status": "unverified",
+      "verification_status": "verified",
       "repository_url": "https://github.com/Flow-Steward/ext-document-docling/tree/v0.3.7",
       "release_zip_url": "https://github.com/Flow-Steward/ext-document-docling/releases/download/v0.3.7/flowsteward.docling-0.3.7.zip",
       "release_zip_bytes": 85086,
@@ -724,7 +724,7 @@
         "dropbox"
       ],
       "publication_status": "published",
-      "verification_status": "unverified",
+      "verification_status": "verified",
       "repository_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/tree/v0.3.10",
       "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.3.10/flowsteward.file-transfer-0.3.10-linux-amd64.zip",
       "release_zip_bytes": 27645107,
@@ -1004,7 +1004,7 @@
         "documents"
       ],
       "publication_status": "published",
-      "verification_status": "unverified",
+      "verification_status": "verified",
       "repository_url": "https://github.com/Flow-Steward/ext-document-gotenberg/tree/v0.1.0",
       "release_zip_url": "https://github.com/Flow-Steward/ext-document-gotenberg/releases/download/v0.1.0/flowsteward.gotenberg-0.1.0.zip",
       "release_zip_bytes": 89601,
@@ -1941,7 +1941,7 @@
         "vector"
       ],
       "publication_status": "published",
-      "verification_status": "unverified",
+      "verification_status": "verified",
       "repository_url": "https://github.com/Flow-Steward/ext-data-postgres/tree/v1.4.14",
       "release_zip_url": "https://github.com/Flow-Steward/ext-data-postgres/releases/download/v1.4.14/flowsteward.data-connector-mcp-toolbox-postgres-1.4.14-linux-amd64.zip",
       "release_zip_bytes": 13318040,
@@ -2709,7 +2709,7 @@
         "ecommerce"
       ],
       "publication_status": "published",
-      "verification_status": "unverified",
+      "verification_status": "verified",
       "repository_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/tree/v1.2.6",
       "release_zip_url": "https://github.com/Flow-Steward/ext-cms-wordpress-woocommerce/releases/download/v1.2.6/flowsteward.wordpress-woocommerce-1.2.6.zip",
       "release_zip_bytes": 332327,
