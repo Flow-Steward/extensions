@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-24.d7410510",
-  "published_at": "2026-11-24T06:35:24Z",
+  "catalog_revision": "2026-11-24.e5c3da46",
+  "published_at": "2026-11-24T06:36:29Z",
   "items": [
     {
       "extension_id": "flowsteward.agnum",
@@ -928,6 +928,57 @@
       },
       "added_at": "2026-10-01T12:12:42Z",
       "updated_at": "2026-11-15T09:17:27Z"
+    },
+    {
+      "extension_id": "flowsteward.google-ads",
+      "version": "1.0.2",
+      "name": "Google Ads",
+      "summary": "Manage Search campaigns and reports across agency client accounts.",
+      "description": "Create paused Search campaigns, manage ads and targeting, and read performance reports across project-scoped Google Ads accounts. Maintained by Flow Steward; live OAuth and advertising workflow acceptance is pending.",
+      "categories": [
+        "marketing"
+      ],
+      "capabilities": [
+        "tool",
+        "action"
+      ],
+      "permissions_summary": [
+        "extension:invoke"
+      ],
+      "setup_summary": "Configure your Google Cloud OAuth Web client, authorize each project connection, and select the customer and optional manager account. Live acceptance is pending.",
+      "tags": [
+        "google",
+        "advertising",
+        "search",
+        "agencies"
+      ],
+      "publication_status": "published",
+      "verification_status": "unverified",
+      "repository_url": "https://github.com/Flow-Steward/ext-google-ads/tree/v1.0.2",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-google-ads/releases/download/v1.0.2/flowsteward.google-ads-1.0.2-linux-amd64.zip",
+      "release_zip_bytes": 6646324,
+      "release_zip_sha256": "1ab3697f9a208ab778a5ebed8d452f0ee73fef529f0ab68b57443b3d6c54ab55",
+      "release_targets": {
+        "linux-amd64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-google-ads/releases/download/v1.0.2/flowsteward.google-ads-1.0.2-linux-amd64.zip",
+          "release_zip_bytes": 6646324,
+          "release_zip_sha256": "1ab3697f9a208ab778a5ebed8d452f0ee73fef529f0ab68b57443b3d6c54ab55"
+        },
+        "linux-arm64": {
+          "release_zip_url": "https://github.com/Flow-Steward/ext-google-ads/releases/download/v1.0.2/flowsteward.google-ads-1.0.2-linux-arm64.zip",
+          "release_zip_bytes": 6625764,
+          "release_zip_sha256": "965d43f54eada20d889e0062c9213b107dab324bdc29ddadf4df6fb0caf1cd19"
+        }
+      },
+      "icon": {
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/099a7c44ec3249903601914c9812376750cda193/releases/flowsteward.google-ads/1.0.2.png",
+        "sha256": "6f1e4df958629ceea40a2cea76c363a88cf35bd5d8baecf4ea525f8b24716c80",
+        "bytes": 5874,
+        "mime_type": "image/png",
+        "size": "192x192"
+      },
+      "added_at": "2026-11-24T06:36:29Z",
+      "updated_at": "2026-11-24T06:36:29Z"
     },
     {
       "extension_id": "flowsteward.google-cloud-vertex",
