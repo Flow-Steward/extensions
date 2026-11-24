@@ -101,7 +101,7 @@
   },
   "flowsteward.discord": {
     "repository": "https://github.com/Flow-Steward/ext-messaging-discord",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "reason": "Selected by the maintainer as a tested integration."
   }
 }
