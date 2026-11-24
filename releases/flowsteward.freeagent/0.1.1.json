@@ -1,0 +1,49 @@
+{
+  "extension_id": "flowsteward.freeagent",
+  "version": "0.1.1",
+  "repository": "https://github.com/Flow-Steward/ext-finance-freeagent",
+  "tag": "v0.1.1",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.freeagent/0.1.1.png",
+    "sha256": "1f8398dce1efec7f2348b8d68c483d8f42825354815b489a985e8106a86ae4a8",
+    "bytes": 6015,
+    "mime_type": "image/png",
+    "size": "400x400"
+  },
+  "published_at": "2026-11-24T06:35:24Z",
+  "item": {
+    "extension_id": "flowsteward.freeagent",
+    "version": "0.1.1",
+    "name": "FreeAgent",
+    "summary": "Early release. Live FreeAgent testing is pending. Connect invoices, bills, bank transactions, expenses and reports to your workflows.",
+    "description": "FreeAgent accounting for UK small businesses: contacts, invoices, estimates, credit notes, bills, expenses, bank accounts, statements and explanations, journals, projects and time, profit and loss, balance sheet, trial balance, VAT, corporation tax and payroll records.",
+    "categories": [
+      "finance"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "artifact:read",
+      "artifact:write",
+      "extension:invoke"
+    ],
+    "setup_summary": "",
+    "tags": [
+      "freeagent",
+      "accounting",
+      "bookkeeping",
+      "invoices",
+      "vat",
+      "uk"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-finance-freeagent/tree/v0.1.1",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-finance-freeagent/releases/download/v0.1.1/flowsteward.freeagent-0.1.1.zip",
+    "release_zip_bytes": 88439,
+    "release_zip_sha256": "71d1aa48fd1c5f469a9aa6f45c7b7396ba6c1947d92508919cc5bca20ac7151e"
+  }
+}
