@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-24.2f614bba",
-  "published_at": "2026-11-24T07:41:07Z",
+  "catalog_revision": "2026-11-24.fc758b40",
+  "published_at": "2026-11-24T15:05:12Z",
   "items": [
     {
       "extension_id": "flowsteward.agnum",
@@ -2596,6 +2596,48 @@
       "updated_at": "2026-11-15T09:17:51Z"
     },
     {
+      "extension_id": "flowsteward.threads",
+      "version": "0.1.1",
+      "name": "Threads",
+      "summary": "Publish Threads posts and replies, moderate replies and read posts and insights.",
+      "description": "Connect workflows to Threads, Meta's text-first social network, through the Threads API. Everyday steps publish text, image, video and carousel posts and replies, read all your posts and the replies to a post, and read post and account insights and your publishing limits.\n\nEach of the 25 Threads API endpoints this release covers has its own step: media containers and publishing, reposts and deletion, posts and keyword search, replies, conversations and reply moderation, profiles and mentions, locations, insights and embedding. A connection is one Threads account with its user access token.",
+      "categories": [
+        "marketing",
+        "media"
+      ],
+      "capabilities": [
+        "tool",
+        "action"
+      ],
+      "permissions_summary": [
+        "extension:invoke"
+      ],
+      "setup_summary": "Create a Meta app with the Threads use case, authorize the Threads account with the permissions your steps need, and save its long-lived user access token, as the connection's secret.",
+      "tags": [
+        "threads",
+        "meta",
+        "social-media",
+        "posts",
+        "replies",
+        "insights"
+      ],
+      "publication_status": "published",
+      "verification_status": "unverified",
+      "repository_url": "https://github.com/Flow-Steward/ext-marketing-threads/tree/v0.1.1",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-marketing-threads/releases/download/v0.1.1/flowsteward.threads-0.1.1.zip",
+      "release_zip_bytes": 168754,
+      "release_zip_sha256": "1480bf7334af8ddd71b1d65165584e2fd51d0724b9dfeb0473fbbff47cf7aa5f",
+      "icon": {
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/f9a9035c614ce826ca79a46e54acc76bb7b6410e/releases/flowsteward.threads/0.1.1.png",
+        "sha256": "fc8f2144788e1190187b0b70b083a281332bf906425bc23f83ab8f3b67e85f9b",
+        "bytes": 13938,
+        "mime_type": "image/png",
+        "size": "128x128"
+      },
+      "added_at": "2026-11-24T15:05:03Z",
+      "updated_at": "2026-11-24T15:05:03Z"
+    },
+    {
       "extension_id": "flowsteward.typesafe-ai",
       "version": "1.0.10",
       "name": "TypeSafe AI (JEV)",
@@ -2918,6 +2960,93 @@
       },
       "added_at": "2026-11-19T12:10:46Z",
       "updated_at": "2026-11-19T12:10:46Z"
+    },
+    {
+      "extension_id": "flowsteward.youtube",
+      "version": "0.1.1",
+      "name": "YouTube",
+      "summary": "Upload and update YouTube videos, manage playlists, comments, captions and live streams.",
+      "description": "Connect workflows to your YouTube channel through the YouTube Data API v3. Everyday steps read your channels and all videos of a channel, read videos by ID, upload a video from a workflow file and follow its processing, change a video's details and thumbnail, read all comments of a video and reply, and manage playlists.\n\n81 of the 83 methods of the API have their own step: channels, videos, playlists, comments, captions, live streaming and subscriptions, 94 steps in all. A connection is one YouTube channel, authorized through your own Google Cloud OAuth client. YouTube Analytics reports are in the separate extension YouTube Analytics (flowsteward.youtube-analytics).",
+      "categories": [
+        "media",
+        "marketing"
+      ],
+      "capabilities": [
+        "tool",
+        "action"
+      ],
+      "permissions_summary": [
+        "artifact:read",
+        "artifact:write",
+        "extension:invoke"
+      ],
+      "setup_summary": "Create a Web application OAuth client in Google Cloud with the YouTube Data API v3 enabled, enter its Client ID and Client Secret on the Connection page, connect the channel and run the connection test.",
+      "tags": [
+        "youtube",
+        "video",
+        "upload",
+        "comments",
+        "playlists",
+        "captions"
+      ],
+      "publication_status": "published",
+      "verification_status": "unverified",
+      "repository_url": "https://github.com/Flow-Steward/ext-media-youtube/tree/v0.1.1",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-media-youtube/releases/download/v0.1.1/flowsteward.youtube-0.1.1.zip",
+      "release_zip_bytes": 293353,
+      "release_zip_sha256": "a76d447f9f0de73ae7dce74a9bbaa16664a94985495289d284727a7e75c92a28",
+      "icon": {
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/f9a9035c614ce826ca79a46e54acc76bb7b6410e/releases/flowsteward.youtube/0.1.1.png",
+        "sha256": "fb322da575201bf9b0873aaee8dac7f0eaea922e46d5ba61c453dc3c74cb3223",
+        "bytes": 3917,
+        "mime_type": "image/png",
+        "size": "256x256"
+      },
+      "added_at": "2026-11-24T15:05:12Z",
+      "updated_at": "2026-11-24T15:05:12Z"
+    },
+    {
+      "extension_id": "flowsteward.youtube-analytics",
+      "version": "0.1.1",
+      "name": "YouTube Analytics",
+      "summary": "Read YouTube Analytics reports for your channel and videos, find your top videos and manage analytics groups.",
+      "description": "Connect workflows to the YouTube Analytics API v2 of your YouTube channel. Everyday steps read a channel report for a period with the metrics and dimensions you choose, a report for one video and the top videos of a period, and list, create and fill YouTube Analytics groups. Before a report is asked for, the combination of dimensions, metrics and filters is checked against YouTube's channel report tables.\n\nAll 8 methods of the API have their own step, 15 steps in all. A connection is one YouTube channel, authorized through your own Google Cloud OAuth client; revenue metrics need a connection with revenue access.",
+      "categories": [
+        "marketing",
+        "data"
+      ],
+      "capabilities": [
+        "tool",
+        "action"
+      ],
+      "permissions_summary": [
+        "artifact:write",
+        "extension:invoke"
+      ],
+      "setup_summary": "Create a Web application OAuth client in Google Cloud with the YouTube Analytics API enabled, enter its Client ID and Client Secret on the Connection page, connect the channel and run the connection test.",
+      "tags": [
+        "youtube",
+        "analytics",
+        "reports",
+        "views",
+        "video",
+        "revenue"
+      ],
+      "publication_status": "published",
+      "verification_status": "unverified",
+      "repository_url": "https://github.com/Flow-Steward/ext-marketing-youtube-analytics/tree/v0.1.1",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-marketing-youtube-analytics/releases/download/v0.1.1/flowsteward.youtube-analytics-0.1.1.zip",
+      "release_zip_bytes": 169875,
+      "release_zip_sha256": "86ecc2fe6cc5ba6a3d08cad5669162eaa298d02c5b2952bac786c9558ed15d51",
+      "icon": {
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/f9a9035c614ce826ca79a46e54acc76bb7b6410e/releases/flowsteward.youtube-analytics/0.1.1.png",
+        "sha256": "fb322da575201bf9b0873aaee8dac7f0eaea922e46d5ba61c453dc3c74cb3223",
+        "bytes": 3917,
+        "mime_type": "image/png",
+        "size": "256x256"
+      },
+      "added_at": "2026-11-24T15:05:10Z",
+      "updated_at": "2026-11-24T15:05:10Z"
     }
   ],
   "category_labels": {
