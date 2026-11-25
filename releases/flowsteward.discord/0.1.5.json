@@ -1,0 +1,44 @@
+{
+  "extension_id": "flowsteward.discord",
+  "version": "0.1.5",
+  "repository": "https://github.com/Flow-Steward/ext-messaging-discord",
+  "tag": "v0.1.5",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.discord/0.1.5.png",
+    "sha256": "b769be1d38fe8be984fb49d702eaa6e4421254530d02993247203c3d6be4faa2",
+    "bytes": 2657,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-25T18:48:21Z",
+  "item": {
+    "extension_id": "flowsteward.discord",
+    "version": "0.1.5",
+    "name": "Discord",
+    "summary": "Post messages and files, manage channels, threads, members, roles, moderation, webhooks and events in Discord.",
+    "description": "Connect workflows to the Discord REST API v10. Post messages and files to channels and read whole message histories; create and change channels and threads; manage servers, members and roles; moderate with bans, pruning, auto moderation rules and the audit log; post through webhooks; manage emojis, stickers and soundboard sounds, scheduled events, application commands and entitlements. All 258 REST operations have their own step, with everyday steps on top. A connection is a Discord bot, a user's OAuth2 token, or a webhook or interaction token. Workflows read and change servers, channels and messages through Discord's REST API, while Discord delivers incoming interactions to the application's own endpoint and live events over its Gateway.",
+    "categories": [
+      "messaging"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Create a bot in the Discord Developer Portal, turn on the intents your steps need, add it to your server with the OAuth2 URL Generator, paste its token on the Connection page and test the connection.",
+    "tags": [
+      "discord",
+      "notifications",
+      "messaging"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-messaging-discord/tree/v0.1.5",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-messaging-discord/releases/download/v0.1.5/flowsteward.discord-0.1.5.zip",
+    "release_zip_bytes": 350719,
+    "release_zip_sha256": "edb9a14d75a99ca64b730d5489531d5da9193844fb3543f26c73df53ccf1a87d"
+  }
+}

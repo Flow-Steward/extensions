@@ -1,0 +1,48 @@
+{
+  "extension_id": "flowsteward.threads",
+  "version": "0.1.3",
+  "repository": "https://github.com/Flow-Steward/ext-marketing-threads",
+  "tag": "v0.1.3",
+  "host_contract": "extension_host_v2",
+  "icon": {
+    "path": "releases/flowsteward.threads/0.1.3.png",
+    "sha256": "fc8f2144788e1190187b0b70b083a281332bf906425bc23f83ab8f3b67e85f9b",
+    "bytes": 13938,
+    "mime_type": "image/png",
+    "size": "128x128"
+  },
+  "published_at": "2026-11-25T18:48:37Z",
+  "item": {
+    "extension_id": "flowsteward.threads",
+    "version": "0.1.3",
+    "name": "Threads",
+    "summary": "Publish Threads posts and replies, moderate replies and read posts and insights.",
+    "description": "Connect workflows to Threads, Meta's text-first social network, through the Threads API. Everyday steps publish text, image, video and carousel posts and replies, read all your posts and the replies to a post, and read post and account insights and your publishing limits.\n\nEach of the 25 Threads API endpoints this release covers has its own step: media containers and publishing, reposts and deletion, posts and keyword search, replies, conversations and reply moderation, profiles and mentions, locations, insights and embedding. A connection is one Threads account with its user access token.",
+    "categories": [
+      "marketing",
+      "media"
+    ],
+    "capabilities": [
+      "tool",
+      "action"
+    ],
+    "permissions_summary": [
+      "extension:invoke"
+    ],
+    "setup_summary": "Create a Meta app with the Threads use case, authorize the Threads account with the permissions your steps need, and save its long-lived user access token, as the connection's secret.",
+    "tags": [
+      "threads",
+      "meta",
+      "social-media",
+      "posts",
+      "replies",
+      "insights"
+    ],
+    "publication_status": "published",
+    "verification_status": "unverified",
+    "repository_url": "https://github.com/Flow-Steward/ext-marketing-threads/tree/v0.1.3",
+    "release_zip_url": "https://github.com/Flow-Steward/ext-marketing-threads/releases/download/v0.1.3/flowsteward.threads-0.1.3.zip",
+    "release_zip_bytes": 183781,
+    "release_zip_sha256": "6df110db4c1ccbcaa5f46bf1e65278caf64d3436b2ef0382ce4572e6577cdf13"
+  }
+}
