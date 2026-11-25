@@ -242,7 +242,7 @@ or endorsed by, the integrated product's provider.
 
 [`verified_extensions.json`](verified_extensions.json) selects tested integrations
 by exact extension id, repository URL and release version, with a maintainer
-reason. The maintainer has designated these 21 integrations as tested:
+reason. The maintainer has designated these 22 integrations as tested:
 
 | Integration | Selected release |
 | --- | --- |
@@ -267,6 +267,7 @@ reason. The maintainer has designated these 21 integrations as tested:
 | WordPress & WooCommerce | 1.2.6 |
 | Gotenberg | 0.1.0 |
 | Discord | 0.1.5 |
+| Google Cloud Vertex Gemini | 0.1.10 |
 
 The configuration binds each selection to its exact repository and extension id;
 it takes effect when that release is recorded and listed. This records that
