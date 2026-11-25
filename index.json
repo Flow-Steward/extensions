@@ -1,6 +1,6 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-25.9eabfbae",
+  "catalog_revision": "2026-11-25.c1d2185f",
   "published_at": "2026-11-25T18:48:42Z",
   "items": [
     {
@@ -544,7 +544,7 @@
         "messaging"
       ],
       "publication_status": "published",
-      "verification_status": "unverified",
+      "verification_status": "verified",
       "repository_url": "https://github.com/Flow-Steward/ext-messaging-discord/tree/v0.1.5",
       "release_zip_url": "https://github.com/Flow-Steward/ext-messaging-discord/releases/download/v0.1.5/flowsteward.discord-0.1.5.zip",
       "release_zip_bytes": 350719,
