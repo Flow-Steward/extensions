@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-24.a0f16827",
-  "published_at": "2026-11-24T20:06:29Z",
+  "catalog_revision": "2026-11-25.9eabfbae",
+  "published_at": "2026-11-25T18:48:42Z",
   "items": [
     {
       "extension_id": "flowsteward.agnum",
@@ -523,7 +523,7 @@
     },
     {
       "extension_id": "flowsteward.discord",
-      "version": "0.1.4",
+      "version": "0.1.5",
       "name": "Discord",
       "summary": "Post messages and files, manage channels, threads, members, roles, moderation, webhooks and events in Discord.",
       "description": "Connect workflows to the Discord REST API v10. Post messages and files to channels and read whole message histories; create and change channels and threads; manage servers, members and roles; moderate with bans, pruning, auto moderation rules and the audit log; post through webhooks; manage emojis, stickers and soundboard sounds, scheduled events, application commands and entitlements. All 258 REST operations have their own step, with everyday steps on top. A connection is a Discord bot, a user's OAuth2 token, or a webhook or interaction token. Workflows read and change servers, channels and messages through Discord's REST API, while Discord delivers incoming interactions to the application's own endpoint and live events over its Gateway.",
@@ -544,20 +544,20 @@
         "messaging"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-messaging-discord/tree/v0.1.4",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-messaging-discord/releases/download/v0.1.4/flowsteward.discord-0.1.4.zip",
-      "release_zip_bytes": 349640,
-      "release_zip_sha256": "b037e543af1ad4de182f407aa451af2e5f17c81d9fc45c0b3ea2a3232c2e7b80",
+      "verification_status": "unverified",
+      "repository_url": "https://github.com/Flow-Steward/ext-messaging-discord/tree/v0.1.5",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-messaging-discord/releases/download/v0.1.5/flowsteward.discord-0.1.5.zip",
+      "release_zip_bytes": 350719,
+      "release_zip_sha256": "edb9a14d75a99ca64b730d5489531d5da9193844fb3543f26c73df53ccf1a87d",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/d16803da2634e7bcf58e08983abf6899fc763d1d/releases/flowsteward.discord/0.1.4.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/46a88c4da260d2714a51d498828c064098e9dc0d/releases/flowsteward.discord/0.1.5.png",
         "sha256": "b769be1d38fe8be984fb49d702eaa6e4421254530d02993247203c3d6be4faa2",
         "bytes": 2657,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-11-24T15:27:04Z",
-      "updated_at": "2026-11-24T20:06:29Z"
+      "updated_at": "2026-11-25T18:48:21Z"
     },
     {
       "extension_id": "flowsteward.docling",
@@ -1070,7 +1070,7 @@
     },
     {
       "extension_id": "flowsteward.google-workspace",
-      "version": "0.3.7",
+      "version": "0.4.3",
       "name": "Google Workspace",
       "summary": "Read and organize Gmail, transfer Drive files, and read or update Google Sheets through explicitly selected project accounts.",
       "description": "Google Workspace connects Gmail, Google Drive and Google Sheets to Flow Steward workflows. Search and read Gmail messages, retrieve attachments, organize messages with labels, change read or starred flags and move messages to trash. Search Drive files available to the app, download files or supported native exports, and upload workflow files to a selected folder. Read a Sheets range into a dataset, create a spreadsheet, replace a selected rectangle or append rows to a table.\n\nCombine these operations for invoice intake, document processing and reporting. Retrieve an email attachment, extract its contents in another step, save the resulting document to Drive and append records to Sheets. Every step selects a compatible project connection, allowing several accounts to participate in a workflow.\n\nSetup requires your own Google Cloud OAuth web application, enabled service APIs and the Flow Steward redirect URI. Authorize Gmail, Drive and Sheets separately; optional Google Picker configuration enables interactive file selection. File access follows each account's authorization. The extension covers these specific operations rather than every Workspace feature: Gmail sending, Drive sharing and spreadsheet formatting are outside its scope. Sheets writes store values as data, including formula-looking strings.",
@@ -1097,20 +1097,20 @@
         "spreadsheets"
       ],
       "publication_status": "published",
-      "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-productivity-google-workspace/tree/v0.3.7",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-productivity-google-workspace/releases/download/v0.3.7/flowsteward.google-workspace-0.3.7.zip",
-      "release_zip_bytes": 187098,
-      "release_zip_sha256": "4976ed4f5717ab5c48dff5ca2fdbb0bc12e7d87158f89840a130a93cd83ae228",
+      "verification_status": "unverified",
+      "repository_url": "https://github.com/Flow-Steward/ext-productivity-google-workspace/tree/v0.4.3",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-productivity-google-workspace/releases/download/v0.4.3/flowsteward.google-workspace-0.4.3.zip",
+      "release_zip_bytes": 202663,
+      "release_zip_sha256": "c533fddb987b7f3dbf53c53b11d6b7ce5c8873d3b1a2ef45e25570571b6360d3",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/b7a8528b3db63d50bd38c5e7fb6f91ce7ccbbf63/releases/flowsteward.google-workspace/0.3.7.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/46a88c4da260d2714a51d498828c064098e9dc0d/releases/flowsteward.google-workspace/0.4.3.png",
         "sha256": "e4a550a2b736fa8d6a8549aa7196ab9fa450fb5b7a27b2f980534b44d5d84383",
         "bytes": 28499,
         "mime_type": "image/png",
         "size": "512x512"
       },
       "added_at": "2026-10-01T12:12:41Z",
-      "updated_at": "2026-11-22T10:27:32Z"
+      "updated_at": "2026-11-25T18:48:26Z"
     },
     {
       "extension_id": "flowsteward.gotenberg",
@@ -2635,7 +2635,7 @@
     },
     {
       "extension_id": "flowsteward.threads",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "name": "Threads",
       "summary": "Publish Threads posts and replies, moderate replies and read posts and insights.",
       "description": "Connect workflows to Threads, Meta's text-first social network, through the Threads API. Everyday steps publish text, image, video and carousel posts and replies, read all your posts and the replies to a post, and read post and account insights and your publishing limits.\n\nEach of the 25 Threads API endpoints this release covers has its own step: media containers and publishing, reposts and deletion, posts and keyword search, replies, conversations and reply moderation, profiles and mentions, locations, insights and embedding. A connection is one Threads account with its user access token.",
@@ -2661,19 +2661,19 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-marketing-threads/tree/v0.1.2",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-marketing-threads/releases/download/v0.1.2/flowsteward.threads-0.1.2.zip",
-      "release_zip_bytes": 182397,
-      "release_zip_sha256": "3097e4772a4255c2981fbf5326ff6a9f58d80c70c1787e9e44314f9e6dad5930",
+      "repository_url": "https://github.com/Flow-Steward/ext-marketing-threads/tree/v0.1.3",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-marketing-threads/releases/download/v0.1.3/flowsteward.threads-0.1.3.zip",
+      "release_zip_bytes": 183781,
+      "release_zip_sha256": "6df110db4c1ccbcaa5f46bf1e65278caf64d3436b2ef0382ce4572e6577cdf13",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/bc14bebaf11109511ea2075e5dd174036ee40e23/releases/flowsteward.threads/0.1.2.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/46a88c4da260d2714a51d498828c064098e9dc0d/releases/flowsteward.threads/0.1.3.png",
         "sha256": "fc8f2144788e1190187b0b70b083a281332bf906425bc23f83ab8f3b67e85f9b",
         "bytes": 13938,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-11-24T15:05:03Z",
-      "updated_at": "2026-11-24T17:12:14Z"
+      "updated_at": "2026-11-25T18:48:37Z"
     },
     {
       "extension_id": "flowsteward.typesafe-ai",
@@ -3001,7 +3001,7 @@
     },
     {
       "extension_id": "flowsteward.youtube",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "name": "YouTube",
       "summary": "Upload and update YouTube videos, manage playlists, comments, captions and live streams.",
       "description": "Connect workflows to your YouTube channel through the YouTube Data API v3. Everyday steps read your channels and all videos of a channel, read videos by ID, upload a video from a workflow file and follow its processing, change a video's details and thumbnail, read all comments of a video and reply, and manage playlists.\n\n81 of the 83 methods of the API have their own step: channels, videos, playlists, comments, captions, live streaming and subscriptions, 94 steps in all. A connection is one YouTube channel, authorized through your own Google Cloud OAuth client. YouTube Analytics reports are in the separate extension YouTube Analytics (flowsteward.youtube-analytics).",
@@ -3029,23 +3029,23 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-media-youtube/tree/v0.1.2",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-media-youtube/releases/download/v0.1.2/flowsteward.youtube-0.1.2.zip",
-      "release_zip_bytes": 309023,
-      "release_zip_sha256": "e1203233477f095a8b8b1c76f4e8a56cb6f806fd283fd4acc2746ec8b60bd3f6",
+      "repository_url": "https://github.com/Flow-Steward/ext-media-youtube/tree/v0.1.3",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-media-youtube/releases/download/v0.1.3/flowsteward.youtube-0.1.3.zip",
+      "release_zip_bytes": 310529,
+      "release_zip_sha256": "b0ac1342cde422e18e7b6d831a7825e3998e548a29c4034bbe9202001da0b899",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/bc14bebaf11109511ea2075e5dd174036ee40e23/releases/flowsteward.youtube/0.1.2.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/46a88c4da260d2714a51d498828c064098e9dc0d/releases/flowsteward.youtube/0.1.3.png",
         "sha256": "fb322da575201bf9b0873aaee8dac7f0eaea922e46d5ba61c453dc3c74cb3223",
         "bytes": 3917,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-11-24T15:05:12Z",
-      "updated_at": "2026-11-24T17:12:22Z"
+      "updated_at": "2026-11-25T18:48:42Z"
     },
     {
       "extension_id": "flowsteward.youtube-analytics",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "name": "YouTube Analytics",
       "summary": "Read YouTube Analytics reports for your channel and videos, find your top videos and manage analytics groups.",
       "description": "Connect workflows to the YouTube Analytics API v2 of your YouTube channel. Everyday steps read a channel report for a period with the metrics and dimensions you choose, a report for one video and the top videos of a period, and list, create and fill YouTube Analytics groups. Before a report is asked for, the combination of dimensions, metrics and filters is checked against YouTube's channel report tables.\n\nAll 8 methods of the API have their own step, 15 steps in all. A connection is one YouTube channel, authorized through your own Google Cloud OAuth client; revenue metrics need a connection with revenue access.",
@@ -3072,19 +3072,19 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-marketing-youtube-analytics/tree/v0.1.2",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-marketing-youtube-analytics/releases/download/v0.1.2/flowsteward.youtube-analytics-0.1.2.zip",
-      "release_zip_bytes": 179202,
-      "release_zip_sha256": "d066b502527d315c9b0b9155e8341595a7aa9040d920256b34b7d4042261220b",
+      "repository_url": "https://github.com/Flow-Steward/ext-marketing-youtube-analytics/tree/v0.1.3",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-marketing-youtube-analytics/releases/download/v0.1.3/flowsteward.youtube-analytics-0.1.3.zip",
+      "release_zip_bytes": 180694,
+      "release_zip_sha256": "72cab5d3ed1dc94f0847e59c4c6d01224283e6f14840bce83154df637920df59",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/bc14bebaf11109511ea2075e5dd174036ee40e23/releases/flowsteward.youtube-analytics/0.1.2.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/46a88c4da260d2714a51d498828c064098e9dc0d/releases/flowsteward.youtube-analytics/0.1.3.png",
         "sha256": "fb322da575201bf9b0873aaee8dac7f0eaea922e46d5ba61c453dc3c74cb3223",
         "bytes": 3917,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-11-24T15:05:10Z",
-      "updated_at": "2026-11-24T17:12:20Z"
+      "updated_at": "2026-11-25T18:48:40Z"
     }
   ],
   "category_labels": {
