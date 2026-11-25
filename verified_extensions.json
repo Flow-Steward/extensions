@@ -103,5 +103,10 @@
     "repository": "https://github.com/Flow-Steward/ext-messaging-discord",
     "version": "0.1.4",
     "reason": "Selected by the maintainer as a tested integration."
+  },
+  "flowsteward.google-cloud-vertex": {
+    "repository": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex",
+    "version": "0.1.10",
+    "reason": "Selected by the maintainer as a tested integration."
   }
 }

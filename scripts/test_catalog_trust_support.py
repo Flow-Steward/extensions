@@ -33,6 +33,7 @@ CURATED = {
     "flowsteward.wordpress-woocommerce": ("ext-cms-wordpress-woocommerce", "1.2.6"),
     "flowsteward.gotenberg": ("ext-document-gotenberg", "0.1.0"),
     "flowsteward.discord": ("ext-messaging-discord", "0.1.4"),
+    "flowsteward.google-cloud-vertex": ("ext-ai-google-cloud-vertex", "0.1.10"),
 }
 REPOSITORY = "https://github.com/Flow-Steward/ext-example"
 
