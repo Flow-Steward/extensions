@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-26.330d9cf0",
-  "published_at": "2026-11-26T07:49:03Z",
+  "catalog_revision": "2026-11-26.153b9103",
+  "published_at": "2026-11-26T07:58:09Z",
   "items": [
     {
       "extension_id": "flowsteward.agnum",
@@ -294,7 +294,7 @@
     },
     {
       "extension_id": "flowsteward.bigquery",
-      "version": "1.1.14",
+      "version": "1.1.15",
       "name": "BigQuery",
       "summary": "Query BigQuery Datasets and run parameterized SELECT, INSERT, UPDATE, DELETE or MERGE workflow actions.",
       "description": "Bring BigQuery table data into Flow Steward for reporting, record lookup and workflow-driven data changes. Read-only Datasets support table and column discovery, saved SQL with named parameters, validation, previews, execution and output-schema inference. Separate workflow actions run one GoogleSQL SELECT or one INSERT, UPDATE, DELETE or MERGE, returning job identity and available row-count and processing metadata. Use query results in later workflow steps, or write calculated and collected data back to native BigQuery tables.\n\nThe connection selects one Google Cloud project, location and allowed datasets. Queries use ordinary native tables with fully qualified identifiers. Set a per-query bytes-billed ceiling to control each query's maximum billing exposure; this is not an account-wide spending limit. Authenticate using a matching service-account JSON key or a short-lived access token.\n\nDataset SQL reads one table with explicit columns, filters, ordering and a limit, without joins, functions or subqueries. The separate workflow query action accepts a broader supported GoogleSQL subset. Reads return at most 100 rows. Views, external tables, DDL, scripts and load/export jobs are outside this connector. Parameters support scalar strings, booleans and numbers.",
@@ -317,31 +317,31 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-bigquery/tree/v1.1.14",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.14/flowsteward.bigquery-1.1.14-linux-amd64.zip",
-      "release_zip_bytes": 13963170,
-      "release_zip_sha256": "468e67a2ce75362ae90857fae9a68d6cef746d21f546db01c801f35588c0c65e",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-bigquery/tree/v1.1.15",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.15/flowsteward.bigquery-1.1.15-linux-amd64.zip",
+      "release_zip_bytes": 13983503,
+      "release_zip_sha256": "3342b82b4b8b05f6d4420248fe06a978f6cdae7316e04d451bab55fc21287ecd",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.14/flowsteward.bigquery-1.1.14-linux-amd64.zip",
-          "release_zip_bytes": 13963170,
-          "release_zip_sha256": "468e67a2ce75362ae90857fae9a68d6cef746d21f546db01c801f35588c0c65e"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.15/flowsteward.bigquery-1.1.15-linux-amd64.zip",
+          "release_zip_bytes": 13983503,
+          "release_zip_sha256": "3342b82b4b8b05f6d4420248fe06a978f6cdae7316e04d451bab55fc21287ecd"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.14/flowsteward.bigquery-1.1.14-linux-arm64.zip",
-          "release_zip_bytes": 12549884,
-          "release_zip_sha256": "c36094f25e9b2652a5d71b6aeb0d5a2a68832c2d8f7d8924f91d270978442a00"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-bigquery/releases/download/v1.1.15/flowsteward.bigquery-1.1.15-linux-arm64.zip",
+          "release_zip_bytes": 12567953,
+          "release_zip_sha256": "66176cd8dd6292d963dad75b5da9faebbbd3c87ce1abd9a4f8116209df98fc2c"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/2ff49ecef3440e438bc13bdaf87948333a87b2d9/releases/flowsteward.bigquery/1.1.14.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/4285acc2937937a06a9472f38c9f1e7193199d1f/releases/flowsteward.bigquery/1.1.15.png",
         "sha256": "f02f30a4af46c40aa2bee5c5822480d898d332944c92078504c323db0b74ff9b",
         "bytes": 10716,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-11-02T08:20:14Z",
-      "updated_at": "2026-11-24T07:39:43Z"
+      "updated_at": "2026-11-26T07:57:39Z"
     },
     {
       "extension_id": "flowsteward.centas",
@@ -391,7 +391,7 @@
     },
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-clickhouse",
-      "version": "1.3.13",
+      "version": "1.3.14",
       "name": "ClickHouse",
       "summary": "Inspect ClickHouse schemas, query read-only Datasets and run parameterized workflow INSERT, UPDATE or DELETE.",
       "description": "Connect ClickHouse to Flow Steward for analytical lookups, reusable Dataset queries and workflow-driven table changes. The Dataset connector tests the connection, inspects typed table schemas, checks saved SQL against selected resources, previews results, executes saved queries and infers their output schema. Use analytical results to drive later workflow steps, compare records or retrieve reporting data while keeping Dataset queries read-only.\n\nA separate workflow action executes one INSERT, UPDATE or DELETE using named parameters and an optional parameter schema. This provides a way to store workflow results or change existing data when the ClickHouse server supports the supplied SQL syntax. Parameter values are supplied separately from the statement, allowing the same workflow to reuse SQL with different inputs.\n\nConfigure the server host, HTTP(S) port, database and user, with any required password in connection secrets. HTTPS verifies the server certificate; native TCP is not supported. Read results are limited to 100 rows and 480 KiB, and SQL support is a restricted subset. The connector does not translate unsupported mutation syntax, administer schemas or provide database triggers.",
@@ -415,31 +415,31 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-clickhouse/tree/v1.3.13",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-clickhouse/releases/download/v1.3.13/flowsteward.data-connector-mcp-toolbox-clickhouse-1.3.13-linux-amd64.zip",
-      "release_zip_bytes": 12985394,
-      "release_zip_sha256": "8072678601c1d56c12e1498b4eb1b81904f04cc32cc12bdbbc781665976afdea",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-clickhouse/tree/v1.3.14",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-clickhouse/releases/download/v1.3.14/flowsteward.data-connector-mcp-toolbox-clickhouse-1.3.14-linux-amd64.zip",
+      "release_zip_bytes": 12993555,
+      "release_zip_sha256": "005675272e4078a6004c82289300038ccef9c50a73f1cecdfadd9a5c380b0498",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-clickhouse/releases/download/v1.3.13/flowsteward.data-connector-mcp-toolbox-clickhouse-1.3.13-linux-amd64.zip",
-          "release_zip_bytes": 12985394,
-          "release_zip_sha256": "8072678601c1d56c12e1498b4eb1b81904f04cc32cc12bdbbc781665976afdea"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-clickhouse/releases/download/v1.3.14/flowsteward.data-connector-mcp-toolbox-clickhouse-1.3.14-linux-amd64.zip",
+          "release_zip_bytes": 12993555,
+          "release_zip_sha256": "005675272e4078a6004c82289300038ccef9c50a73f1cecdfadd9a5c380b0498"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-clickhouse/releases/download/v1.3.13/flowsteward.data-connector-mcp-toolbox-clickhouse-1.3.13-linux-arm64.zip",
-          "release_zip_bytes": 11731706,
-          "release_zip_sha256": "8f58bab105b03b8c4fccac31e5df9c12fb713efabe262635fc7f540a8c6426e0"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-clickhouse/releases/download/v1.3.14/flowsteward.data-connector-mcp-toolbox-clickhouse-1.3.14-linux-arm64.zip",
+          "release_zip_bytes": 11744559,
+          "release_zip_sha256": "9e00052a310ddd037dea65813f62c36bb522ed08fc5fd8aa30a661c93da9d294"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/2ff49ecef3440e438bc13bdaf87948333a87b2d9/releases/flowsteward.data-connector-mcp-toolbox-clickhouse/1.3.13.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/4285acc2937937a06a9472f38c9f1e7193199d1f/releases/flowsteward.data-connector-mcp-toolbox-clickhouse/1.3.14.png",
         "sha256": "3f157e33b12ff2704ee2b5826a86669088844862b032265f2ea378474cb5133f",
         "bytes": 5221,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-10-01T13:29:10Z",
-      "updated_at": "2026-11-24T07:39:48Z"
+      "updated_at": "2026-11-26T07:57:42Z"
     },
     {
       "extension_id": "flowsteward.cohere-retrieval",
@@ -837,7 +837,7 @@
     },
     {
       "extension_id": "flowsteward.firestore",
-      "version": "1.0.15",
+      "version": "1.0.16",
       "name": "Firestore",
       "summary": "Get, query, create, patch, replace and delete typed Firestore documents, with pagination and version preconditions.",
       "description": "Use Google Cloud Firestore documents in Flow Steward workflows for application record lookup, collection queries and updates. Actions read a document, create at a stable path, replace or upsert its fields, patch selected top-level fields, and delete it. Collection actions list documents, query with typed filters and ordering, or list root collections and subcollections. Listing returns a page token for explicit continuation.\n\nFirestore's typed Value JSON supports strings, booleans, numbers, timestamps, bytes, geographic points, references, arrays and maps. Integer values can retain full int64 precision as strings inside their Firestore type representation. Optional update-time preconditions help reject stale updates, replacements and deletes; creation fails when the supplied path already exists. Choose patches for individual field changes or replacements when a workflow owns the complete document.\n\nConfigure the Google Cloud project and database with an access token or service-account JSON and appropriate Firestore IAM permissions. Queries and pages return at most 100 documents, and some filters require an existing Firestore index. Document deletion does not recursively remove subcollections. The connector provides Firestore document operations rather than transactions, triggers, Rules management or Firebase Realtime Database access.",
@@ -859,31 +859,31 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-firestore/tree/v1.0.15",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-firestore/releases/download/v1.0.15/flowsteward.firestore-1.0.15-linux-amd64.zip",
-      "release_zip_bytes": 6551423,
-      "release_zip_sha256": "fec4597b75426bef6e4151a5528539157974456317ef6623d65635bc63c5afa3",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-firestore/tree/v1.0.16",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-firestore/releases/download/v1.0.16/flowsteward.firestore-1.0.16-linux-amd64.zip",
+      "release_zip_bytes": 6554367,
+      "release_zip_sha256": "83f58e8091cb67014176b5619a241f1ed6e43af626eec2d73083091013a289aa",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-firestore/releases/download/v1.0.15/flowsteward.firestore-1.0.15-linux-amd64.zip",
-          "release_zip_bytes": 6551423,
-          "release_zip_sha256": "fec4597b75426bef6e4151a5528539157974456317ef6623d65635bc63c5afa3"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-firestore/releases/download/v1.0.16/flowsteward.firestore-1.0.16-linux-amd64.zip",
+          "release_zip_bytes": 6554367,
+          "release_zip_sha256": "83f58e8091cb67014176b5619a241f1ed6e43af626eec2d73083091013a289aa"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-firestore/releases/download/v1.0.15/flowsteward.firestore-1.0.15-linux-arm64.zip",
-          "release_zip_bytes": 5931218,
-          "release_zip_sha256": "50e5c71ebfb655089ed54fe2670fbdb2795043a2cc569dbb2be7b7ad80447137"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-firestore/releases/download/v1.0.16/flowsteward.firestore-1.0.16-linux-arm64.zip",
+          "release_zip_bytes": 5932844,
+          "release_zip_sha256": "766a576555af00bcb1e48afa2f4ebcfcbad94e54c8930c94d58d46e1eaec517b"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/2ff49ecef3440e438bc13bdaf87948333a87b2d9/releases/flowsteward.firestore/1.0.15.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/4285acc2937937a06a9472f38c9f1e7193199d1f/releases/flowsteward.firestore/1.0.16.png",
         "sha256": "c917315e332ba3744b7ada51cf1871aae2cb174d5e9e8940667410a29b51bf7c",
         "bytes": 24649,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-11-02T09:55:25Z",
-      "updated_at": "2026-11-24T07:40:19Z"
+      "updated_at": "2026-11-26T07:57:57Z"
     },
     {
       "extension_id": "flowsteward.freeagent",
@@ -1432,7 +1432,7 @@
     },
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-mssql",
-      "version": "1.3.15",
+      "version": "1.3.16",
       "name": "Microsoft SQL Server",
       "summary": "Connect SQL Server or Cloud SQL for SQL Server for schema inspection, saved Dataset queries and parameterized writes.",
       "description": "Connect Microsoft SQL Server to Flow Steward through a direct database connection or the Cloud SQL for SQL Server profile. Read-only Datasets support connection testing, typed schema inspection, saved-query validation, previews, execution and output-schema inference. Selected table and column scopes keep saved queries focused on the data a workflow needs, such as operational lookups, reporting extracts or application records used in later steps.\n\nA separate workflow action runs one INSERT, UPDATE or DELETE with named parameters and an optional parameter schema. Use it to store workflow results or update application records in the configured database. Parameter values are supplied separately from SQL, so a reusable statement can accept different inputs on each run. Workflow writes do not change the read-only nature of Dataset queries.\n\nDirect connections require the host, database and user with a password in connection secrets. The Cloud SQL profile uses Google project, region, instance and IP-type settings and also requires database credentials. Reads return at most 100 rows and 480 KiB. SQL support is a restricted subset; DDL, transaction scripts and database triggers are outside the connector's operation set.",
@@ -1457,31 +1457,31 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-mssql/tree/v1.3.15",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-mssql/releases/download/v1.3.15/flowsteward.data-connector-mcp-toolbox-mssql-1.3.15-linux-amd64.zip",
-      "release_zip_bytes": 12365936,
-      "release_zip_sha256": "9f77c231ee1aa461500a77e7b1c0a7baf5e70d2e66f55ff4138ea0885c5a04e4",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-mssql/tree/v1.3.16",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-mssql/releases/download/v1.3.16/flowsteward.data-connector-mcp-toolbox-mssql-1.3.16-linux-amd64.zip",
+      "release_zip_bytes": 12362158,
+      "release_zip_sha256": "ecee5daeccae43259dd09e5b155c6ac1d9a100f0b3a770d930186052e101bcc0",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-mssql/releases/download/v1.3.15/flowsteward.data-connector-mcp-toolbox-mssql-1.3.15-linux-amd64.zip",
-          "release_zip_bytes": 12365936,
-          "release_zip_sha256": "9f77c231ee1aa461500a77e7b1c0a7baf5e70d2e66f55ff4138ea0885c5a04e4"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-mssql/releases/download/v1.3.16/flowsteward.data-connector-mcp-toolbox-mssql-1.3.16-linux-amd64.zip",
+          "release_zip_bytes": 12362158,
+          "release_zip_sha256": "ecee5daeccae43259dd09e5b155c6ac1d9a100f0b3a770d930186052e101bcc0"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-mssql/releases/download/v1.3.15/flowsteward.data-connector-mcp-toolbox-mssql-1.3.15-linux-arm64.zip",
-          "release_zip_bytes": 11190533,
-          "release_zip_sha256": "56e7114b7727f688b4c07fd41fe0de66fa8bff87ea10fdde68390313ee763b19"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-mssql/releases/download/v1.3.16/flowsteward.data-connector-mcp-toolbox-mssql-1.3.16-linux-arm64.zip",
+          "release_zip_bytes": 11186970,
+          "release_zip_sha256": "2f46573397b3a59ebac066706ab42efeea9ddb81f998f47d674e172115543aa2"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/2ff49ecef3440e438bc13bdaf87948333a87b2d9/releases/flowsteward.data-connector-mcp-toolbox-mssql/1.3.15.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/4285acc2937937a06a9472f38c9f1e7193199d1f/releases/flowsteward.data-connector-mcp-toolbox-mssql/1.3.16.png",
         "sha256": "d2fcf18791449447c7ebe17cd5b0c55fed059aa84040ede1fe9d8c7ba4359f56",
         "bytes": 46991,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-10-01T13:29:12Z",
-      "updated_at": "2026-11-24T07:39:50Z"
+      "updated_at": "2026-11-26T07:57:44Z"
     },
     {
       "extension_id": "flowsteward.mistral-document",
@@ -1537,7 +1537,7 @@
     },
     {
       "extension_id": "flowsteward.mongodb",
-      "version": "1.1.13",
+      "version": "1.1.14",
       "name": "MongoDB",
       "summary": "Read and aggregate MongoDB documents, use JSON Datasets, and insert, update or delete workflow records.",
       "description": "Connect MongoDB to Flow Steward for document lookup, reusable JSON Dataset queries and workflow record changes. Workflow reads support find, find-one, projections, sorting and read-only aggregation. Writes insert one document or a batch, apply update operators with optional upsert, and delete matching documents. Multi-document update and delete actions require explicit acknowledgement, while mutation filters must be nonempty.\n\nRead-only Datasets add authorized collection discovery, sampled schema inspection, parameterized find queries, a smaller aggregation subset, previews and output-schema inference. Dataset resource and field selections apply to queries and returned fields. Workflow document results preserve BSON types using canonical Extended JSON; Dataset results convert supported values into JSON while retaining large integers and Decimal128 values as strings.\n\nConfigure a database with username/password and a direct or SRV endpoint. Reads return at most 100 documents, but multi-document updates and deletes can affect every match. Aggregation result limits do not cap all server computation. Transactions, change streams, cross-collection joins and executable JavaScript are outside this connector. Sampled schemas describe observed documents rather than enforce collection structure. Atlas vector search and embedding generation are not provided.",
@@ -1559,35 +1559,35 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-mongodb/tree/v1.1.13",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-mongodb/releases/download/v1.1.13/flowsteward.mongodb-1.1.13-linux-amd64.zip",
-      "release_zip_bytes": 12298654,
-      "release_zip_sha256": "1480c8f0945b150d52729c75bb49c8d3759c2adbb93ac8c904b92692eb272f37",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-mongodb/tree/v1.1.14",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-mongodb/releases/download/v1.1.14/flowsteward.mongodb-1.1.14-linux-amd64.zip",
+      "release_zip_bytes": 12311870,
+      "release_zip_sha256": "c833cfb8ee4e4b7961e1a1c99f2956704fe023433abd265ffb815efbb75b414d",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-mongodb/releases/download/v1.1.13/flowsteward.mongodb-1.1.13-linux-amd64.zip",
-          "release_zip_bytes": 12298654,
-          "release_zip_sha256": "1480c8f0945b150d52729c75bb49c8d3759c2adbb93ac8c904b92692eb272f37"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-mongodb/releases/download/v1.1.14/flowsteward.mongodb-1.1.14-linux-amd64.zip",
+          "release_zip_bytes": 12311870,
+          "release_zip_sha256": "c833cfb8ee4e4b7961e1a1c99f2956704fe023433abd265ffb815efbb75b414d"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-mongodb/releases/download/v1.1.13/flowsteward.mongodb-1.1.13-linux-arm64.zip",
-          "release_zip_bytes": 11077539,
-          "release_zip_sha256": "8466fa84ee601c6519f5b627cc0eb75936a608e0069ee0b54436c1f02361c95f"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-mongodb/releases/download/v1.1.14/flowsteward.mongodb-1.1.14-linux-arm64.zip",
+          "release_zip_bytes": 11084289,
+          "release_zip_sha256": "b04b8a3cc63df4d7ab0f872ba85f961c5bfaee5f37d4ec34f3dc22e38625e0ab"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/2ff49ecef3440e438bc13bdaf87948333a87b2d9/releases/flowsteward.mongodb/1.1.13.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/4285acc2937937a06a9472f38c9f1e7193199d1f/releases/flowsteward.mongodb/1.1.14.png",
         "sha256": "362be04d8a9d58c651bf3a10c02776ccf01b5240aecd179170f34beee41b40c6",
         "bytes": 24736,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-11-02T08:21:12Z",
-      "updated_at": "2026-11-24T07:40:34Z"
+      "updated_at": "2026-11-26T07:58:03Z"
     },
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-mysql",
-      "version": "1.3.16",
+      "version": "1.3.17",
       "name": "MySQL & MariaDB",
       "summary": "Query MySQL, MariaDB or Cloud SQL for MySQL Datasets and run parameterized INSERT, UPDATE or DELETE actions.",
       "description": "Connect MySQL and MariaDB data to Flow Steward through direct MySQL, MariaDB or Cloud SQL for MySQL profiles. Read-only Datasets support testing the connection, inspecting table schemas, validating saved SQL against selected tables and columns, previewing results, executing saved queries and inferring output schemas. Use application lookups, reporting extracts and reusable queries to supply data to later workflow steps.\n\nA separate workflow action executes one INSERT, UPDATE or DELETE with named parameters and an optional parameter schema. Use it to save workflow results or change application records while keeping Dataset queries read-only. Parameter values are supplied separately from the SQL statement, allowing the same query or write to be reused with different workflow inputs.\n\nDirect MySQL and MariaDB connections need a host, database, user and password. The Cloud SQL profile uses project, region, instance and database settings with the appropriate Google Cloud access and authentication configuration. Read output is limited to 100 rows and 480 KiB. SQL support is a restricted subset; schema-changing statements, transaction scripts and database triggers are outside the connector's operation set.",
@@ -1612,35 +1612,35 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-mysql/tree/v1.3.16",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-mysql/releases/download/v1.3.16/flowsteward.data-connector-mcp-toolbox-mysql-1.3.16-linux-amd64.zip",
-      "release_zip_bytes": 11918610,
-      "release_zip_sha256": "e7c22e72e81923834776eddf8a2338ebfceb7f40a1bfbf31c3829503280cca5a",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-mysql/tree/v1.3.17",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-mysql/releases/download/v1.3.17/flowsteward.data-connector-mcp-toolbox-mysql-1.3.17-linux-amd64.zip",
+      "release_zip_bytes": 11915650,
+      "release_zip_sha256": "398c7f8a692fc046337829c038122bace8af722327d2d43f21a14d0532897d08",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-mysql/releases/download/v1.3.16/flowsteward.data-connector-mcp-toolbox-mysql-1.3.16-linux-amd64.zip",
-          "release_zip_bytes": 11918610,
-          "release_zip_sha256": "e7c22e72e81923834776eddf8a2338ebfceb7f40a1bfbf31c3829503280cca5a"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-mysql/releases/download/v1.3.17/flowsteward.data-connector-mcp-toolbox-mysql-1.3.17-linux-amd64.zip",
+          "release_zip_bytes": 11915650,
+          "release_zip_sha256": "398c7f8a692fc046337829c038122bace8af722327d2d43f21a14d0532897d08"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-mysql/releases/download/v1.3.16/flowsteward.data-connector-mcp-toolbox-mysql-1.3.16-linux-arm64.zip",
-          "release_zip_bytes": 10770361,
-          "release_zip_sha256": "7f1eec4dd961e35c82ceea54f3246aab0e22db0738f9493a2feb6c261ae882b2"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-mysql/releases/download/v1.3.17/flowsteward.data-connector-mcp-toolbox-mysql-1.3.17-linux-arm64.zip",
+          "release_zip_bytes": 10768342,
+          "release_zip_sha256": "d023b1a43fabe7b890ddea52e713c36e67f767dd59584688dbfbb46b456c175d"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/2ff49ecef3440e438bc13bdaf87948333a87b2d9/releases/flowsteward.data-connector-mcp-toolbox-mysql/1.3.16.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/4285acc2937937a06a9472f38c9f1e7193199d1f/releases/flowsteward.data-connector-mcp-toolbox-mysql/1.3.17.png",
         "sha256": "347f84e3740de7e655a3e4f47a9a7777f2c36b91bcc7dbc5d9fd67e6058bec8e",
         "bytes": 30560,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-10-01T13:29:13Z",
-      "updated_at": "2026-11-24T07:39:53Z"
+      "updated_at": "2026-11-26T07:57:46Z"
     },
     {
       "extension_id": "flowsteward.neo4j",
-      "version": "1.0.16",
+      "version": "1.0.17",
       "name": "Neo4j",
       "summary": "Create and query Neo4j graphs, manage node vector indexes and retrieve similar nodes with metadata.",
       "description": "Use Neo4j in Flow Steward for graph-backed records, relationship lookups and vector retrieval. Actions upsert, read, find and delete nodes using a label and stable string ID; create or patch directed relationships between existing nodes; and retrieve incident edges and neighboring nodes. Create a uniqueness constraint for each node label before concurrent upserts.\n\nVector actions create or verify a node vector index, inspect and list indexes, wait for an index to become ready, or drop it while preserving graph nodes. Write embeddings and metadata to indexed nodes, search for nearest neighbors with scores, and remove indexed nodes when source data changes. Indexes support cosine or Euclidean similarity and vectors of 1–4096 components. Combine retrieved source properties and graph relationships with your own answer-generation workflow.\n\nConfigure a direct Bolt endpoint, database and username/password. Supply embeddings externally; chunking, model calls and citation generation belong to your workflow. Reads return at most 100 records, and properties are flat values or homogeneous primitive arrays. Cluster routing and arbitrary Cypher are outside the operation set. Node deletion needs explicit detach to remove connected relationships, and schema operations require appropriate Neo4j privileges.",
@@ -1663,35 +1663,35 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-graph-neo4j/tree/v1.0.16",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-graph-neo4j/releases/download/v1.0.16/flowsteward.neo4j-1.0.16-linux-amd64.zip",
-      "release_zip_bytes": 11226429,
-      "release_zip_sha256": "8848d7cda9540b94344d3b05227cdd726be360769cca94cbacea198846abc0fa",
+      "repository_url": "https://github.com/Flow-Steward/ext-graph-neo4j/tree/v1.0.17",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-graph-neo4j/releases/download/v1.0.17/flowsteward.neo4j-1.0.17-linux-amd64.zip",
+      "release_zip_bytes": 11237313,
+      "release_zip_sha256": "d97243cbfb39808f272d04cbb70e438cabae7c77f4c90140604a09387e534529",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-graph-neo4j/releases/download/v1.0.16/flowsteward.neo4j-1.0.16-linux-amd64.zip",
-          "release_zip_bytes": 11226429,
-          "release_zip_sha256": "8848d7cda9540b94344d3b05227cdd726be360769cca94cbacea198846abc0fa"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-graph-neo4j/releases/download/v1.0.17/flowsteward.neo4j-1.0.17-linux-amd64.zip",
+          "release_zip_bytes": 11237313,
+          "release_zip_sha256": "d97243cbfb39808f272d04cbb70e438cabae7c77f4c90140604a09387e534529"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-graph-neo4j/releases/download/v1.0.16/flowsteward.neo4j-1.0.16-linux-arm64.zip",
-          "release_zip_bytes": 10123351,
-          "release_zip_sha256": "4c4f6a840899d4a28dde1281e0253e5541d4d961dd527607e0069a3d3ef28a84"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-graph-neo4j/releases/download/v1.0.17/flowsteward.neo4j-1.0.17-linux-arm64.zip",
+          "release_zip_bytes": 10134292,
+          "release_zip_sha256": "d687a0002ed471b456a1ba43685654ecfc770f00629b1ba80469cf044ca7514e"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/2ff49ecef3440e438bc13bdaf87948333a87b2d9/releases/flowsteward.neo4j/1.0.16.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/4285acc2937937a06a9472f38c9f1e7193199d1f/releases/flowsteward.neo4j/1.0.17.png",
         "sha256": "18c2cc6399007423ed069d188603b7be7725f39d12efbcb48c9b8f648010f2e7",
         "bytes": 16668,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-11-02T08:21:16Z",
-      "updated_at": "2026-11-24T07:40:37Z"
+      "updated_at": "2026-11-26T07:58:05Z"
     },
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-oceanbase",
-      "version": "1.3.16",
+      "version": "1.3.17",
       "name": "OceanBase",
       "summary": "Inspect OceanBase schemas, query read-only Datasets and run parameterized INSERT, UPDATE or DELETE workflow actions.",
       "description": "Connect OceanBase to Flow Steward for reusable Dataset queries and workflow-driven data changes over its MySQL-compatible interface. The Dataset connector tests access, inspects typed table schemas, validates saved SQL against selected resources, previews results, runs saved queries and infers their output schema. Use application lookups and reporting extracts to supply data to subsequent workflow steps while keeping Dataset queries read-only.\n\nA separate workflow action runs one INSERT, UPDATE or DELETE with named parameters and an optional parameter schema. Use it to save workflow output or change existing application records in the configured OceanBase database, subject to the server's SQL support and the database user's permissions. Parameter values are supplied separately from SQL, allowing reusable statements to accept different workflow inputs.\n\nConfigure the host, port, database and user and store a nonempty password in secrets. This package targets OceanBase's MySQL-compatible endpoint and does not provide an Oracle-mode interface. Reads return at most 100 rows and 480 KiB. SQL support is a restricted subset; schema administration, transaction scripts and database triggers are outside the connector's operation set.",
@@ -1715,31 +1715,31 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-oceanbase/tree/v1.3.16",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-oceanbase/releases/download/v1.3.16/flowsteward.data-connector-mcp-toolbox-oceanbase-1.3.16-linux-amd64.zip",
-      "release_zip_bytes": 11139702,
-      "release_zip_sha256": "f51f6ad580065d5d76a058c78c5801244c73b06065272c966c7bde31640e0a91",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-oceanbase/tree/v1.3.17",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-oceanbase/releases/download/v1.3.17/flowsteward.data-connector-mcp-toolbox-oceanbase-1.3.17-linux-amd64.zip",
+      "release_zip_bytes": 11145713,
+      "release_zip_sha256": "49bbb726c09d1eff9bd3f8df26306f9c218d2eceb357a2730ef56728e6ec6915",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-oceanbase/releases/download/v1.3.16/flowsteward.data-connector-mcp-toolbox-oceanbase-1.3.16-linux-amd64.zip",
-          "release_zip_bytes": 11139702,
-          "release_zip_sha256": "f51f6ad580065d5d76a058c78c5801244c73b06065272c966c7bde31640e0a91"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-oceanbase/releases/download/v1.3.17/flowsteward.data-connector-mcp-toolbox-oceanbase-1.3.17-linux-amd64.zip",
+          "release_zip_bytes": 11145713,
+          "release_zip_sha256": "49bbb726c09d1eff9bd3f8df26306f9c218d2eceb357a2730ef56728e6ec6915"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-oceanbase/releases/download/v1.3.16/flowsteward.data-connector-mcp-toolbox-oceanbase-1.3.16-linux-arm64.zip",
-          "release_zip_bytes": 10057172,
-          "release_zip_sha256": "e869c58747d220e62ef4a5926fc5343d414cc80cb6cfee4af11a405e9da899bc"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-oceanbase/releases/download/v1.3.17/flowsteward.data-connector-mcp-toolbox-oceanbase-1.3.17-linux-arm64.zip",
+          "release_zip_bytes": 10061772,
+          "release_zip_sha256": "251a02c151551a55fb6d15deb60c25e1e87438ea1eb5f0788be418a8d3e3a7f2"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/2ff49ecef3440e438bc13bdaf87948333a87b2d9/releases/flowsteward.data-connector-mcp-toolbox-oceanbase/1.3.16.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/4285acc2937937a06a9472f38c9f1e7193199d1f/releases/flowsteward.data-connector-mcp-toolbox-oceanbase/1.3.17.png",
         "sha256": "d94b2c7d714eba554e792c3f7e31039800c3fc9bdc4ccf7091828546f97bddd8",
         "bytes": 9417,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-10-01T13:29:14Z",
-      "updated_at": "2026-11-24T07:39:55Z"
+      "updated_at": "2026-11-26T07:57:47Z"
     },
     {
       "extension_id": "flowsteward.odoo",
@@ -1905,7 +1905,7 @@
     },
     {
       "extension_id": "flowsteward.oracle",
-      "version": "1.1.14",
+      "version": "1.1.15",
       "name": "Oracle",
       "summary": "Read Oracle datasets and automate parameterized SELECT, INSERT, UPDATE, DELETE and MERGE operations.",
       "description": "Connect Oracle records to Flow Steward for database lookups, reusable datasets and workflow updates. The extension provides a SELECT action with positional bind values and a separate write action for INSERT, UPDATE, DELETE and MERGE. Use these steps to look up a customer before routing a request, record the outcome of a workflow, or merge incoming records into an existing application table without inserting values into SQL text.\n\nThe read-only Dataset connector adds connection testing, schema discovery, query validation, previews, saved-query execution and output-schema inference. Saved Dataset queries select explicit columns from one allowed SCHEMA.TABLE, with comparison or null filters and ordering. Selected table and column permissions constrain the query, while Oracle user grants determine the underlying access.\n\nConfigure one Oracle service per project connection and enable writes explicitly when needed. Query results contain at most 100 rows. Dataset SQL excludes joins, subqueries, expressions and star projections; workflow SQL has a separate, restricted statement contract. Schema administration, PL/SQL, scripts, database links and cluster routing are outside the extension’s scope.",
@@ -1929,31 +1929,31 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-oracle/tree/v1.1.14",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.1.14/flowsteward.oracle-1.1.14-linux-amd64.zip",
-      "release_zip_bytes": 13508041,
-      "release_zip_sha256": "7582a2280e8197e94b4d5d2d6b53a9ec150795b385bddf20792c2441758ad3c0",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-oracle/tree/v1.1.15",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.1.15/flowsteward.oracle-1.1.15-linux-amd64.zip",
+      "release_zip_bytes": 13518957,
+      "release_zip_sha256": "4caecf6b4de56fd5ea14c8a39c74d3b58511c3278e0ac6ddc13a29d3841fcccb",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.1.14/flowsteward.oracle-1.1.14-linux-amd64.zip",
-          "release_zip_bytes": 13508041,
-          "release_zip_sha256": "7582a2280e8197e94b4d5d2d6b53a9ec150795b385bddf20792c2441758ad3c0"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.1.15/flowsteward.oracle-1.1.15-linux-amd64.zip",
+          "release_zip_bytes": 13518957,
+          "release_zip_sha256": "4caecf6b4de56fd5ea14c8a39c74d3b58511c3278e0ac6ddc13a29d3841fcccb"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.1.14/flowsteward.oracle-1.1.14-linux-arm64.zip",
-          "release_zip_bytes": 12386821,
-          "release_zip_sha256": "b8c879fed31f98581100e5c44c87e89f233bcf7b7cb2847f4847f7c4635aa4e9"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-oracle/releases/download/v1.1.15/flowsteward.oracle-1.1.15-linux-arm64.zip",
+          "release_zip_bytes": 12387901,
+          "release_zip_sha256": "fd01dda00c4d32f994236c68c094725db1926d4ca87762dcd6f659fe0b3cd1f0"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/2ff49ecef3440e438bc13bdaf87948333a87b2d9/releases/flowsteward.oracle/1.1.14.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/4285acc2937937a06a9472f38c9f1e7193199d1f/releases/flowsteward.oracle/1.1.15.png",
         "sha256": "f11415500fac3668ddcd6577d7bb5137cc2ae1e4b33077b354de852c0e51697c",
         "bytes": 3358,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-11-02T08:21:21Z",
-      "updated_at": "2026-11-24T07:40:42Z"
+      "updated_at": "2026-11-26T07:58:09Z"
     },
     {
       "extension_id": "flowsteward.outgoing-email",
@@ -2047,7 +2047,7 @@
     },
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-postgres",
-      "version": "1.4.15",
+      "version": "1.4.16",
       "name": "PostgreSQL",
       "summary": "Use PostgreSQL datasets and SQL writes, plus pgvector collections, document chunks and similarity search.",
       "description": "Bring PostgreSQL data and vector retrieval into the same Flow Steward project connection. The read-only Dataset connector tests connections, inspects schemas, validates saved SQL, previews results and executes saved queries. SQL profiles cover direct PostgreSQL, AlloyDB Omni, AlloyDB for PostgreSQL and Cloud SQL for PostgreSQL. Workflow steps separately run one parameterized INSERT, UPDATE or DELETE, for example to record a completed approval or update an application record after processing.\n\nFor direct PostgreSQL connections, pgvector actions create, inspect and explicitly drop collections; insert, retrieve, update or delete individual chunks; upsert documents; and delete documents. Similarity search supports cosine, L2 or inner product, metadata containment filters, minimum scores and optional returned vectors. Use these operations to store externally generated embeddings alongside document content, then retrieve related chunks for a later answer step.\n\nA database administrator must install pgvector before using vector actions, which do not run through the managed cloud profiles. Collections support up to 2,000 dimensions and searches up to 100 matches. A document upsert updates the supplied chunks; removing omitted chunks requires explicit deletion. Embedding generation and database triggers are outside this extension.",
@@ -2074,31 +2074,31 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-postgres/tree/v1.4.15",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-postgres/releases/download/v1.4.15/flowsteward.data-connector-mcp-toolbox-postgres-1.4.15-linux-amd64.zip",
-      "release_zip_bytes": 13339397,
-      "release_zip_sha256": "bbb6aa44ba2728dcf6ec0ad3561cf5f4a8e8c810ea68333fc90383a45cc6d8cb",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-postgres/tree/v1.4.16",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-postgres/releases/download/v1.4.16/flowsteward.data-connector-mcp-toolbox-postgres-1.4.16-linux-amd64.zip",
+      "release_zip_bytes": 13336097,
+      "release_zip_sha256": "fd67572e81561763f112322cb7bcb3a627583a921f1a3297c5c16fb43cde06c2",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-postgres/releases/download/v1.4.15/flowsteward.data-connector-mcp-toolbox-postgres-1.4.15-linux-amd64.zip",
-          "release_zip_bytes": 13339397,
-          "release_zip_sha256": "bbb6aa44ba2728dcf6ec0ad3561cf5f4a8e8c810ea68333fc90383a45cc6d8cb"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-postgres/releases/download/v1.4.16/flowsteward.data-connector-mcp-toolbox-postgres-1.4.16-linux-amd64.zip",
+          "release_zip_bytes": 13336097,
+          "release_zip_sha256": "fd67572e81561763f112322cb7bcb3a627583a921f1a3297c5c16fb43cde06c2"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-postgres/releases/download/v1.4.15/flowsteward.data-connector-mcp-toolbox-postgres-1.4.15-linux-arm64.zip",
-          "release_zip_bytes": 12062636,
-          "release_zip_sha256": "98fc3bce6c7e22bfee1e01d8d91e25f46ca1711ac63ce605fa9c6ad4ae26fefd"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-postgres/releases/download/v1.4.16/flowsteward.data-connector-mcp-toolbox-postgres-1.4.16-linux-arm64.zip",
+          "release_zip_bytes": 12062772,
+          "release_zip_sha256": "68e85f9ffde1411f750b8db7f7f4e5461c5af088fc48dad27f92b270d5824103"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/2ff49ecef3440e438bc13bdaf87948333a87b2d9/releases/flowsteward.data-connector-mcp-toolbox-postgres/1.4.15.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/4285acc2937937a06a9472f38c9f1e7193199d1f/releases/flowsteward.data-connector-mcp-toolbox-postgres/1.4.16.png",
         "sha256": "5be20852e40322f5cd91162462da11d0f1b93d6ad11cc6b03a3f1cdf29df668b",
         "bytes": 26504,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-10-01T13:29:15Z",
-      "updated_at": "2026-11-24T07:39:58Z"
+      "updated_at": "2026-11-26T07:57:50Z"
     },
     {
       "extension_id": "flowsteward.qdrant",
@@ -2384,7 +2384,7 @@
     },
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-singlestore",
-      "version": "1.3.15",
+      "version": "1.3.16",
       "name": "SingleStore",
       "summary": "Inspect SingleStore schemas, read saved datasets and automate parameterized INSERT, UPDATE and DELETE workflow steps.",
       "description": "Connect SingleStore application data to Flow Steward for reusable lookups and workflow updates. The Dataset connector provides connection testing, typed schema inspection, saved SQL validation, previews, query execution and output-schema inference. Table and column resource selections constrain Dataset queries, while query parameters let the same saved definition accept different workflow values. Read results are limited to 100 rows and 480 KiB of inline output.\n\nA separate execute_write action runs one INSERT, UPDATE or DELETE against a selected project connection. SQL uses named parameters and a values object, with an optional parameter schema, so reusable statements can accept record identifiers, statuses and other workflow values. For example, read records that need attention, send them through a review workflow, then update their status or insert a processing result using the record identifier as a parameter.\n\nSet up the connection with an explicit SingleStore host, port, database and user, and keep the password in connection secrets. Reads remain read-only even when workflow write steps are available. This extension exposes selected SQL data access rather than database triggers, schema administration or multi-statement scripts. Use returned records in subsequent steps for branching, notifications or follow-up processing, and use separate write steps to persist the outcome.",
@@ -2408,31 +2408,31 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-singlestore/tree/v1.3.15",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-singlestore/releases/download/v1.3.15/flowsteward.data-connector-mcp-toolbox-singlestore-1.3.15-linux-amd64.zip",
-      "release_zip_bytes": 11138299,
-      "release_zip_sha256": "83c5bd49658eb8fdf3645fa83a1655b772ed927b79038eb7702dbc4c33f7c97a",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-singlestore/tree/v1.3.16",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-singlestore/releases/download/v1.3.16/flowsteward.data-connector-mcp-toolbox-singlestore-1.3.16-linux-amd64.zip",
+      "release_zip_bytes": 11143698,
+      "release_zip_sha256": "10a07b612d68331e51ceabb463c779f75ba5d6222d480a560ca2b0fd4c5586bb",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-singlestore/releases/download/v1.3.15/flowsteward.data-connector-mcp-toolbox-singlestore-1.3.15-linux-amd64.zip",
-          "release_zip_bytes": 11138299,
-          "release_zip_sha256": "83c5bd49658eb8fdf3645fa83a1655b772ed927b79038eb7702dbc4c33f7c97a"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-singlestore/releases/download/v1.3.16/flowsteward.data-connector-mcp-toolbox-singlestore-1.3.16-linux-amd64.zip",
+          "release_zip_bytes": 11143698,
+          "release_zip_sha256": "10a07b612d68331e51ceabb463c779f75ba5d6222d480a560ca2b0fd4c5586bb"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-singlestore/releases/download/v1.3.15/flowsteward.data-connector-mcp-toolbox-singlestore-1.3.15-linux-arm64.zip",
-          "release_zip_bytes": 10055364,
-          "release_zip_sha256": "d23037c3c8b98e4836e4e794253ad071e45cce4ab3ccf18c8cde471d29360af2"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-singlestore/releases/download/v1.3.16/flowsteward.data-connector-mcp-toolbox-singlestore-1.3.16-linux-arm64.zip",
+          "release_zip_bytes": 10062052,
+          "release_zip_sha256": "041de0b0e5ac6ef449e417c784b59a9f18455d2adb2fdfdb89b7a820cf5e0f69"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/2ff49ecef3440e438bc13bdaf87948333a87b2d9/releases/flowsteward.data-connector-mcp-toolbox-singlestore/1.3.15.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/4285acc2937937a06a9472f38c9f1e7193199d1f/releases/flowsteward.data-connector-mcp-toolbox-singlestore/1.3.16.png",
         "sha256": "63756bc7868e4ab0ea37942eabfe59bd7524556331dbc9fb459f2f71747bea8c",
         "bytes": 11034,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-10-01T13:29:17Z",
-      "updated_at": "2026-11-24T07:40:00Z"
+      "updated_at": "2026-11-26T07:57:52Z"
     },
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-snowflake",
