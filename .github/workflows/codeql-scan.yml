@@ -1,0 +1,60 @@
+name: Shared CodeQL scan
+
+on:
+  workflow_call:
+    inputs:
+      language:
+        description: CodeQL language to analyze in the caller repository
+        required: true
+        type: string
+      build-mode:
+        description: CodeQL build mode for the selected language
+        required: true
+        type: string
+
+permissions:
+  contents: read
+cache-mode: none
+
+jobs:
+  analyze:
+    name: Scan
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Prepare the locked Firestore Go module
+        if: github.repository == 'Flow-Steward/ext-data-firestore' && inputs.language == 'go'
+        run: bash scripts/prepare-codeql-go.sh
+      - name: Set up the Go compiler used by the Firestore build
+        if: github.repository == 'Flow-Steward/ext-data-firestore' && inputs.language == 'go'
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: '1.27.4'
+          cache: false
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea # v4.39.4
+        with:
+          languages: ${{ inputs.language }}
+          build-mode: ${{ inputs.build-mode }}
+          dependency-caching: false
+      - name: Build the Firestore adapter for CodeQL
+        if: github.repository == 'Flow-Steward/ext-data-firestore' && inputs.language == 'go'
+        working-directory: native
+        shell: bash
+        env:
+          GOFLAGS: -mod=readonly
+          GOTOOLCHAIN: local
+          GOMAXPROCS: '2'
+          CGO_ENABLED: '0'
+        run: bash ../scripts/build-codeql-go.sh
+      - name: Analyze and upload results
+        uses: github/codeql-action/analyze@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea # v4.39.4
+        with:
+          category: "/language:${{ inputs.language }}"
