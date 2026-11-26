@@ -7,3 +7,15 @@ updates:
     groups:
       github-actions:
         patterns: ["*"]
+
+  # Repositories call the protected CodeQL workflow on this branch.
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: codeql-stable
+    schedule:
+      interval: weekly
+    allow:
+      - dependency-name: "github/codeql-action*"
+    groups:
+      codeql:
+        patterns: ["github/codeql-action*"]
