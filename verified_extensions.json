@@ -109,9 +109,9 @@
     "version": "0.1.10",
     "reason": "Selected by the maintainer as a tested integration."
   },
-  "flowsteward.google-cloud-vertex": {
-    "repository": "https://github.com/Flow-Steward/ext-ai-google-cloud-vertex",
-    "version": "0.1.10",
-    "reason": "Selected by the maintainer as a tested integration."
+  "flowsteward.xml": {
+    "repository": "https://github.com/Flow-Steward/ext-xml-tools",
+    "version": "0.1.0",
+    "reason": "Selected by the maintainer as a tested integration, including workflows that use it."
   }
 }

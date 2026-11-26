@@ -34,6 +34,7 @@ CURATED = {
     "flowsteward.gotenberg": ("ext-document-gotenberg", "0.1.0"),
     "flowsteward.discord": ("ext-messaging-discord", "0.1.5"),
     "flowsteward.google-cloud-vertex": ("ext-ai-google-cloud-vertex", "0.1.10"),
+    "flowsteward.xml": ("ext-xml-tools", "0.1.0"),
 }
 REPOSITORY = "https://github.com/Flow-Steward/ext-example"
 
@@ -123,6 +124,8 @@ def test_curated_release_survives_publish_and_index_without_mutating_records(
         ("flowsteward.file-transfer", "0.3.11"),
         ("flowsteward.google-workspace", "0.4.3"),
         ("flowsteward.ollama-remote", "1.2.5"),
+        ("flowsteward.data-connector-mcp-toolbox-postgres", "1.4.15"),
+        ("flowsteward.xml", "0.1.1"),
     ],
 )
 def test_verified_extension_keeps_badge_after_publishing_next_release(

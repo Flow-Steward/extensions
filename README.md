@@ -242,7 +242,7 @@ or endorsed by, the integrated product's provider.
 
 [`verified_extensions.json`](verified_extensions.json) selects tested integrations
 by exact extension id and repository URL, with a tested release baseline and a
-maintainer reason. The maintainer has designated these 22 integrations as tested:
+maintainer reason. The maintainer has designated these 23 integrations as tested:
 
 | Integration | Tested release baseline |
 | --- | --- |
@@ -268,6 +268,7 @@ maintainer reason. The maintainer has designated these 22 integrations as tested
 | Gotenberg | 0.1.0 |
 | Discord | 0.1.5 |
 | Google Cloud Vertex Gemini | 0.1.10 |
+| XML Tools | 0.1.0 |
 
 The tested release and subsequent stable releases from the same repository
 carry the integration's Verified badge automatically. The baseline records the
