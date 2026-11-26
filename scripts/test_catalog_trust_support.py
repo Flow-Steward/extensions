@@ -34,6 +34,7 @@ CURATED = {
     "flowsteward.gotenberg": ("ext-document-gotenberg", "0.1.0"),
     "flowsteward.discord": ("ext-messaging-discord", "0.1.5"),
     "flowsteward.google-cloud-vertex": ("ext-ai-google-cloud-vertex", "0.1.10"),
+    "flowsteward.xml": ("ext-xml-tools", "0.1.0"),
 }
 REPOSITORY = "https://github.com/Flow-Steward/ext-example"
 
@@ -107,6 +108,79 @@ def test_curated_release_survives_publish_and_index_without_mutating_records(
         )
         assert builder.build_index()["items"][0]["verification_status"] == "unverified"
         assert record_path.read_bytes() == before
+
+    (repo / "verified_extensions.json").write_text(json.dumps(policy))
+    _entry(repo, extension_id, "https://github.com/Flow-Steward/ext-other")
+    item = builder.build_index()["items"][0]
+    assert item["verification_status"] == "unverified"
+    assert record_path.read_bytes() == before
+
+
+@pytest.mark.parametrize(
+    ("extension_id", "next_version"),
+    [
+        ("flowsteward.wordpress-woocommerce", "1.2.7"),
+        ("flowsteward.example-showcase", "1.2.9"),
+        ("flowsteward.file-transfer", "0.3.11"),
+        ("flowsteward.google-workspace", "0.4.3"),
+        ("flowsteward.ollama-remote", "1.2.5"),
+        ("flowsteward.data-connector-mcp-toolbox-postgres", "1.4.15"),
+        ("flowsteward.xml", "0.1.1"),
+    ],
+)
+def test_verified_extension_keeps_badge_after_publishing_next_release(
+    repo, extension_id, next_version
+):
+    name, tested_version = CURATED[extension_id]
+    repository = f"https://github.com/Flow-Steward/{name}"
+    (repo / "verified_extensions.json").write_text(
+        json.dumps(
+            {
+                extension_id: {
+                    "repository": repository,
+                    "version": tested_version,
+                    "reason": "Selected by the maintainer as a tested integration.",
+                }
+            }
+        )
+    )
+    _entry(repo, extension_id, repository)
+    github = FakeGitHub()
+    for version in (tested_version, next_version):
+        manifest = _first_party_manifest(extension_id, version, repository)
+        data = _zip(
+            manifest,
+            top=builder.folder_name(extension_id),
+            extra=support_files(repository),
+        )
+        github.release(f"Flow-Steward/{name}", version, data, extension_id=extension_id)
+        assert not builder.publish(github=github).problems
+        _commit(repo, f"record {version}")
+        item = builder.build_index()["items"][0]
+        assert item["version"] == version
+        assert item["verification_status"] == "verified"
+
+
+@pytest.mark.parametrize(
+    ("version", "repository", "expected"),
+    [
+        ("1.9.0", REPOSITORY, "verified"),
+        ("1.10.0", REPOSITORY, "verified"),
+        ("2.0.0", REPOSITORY, "verified"),
+        ("1.8.9", REPOSITORY, "unverified"),
+        ("2.0.0-rc.1", REPOSITORY, "unverified"),
+        ("2.0.0", "https://github.com/Other/ext-example", "unverified"),
+    ],
+)
+def test_verification_carries_forward_for_stable_releases_of_the_curated_repository(
+    version, repository, expected
+):
+    extension_id = "flowsteward.example"
+    policy = {extension_id: {"repository": REPOSITORY, "version": "1.9.0"}}
+    assert (
+        builder.verification_status(extension_id, version, repository, policy)
+        == expected
+    )
 
 
 def test_old_namespace_verified_records_are_projected_unverified_without_rewriting(

@@ -377,7 +377,7 @@ def verified_publishers() -> dict[str, str]:
 
 
 def verified_extensions() -> dict[str, Any]:
-    """Explicit tested releases; namespace ownership is a separate authorization policy."""
+    """Maintainer-reviewed release baselines for repository-bound verification."""
     try:
         raw = _json_file(VERIFIED_EXTENSIONS_FILE, {})
     except (ValueError, UnicodeError) as exc:
@@ -409,13 +409,18 @@ def verification_status(
     extension_id: str, version: str, repository: str, policy: dict[str, Any]
 ) -> str:
     selection = policy.get(extension_id)
-    return (
-        "verified"
-        if selection
-        and selection["version"] == version
-        and selection["repository"] == repository
-        else "unverified"
-    )
+    if not selection or selection["repository"] != repository:
+        return "unverified"
+    baseline = selection["version"]
+    if version == baseline:
+        return "verified"
+    if (
+        _SEMVER.fullmatch(version)
+        and "-" not in version
+        and _semver_key(version) > _semver_key(baseline)
+    ):
+        return "verified"
+    return "unverified"
 
 
 def namespace_problem(entry: Entry, publishers: dict[str, str]) -> str:
@@ -1184,7 +1189,7 @@ def build_index() -> dict[str, Any]:
     An extension whose entry was removed stays listed as ``deprecated``, so
     existing installs still see where they came from.
     """
-    present = set(load_entries())
+    entries = load_entries()
     records = load_records()
     corrections = category_overrides()
     tested = verified_extensions()
@@ -1195,6 +1200,7 @@ def build_index() -> dict[str, Any]:
         if listed is None:
             continue
         item = dict(listed["item"])
+        entry = entries.get(extension_id)
         # Project current curation over old owner-derived fields; never rewrite
         # immutable records or let their previous badge silently re-promote them.
         identity_matches = (
@@ -1203,6 +1209,7 @@ def build_index() -> dict[str, Any]:
             and listed.get("tag") == f"v{listed.get('version')}"
             and item.get("repository_url")
             == f"{listed.get('repository')}/tree/{listed.get('tag')}"
+            and (entry is None or entry.repository == listed.get("repository"))
         )
         item["verification_status"] = (
             verification_status(
@@ -1215,7 +1222,7 @@ def build_index() -> dict[str, Any]:
         if correction and correction["repository_url"] == item.get("repository_url"):
             item["categories"] = list(correction["categories"])
         item["icon"] = _index_icon(listed)
-        if extension_id not in present:
+        if entry is None:
             item["publication_status"] = "deprecated"
         # When the extension first entered the catalog, and when this release did.
         item["added_at"] = min(str(record.get("published_at") or "") for record in versions.values())
