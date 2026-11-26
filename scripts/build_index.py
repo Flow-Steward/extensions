@@ -377,7 +377,7 @@ def verified_publishers() -> dict[str, str]:
 
 
 def verified_extensions() -> dict[str, Any]:
-    """Explicit tested releases; namespace ownership is a separate authorization policy."""
+    """Maintainer-reviewed release baselines for repository-bound verification."""
     try:
         raw = _json_file(VERIFIED_EXTENSIONS_FILE, {})
     except (ValueError, UnicodeError) as exc:
@@ -409,13 +409,18 @@ def verification_status(
     extension_id: str, version: str, repository: str, policy: dict[str, Any]
 ) -> str:
     selection = policy.get(extension_id)
-    return (
-        "verified"
-        if selection
-        and selection["version"] == version
-        and selection["repository"] == repository
-        else "unverified"
-    )
+    if not selection or selection["repository"] != repository:
+        return "unverified"
+    baseline = selection["version"]
+    if version == baseline:
+        return "verified"
+    if (
+        _SEMVER.fullmatch(version)
+        and "-" not in version
+        and _semver_key(version) > _semver_key(baseline)
+    ):
+        return "verified"
+    return "unverified"
 
 
 def namespace_problem(entry: Entry, publishers: dict[str, str]) -> str:

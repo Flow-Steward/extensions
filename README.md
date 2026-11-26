@@ -231,7 +231,7 @@ is listed instead. Removing an entry keeps the extension listed as **deprecated*
 | Documentation link | the repository at the release tag |
 | Download URL, size, SHA-256 | the release asset, recorded once in `releases/` |
 | Logo (`icon`: URL, SHA-256, bytes, `image/png`, `WxH`) | the release's `icon.png`, copied once to `releases/<extension_id>/<version>.png` and linked at the catalog commit that added it |
-| Verified | the exact repository, extension id and release version are selected in `verified_extensions.json` |
+| Verified | the extension's exact id and repository are approved in `verified_extensions.json`, and the release meets the tested version baseline |
 
 ### Authorship and tested releases
 
@@ -241,10 +241,10 @@ created and maintained by Flow Steward. They are not official extensions from,
 or endorsed by, the integrated product's provider.
 
 [`verified_extensions.json`](verified_extensions.json) selects tested integrations
-by exact extension id, repository URL and release version, with a maintainer
-reason. The maintainer has designated these 22 integrations as tested:
+by exact extension id and repository URL, with a tested release baseline and a
+maintainer reason. The maintainer has designated these 22 integrations as tested:
 
-| Integration | Selected release |
+| Integration | Tested release baseline |
 | --- | --- |
 | Shopify | 0.5.5 |
 | MySQL | 1.3.12 |
@@ -269,13 +269,13 @@ reason. The maintainer has designated these 22 integrations as tested:
 | Discord | 0.1.5 |
 | Google Cloud Vertex Gemini | 0.1.10 |
 
-The configuration binds each selection to its exact repository and extension id;
-it takes effect when that release is recorded and listed. This records that
-selection, not a new live-test result or date. Every other release is unverified;
-future versions require explicit review and selection. The index builder applies
-current curation to historical records without changing their archive hashes,
-source tags or immutable release records. Missing curation grants no badges;
-malformed curation fails the build.
+The tested release and subsequent stable releases from the same repository
+carry the integration's Verified badge automatically. The baseline records the
+maintainer's tested release. Each new release still passes the catalog's
+archive validation before listing. A maintainer can revoke the badge by removing
+the entry. The index builder applies current curation without changing
+archive hashes, source tags or immutable release records. Missing curation grants
+no badges. Malformed curation fails the build.
 
 ### Support in Flow Steward maintained extensions
 
