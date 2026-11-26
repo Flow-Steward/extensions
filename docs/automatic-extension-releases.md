@@ -114,19 +114,27 @@ visibility change.
 
 ## Code scanning
 
-New public repositories inherit the organization security profile. GitHub uses
-default CodeQL setup where an active advanced setup is absent. First-party
-advanced workflows run on `ubuntu-24.04` from `.github/workflows/codeql.yml`.
-They scan pushes, pull requests, the change to public visibility,
-and a weekly schedule, using the default query suite and a separate category
-for each source language. GitHub Free enables CodeQL uploads once the
-repository is public, so these advanced analysis jobs skip private repositories.
-Google Workspace also scans JavaScript/TypeScript; Firestore scans its native Go
-adapter with the same dependency lock and compiler version as its release build.
-The single-extension template includes Python and GitHub Actions analysis.
+Public extensions with CodeQL advanced setup call the shared scanner from the
+protected `codeql-stable` branch of this repository. Each extension keeps its
+push, pull request, public, scheduled, and manual triggers and its language
+matrix in `.github/workflows/codeql.yml`. GitHub Actions checks out the caller
+and publishes results under that repository's Code scanning tab. The shared
+scanner uses Ubuntu 24.04, the default queries, and a full SHA for each action.
 
-Replace GitHub's default setup with advanced setup when installing this workflow:
-keeping default setup enabled prevents custom CodeQL analyses from uploading.
-Preserve existing alerts and language categories during the transition. Scanner
-actions are pinned to immutable commits and updated through weekly GitHub Actions
-Dependabot pull requests.
+```yaml
+uses: Flow-Steward/extensions/.github/workflows/codeql-scan.yml@codeql-stable
+```
+
+Dependabot opens CodeQL Action updates against `codeql-stable`. Review and
+merge scanner changes through a PR to that branch. Its ruleset requires a PR
+and blocks force pushes and branch deletion. Update the shared checkout and
+Go setup action pins through the same branch when needed. Catalog release
+tooling remains pinned to immutable commits.
+
+Google Workspace includes JavaScript/TypeScript. The Firestore Go job prepares
+the checksum-verified module files and builds the adapter between CodeQL
+initialization and upload. Its build scripts live in the Firestore repository.
+
+GitHub-managed default setup is used for public extensions without an advanced
+workflow. An extension uses one CodeQL setup. Preserve its languages and alert
+categories when changing how its scans run.
