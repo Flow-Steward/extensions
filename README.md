@@ -266,7 +266,7 @@ reason. The maintainer has designated these 22 integrations as tested:
 | Microsoft 365 | 0.2.7 |
 | WordPress & WooCommerce | 1.2.6 |
 | Gotenberg | 0.1.0 |
-| Discord | 0.1.4 |
+| Discord | 0.1.5 |
 | Google Cloud Vertex Gemini | 0.1.10 |
 
 The configuration binds each selection to its exact repository and extension id;
