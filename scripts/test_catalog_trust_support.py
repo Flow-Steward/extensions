@@ -108,6 +108,12 @@ def test_curated_release_survives_publish_and_index_without_mutating_records(
         assert builder.build_index()["items"][0]["verification_status"] == "unverified"
         assert record_path.read_bytes() == before
 
+    (repo / "verified_extensions.json").write_text(json.dumps(policy))
+    _entry(repo, extension_id, "https://github.com/Flow-Steward/ext-other")
+    item = builder.build_index()["items"][0]
+    assert item["verification_status"] == "unverified"
+    assert record_path.read_bytes() == before
+
 
 @pytest.mark.parametrize(
     ("extension_id", "next_version"),
