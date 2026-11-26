@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-26.b0ff2f85",
-  "published_at": "2026-11-26T08:04:11Z",
+  "catalog_revision": "2026-11-26.eca3c5d0",
+  "published_at": "2026-11-26T18:32:10Z",
   "items": [
     {
       "extension_id": "flowsteward.agnum",
@@ -737,7 +737,7 @@
     },
     {
       "extension_id": "flowsteward.file-transfer",
-      "version": "0.3.12",
+      "version": "0.3.13",
       "name": "File Transfer",
       "summary": "List, download and upload workflow files through FTP, FTPS, SFTP, S3-compatible storage and Dropbox.",
       "description": "File Transfer connects Flow Steward workflows to FTP, explicit FTPS, SFTP, S3-compatible object storage and Dropbox. List files in a directory, download a selected file for the next workflow step, or upload a file produced earlier in the run. Select downloads by exact name or filename pattern, with options to choose by filename or modification time. Transfer results include file size and checksum information.\n\nCollect supplier feeds, retrieve invoice PDFs for document extraction, bring exported spreadsheets into tabular processing or publish generated reports to a partner's storage. The same three workflow operations work across the supported storage connections, letting you reuse a familiar approach as destinations change. Files are passed between steps as workflow artifacts; parsing and conversion can be added through other steps.\n\nConfigure each project connection with its remote root and credentials. FTP, FTPS, SFTP and S3 endpoints must be publicly reachable over the Internet; private-network destinations are not supported in production. SFTP setup includes confirming the server fingerprint; Dropbox uses your own app and account authorization. Listings cover one directory with up to 500 entries, and transfers default to a 200 MiB ceiling. Uploads preserve existing files unless you explicitly choose to replace them.",
@@ -763,31 +763,31 @@
       ],
       "publication_status": "published",
       "verification_status": "verified",
-      "repository_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/tree/v0.3.12",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.3.12/flowsteward.file-transfer-0.3.12-linux-amd64.zip",
-      "release_zip_bytes": 27823204,
-      "release_zip_sha256": "e3855bf7207fced4eabcbec4ea0864271934114c264c6d6aad947415b1fa6fc6",
+      "repository_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/tree/v0.3.13",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.3.13/flowsteward.file-transfer-0.3.13-linux-amd64.zip",
+      "release_zip_bytes": 27832584,
+      "release_zip_sha256": "911127160c91154a1345ad1ea11ffdc2c6d899f92f624c4387a21917db3b0368",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.3.12/flowsteward.file-transfer-0.3.12-linux-amd64.zip",
-          "release_zip_bytes": 27823204,
-          "release_zip_sha256": "e3855bf7207fced4eabcbec4ea0864271934114c264c6d6aad947415b1fa6fc6"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.3.13/flowsteward.file-transfer-0.3.13-linux-amd64.zip",
+          "release_zip_bytes": 27832584,
+          "release_zip_sha256": "911127160c91154a1345ad1ea11ffdc2c6d899f92f624c4387a21917db3b0368"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.3.12/flowsteward.file-transfer-0.3.12-linux-arm64.zip",
-          "release_zip_bytes": 27205639,
-          "release_zip_sha256": "4440bed4eb9c1a0f230508b286e1636e4bdefa9fab19af9b3ba66f08eb92c712"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-file-transfer-sftp/releases/download/v0.3.13/flowsteward.file-transfer-0.3.13-linux-arm64.zip",
+          "release_zip_bytes": 27215019,
+          "release_zip_sha256": "e636d6bf8267ade4388c8d8fb2bd451c09b7a4fd529b4cb354d0ad02d2d3445c"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/22a95b1d2597e74a7f10301a040536e5526d9be2/releases/flowsteward.file-transfer/0.3.12.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/c005710b4edd666874fbc3a97f5bce720f8085e5/releases/flowsteward.file-transfer/0.3.13.png",
         "sha256": "e81950a8b57d2ae07b8210045363fd082f537614c09fb8c7df0252f55d2d4bf5",
         "bytes": 4915,
         "mime_type": "image/png",
         "size": "128x128"
       },
       "added_at": "2026-10-01T12:12:41Z",
-      "updated_at": "2026-11-26T07:48:28Z"
+      "updated_at": "2026-11-26T18:31:59Z"
     },
     {
       "extension_id": "flowsteward.finvalda",
@@ -887,7 +887,7 @@
     },
     {
       "extension_id": "flowsteward.freeagent",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "name": "FreeAgent",
       "summary": "Early release. Live FreeAgent testing is pending. Connect invoices, bills, bank transactions, expenses and reports to your workflows.",
       "description": "FreeAgent accounting for UK small businesses: contacts, invoices, estimates, credit notes, bills, expenses, bank accounts, statements and explanations, journals, projects and time, profit and loss, balance sheet, trial balance, VAT, corporation tax and payroll records.",
@@ -914,19 +914,19 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-finance-freeagent/tree/v0.1.1",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-finance-freeagent/releases/download/v0.1.1/flowsteward.freeagent-0.1.1.zip",
-      "release_zip_bytes": 88439,
-      "release_zip_sha256": "71d1aa48fd1c5f469a9aa6f45c7b7396ba6c1947d92508919cc5bca20ac7151e",
+      "repository_url": "https://github.com/Flow-Steward/ext-finance-freeagent/tree/v0.1.2",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-finance-freeagent/releases/download/v0.1.2/flowsteward.freeagent-0.1.2.zip",
+      "release_zip_bytes": 89461,
+      "release_zip_sha256": "a2defbd04d07ad3ef89b610ae0abd865215fdedb0e20a0babc37902ec02d5bbe",
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/8313d94078c8ab9c04d2f2c829f41575adbe891f/releases/flowsteward.freeagent/0.1.1.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/c005710b4edd666874fbc3a97f5bce720f8085e5/releases/flowsteward.freeagent/0.1.2.png",
         "sha256": "1f8398dce1efec7f2348b8d68c483d8f42825354815b489a985e8106a86ae4a8",
         "bytes": 6015,
         "mime_type": "image/png",
         "size": "400x400"
       },
       "added_at": "2026-11-24T06:35:24Z",
-      "updated_at": "2026-11-24T06:35:24Z"
+      "updated_at": "2026-11-26T18:32:03Z"
     },
     {
       "extension_id": "flowsteward.imap-mailbox",
@@ -969,7 +969,7 @@
     },
     {
       "extension_id": "flowsteward.google-ads",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "name": "Google Ads",
       "summary": "Manage Search campaigns and reports across agency client accounts.",
       "description": "Create paused Search campaigns, manage ads and targeting, and read performance reports across project-scoped Google Ads accounts. Maintained by Flow Steward; live OAuth and advertising workflow acceptance is pending.",
@@ -992,31 +992,31 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-google-ads/tree/v1.0.3",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-google-ads/releases/download/v1.0.3/flowsteward.google-ads-1.0.3-linux-amd64.zip",
-      "release_zip_bytes": 6653532,
-      "release_zip_sha256": "9fd1903fe51208c561c084d0246a5eff8c205e19b9dd06b9f901670b568461fe",
+      "repository_url": "https://github.com/Flow-Steward/ext-google-ads/tree/v1.0.4",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-google-ads/releases/download/v1.0.4/flowsteward.google-ads-1.0.4-linux-amd64.zip",
+      "release_zip_bytes": 6654575,
+      "release_zip_sha256": "de3252a4ccf1916220b282f508543f774e6ea828e1af394064b0e75f00bebf01",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-google-ads/releases/download/v1.0.3/flowsteward.google-ads-1.0.3-linux-amd64.zip",
-          "release_zip_bytes": 6653532,
-          "release_zip_sha256": "9fd1903fe51208c561c084d0246a5eff8c205e19b9dd06b9f901670b568461fe"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-google-ads/releases/download/v1.0.4/flowsteward.google-ads-1.0.4-linux-amd64.zip",
+          "release_zip_bytes": 6654575,
+          "release_zip_sha256": "de3252a4ccf1916220b282f508543f774e6ea828e1af394064b0e75f00bebf01"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-google-ads/releases/download/v1.0.3/flowsteward.google-ads-1.0.3-linux-arm64.zip",
-          "release_zip_bytes": 6632626,
-          "release_zip_sha256": "812ca3f74f3fbb56cd18a4a3c9ea91698ac8d491f83bac42e84f84b5e2ad1852"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-google-ads/releases/download/v1.0.4/flowsteward.google-ads-1.0.4-linux-arm64.zip",
+          "release_zip_bytes": 6633669,
+          "release_zip_sha256": "fc5aadf78854d72d19cc012d8f412adef938e8acfc57231c65bdda0e18325234"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/fedcb6cf2a8ce337eab48b1d33fe9098a30e10b1/releases/flowsteward.google-ads/1.0.3.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/c005710b4edd666874fbc3a97f5bce720f8085e5/releases/flowsteward.google-ads/1.0.4.png",
         "sha256": "6f1e4df958629ceea40a2cea76c363a88cf35bd5d8baecf4ea525f8b24716c80",
         "bytes": 5874,
         "mime_type": "image/png",
         "size": "192x192"
       },
       "added_at": "2026-11-24T06:36:29Z",
-      "updated_at": "2026-11-26T07:35:26Z"
+      "updated_at": "2026-11-26T18:32:10Z"
     },
     {
       "extension_id": "flowsteward.google-cloud-vertex",
@@ -2436,7 +2436,7 @@
     },
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-snowflake",
-      "version": "1.3.15",
+      "version": "1.3.16",
       "name": "Snowflake",
       "summary": "Use Snowflake datasets for saved SQL reads and automate parameterized INSERT, UPDATE and DELETE workflow steps.",
       "description": "Bring Snowflake data into Flow Steward through saved, parameterized Dataset queries. The connector tests connections, discovers typed schemas, validates selected tables and columns, previews results, executes saved SQL and infers output schemas. Reads use the read-only query path and return at most 100 rows and 480 KiB of inline output. Use these results to supply a workflow with the warehouse records needed for a decision or follow-up action.\n\nWorkflow writes are exposed separately through execute_write, which accepts one INSERT, UPDATE or DELETE with named parameters, a values object and an optional parameter schema. For example, query a review queue, route a record for approval, then update its status or insert an audit outcome. Parameter values stay separate from the SQL text, allowing the same step to process different records.\n\nConnections explicitly select the Snowflake account, database, schema, warehouse, user and role, with the password stored as a secret. Choose a role with the permissions your reads and writes require. Dataset queries stay read-only; this extension does not expose triggers, warehouse administration, schema-changing statements or multi-statement scripts. Use saved queries and explicit write steps together to turn warehouse findings into review tasks, notifications and recorded outcomes.",
@@ -2460,31 +2460,31 @@
       ],
       "publication_status": "published",
       "verification_status": "unverified",
-      "repository_url": "https://github.com/Flow-Steward/ext-data-snowflake/tree/v1.3.15",
-      "release_zip_url": "https://github.com/Flow-Steward/ext-data-snowflake/releases/download/v1.3.15/flowsteward.data-connector-mcp-toolbox-snowflake-1.3.15-linux-amd64.zip",
-      "release_zip_bytes": 16606289,
-      "release_zip_sha256": "ef7409987c3fab7c8f1134b543e5ed5b201c97d55f5abd595c4bb3708e80df24",
+      "repository_url": "https://github.com/Flow-Steward/ext-data-snowflake/tree/v1.3.16",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-data-snowflake/releases/download/v1.3.16/flowsteward.data-connector-mcp-toolbox-snowflake-1.3.16-linux-amd64.zip",
+      "release_zip_bytes": 16606677,
+      "release_zip_sha256": "2696f1a11984082d1987136ad421c3b69e6b7b1cd8c3ca019636b2334b83e43a",
       "release_targets": {
         "linux-amd64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-snowflake/releases/download/v1.3.15/flowsteward.data-connector-mcp-toolbox-snowflake-1.3.15-linux-amd64.zip",
-          "release_zip_bytes": 16606289,
-          "release_zip_sha256": "ef7409987c3fab7c8f1134b543e5ed5b201c97d55f5abd595c4bb3708e80df24"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-snowflake/releases/download/v1.3.16/flowsteward.data-connector-mcp-toolbox-snowflake-1.3.16-linux-amd64.zip",
+          "release_zip_bytes": 16606677,
+          "release_zip_sha256": "2696f1a11984082d1987136ad421c3b69e6b7b1cd8c3ca019636b2334b83e43a"
         },
         "linux-arm64": {
-          "release_zip_url": "https://github.com/Flow-Steward/ext-data-snowflake/releases/download/v1.3.15/flowsteward.data-connector-mcp-toolbox-snowflake-1.3.15-linux-arm64.zip",
-          "release_zip_bytes": 14960125,
-          "release_zip_sha256": "7b2af3d355b554cd2027c95cf994b2323ee152b1964d4aab780bc697308cbd86"
+          "release_zip_url": "https://github.com/Flow-Steward/ext-data-snowflake/releases/download/v1.3.16/flowsteward.data-connector-mcp-toolbox-snowflake-1.3.16-linux-arm64.zip",
+          "release_zip_bytes": 14960524,
+          "release_zip_sha256": "a4509c3e7041bb770dec621c5a1de8016802b7189bb723c2ba4fcfb4974765b9"
         }
       },
       "icon": {
-        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/317cd21596607a3e3193a3d881cce90a9e723b76/releases/flowsteward.data-connector-mcp-toolbox-snowflake/1.3.15.png",
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/c005710b4edd666874fbc3a97f5bce720f8085e5/releases/flowsteward.data-connector-mcp-toolbox-snowflake/1.3.16.png",
         "sha256": "c3cfa52f6724430ba7566accf6859a92653e9821f75c1e73bd191d458c36f94a",
         "bytes": 15826,
         "mime_type": "image/png",
         "size": "256x256"
       },
       "added_at": "2026-10-01T13:29:18Z",
-      "updated_at": "2026-11-26T08:04:10Z"
+      "updated_at": "2026-11-26T18:31:50Z"
     },
     {
       "extension_id": "flowsteward.data-connector-mcp-toolbox-spanner",
