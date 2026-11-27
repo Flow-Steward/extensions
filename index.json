@@ -1,7 +1,7 @@
 {
   "schema_version": "extension_catalog/v1",
-  "catalog_revision": "2026-11-26.eca3c5d0",
-  "published_at": "2026-11-26T18:32:10Z",
+  "catalog_revision": "2026-11-27.4232b0ba",
+  "published_at": "2026-11-27T07:02:46Z",
   "items": [
     {
       "extension_id": "flowsteward.agnum",
@@ -927,6 +927,52 @@
       },
       "added_at": "2026-11-24T06:35:24Z",
       "updated_at": "2026-11-26T18:32:03Z"
+    },
+    {
+      "extension_id": "flowsteward.freightutils",
+      "version": "0.1.0",
+      "name": "FreightUtils",
+      "summary": "Dangerous goods, freight calculators, customs codes and duty, locations and equipment for logistics workflows, each answer with its source.",
+      "description": "Freight reference data and calculators for your workflows and AI agents, from FreightUtils: dangerous goods (ADR 2025 and 2027), loading metres, CBM, chargeable weight, pallet fitting, ISO 14083 / GLEC emissions, HS codes, UK and EU duty, Incoterms 2020, UN/LOCODE, airports, airlines, containers, ULDs and vehicles, and container, air waybill and IMO number checks.\n\nEvery one of the 40 operations of the FreightUtils API has its own step, with everyday shortcuts for a UN number, an HS code, a location code, a container number and an air waybill. Each answer carries its source line, so values can be stored, shown and cited with it. Every step reads; none changes anything. Works without an account (25 requests a day) or with a free or Pro FreightUtils API key.",
+      "categories": [
+        "operations",
+        "data"
+      ],
+      "capabilities": [
+        "tool",
+        "action"
+      ],
+      "permissions_summary": [
+        "extension:invoke"
+      ],
+      "setup_summary": "Add a FreightUtils connection; paste a free or Pro API key for more requests, or leave it empty to start with 25 requests a day.",
+      "tags": [
+        "freightutils",
+        "freight",
+        "logistics",
+        "dangerous-goods",
+        "adr",
+        "customs",
+        "hs-codes",
+        "incoterms",
+        "emissions",
+        "shipping"
+      ],
+      "publication_status": "published",
+      "verification_status": "unverified",
+      "repository_url": "https://github.com/Flow-Steward/ext-operations-freightutils/tree/v0.1.0",
+      "release_zip_url": "https://github.com/Flow-Steward/ext-operations-freightutils/releases/download/v0.1.0/flowsteward.freightutils-0.1.0.zip",
+      "release_zip_bytes": 187226,
+      "release_zip_sha256": "0e7a3152c84b970e8b25d115c9c40071fc231c9e281c2cea91d655ab795ebe30",
+      "icon": {
+        "url": "https://raw.githubusercontent.com/Flow-Steward/extensions/e4e528a63324575f3f47731e64dc7258249980ee/releases/flowsteward.freightutils/0.1.0.png",
+        "sha256": "f0aabb0c0a5e8277671ca5f0a4eefed934d72919d761ec7468dd387ce9912812",
+        "bytes": 1585,
+        "mime_type": "image/png",
+        "size": "180x180"
+      },
+      "added_at": "2026-11-27T07:02:46Z",
+      "updated_at": "2026-11-27T07:02:46Z"
     },
     {
       "extension_id": "flowsteward.imap-mailbox",
